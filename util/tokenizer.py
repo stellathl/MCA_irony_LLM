@@ -11,6 +11,7 @@ No model weights are downloaded — tokenizer files only.
 """
 
 import pandas as pd
+import yaml
 from transformers import AutoTokenizer
 
 # ─────────────────────────────────────────────────────────
@@ -32,8 +33,6 @@ MODELS = {
 # ─────────────────────────────────────────────────────────
 
 # YAML
-
-
 def read_yaml(yaml_file_path: str) -> dict:
     with open(yaml_file_path, "r") as f:
         yaml_contents = yaml.safe_load(f)
@@ -46,50 +45,20 @@ def write_yaml(yaml_contents: dict, yaml_file_path: str) -> None:
     with open(yaml_file_path, "w") as f:
         yaml.dump(yaml_contents, f)
 
+GENERAL_PROMPT_TEMPLATE = read_yaml("prompts/general_prompt.yaml")
 
-# SYSTEM_GENERAL_PROMPT = (
-#     "You are a linguistic analysis assistant. "
-#     "Determine whether the target utterance is ironic or non-ironic "
-#     "given the context. Answer with 'ironic' or 'non-ironic', "
-#     "then briefly explain."
-# )
-
-# GENERAL_PROMPT_TEMPLATE = (
-#     "Task: You will read short stories that describe everyday situations\
-# \ and which finish with a character saying something. Your task is to decide,\
-# \ given the situation, what meaning the character is most likely conveying.\
-# \ Each story will be followed by 4 possible meaning interpretations listed from\
-# \ 1 to 4. Read each story and choose the number corresponding to the most likely\
-# \ meaning. You can only answer with 1, 2, 3, or 4. \n\n{scenario} {question}\n\
-# \n{options}\n\nAnswer:"
-# "question:"" What meaning is X likely conveying?"
-# )
-def build_prompt_c1b(row: pd.Series) -> str:
-    return (
-        # f"{GENERAL_PROMPT_TEMPLATE}\n\n"
-        f"Context: {row['context']}\n\n"
-        f"Target utterance: \"{row['target_utterance']}\"\n\n"
-        "Is the target utterance ironic or non-ironic?"
-    )
-
-def build_prompt_c2(row: pd.Series) -> str:
-    cg = str(row.get("cg_level", "")).strip().lower()
+def build_prompt(row: pd.Series, condition: str) -> str:
+    template = GENERAL_PROMPT_TEMPLATE[condition]
+    question_line = template["question"].format(pronoun=row["pronoun"])
     cg_framing  = str(row.get("cg_framing",         "")).strip()
-    explicit    = str(row.get("Explicit_sentence",   "")).strip()
-
-    middle = ""
-    if cg == "high" and cg_framing and cg_framing.lower() != "nan":
-        middle = f"{cg_framing}"
-        if explicit and explicit.lower() != "nan":
-            middle += f" {explicit}"
-        middle = middle.strip() + "\n\n"
-
-    return (
-        # f"{GENERAL_PROMPT_TEMPLATE}\n\n"
-        f"Context: {row['context']}\n\n"
-        f"{middle}"
-        f"Target utterance: \"{row['target_utterance']}\"\n\n"
-        "Is the target utterance ironic or non-ironic?"
+    
+    return template["task"].format(
+        context=row.get("context", ""),
+        target_utterance=row["target_utterance"],
+        question=question_line,    
+        cg_framing=cg_framing,
+        speaker=row.get("Speaker", ""),
+        options=row.get("options", ""), # once the options are ready
     )
 
 # ─────────────────────────────────────────────────────────
@@ -130,42 +99,95 @@ def count_tokens_df(df: pd.DataFrame, prompt_col: str,
 # ─────────────────────────────────────────────────────────
 # REPORTING
 # ─────────────────────────────────────────────────────────
-
 MAX_CONTEXT = {
     "Gemma-3-4B":          131_072,
     "Mistral-7B-Instruct":  32_768,
     "OLMo-2-7B":           131_072,
     "Qwen3-8B":            131_072,
     "ModernBERT-8B":         8_192,
+    "Llama-3-8B":          131_072,  # was missing — caused ⚠
 }
+
+# ─────────────────────────────────────────────────────────
+# EXPERIMENT SCALE CONSTANTS
+# ─────────────────────────────────────────────────────────
+N_STIMULI        = 250
+N_PROMPT_TYPES   = 3
+N_CONDITIONS     = 3
+N_MODELS         = len(MODELS)
+FEWSHOT_TOKENS   = 0   # set to estimated tokens per few-shot block if used
+
+TOTAL_RUNS = N_STIMULI * N_PROMPT_TYPES * N_CONDITIONS * N_MODELS
+
 
 def print_report(label: str, df: pd.DataFrame):
     tok_cols = [c for c in df.columns if c.startswith("tok_")]
-    print(f"\n{'═'*65}")
+    print(f"\n{'═'*75}")
     print(f"  {label}  ({len(df)} prompts)")
-    print(f"{'═'*65}")
-    print(f"  {'Model':<25} {'Min':>5} {'Med':>5} {'Max':>5} {'Total':>8}")
-    print(f"  {'-'*25} {'-'*5} {'-'*5} {'-'*5} {'-'*8}")
+    print(f"{'═'*75}")
+    print(f"  {'Model':<25} {'Min':>5} {'Med':>5} {'Max':>5} {'Total':>8}  {'% ctx':>6}  {'Status':>6}")
+    print(f"  {'-'*25} {'-'*5} {'-'*5} {'-'*5} {'-'*8}  {'-'*6}  {'-'*6}")
+
     for col in tok_cols:
         model = col.replace("tok_", "")
-        mn  = int(df[col].min())
-        med = int(df[col].median())
-        mx  = int(df[col].max())
-        tot = int(df[col].sum())
-        ctx = MAX_CONTEXT.get(model, "?")
-        safe = "✓" if isinstance(ctx, int) and mx < ctx else "⚠"
-        print(f"  {model:<25} {mn:>5} {med:>5} {mx:>5} {tot:>8,}  {safe}")
+        mn    = int(df[col].min())
+        med   = int(df[col].median())
+        mx    = int(df[col].max())
+        tot   = int(df[col].sum())
+        ctx   = MAX_CONTEXT.get(model)
+
+        if ctx:
+            pct  = mx / ctx * 100
+            # warn if few-shot would push over 80% of context
+            fewshot_pct = (mx + FEWSHOT_TOKENS) / ctx * 100
+            safe = "✓" if mx < ctx else "✗ EXCEEDS"
+            fewshot_warn = " ⚠ few-shot risky" if fewshot_pct > 80 else ""
+        else:
+            pct, safe, fewshot_warn = 0, "?", ""
+
+        print(f"  {model:<25} {mn:>5} {med:>5} {mx:>5} {tot:>8,}  "
+              f"{pct:>5.2f}%  {safe}{fewshot_warn}")
 
     # Sub-group breakdown
     sub = next((c for c in ("context_level", "cg_level") if c in df.columns), None)
     if sub:
-        rep_col = tok_cols[0]  # use first model as representative
+        rep_col = tok_cols[0]
         print(f"\n  Breakdown by {sub}  [{rep_col.replace('tok_','')}]:")
         for grp, gdf in df.groupby(sub):
             print(f"    {grp:>12}:  "
                   f"median={gdf[rep_col].median():.0f}  "
                   f"total={int(gdf[rep_col].sum()):,}")
 
+
+def print_hpc_summary(results: dict):
+    """Print HPC planning summary across all conditions and prompt types."""
+    combined  = pd.concat(results.values(), ignore_index=True)
+    tok_cols  = [c for c in combined.columns if c.startswith("tok_")]
+
+    print(f"\n{'═'*75}")
+    print(f"  HPC PLANNING SUMMARY")
+    print(f"  Scale: {N_STIMULI} stimuli × {N_PROMPT_TYPES} prompt types × "
+          f"{N_CONDITIONS} conditions × {N_MODELS} models")
+    print(f"  Total inference runs: {TOTAL_RUNS:,}")
+    if FEWSHOT_TOKENS:
+        print(f"  Few-shot overhead:    +{FEWSHOT_TOKENS} tokens/prompt")
+    print(f"{'═'*75}")
+    print(f"  {'Model':<25} {'Max tok':>8}  {'Ctx win':>8}  {'% used':>7}  "
+          f"{'Total tok (all runs)':>22}")
+    print(f"  {'-'*25} {'-'*8}  {'-'*8}  {'-'*7}  {'-'*22}")
+
+    for col in tok_cols:
+        model  = col.replace("tok_", "")
+        mx     = int(combined[col].max())
+        ctx    = MAX_CONTEXT.get(model, "?")
+        pct    = f"{mx/ctx*100:.2f}%" if isinstance(ctx, int) else "?"
+        # project total tokens across full experiment
+        median = combined[col].median()
+        projected = int(median * TOTAL_RUNS / N_MODELS)  # per model
+        print(f"  {model:<25} {mx:>8,}  {ctx:>8,}  {pct:>7}  "
+              f"~{projected:>20,}")
+
+    print(f"\n  ⚠  Set FEWSHOT_TOKENS > 0 to check if few-shot fits safely.")
 # ─────────────────────────────────────────────────────────
 # MAIN
 # ─────────────────────────────────────────────────────────
@@ -174,9 +196,9 @@ if __name__ == "__main__":
     import sys
 
     c1b_path = sys.argv[1] if len(sys.argv) > 1 else \
-        "data/Condition1B_context_richness_stimuli.csv"
+        "datasets/Condition1B_context_richness_stimuli.csv"
     c2_path  = sys.argv[2] if len(sys.argv) > 2 else \
-        "data/Condition2_common_ground_stimuli.csv"
+        "datasets/Condition2_common_ground_stimuli.csv"
 
     # 1. Load tokenizers
     print("Loading tokenizers …")
@@ -189,7 +211,8 @@ if __name__ == "__main__":
     # 2. Condition 1B
     print("\nCounting tokens — Condition 1B …")
     df1 = pd.read_csv(c1b_path)
-    df1["_prompt"] = df1.apply(build_prompt_c1b, axis=1)
+    df1["_prompt"] = df1.apply(lambda row: build_prompt(row, "condition_1"), axis=1)
+    print("First prompt\n", df1["_prompt"].iloc[0])
     df1 = count_tokens_df(df1, "_prompt", tokenizers)
     print_report("Condition 1B – Context Richness", df1)
     results["Condition1B"] = df1
@@ -197,7 +220,8 @@ if __name__ == "__main__":
     # 3. Condition 2
     print("\nCounting tokens — Condition 2 …")
     df2 = pd.read_csv(c2_path)
-    df2["_prompt"] = df2.apply(build_prompt_c2, axis=1)
+    df2["_prompt"] = df2.apply(lambda row: build_prompt(row, "condition_2"), axis=1)
+    print("First prompt\n", df2["_prompt"].iloc[0])
     df2 = count_tokens_df(df2, "_prompt", tokenizers)
     print_report("Condition 2 – Common Ground", df2)
     results["Condition2"] = df2
@@ -211,6 +235,9 @@ if __name__ == "__main__":
     for col in tok_cols:
         model = col.replace("tok_", "")
         print(f"  {model:<25}  total={int(combined[col].sum()):>8,} tokens")
+
+    # 4. HPC summary across all conditions
+    print_hpc_summary(results)
 
     # 5. Save per-row CSV
     out = "token_counts_real.csv"
