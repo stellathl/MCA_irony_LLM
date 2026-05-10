@@ -1,0 +1,115 @@
+Loading tokenizers …
+  Loading Gemma-3-4B (google/gemma-3-4b-it) …
+    ✓  vocab_size=262,144
+  Loading Mistral-7B-Instruct (mistralai/Mistral-7B-Instruct-v0.3) …
+    ✓  vocab_size=32,768
+  Loading OLMo-2-7B (allenai/OLMo-2-1124-7B-Instruct) …
+    ✓  vocab_size=100,278
+  Loading Qwen3-8B (Qwen/Qwen3-8B) …
+    ✓  vocab_size=151,643
+  Loading ModernBERT-8B (answerdotai/ModernBERT-large) …
+    ✓  vocab_size=50,280
+  Loading Llama-3-8B (meta-llama/Llama-3.1-8B) …
+    ✓  vocab_size=128,000
+
+Counting tokens — Condition 1B …
+First prompt
+ You will read short stories that describe everyday situations and which finish with a character saying something. Your task is to decide, given the situation, what meaning the character is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
+
+Context: She had been preparing for the presentation and was due to meet with a new client.
+
+Target utterance:  "That went really smoothly."
+
+What meaning is she most likely conveying?
+
+
+
+Answer:
+
+  Gemma-3-4B                 done  (median=134)
+  Mistral-7B-Instruct        done  (median=146)
+  OLMo-2-7B                  done  (median=129)
+  Qwen3-8B                   done  (median=129)
+  ModernBERT-8B              done  (median=133)
+  Llama-3-8B                 done  (median=130)
+
+═══════════════════════════════════════════════════════════════════════════
+  Condition 1B – Context Richness  (250 prompts)
+═══════════════════════════════════════════════════════════════════════════
+  Model                       Min   Med   Max    Total   % ctx  Status
+  ------------------------- ----- ----- ----- --------  ------  ------
+  Gemma-3-4B                  114   134   142   32,784   0.11%  ✓
+  Mistral-7B-Instruct         125   146   155   35,777   0.47%  ✓
+  OLMo-2-7B                   110   129   136   31,513   0.10%  ✓
+  Qwen3-8B                    110   129   136   31,513   0.10%  ✓
+  ModernBERT-8B               113   133   141   32,590   1.72%  ✓
+  Llama-3-8B                  111   130   137   31,763   0.10%  ✓
+
+  Breakdown by context_level  [Gemma-3-4B]:
+       ambiguous:  median=138  total=13,694
+     unambiguous:  median=134  total=13,390
+
+Counting tokens — Condition 2 …
+First prompt
+ You will read short stories that describe everyday situations and which finish with a character saying something. Your task is to decide, given the situation, what meaning the character is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
+
+Context: Her slides had crashed halfway through and the client had walked out early. Her colleague had been in the room throughout and had seen how it went.
+
+Target utterance: She says to her collegue: "That went really smoothly."
+
+What meaning is she most likely conveying?
+
+
+
+Answer:
+
+  Gemma-3-4B                 done  (median=152)
+  Mistral-7B-Instruct        done  (median=164)
+  OLMo-2-7B                  done  (median=147)
+  Qwen3-8B                   done  (median=147)
+  ModernBERT-8B              done  (median=151)
+  Llama-3-8B                 done  (median=148)
+
+═══════════════════════════════════════════════════════════════════════════
+  Condition 2 – Common Ground  (201 prompts)
+═══════════════════════════════════════════════════════════════════════════
+  Model                       Min   Med   Max    Total   % ctx  Status
+  ------------------------- ----- ----- ----- --------  ------  ------
+  Gemma-3-4B                  115   152   162   30,473   0.12%  ✓
+  Mistral-7B-Instruct         126   164   174   32,996   0.53%  ✓
+  OLMo-2-7B                   111   147   157   29,486   0.12%  ✓
+  Qwen3-8B                    111   147   157   29,486   0.12%  ✓
+  ModernBERT-8B               114   151   161   30,366   1.97%  ✓
+  Llama-3-8B                  112   148   158   29,687   0.12%  ✓
+
+  Breakdown by cg_level  [Gemma-3-4B]:
+            high:  median=152  total=15,151
+             low:  median=152  total=15,207
+
+═════════════════════════════════════════════════════════════════
+  GRAND TOTAL (both conditions)
+═════════════════════════════════════════════════════════════════
+  Gemma-3-4B                 total=  63,257 tokens
+  Mistral-7B-Instruct        total=  68,773 tokens
+  OLMo-2-7B                  total=  60,999 tokens
+  Qwen3-8B                   total=  60,999 tokens
+  ModernBERT-8B              total=  62,956 tokens
+  Llama-3-8B                 total=  61,450 tokens
+
+═══════════════════════════════════════════════════════════════════════════
+  HPC PLANNING SUMMARY
+  Scale: 250 stimuli × 3 prompt types × 3 conditions × 6 models
+  Total inference runs: 13,500
+═══════════════════════════════════════════════════════════════════════════
+  Model                      Max tok   Ctx win   % used    Total tok (all runs)
+  ------------------------- --------  --------  -------  ----------------------
+  Gemma-3-4B                     162   131,072    0.12%  ~             312,750
+  Mistral-7B-Instruct            174    32,768    0.53%  ~             342,000
+  OLMo-2-7B                      157   131,072    0.12%  ~             299,250
+  Qwen3-8B                       157   131,072    0.12%  ~             299,250
+  ModernBERT-8B                  161     8,192    1.97%  ~             312,750
+  Llama-3-8B                     158   131,072    0.12%  ~             301,500
+
+  ⚠  Set FEWSHOT_TOKENS > 0 to check if few-shot fits safely.
+
+  Saved → token_counts_real.csv
