@@ -1,3 +1,4 @@
+import yaml
 import os
 import gc
 import torch
@@ -8,60 +9,59 @@ from transformers import (
     AutoTokenizer,
     pipeline
 )
-#from huggingface_hub import login
 
 # =========================================================
 # CONFIG
 # =========================================================
 
-#os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-#os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
-
-
-
-# Directories
 DATASETS_DIR = "./data"
 PROMPTS_DIR = "./prompts"
 OUTPUTS_DIR = "./outputs"
 
 os.makedirs(OUTPUTS_DIR, exist_ok=True)
 
-# Models
 MODELS = [
     "google/gemma-3-1b-it"
 ]
 
-# Generation settings
 MAX_NEW_TOKENS = 150
 TEMPERATURE = 0.1
 
-# Prompt templates
 PROMPT_FILES = {
-    "general": "general_prompt.txt",
-    "rsa": "rsa_prompt.txt",
-    "reasoning": "reasoning_prompt.txt"
+    "general": "general_prompt.yaml",
+    #"rsa": "rsa_prompt.yaml",
+    #"reasoning": "reasoning_prompt.yaml"
 }
 
 # =========================================================
-# LOAD PROMPT TEMPLATE
+# LOAD PROMPT
 # =========================================================
 
 def load_prompt_template(path):
+    import yaml
 
     with open(path, "r", encoding="utf-8") as f:
-        return f.read()
+        raw = f.read()
+        print("\n--- RAW YAML ---\n", raw)
+
+        data = yaml.safe_load(raw)
+        print("\n--- PARSED YAML ---\n", data)
+
+    if isinstance(data, dict) and "template" in data:
+        return data["template"]
+
+    if isinstance(data, str):
+        return data
+
+    raise ValueError(f"Invalid YAML format: {path}")
 
 # =========================================================
 # LOAD DATASET
 # =========================================================
 
 def load_dataset(csv_path):
-
     df = pd.read_csv(csv_path)
-
-    # optional shuffle
     df = df.sample(frac=1, random_state=42).reset_index(drop=True)
-
     return Dataset.from_pandas(df)
 
 # =========================================================
@@ -69,7 +69,6 @@ def load_dataset(csv_path):
 # =========================================================
 
 def load_model(model_name):
-
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
         torch_dtype=torch.bfloat16,
@@ -87,15 +86,14 @@ def load_model(model_name):
     return model, tokenizer
 
 # =========================================================
-# BUILD PROMPT
+# PROMPT BUILD
 # =========================================================
 
 def build_prompt(template, text):
-
     return template.format(text=text)
 
 # =========================================================
-# GENERATE PREDICTIONS
+# GENERATION
 # =========================================================
 
 def generate_predictions(
@@ -105,7 +103,7 @@ def generate_predictions(
     template,
     model_name,
     prompt_type,
-    dataset_category,
+    dataset_name,
     output_path
 ):
 
@@ -115,19 +113,14 @@ def generate_predictions(
 
         for i, record in enumerate(dataset, 1):
 
-            print(f"\n[{prompt_type.upper()}] [{dataset_category}] Record #{i}")
+            print(f"\n[{prompt_type.upper()}] Record #{i}")
 
             text = record["text"]
 
-            # Build final prompt
             prompt = build_prompt(template, text)
 
             try:
-
-                # Apply chat template
-                messages = [
-                    {"role": "user", "content": prompt}
-                ]
+                messages = [{"role": "user", "content": prompt}]
 
                 formatted_prompt = tokenizer.apply_chat_template(
                     messages,
@@ -135,7 +128,6 @@ def generate_predictions(
                     add_generation_prompt=True
                 )
 
-                # Generate
                 result = pipe(
                     formatted_prompt,
                     max_new_tokens=MAX_NEW_TOKENS,
@@ -151,40 +143,36 @@ def generate_predictions(
                 records.append({
                     "id": record.get("id", i),
                     "model": model_name,
-                    "dataset_category": dataset_category,
+                    "dataset": dataset_name,
                     "prompt_type": prompt_type,
                     "text": text,
                     "label": record.get("label", ""),
-                    "raw_output": generated_text
+                    "output": generated_text
                 })
 
             except Exception as e:
-
-                print(f"ERROR on record #{i}: {e}")
+                print(f"ERROR: {e}")
 
                 records.append({
                     "id": record.get("id", i),
                     "model": model_name,
-                    "dataset_category": dataset_category,
+                    "dataset": dataset_name,
                     "prompt_type": prompt_type,
                     "text": text,
                     "label": record.get("label", ""),
-                    "raw_output": f"ERROR: {e}"
+                    "output": f"ERROR: {e}"
                 })
 
-            # cleanup
             if i % 5 == 0:
                 gc.collect()
                 torch.cuda.empty_cache()
 
-    # Save results
     df = pd.DataFrame(records)
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-
     df.to_csv(output_path, index=False)
 
-    print(f"\nSaved results to: {output_path}")
+    print(f"\nSaved: {output_path}")
 
 # =========================================================
 # MAIN
@@ -194,8 +182,15 @@ if __name__ == "__main__":
 
     print("Starting inference pipeline...")
 
-    # Load dataset categories
-    dataset_categories = os.listdir(DATASETS_DIR)
+    # 🔥 FLAT CSV STRUCTURE
+    csv_files = [
+        f for f in os.listdir(DATASETS_DIR)
+        if f.endswith(".csv")
+    ]
+
+    if not csv_files:
+        print("No CSV files found in ./data")
+        exit()
 
     for model_name in MODELS:
 
@@ -203,10 +198,8 @@ if __name__ == "__main__":
 
         clean_model_name = model_name.split("/")[-1]
 
-        # Load model
         model, tokenizer = load_model(model_name)
 
-        # Create pipeline
         pipe = pipeline(
             "text-generation",
             model=model,
@@ -215,81 +208,41 @@ if __name__ == "__main__":
             device_map="auto"
         )
 
-        # =============================================
-        # LOOP THROUGH DATASET CATEGORIES
-        # =============================================
+        for csv_file in csv_files:
 
-        for category in dataset_categories:
+            dataset_path = os.path.join(DATASETS_DIR, csv_file)
+            dataset_name = csv_file.replace(".csv", "")
 
-            category_path = os.path.join(DATASETS_DIR, category)
+            print(f"\nLoading dataset: {dataset_name}")
 
-            # skip non-folders
-            if not os.path.isdir(category_path):
-                continue
+            dataset = load_dataset(dataset_path)
 
-            print(f"\nDataset category: {category}")
+            for prompt_type, prompt_file in PROMPT_FILES.items():
 
-            # =============================================
-            # LOAD CSV FILES INSIDE CATEGORY
-            # =============================================
+                print(f"\nRunning prompt: {prompt_type}")
 
-            csv_files = [
-                f for f in os.listdir(category_path)
-                if f.endswith(".csv")
-            ]
+                prompt_path = os.path.join(PROMPTS_DIR, prompt_file)
+                template = load_prompt_template(prompt_path)
 
-            for csv_file in csv_files:
+                output_dir = os.path.join(OUTPUTS_DIR, prompt_type)
+                os.makedirs(output_dir, exist_ok=True)
 
-                dataset_path = os.path.join(category_path, csv_file)
+                output_file = os.path.join(
+                    output_dir,
+                    f"{clean_model_name}_{dataset_name}.csv"
+                )
 
-                dataset_name = csv_file.replace(".csv", "")
+                generate_predictions(
+                    pipe=pipe,
+                    tokenizer=tokenizer,
+                    dataset=dataset,
+                    template=template,
+                    model_name=clean_model_name,
+                    prompt_type=prompt_type,
+                    dataset_name=dataset_name,
+                    output_path=output_file
+                )
 
-                print(f"\nLoading dataset: {dataset_name}")
-
-                dataset = load_dataset(dataset_path)
-
-                # =============================================
-                # LOOP THROUGH PROMPT STRATEGIES
-                # =============================================
-
-                for prompt_type, prompt_file in PROMPT_FILES.items():
-
-                    print(f"\nRunning prompt strategy: {prompt_type}")
-
-                    prompt_path = os.path.join(
-                        PROMPTS_DIR,
-                        prompt_file
-                    )
-
-                    template = load_prompt_template(prompt_path)
-
-                    # output folder
-                    output_dir = os.path.join(
-                        OUTPUTS_DIR,
-                        prompt_type,
-                        category
-                    )
-
-                    os.makedirs(output_dir, exist_ok=True)
-
-                    output_file = os.path.join(
-                        output_dir,
-                        f"{clean_model_name}_{dataset_name}.csv"
-                    )
-
-                    # Run inference
-                    generate_predictions(
-                        pipe=pipe,
-                        tokenizer=tokenizer,
-                        dataset=dataset,
-                        template=template,
-                        model_name=clean_model_name,
-                        prompt_type=prompt_type,
-                        dataset_category=category,
-                        output_path=output_file
-                    )
-
-        # cleanup
         del model
         del tokenizer
         del pipe
