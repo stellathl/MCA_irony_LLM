@@ -9,6 +9,7 @@ from transformers import (
     AutoTokenizer,
     pipeline
 )
+from util.tokenizer import build_prompt
 
 # =========================================================
 # CONFIG
@@ -33,27 +34,10 @@ PROMPT_FILES = {
     #"reasoning": "reasoning_prompt.yaml"
 }
 
-# =========================================================
-# LOAD PROMPT
-# =========================================================
-
-def load_prompt_template(path):
-    import yaml
-
-    with open(path, "r", encoding="utf-8") as f:
-        raw = f.read()
-        print("\n--- RAW YAML ---\n", raw)
-
-        data = yaml.safe_load(raw)
-        print("\n--- PARSED YAML ---\n", data)
-
-    if isinstance(data, dict) and "template" in data:
-        return data["template"]
-
-    if isinstance(data, str):
-        return data
-
-    raise ValueError(f"Invalid YAML format: {path}")
+CONDITION_MAP = {
+    "Condition1B_context_richness_stimuli": "condition_1",
+    "Condition2_common_ground_stimuli": "condition_2",
+}
 
 # =========================================================
 # LOAD DATASET
@@ -62,7 +46,7 @@ def load_prompt_template(path):
 def load_dataset(csv_path):
     df = pd.read_csv(csv_path)
     df = df.sample(frac=1, random_state=42).reset_index(drop=True)
-    return Dataset.from_pandas(df)
+    return df
 
 # =========================================================
 # LOAD MODEL
@@ -85,12 +69,6 @@ def load_model(model_name):
 
     return model, tokenizer
 
-# =========================================================
-# PROMPT BUILD
-# =========================================================
-
-def build_prompt(template, text):
-    return template.format(text=text)
 
 # =========================================================
 # GENERATION
@@ -100,7 +78,6 @@ def generate_predictions(
     pipe,
     tokenizer,
     dataset,
-    template,
     model_name,
     prompt_type,
     dataset_name,
@@ -115,9 +92,7 @@ def generate_predictions(
 
             print(f"\n[{prompt_type.upper()}] Record #{i}")
 
-            text = record["text"]
-
-            prompt = build_prompt(template, text)
+            prompt = record["prompt"]
 
             try:
                 messages = [{"role": "user", "content": prompt}]
@@ -137,7 +112,7 @@ def generate_predictions(
 
                 generated_text = result[0]["generated_text"][len(formatted_prompt):]
 
-                print(f"\nINPUT:\n{text}")
+                print(f"\nINPUT:\n{prompt}")  
                 print(f"\nOUTPUT:\n{generated_text}")
 
                 records.append({
@@ -145,7 +120,7 @@ def generate_predictions(
                     "model": model_name,
                     "dataset": dataset_name,
                     "prompt_type": prompt_type,
-                    "text": text,
+                    "prompt": prompt,
                     "label": record.get("label", ""),
                     "output": generated_text
                 })
@@ -158,7 +133,7 @@ def generate_predictions(
                     "model": model_name,
                     "dataset": dataset_name,
                     "prompt_type": prompt_type,
-                    "text": text,
+                    "prompt": prompt,
                     "label": record.get("label", ""),
                     "output": f"ERROR: {e}"
                 })
@@ -221,10 +196,20 @@ if __name__ == "__main__":
 
                 print(f"\nRunning prompt: {prompt_type}")
 
-                prompt_path = os.path.join(PROMPTS_DIR, prompt_file)
-                template = load_prompt_template(prompt_path)
+                dataset["prompt"] = dataset.apply(
+                    lambda row: build_prompt(row, CONDITION_MAP[dataset_name]), axis=1
+                )
+                records_list = dataset.to_dict(orient="records") 
 
-                output_dir = os.path.join(OUTPUTS_DIR, prompt_type)
+                csv_files = [
+                    f for f in os.listdir(DATASETS_DIR)
+                    if f.endswith(".csv")
+                ]
+
+                output_dir = os.path.join(
+                    OUTPUTS_DIR,
+                    prompt_type,
+                )
                 os.makedirs(output_dir, exist_ok=True)
 
                 output_file = os.path.join(
@@ -232,11 +217,11 @@ if __name__ == "__main__":
                     f"{clean_model_name}_{dataset_name}.csv"
                 )
 
+                # Run inference
                 generate_predictions(
                     pipe=pipe,
                     tokenizer=tokenizer,
-                    dataset=dataset,
-                    template=template,
+                    dataset=records_list,
                     model_name=clean_model_name,
                     prompt_type=prompt_type,
                     dataset_name=dataset_name,
