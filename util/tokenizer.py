@@ -1,7 +1,7 @@
 """
-Token Counter with Real Tokenizers
+Token Counter with Tokenizers
 ====================================
-Run this locally where HuggingFace Hub is reachable.
+Using HuggingFace Hub Tokenizer, count the tokens.
 
 Install dependencies first:
     pip install transformers sentencepiece pandas
@@ -13,19 +13,7 @@ No model weights are downloaded — tokenizer files only.
 import pandas as pd
 import yaml
 from transformers import AutoTokenizer
-
-# ─────────────────────────────────────────────────────────
-# MODELS  — HuggingFace tokenizer IDs
-# ─────────────────────────────────────────────────────────
-
-MODELS = {
-    "Gemma-3-4B":          "google/gemma-3-4b-it",
-    "Mistral-7B-Instruct": "mistralai/Mistral-7B-Instruct-v0.3",
-    "OLMo-2-7B":           "allenai/OLMo-2-1124-7B-Instruct",
-    "Qwen3-8B":            "Qwen/Qwen3-8B",
-    "ModernBERT-8B":       "answerdotai/ModernBERT-large",
-    "Llama-3-8B":          "meta-llama/Llama-3.1-8B"
-}
+from util.constants import (MODELS)
 
 # ─────────────────────────────────────────────────────────
 # PROMPT BUILDER
@@ -35,19 +23,17 @@ MODELS = {
 # YAML
 def read_yaml(yaml_file_path: str) -> dict:
     with open(yaml_file_path, "r") as f:
-        yaml_contents = yaml.safe_load(f)
-    if yaml_contents is None:
-        return {}
-    return yaml_contents
-
+        data = yaml.safe_load(f)
+    if not isinstance(data, dict):
+        raise ValueError(f"Invalid YAML format: {yaml_file_path}")
+    return data
 
 def write_yaml(yaml_contents: dict, yaml_file_path: str) -> None:
     with open(yaml_file_path, "w") as f:
         yaml.dump(yaml_contents, f)
 
-GENERAL_PROMPT_TEMPLATE = read_yaml("prompts/general_prompt.yaml")
-
-def build_prompt(row: pd.Series, condition: str) -> str:
+def build_prompt(row: pd.Series, condition: str, template: str) -> str:
+    GENERAL_PROMPT_TEMPLATE = read_yaml(f'prompts/{template}')
     template = GENERAL_PROMPT_TEMPLATE[condition]
     question_line = template["question"].format(pronoun=row["pronoun"])
     cg_framing  = str(row.get("cg_framing",         "")).strip()
