@@ -13,7 +13,7 @@ No model weights are downloaded — tokenizer files only.
 import pandas as pd
 import yaml
 from transformers import AutoTokenizer
-from util.constants import (MODELS)
+from util.constants import (MODELS, PROMPT_FILES)
 
 # ─────────────────────────────────────────────────────────
 # PROMPT BUILDER
@@ -43,8 +43,8 @@ def build_prompt(row: pd.Series, condition: str, template: str) -> str:
         target_utterance=row["target_utterance"],
         question=question_line,    
         cg_framing=cg_framing,
-        speaker=row.get("Speaker", ""),
-        options=row.get("options", ""), # once the options are ready
+        speaker=row.get("speaker", ""),
+        options=row.get("answering_options", ""), # once the options are ready
     )
 
 # ─────────────────────────────────────────────────────────
@@ -56,7 +56,6 @@ def load_tokenizers() -> dict:
     for name, model_id in MODELS.items():
         print(f"  Loading {name} ({model_id}) …", flush=True)
         try:
-            # tokenizer_only=True avoids downloading model weights
             tok = AutoTokenizer.from_pretrained(model_id)
             tokenizers[name] = tok
             vocab_size = tok.vocab_size
@@ -182,9 +181,9 @@ if __name__ == "__main__":
     import sys
 
     c1b_path = sys.argv[1] if len(sys.argv) > 1 else \
-        "datasets/Condition1B_context_richness_stimuli.csv"
+        "data/Condition1B_context_richness_stimuli.csv"
     c2_path  = sys.argv[2] if len(sys.argv) > 2 else \
-        "datasets/Condition2_common_ground_stimuli.csv"
+        "data/Condition2_common_ground_stimuli.csv"
 
     # 1. Load tokenizers
     print("Loading tokenizers …")
@@ -194,19 +193,19 @@ if __name__ == "__main__":
 
     results = {}
 
-    # 2. Condition 1B
+    # 2. Condition 1B with general template
     print("\nCounting tokens — Condition 1B …")
     df1 = pd.read_csv(c1b_path)
-    df1["_prompt"] = df1.apply(lambda row: build_prompt(row, "condition_1"), axis=1)
+    df1["_prompt"] = df1.apply(lambda row: build_prompt(row, "condition_1", PROMPT_FILES.get("general")), axis=1)
     print("First prompt\n", df1["_prompt"].iloc[0])
     df1 = count_tokens_df(df1, "_prompt", tokenizers)
     print_report("Condition 1B – Context Richness", df1)
     results["Condition1B"] = df1
 
-    # 3. Condition 2
+    # 3. Condition 2 with general template
     print("\nCounting tokens — Condition 2 …")
     df2 = pd.read_csv(c2_path)
-    df2["_prompt"] = df2.apply(lambda row: build_prompt(row, "condition_2"), axis=1)
+    df2["_prompt"] = df2.apply(lambda row: build_prompt(row, "condition_2", PROMPT_FILES.get("general")), axis=1)
     print("First prompt\n", df2["_prompt"].iloc[0])
     df2 = count_tokens_df(df2, "_prompt", tokenizers)
     print_report("Condition 2 – Common Ground", df2)
