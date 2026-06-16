@@ -8,7 +8,7 @@ from transformers import (
     AutoTokenizer,
     pipeline
 )
-from util.parse import parse_response, score_model
+from util.parse import parse_response
 from util.shuffle_options import format_options, get_correct_option_text, parse_options
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
@@ -340,41 +340,3 @@ for model_key, model_name in MODELS.items():
     torch.cuda.empty_cache()
 
 print("\nInference completed successfully.")
-
-# ── Run for all models ────────────────────────────────────
-
-all_results = []
-for model in MODELS:
-    result = score_model(
-        stimuli_csv   = f"stimuli_{model}.csv",
-        responses_csv = f"responses_{model}.csv",  # ← your model output file
-        model_name    = model
-    )
-    all_results.append(result)
-
-# ── Cross-model summary ───────────────────────────────────
-print(f"\n{'='*50}")
-print("CROSS-MODEL SUMMARY")
-print(f"{'='*50}")
-
-summary_rows = []
-for model, df in zip(MODELS, all_results):
-    for condition, grp in df.groupby(["context_level", "irony_label"]):
-        acc = grp["correct"].mean() * 100
-        summary_rows.append({
-            "model"        : model,
-            "context_level": condition[0],
-            "irony_label"  : condition[1],
-            "accuracy"     : round(acc, 1),
-            "n"            : len(grp),
-        })
-
-summary = pd.DataFrame(summary_rows)
-pivot = summary.pivot_table(
-    index=["context_level", "irony_label"],
-    columns="model",
-    values="accuracy"
-)
-print(pivot.to_string())
-summary.to_csv("accuracy_summary.csv", index=False)
-print("\n✓ Saved → accuracy_summary.csv")
