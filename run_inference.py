@@ -9,7 +9,7 @@ from transformers import (
     pipeline
 )
 from util.parse import parse_response
-from util.shuffle_options import format_options, get_correct_option_text, parse_options
+from util.shuffle_options import build_run_splits, format_options, get_correct_option_text, parse_options, save_combined
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
@@ -198,6 +198,8 @@ def generate_predictions(
                 "prompt"             : prompt,
                 # ── Raw model output ─────────────────────
                 "output"             : generated_text,
+                "run"                : record.get("run", ""),       
+                "condition"          : record.get("condition", ""), 
             })
 
             if i % 5 == 0:
@@ -316,88 +318,95 @@ if __name__ == "__main__":
                 print(f"\nLoading dataset: {dataset_name}")
 
                 try:
+                    
                     dataset = load_and_shuffle_dataset(dataset_path, model_key)
                 except Exception as e:
                     print(f"ERROR loading dataset {dataset_name}: {e}")
                     continue
+      
+                run_splits = build_run_splits(dataset)
 
-                # ── Prompt loop ─────────────────────────────
-                for prompt_type, prompt_file in PROMPT_FILES.items():
+                for run_idx, run_df in enumerate(run_splits, 1):
+                    print(f"\n--- Run {run_idx}/4 ({len(run_df)} items) ---")
 
-                    print(f"\n{'─'*50}")
-                    print(f"Running prompt: {prompt_type}")
-                    print(f"{'─'*50}")
+                    # ── Prompt loop ─────────────────────────────
+                    for prompt_type, prompt_file in PROMPT_FILES.items():
 
-                    metrics_path = os.path.join(
-                        OUTPUTS_DIR,
-                        "metrics",
-                        f"{model_key}_{dataset_name}_{prompt_type}_metrics.txt"
-                    )
+                        print(f"\n{'─'*50}")
+                        print(f"Running prompt: {prompt_type}")
+                        print(f"{'─'*50}")
 
-                    os.makedirs(os.path.dirname(metrics_path), exist_ok=True)
-
-                    # ── Build prompts ──────────────────────────
-                    dataset_copy = dataset.copy()
-                    dataset_copy["prompt"] = dataset_copy.apply(
-                        lambda row: build_prompt(
-                            row, 
-                            CONDITION_MAP[dataset_name], 
-                            prompt_file
-                        ), 
-                        axis=1
-                    )
-                    records_list = dataset_copy.to_dict(orient="records") 
-
-                    # ── Output path ────────────────────────────
-                    output_path = os.path.join(
-                        OUTPUTS_DIR,
-                        prompt_type,
-                        f"{model_key}_{dataset_name}.csv"
-                    )
-
-                    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-
-                    try:
-                        result_df = generate_predictions(
-                            pipe=pipe,
-                            tokenizer=tokenizer,
-                            dataset=records_list,
-                            model_name=model_key,
-                            prompt_type=prompt_type,
-                            dataset_name=dataset_name,
-                            output_path=output_path,
-                            metrics_path=metrics_path 
+                        metrics_path = os.path.join(
+                            OUTPUTS_DIR,
+                            "metrics",
+                            f"{model_key}_{dataset_name}_{prompt_type}_metrics.txt"
                         )
 
-                        if result_df is not None and not result_df.empty:
-                            result_df.to_csv(output_path, index=False)
-                            print(f"✓ Results saved to: {output_path}")
-                            all_results.append(result_df)
-                        else:
-                            print(f"⚠ WARNING: result_df is empty or None")
+                        os.makedirs(os.path.dirname(metrics_path), exist_ok=True)
 
-                    except Exception as e:
-                        print(f"ERROR during inference for {prompt_type}: {e}")
-                        import traceback
-                        traceback.print_exc()
-                        continue
+                            # ── Build prompts ──────────────────────────
+                        dataset_copy = dataset.copy()
+                        dataset_copy["prompt"] = run_df.apply(
+                            lambda row: build_prompt(row, CONDITION_MAP[dataset_name], prompt_file), axis=1
+                        )
+                        records_list = run_df.to_dict(orient="records")
 
-            print(f"\n{'='*60}")
-            print(f"Cleaning up model: {model_key}")
-            print(f"{'='*60}")
+                        output_path = os.path.join(
+                            OUTPUTS_DIR,
+                            prompt_type,
+                            model_key,
+                            f"{model_key}_{dataset_name}_run{run_idx}.csv"
+                        )
 
-            del model
-            del tokenizer
-            del pipe
+                        os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-            gc.collect()
-            torch.cuda.empty_cache()
+                        try:
+                            result_df = generate_predictions(
+                                pipe=pipe,
+                                tokenizer=tokenizer,
+                                dataset=records_list,
+                                model_name=model_key,
+                                prompt_type=prompt_type,
+                                dataset_name=dataset_name,
+                                output_path=output_path,
+                                metrics_path=metrics_path 
+                            )
+
+                            if result_df is not None and not result_df.empty:
+                                result_df.to_csv(output_path, index=False)
+                                print(f"✓ Results saved to: {output_path}")
+                                all_results.append(result_df)
+
+                                # Save per-model file
+                                model_results = [r for r in all_results if r["model"].iloc[0] == model_key]
+
+                                if model_results:
+                                    save_combined(
+                                        model_results,
+                                        output_path=os.path.join(OUTPUTS_DIR, prompt_type, f"{model_key}_results.csv")
+                                    )
+                            else:
+                                print(f"⚠ WARNING: result_df is empty or None")
+
+                        except Exception as e:
+                            print(f"ERROR during inference for {prompt_type}: {e}")
+                            import traceback
+                            traceback.print_exc()
+                            continue
+
+                        del model
+                        del tokenizer
+                        del pipe
+
+                        gc.collect()
+                        torch.cuda.empty_cache()
 
         except Exception as e:
             print(f"ERROR loading model {model_key}: {e}")
             import traceback
             traceback.print_exc()
             continue
+
 
     # =========================================================
     # CROSS-MODEL SUMMARY
