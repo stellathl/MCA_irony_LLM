@@ -292,9 +292,9 @@ for model_key, model_name in MODELS.items():
         dataset_path = os.path.join(DATASETS_DIR, csv_file)
         dataset_name = csv_file.replace(".csv", "")
 
-                # After loading the full dataset:
+        # After loading the full dataset:
         full_df = load_and_shuffle_dataset(dataset_path, model_key)
-        run_splits = build_run_splits(full_df)
+        run_splits = build_run_splits(full_df, base_seed=SEEDS[model_key], model_key=model_key, output_dir=DATASETS_DIR, dataset_name=dataset_name)
 
         for run_idx, run_df in enumerate(run_splits, 1):
             print(f"\n--- Run {run_idx}/4 ({len(run_df)} items) ---")

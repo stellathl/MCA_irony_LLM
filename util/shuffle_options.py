@@ -9,6 +9,8 @@
 
 # util/latin_square_split.py
 
+import os
+
 import pandas as pd
 import numpy as np
 
@@ -23,11 +25,10 @@ LATIN_SQUARE = np.array([
     [3, 0, 1, 2],
 ])
 
-def build_run_splits(df: pd.DataFrame) -> list[pd.DataFrame]:
+def build_run_splits(df: pd.DataFrame, base_seed: int, output_dir: str, model_key: str, dataset_name: str) -> list[pd.DataFrame]:
     df = df.copy()
     df["condition"] = df["Item_ID"].str.extract(r"C1_\d+_(A_I|A_NI|UA_I|UA_NI)$")
 
-    # ── Sanity check: no nulls from regex ────────────────
     null_conditions = df["condition"].isna().sum()
     if null_conditions > 0:
         bad_ids = df[df["condition"].isna()]["Item_ID"].tolist()
@@ -63,11 +64,18 @@ def build_run_splits(df: pd.DataFrame) -> list[pd.DataFrame]:
 
         run_df = pd.DataFrame(rows).reset_index(drop=True)
         run_df["run"] = run_idx + 1
+
+        # ── Save this run's CSV ───────────────────────────
+        run_output_dir = os.path.join(output_dir, "latin_square_splits")
+        os.makedirs(run_output_dir, exist_ok=True)
+        run_path = os.path.join(run_output_dir, f"{dataset_name}_run{run_idx + 1}.csv")
+        run_df.to_csv(run_path, index=False)
+        print(f"✓ Saved run {run_idx + 1} → {run_path}")
+
         runs.append(run_df)
 
     _verify_coverage(runs, df, conditions, base_items)
     return runs
-
 
 def _verify_coverage(
     runs: list[pd.DataFrame],
