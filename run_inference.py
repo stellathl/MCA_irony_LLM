@@ -9,7 +9,7 @@ from transformers import (
     pipeline
 )
 from util.parse import parse_response
-from util.shuffle_options import format_options, get_correct_option_text, parse_options
+from util.shuffle_options import build_run_splits, format_options, get_correct_option_text, parse_options, save_combined
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 
@@ -185,6 +185,8 @@ def generate_predictions(
                 "prompt"             : prompt,
                 # ── Raw model output ─────────────────────
                 "output"             : generated_text,
+                "run"                : record.get("run", ""),       
+                "condition"          : record.get("condition", ""), 
             })
 
             if i % 5 == 0:
@@ -290,53 +292,53 @@ for model_key, model_name in MODELS.items():
         dataset_path = os.path.join(DATASETS_DIR, csv_file)
         dataset_name = csv_file.replace(".csv", "")
 
-        if dataset_name not in CONDITION_MAP:
-            print(f"Skipping {dataset_name} — not in CONDITION_MAP")
-            continue
+                # After loading the full dataset:
+        full_df = load_and_shuffle_dataset(dataset_path, model_key)
+        run_splits = build_run_splits(full_df)
 
-        print(f"\nLoading dataset: {dataset_name}")
+        for run_idx, run_df in enumerate(run_splits, 1):
+            print(f"\n--- Run {run_idx}/4 ({len(run_df)} items) ---")
 
-        dataset = load_and_shuffle_dataset(dataset_path, model_key)
+            for prompt_type, prompt_file in PROMPT_FILES.items():
+                run_df["prompt"] = run_df.apply(
+                    lambda row: build_prompt(row, CONDITION_MAP[dataset_name], prompt_file), axis=1
+                )
+                records_list = run_df.to_dict(orient="records")
 
-        for prompt_type, prompt_file in PROMPT_FILES.items():
+                output_path = os.path.join(
+                    OUTPUTS_DIR,
+                    prompt_type,
+                    model_key,
+                    f"{model_key}_{dataset_name}_run{run_idx}.csv"
+                )
 
-            print(f"\nRunning prompt: {prompt_type}")
+                result_df = generate_predictions(
+                    pipe=pipe,
+                    tokenizer=tokenizer,
+                    dataset=records_list,
+                    model_name=model_key,
+                    prompt_type=prompt_type,
+                    dataset_name=dataset_name,
+                    output_path=output_path
+                )
+                all_results.append(result_df)
 
-            # Build prompts
-            dataset["prompt"] = dataset.apply(
-                lambda row: build_prompt(row, CONDITION_MAP[dataset_name], prompt_file), axis=1
-            )
-            records_list = dataset.to_dict(orient="records") 
+            # Save per-model file
+            model_results = [r for r in all_results if r["model"].iloc[0] == model_key]
+            print(model_results)
+            print(model_key)
 
-            output_path = os.path.join(
-                OUTPUTS_DIR,
-                prompt_type,
-                f"{model_key}_{dataset_name}.csv"
-            )
+            if model_results:
+                save_combined(
+                    model_results,
+                    output_path=os.path.join(OUTPUTS_DIR, prompt_type, f"{model_key}_results.csv")
+                )
 
-            output_file = os.path.join(
-                OUTPUTS_DIR,
-                f"{model_key}_{dataset_name}.csv"
-            )
+        del model
+        del tokenizer
+        del pipe
 
-            # Run inference
-            result_df = generate_predictions(
-                pipe=pipe,
-                tokenizer=tokenizer,
-                dataset=records_list,
-                model_name=model_key,
-                prompt_type=prompt_type,
-                dataset_name=dataset_name,
-                output_path=output_path
-            )
+        gc.collect()
+        torch.cuda.empty_cache()
 
-            all_results.append(result_df)
-
-    del model
-    del tokenizer
-    del pipe
-
-    gc.collect()
-    torch.cuda.empty_cache()
-
-print("\nInference completed successfully.")
+    print("\nInference completed successfully.")
