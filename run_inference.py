@@ -8,7 +8,7 @@ from transformers import (
     AutoTokenizer,
     pipeline
 )
-from util.parse import parse_response, score_model
+from util.parse import parse_response
 from util.shuffle_options import format_options, get_correct_option_text, parse_options
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
