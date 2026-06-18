@@ -312,9 +312,9 @@ if __name__ == "__main__":
             print(f"\nLoading dataset: {dataset_name}")
 
             # After loading the full dataset:
-            full_df = load_and_shuffle_dataset(dataset_path, model_key)
+            dataset = load_and_shuffle_dataset(dataset_path, model_key)
             run_splits = build_run_splits(
-                full_df,
+                df=dataset,
                 base_seed=SEEDS[model_key],
                 model_key=model_key,
                 output_dir=DATASETS_DIR,
