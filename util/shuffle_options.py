@@ -18,28 +18,35 @@ import numpy as np
 # Rows = runs (0-3), Cols = condition slot index mod 4
 # Each condition appears once per column across all runs
 
-LATIN_SQUARE = np.array([
-    [0, 1, 2, 3],
-    [1, 2, 3, 0],
-    [2, 3, 0, 1],
-    [3, 0, 1, 2],
-])
+LATIN_SQUARE = np.array(
+    [
+        [0, 1, 2, 3],
+        [1, 2, 3, 0],
+        [2, 3, 0, 1],
+        [3, 0, 1, 2],
+    ]
+)
 
-def build_run_splits(df: pd.DataFrame, base_seed: int, output_dir: str, model_key: str, dataset_name: str) -> list[pd.DataFrame]:
+
+def build_run_splits(
+    df: pd.DataFrame, base_seed: int, output_dir: str, model_key: str, dataset_name: str
+) -> list[pd.DataFrame]:
     df = df.copy()
     df["condition"] = df["Item_ID"].str.extract(r"C1_\d+_(A_I|A_NI|UA_I|UA_NI)$")
 
     null_conditions = df["condition"].isna().sum()
     if null_conditions > 0:
         bad_ids = df[df["condition"].isna()]["Item_ID"].tolist()
-        raise ValueError(f"{null_conditions} Item_IDs didn't match condition regex: {bad_ids}")
+        raise ValueError(
+            f"{null_conditions} Item_IDs didn't match condition regex: {bad_ids}"
+        )
 
     conditions = sorted(df["condition"].unique())
     base_items = sorted(df["base_item"].unique())
 
-    print(f"\n{'='*55}")
+    print(f"\n{'=' * 55}")
     print(f"LATIN SQUARE SPLIT — verification")
-    print(f"{'='*55}")
+    print(f"{'=' * 55}")
     print(f"Conditions found : {conditions}")
     print(f"Base items found : {len(base_items)}")
     print(f"Total rows       : {len(df)}  (expected {len(base_items) * 4})")
@@ -77,11 +84,12 @@ def build_run_splits(df: pd.DataFrame, base_seed: int, output_dir: str, model_ke
     _verify_coverage(runs, df, conditions, base_items)
     return runs
 
+
 def _verify_coverage(
     runs: list[pd.DataFrame],
     full_df: pd.DataFrame,
     conditions: list[str],
-    base_items: list[str]
+    base_items: list[str],
 ):
     """
     Prints a coverage report and raises if anything is missing or duplicated.
@@ -101,13 +109,15 @@ def _verify_coverage(
     # Every cell should be exactly 1
     if (pivot != 1).any().any():
         bad = pivot[pivot != 1].stack()
-        raise ValueError(f"Coverage error — some item×condition combos appear ≠ 1 time:\n{bad}")
+        raise ValueError(
+            f"Coverage error — some item×condition combos appear ≠ 1 time:\n{bad}"
+        )
 
     # Every original row should appear exactly once
     original_ids = set(full_df["Item_ID"].tolist())
-    covered_ids  = set(combined["Item_ID"].tolist())
-    missing  = original_ids - covered_ids
-    extra    = covered_ids - original_ids
+    covered_ids = set(combined["Item_ID"].tolist())
+    missing = original_ids - covered_ids
+    extra = covered_ids - original_ids
 
     if missing:
         raise ValueError(f"Missing Item_IDs from splits: {missing}")
@@ -117,7 +127,7 @@ def _verify_coverage(
     print(f"\n✓ All {len(original_ids)} Item_IDs covered exactly once")
     print(f"✓ Each base item appears in each condition exactly once across 4 runs")
     print(f"✓ Latin Square coverage verified")
-    print(f"{'='*55}\n")
+    print(f"{'=' * 55}\n")
 
 
 def save_combined(all_results: list[pd.DataFrame], output_path: str):
@@ -129,22 +139,33 @@ def save_combined(all_results: list[pd.DataFrame], output_path: str):
 
     # Put identifier columns first for readability
     front_cols = [
-        "model", "prompt_type", "run", "dataset",
-        "Item_ID", "base_item", "condition",
-        "context_level", "irony_label",
-        "presentation_order", "seed",
-        "correct_option_pos", "correct_option_text",
-        "chosen_option", "correct", "reasoning",
-        "output", "prompt",
+        "model",
+        "prompt_type",
+        "run",
+        "dataset",
+        "Item_ID",
+        "base_item",
+        "condition",
+        "context_level",
+        "irony_label",
+        "presentation_order",
+        "seed",
+        "correct_option_pos",
+        "correct_option_text",
+        "chosen_option",
+        "correct",
+        "reasoning",
+        "output",
+        "prompt",
     ]
     # Only keep cols that actually exist, then append any extras
-    existing   = [c for c in front_cols if c in combined.columns]
+    existing = [c for c in front_cols if c in combined.columns]
     extra_cols = [c for c in combined.columns if c not in existing]
-    combined   = combined[existing + extra_cols]
+    combined = combined[existing + extra_cols]
 
     combined.to_csv(output_path, index=False)
 
-    print(f"\n{'='*55}")
+    print(f"\n{'=' * 55}")
     print(f"COMBINED OUTPUT saved → {output_path}")
     print(f"Total rows : {len(combined)}")
     print(f"Columns    : {list(combined.columns)}")
@@ -159,7 +180,7 @@ def save_combined(all_results: list[pd.DataFrame], output_path: str):
             .rename(columns={"sum": "correct", "count": "total"})
             .to_string()
         )
-    print(f"{'='*55}\n")
+    print(f"{'=' * 55}\n")
 
     return combined
 
@@ -175,9 +196,11 @@ def parse_options(text):
             options.append(line)
     return options
 
+
 def format_options(options):
     """Rejoin a list of options into a numbered string."""
-    return "\n".join(f"{i+1}. {opt}" for i, opt in enumerate(options))
+    return "\n".join(f"{i + 1}. {opt}" for i, opt in enumerate(options))
+
 
 def get_correct_option_text(row):
     """

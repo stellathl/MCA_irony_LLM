@@ -3,6 +3,7 @@ import re
 
 from util.constants import MODELS
 
+
 # ── Helper: parse "number — reasoning" from model response ──
 def parse_response(response_text):
     """
@@ -27,7 +28,7 @@ def parse_response(response_text):
     chosen = int(match.group(1))
 
     # Everything after the number is the reasoning
-    reasoning = text[match.end():].strip()
+    reasoning = text[match.end() :].strip()
     # Clean leading punctuation/separator (—, -, ., :, etc.)
     reasoning = re.sub(r"^[\s\-—.,;:]+", "", reasoning).strip()
 

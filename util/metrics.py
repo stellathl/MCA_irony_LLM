@@ -1,15 +1,9 @@
 import pandas as pd
-from sklearn.metrics import (
-    classification_report,
-    precision_recall_fscore_support
-)
+from sklearn.metrics import classification_report, precision_recall_fscore_support
 
 
 def compute_classification_metrics(
-    df,
-    pred_col="chosen_option",
-    gold_col="correct_option_pos",
-    average="macro"
+    df, pred_col="chosen_option", gold_col="correct_option_pos", average="macro"
 ):
 
     df = df.copy()
@@ -21,18 +15,10 @@ def compute_classification_metrics(
     accuracy = (y_true == y_pred).mean()
 
     precision, recall, f1, _ = precision_recall_fscore_support(
-        y_true,
-        y_pred,
-        average=average,
-        zero_division=0
+        y_true, y_pred, average=average, zero_division=0
     )
 
-    overall = {
-        "accuracy": accuracy,
-        "precision": precision,
-        "recall": recall,
-        "f1": f1
-    }
+    overall = {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1}
 
     return overall
 
@@ -48,10 +34,7 @@ def compute_group_metrics(sub_df):
     accuracy = (y_true == y_pred).mean()
 
     precision, recall, f1, _ = precision_recall_fscore_support(
-        y_true,
-        y_pred,
-        average="macro",
-        zero_division=0
+        y_true, y_pred, average="macro", zero_division=0
     )
 
     return accuracy, precision, recall, f1
@@ -65,17 +48,18 @@ def context_metrics(df):
     rows = []
 
     for context, grp in df.groupby("context_level"):
-
         acc, p, r, f1 = compute_group_metrics(grp)
 
-        rows.append({
-            "context_level": context,
-            "n": len(grp),
-            "accuracy": round(acc, 3),
-            "precision": round(p, 3),
-            "recall": round(r, 3),
-            "f1": round(f1, 3)
-        })
+        rows.append(
+            {
+                "context_level": context,
+                "n": len(grp),
+                "accuracy": round(acc, 3),
+                "precision": round(p, 3),
+                "recall": round(r, 3),
+                "f1": round(f1, 3),
+            }
+        )
 
     return pd.DataFrame(rows)
 
@@ -88,17 +72,18 @@ def irony_metrics(df):
     rows = []
 
     for irony, grp in df.groupby("irony_label"):
-
         acc, p, r, f1 = compute_group_metrics(grp)
 
-        rows.append({
-            "irony_label": irony,
-            "n": len(grp),
-            "accuracy": round(acc, 3),
-            "precision": round(p, 3),
-            "recall": round(r, 3),
-            "f1": round(f1, 3)
-        })
+        rows.append(
+            {
+                "irony_label": irony,
+                "n": len(grp),
+                "accuracy": round(acc, 3),
+                "precision": round(p, 3),
+                "recall": round(r, 3),
+                "f1": round(f1, 3),
+            }
+        )
 
     return pd.DataFrame(rows)
 
@@ -110,20 +95,19 @@ def interaction_metrics(df):
 
     rows = []
 
-    for (context, irony), grp in df.groupby(
-        ["context_level", "irony_label"]
-    ):
-
+    for (context, irony), grp in df.groupby(["context_level", "irony_label"]):
         acc, p, r, f1 = compute_group_metrics(grp)
 
-        rows.append({
-            "context_level": context,
-            "irony_label": irony,
-            "n": len(grp),
-            "accuracy": round(acc, 3),
-            "precision": round(p, 3),
-            "recall": round(r, 3),
-            "f1": round(f1, 3)
-        })
+        rows.append(
+            {
+                "context_level": context,
+                "irony_label": irony,
+                "n": len(grp),
+                "accuracy": round(acc, 3),
+                "precision": round(p, 3),
+                "recall": round(r, 3),
+                "f1": round(f1, 3),
+            }
+        )
 
     return pd.DataFrame(rows)
