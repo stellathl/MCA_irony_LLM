@@ -12,6 +12,12 @@ from util.parse import parse_response
 from util.shuffle_options import format_options, get_correct_option_text, parse_options
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
+from util.metrics import (
+    compute_classification_metrics,
+    context_metrics,
+    irony_metrics,
+    interaction_metrics
+)
 
 # =========================================================
 # CONFIG
@@ -133,8 +139,15 @@ def generate_predictions(
     model_name,
     prompt_type,
     dataset_name,
-    output_path
+    output_path,
+    metrics_path 
 ):
+    """
+    Generate predictions for dataset and compute metrics.
+    
+    Returns:
+        pd.DataFrame: Results dataframe with predictions and metrics
+    """
     records = []
 
     with torch.no_grad():
@@ -199,56 +212,57 @@ def generate_predictions(
     df["chosen_option"] = [p[0] for p in parsed]
     df["reasoning"]     = [p[1] for p in parsed]
 
-    # ── Score accuracy ────────────────────────────────────
-    df["correct_option_pos"] = pd.to_numeric(df["correct_option_pos"], errors="coerce")
-    df["correct"] = df["chosen_option"] == df["correct_option_pos"]
+    # =========================================================
+    # METRICS (OLD METRICS.PY - NO PARAMETERS)
+    # =========================================================
 
-    # ── Print accuracy summary ────────────────────────────
-    total     = len(df)
-    n_parsed  = df["chosen_option"].notna().sum()
-    n_correct = df["correct"].sum()
+    
+    try:
+        overall = compute_classification_metrics(df)
+        context_df = context_metrics(df)
+        irony_df = irony_metrics(df)
+        interaction_df = interaction_metrics(df)
 
-    print(f"\n{'='*50}")
-    print(f"RESULTS  —  {model_name}  |  {prompt_type}  |  {dataset_name}")
-    print(f"{'='*50}")
-    print(f"Total items     : {total}")
-    print(f"Parsed responses: {n_parsed}  ({total - n_parsed} unparseable)")
-    print(f"Correct         : {n_correct}")
-    print(f"Accuracy        : {n_correct / n_parsed * 100:.1f}%" if n_parsed else "Accuracy: N/A")
+        # =========================================================
+        # SAVE METRICS FILE
+        # =========================================================
+        
+        os.makedirs(os.path.dirname(metrics_path), exist_ok=True)   
+        
+        with open(metrics_path, "w") as f:
 
-    print(f"\n--- by irony_label ---")
-    print(
-        df.groupby("irony_label")["correct"]
-        .agg(["sum", "count"])
-        .assign(accuracy=lambda x: (x["sum"] / x["count"] * 100).round(1))
-        .rename(columns={"sum": "correct", "count": "total"})
-        .to_string()
-    )
+            f.write(f"Model      : {model_name}\n")
+            f.write(f"Dataset    : {dataset_name}\n")
+            f.write(f"Prompt Type: {prompt_type}\n")
+            f.write(f"{'='*50}\n\n")
 
-    print(f"\n--- by context_level ---")
-    print(
-        df.groupby("context_level")["correct"]
-        .agg(["sum", "count"])
-        .assign(accuracy=lambda x: (x["sum"] / x["count"] * 100).round(1))
-        .rename(columns={"sum": "correct", "count": "total"})
-        .to_string()
-    )
+            f.write(f"Accuracy : {overall['accuracy']:.3f}\n")
+            f.write(f"Precision: {overall['precision']:.3f}\n")
+            f.write(f"Recall   : {overall['recall']:.3f}\n")
+            f.write(f"F1       : {overall['f1']:.3f}\n\n")
 
-    print(f"\n--- by context × irony ---")
-    print(
-        df.groupby(["context_level", "irony_label"])["correct"]
-        .agg(["sum", "count"])
-        .assign(accuracy=lambda x: (x["sum"] / x["count"] * 100).round(1))
-        .rename(columns={"sum": "correct", "count": "total"})
-        .to_string()
-    )
+            f.write("--- Context Level ---\n")
+            f.write(context_df.to_string(index=False))
+            f.write("\n\n")
 
-    # ── Save scored output ────────────────────────────────
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    df.to_csv(output_path, index=False)
-    print(f"\n✓ Saved: {output_path}")
+            f.write("--- Irony ---\n")
+            f.write(irony_df.to_string(index=False))
+            f.write("\n\n")
+
+            f.write("--- Context × Irony ---\n")
+            f.write(interaction_df.to_string(index=False))
+            f.write("\n")
+
+        print(f"\n✓ Metrics saved to: {metrics_path}")
+
+    except Exception as e:
+        print(f"ERROR computing metrics: {e}")
+        import traceback
+        traceback.print_exc()
+
 
     return df
+
 
 # =========================================================
 # MAIN
@@ -258,7 +272,7 @@ if __name__ == "__main__":
 
     print("Starting inference pipeline...")
 
-    # 🔥 FLAT CSV STRUCTURE
+    # ── Get CSV files ──────────────────────────────────────
     csv_files = [
         f for f in os.listdir(DATASETS_DIR)
         if f.endswith(".csv")
@@ -268,75 +282,180 @@ if __name__ == "__main__":
         print("No CSV files found in ./data")
         exit()
 
-print(f"Found datasets: {csv_files}")
+    print(f"Found datasets: {csv_files}")
 
-all_results = []
+    all_results = []
 
-for model_key, model_name in MODELS.items():  
-    print(f"\nLoading model: {model_key} ({model_name})")
+    
+    for model_key, model_name in MODELS.items():  
+        print(f"\n{'='*60}")
+        print(f"Loading model: {model_key} ({model_name})")
+        print(f"{'='*60}")
 
-    model, tokenizer = load_model(model_name)
+        try:
+            model, tokenizer = load_model(model_name)
 
-    pipe = pipeline(
-        "text-generation",
-        model=model,
-        tokenizer=tokenizer,
-        dtype=torch.bfloat16,
-        device_map="auto"
-    )
+            pipe = pipeline(
+                "text-generation",
+                model=model,
+                tokenizer=tokenizer,
+                dtype=torch.bfloat16,
+                device_map="auto"
+            )
 
-    for csv_file in csv_files:
+            # ── Dataset loop ─────────────────────────────────
+            for csv_file in csv_files:
 
-        dataset_path = os.path.join(DATASETS_DIR, csv_file)
-        dataset_name = csv_file.replace(".csv", "")
+                dataset_path = os.path.join(DATASETS_DIR, csv_file)
+                dataset_name = csv_file.replace(".csv", "")
 
-        if dataset_name not in CONDITION_MAP:
-            print(f"Skipping {dataset_name} — not in CONDITION_MAP")
+                if dataset_name not in CONDITION_MAP:
+                    print(f"\nSkipping {dataset_name} — not in CONDITION_MAP")
+                    continue
+
+                print(f"\nLoading dataset: {dataset_name}")
+
+                try:
+                    dataset = load_and_shuffle_dataset(dataset_path, model_key)
+                except Exception as e:
+                    print(f"ERROR loading dataset {dataset_name}: {e}")
+                    continue
+
+                # ── Prompt loop ─────────────────────────────
+                for prompt_type, prompt_file in PROMPT_FILES.items():
+
+                    print(f"\n{'─'*50}")
+                    print(f"Running prompt: {prompt_type}")
+                    print(f"{'─'*50}")
+
+                    metrics_path = os.path.join(
+                        OUTPUTS_DIR,
+                        "metrics",
+                        f"{model_key}_{dataset_name}_{prompt_type}_metrics.txt"
+                    )
+
+                    os.makedirs(os.path.dirname(metrics_path), exist_ok=True)
+
+                    # ── Build prompts ──────────────────────────
+                    dataset_copy = dataset.copy()
+                    dataset_copy["prompt"] = dataset_copy.apply(
+                        lambda row: build_prompt(
+                            row, 
+                            CONDITION_MAP[dataset_name], 
+                            prompt_file
+                        ), 
+                        axis=1
+                    )
+                    records_list = dataset_copy.to_dict(orient="records") 
+
+                    # ── Output path ────────────────────────────
+                    output_path = os.path.join(
+                        OUTPUTS_DIR,
+                        prompt_type,
+                        f"{model_key}_{dataset_name}.csv"
+                    )
+
+                    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+                    try:
+                        result_df = generate_predictions(
+                            pipe=pipe,
+                            tokenizer=tokenizer,
+                            dataset=records_list,
+                            model_name=model_key,
+                            prompt_type=prompt_type,
+                            dataset_name=dataset_name,
+                            output_path=output_path,
+                            metrics_path=metrics_path 
+                        )
+
+                        if result_df is not None and not result_df.empty:
+                            result_df.to_csv(output_path, index=False)
+                            print(f"✓ Results saved to: {output_path}")
+                            all_results.append(result_df)
+                        else:
+                            print(f"⚠ WARNING: result_df is empty or None")
+
+                    except Exception as e:
+                        print(f"ERROR during inference for {prompt_type}: {e}")
+                        import traceback
+                        traceback.print_exc()
+                        continue
+
+            print(f"\n{'='*60}")
+            print(f"Cleaning up model: {model_key}")
+            print(f"{'='*60}")
+
+            del model
+            del tokenizer
+            del pipe
+
+            gc.collect()
+            torch.cuda.empty_cache()
+
+        except Exception as e:
+            print(f"ERROR loading model {model_key}: {e}")
+            import traceback
+            traceback.print_exc()
             continue
 
-        print(f"\nLoading dataset: {dataset_name}")
+    # =========================================================
+    # CROSS-MODEL SUMMARY
+    # =========================================================
+    
+    print(f"\n{'='*60}")
+    print("CROSS-MODEL SUMMARY")
+    print(f"{'='*60}")
 
-        dataset = load_and_shuffle_dataset(dataset_path, model_key)
+    if all_results:
+        summary_rows = []
+        
+        for result_df in all_results:
+            if result_df is None or result_df.empty:
+                continue
+                
+            model_name = result_df["model"].iloc[0] if "model" in result_df.columns else "Unknown"
+            
+            for (context, irony), grp in result_df.groupby(
+                ["context_level", "irony_label"], 
+                dropna=False
+            ):
+                # Calculate accuracy
+                if "chosen_option" in grp.columns and "correct_option_pos" in grp.columns:
+                    acc = (grp["chosen_option"] == grp["correct_option_pos"]).mean() * 100
+                else:
+                    acc = 0
+                    
+                summary_rows.append({
+                    "model"        : model_name,
+                    "context_level": context,
+                    "irony_label"  : irony,
+                    "accuracy"     : round(acc, 1),
+                    "n"            : len(grp),
+                })
 
-        for prompt_type, prompt_file in PROMPT_FILES.items():
-
-            print(f"\nRunning prompt: {prompt_type}")
-
-            # Build prompts
-            dataset["prompt"] = dataset.apply(
-                lambda row: build_prompt(row, CONDITION_MAP[dataset_name], prompt_file), axis=1
+        if summary_rows:
+            summary = pd.DataFrame(summary_rows)
+            
+            # Print pivot table
+            pivot = summary.pivot_table(
+                index=["context_level", "irony_label"],
+                columns="model",
+                values="accuracy",
+                aggfunc="first"
             )
-            records_list = dataset.to_dict(orient="records") 
+            print("\nAccuracy by Context and Irony:")
+            print(pivot.to_string())
+            
+            # Save summary
+            summary_csv = os.path.join(OUTPUTS_DIR, "accuracy_summary.csv")
+            summary.to_csv(summary_csv, index=False)
+            print(f"\n✓ Saved → {summary_csv}")
+        else:
+            print("No summary rows to display")
+    else:
+        print("⚠ No results to summarize")
 
-            output_path = os.path.join(
-                OUTPUTS_DIR,
-                prompt_type,
-                f"{model_key}_{dataset_name}.csv"
-            )
-
-            output_file = os.path.join(
-                OUTPUTS_DIR,
-                f"{model_key}_{dataset_name}.csv"
-            )
-
-            # Run inference
-            result_df = generate_predictions(
-                pipe=pipe,
-                tokenizer=tokenizer,
-                dataset=records_list,
-                model_name=model_key,
-                prompt_type=prompt_type,
-                dataset_name=dataset_name,
-                output_path=output_path
-            )
-
-            all_results.append(result_df)
-
-    del model
-    del tokenizer
-    del pipe
-
-    gc.collect()
-    torch.cuda.empty_cache()
-
-print("\nInference completed successfully.")
+    print(f"\n{'='*60}")
+    print("✓ Inference pipeline completed successfully!")
+    print(f"{'='*60}")
