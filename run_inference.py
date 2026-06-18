@@ -3,15 +3,23 @@ import gc
 import random
 import torch
 import pandas as pd
-from transformers import (
-    AutoModelForCausalLM,
-    AutoTokenizer,
-    pipeline
-)
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 from util.parse import parse_response
-from util.shuffle_options import build_run_splits, format_options, get_correct_option_text, parse_options, save_combined
+from util.shuffle_options import (
+    build_run_splits,
+    format_options,
+    get_correct_option_text,
+    parse_options,
+    save_combined,
+)
 from util.tokenizer import build_prompt
-from util.constants import (MODELS, PROMPT_FILES, SEEDS)
+from util.constants import MODELS, PROMPT_FILES, SEEDS
+from util.metrics import (
+    compute_classification_metrics,
+    context_metrics,
+    irony_metrics,
+    interaction_metrics,
+)
 
 # =========================================================
 # CONFIG
@@ -35,6 +43,7 @@ CONDITION_MAP = {
 # LOAD & SHUFFLE DATASET  (seeded — reproducible)
 # =========================================================
 
+
 def load_and_shuffle_dataset(csv_path, model_key):
     """
     Load the master CSV, assign correct answer texts, then apply a
@@ -49,13 +58,13 @@ def load_and_shuffle_dataset(csv_path, model_key):
         )
 
     df = pd.read_csv(csv_path)
-    df["Item_ID"]   = df["Item_ID"].str.strip()
+    df["Item_ID"] = df["Item_ID"].str.strip()
     df["base_item"] = df["Item_ID"].str.extract(r"(C1_\d+)")
 
-    print(f"\n{'='*50}")
+    print(f"\n{'=' * 50}")
     print(f"Dataset : {os.path.basename(csv_path)}")
     print(f"Model   : {model_key}  (seed={seed})")
-    print(f"{'='*50}")
+    print(f"{'=' * 50}")
     print(f"Total rows       : {len(df)}")
     print(f"Unique base items: {df['base_item'].nunique()}")
     print(f"Conditions per item:\n{df.groupby('base_item').size().value_counts()}")
@@ -64,7 +73,9 @@ def load_and_shuffle_dataset(csv_path, model_key):
     df["correct_option_text"] = df.apply(get_correct_option_text, axis=1)
     missing = df["correct_option_text"].isna().sum()
     if missing > 0:
-        print(f"WARNING: {missing} rows have no correct option text — check irony_label values")
+        print(
+            f"WARNING: {missing} rows have no correct option text — check irony_label values"
+        )
 
     # ── Shuffle item order (seeded) ───────────────────────
     df = df.sample(frac=1, random_state=seed).reset_index(drop=True)
@@ -72,53 +83,51 @@ def load_and_shuffle_dataset(csv_path, model_key):
 
     # ── Shuffle answer options per row (seeded) ───────────
     rng = random.Random(seed)
-    shuffled_options     = []
-    correct_option_pos   = []
+    shuffled_options = []
+    correct_option_pos = []
     distractor_positions = []
 
     for _, row in df.iterrows():
-        options      = parse_options(row["answering_options"])
+        options = parse_options(row["answering_options"])
         correct_text = row["correct_option_text"]
 
         rng.shuffle(options)
 
         new_pos = next(
-            (i + 1 for i, opt in enumerate(options) if opt == correct_text),
-            None
+            (i + 1 for i, opt in enumerate(options) if opt == correct_text), None
         )
-        distractor_pos = [
-            i + 1 for i, opt in enumerate(options) if opt != correct_text
-        ]
+        distractor_pos = [i + 1 for i, opt in enumerate(options) if opt != correct_text]
 
         shuffled_options.append(format_options(options))
         correct_option_pos.append(new_pos)
         distractor_positions.append(str(distractor_pos))
 
-    df["answering_options"]   = shuffled_options
-    df["correct_option_pos"]  = correct_option_pos   # ground truth for scoring
+    df["answering_options"] = shuffled_options
+    df["correct_option_pos"] = correct_option_pos  # ground truth for scoring
     df["distractor_positions"] = distractor_positions
-    df["seed"]                = seed
+    df["seed"] = seed
 
     print(f"\nSample after shuffle:")
-    print(df[["Item_ID", "irony_label", "correct_option_pos", "presentation_order"]].head(6))
+    print(
+        df[["Item_ID", "irony_label", "correct_option_pos", "presentation_order"]].head(
+            6
+        )
+    )
 
     return df
+
 
 # =========================================================
 # LOAD MODEL
 # =========================================================
 
+
 def load_model(model_name):
     model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        dtype=torch.bfloat16,
-        device_map="auto"
+        model_name, dtype=torch.bfloat16, device_map="auto"
     )
 
-    tokenizer = AutoTokenizer.from_pretrained(
-        model_name,
-        trust_remote_code=True
-    )
+    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
 
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "right"
@@ -133,13 +142,19 @@ def generate_predictions(
     model_name,
     prompt_type,
     dataset_name,
-    output_path
+    output_path,
+    metrics_path,
 ):
+    """
+    Generate predictions for dataset and compute metrics.
+
+    Returns:
+        pd.DataFrame: Results dataframe with predictions and metrics
+    """
     records = []
 
     with torch.no_grad():
         for i, record in enumerate(dataset, 1):
-
             print(f"\n[{prompt_type.upper()}] Record #{i} / {len(dataset)}")
 
             prompt = record["prompt"]
@@ -147,17 +162,15 @@ def generate_predictions(
             try:
                 messages = [{"role": "user", "content": prompt}]
                 formatted_prompt = tokenizer.apply_chat_template(
-                    messages,
-                    tokenize=False,
-                    add_generation_prompt=True
+                    messages, tokenize=False, add_generation_prompt=True
                 )
                 result = pipe(
                     formatted_prompt,
                     max_new_tokens=MAX_NEW_TOKENS,
                     temperature=TEMPERATURE,
-                    do_sample=True
+                    do_sample=True,
                 )
-                generated_text = result[0]["generated_text"][len(formatted_prompt):]
+                generated_text = result[0]["generated_text"][len(formatted_prompt) :]
 
                 print(f"INPUT :\n{prompt}")
                 print(f"OUTPUT:\n{generated_text}")
@@ -166,28 +179,30 @@ def generate_predictions(
                 print(f"ERROR on record #{i}: {e}")
                 generated_text = f"ERROR: {e}"
 
-            records.append({
-                # ── Identifiers ──────────────────────────
-                "Item_ID"            : record.get("Item_ID", ""),
-                "base_item"          : record.get("base_item", ""),
-                "presentation_order" : record.get("presentation_order", i),
-                "seed"               : record.get("seed", ""),
-                # ── Condition info ───────────────────────
-                "context_level"      : record.get("context_level", ""),
-                "irony_label"        : record.get("irony_label", ""),
-                # ── Ground truth ─────────────────────────
-                "correct_option_pos" : record.get("correct_option_pos", ""),
-                "correct_option_text": record.get("correct_option_text", ""),
-                # ── Run metadata ─────────────────────────
-                "model"              : model_name,
-                "dataset"            : dataset_name,
-                "prompt_type"        : prompt_type,
-                "prompt"             : prompt,
-                # ── Raw model output ─────────────────────
-                "output"             : generated_text,
-                "run"                : record.get("run", ""),       
-                "condition"          : record.get("condition", ""), 
-            })
+            records.append(
+                {
+                    # ── Identifiers ──────────────────────────
+                    "Item_ID": record.get("Item_ID", ""),
+                    "base_item": record.get("base_item", ""),
+                    "presentation_order": record.get("presentation_order", i),
+                    "seed": record.get("seed", ""),
+                    # ── Condition info ───────────────────────
+                    "context_level": record.get("context_level", ""),
+                    "irony_label": record.get("irony_label", ""),
+                    # ── Ground truth ─────────────────────────
+                    "correct_option_pos": record.get("correct_option_pos", ""),
+                    "correct_option_text": record.get("correct_option_text", ""),
+                    # ── Run metadata ─────────────────────────
+                    "model": model_name,
+                    "dataset": dataset_name,
+                    "prompt_type": prompt_type,
+                    "prompt": prompt,
+                    # ── Raw model output ─────────────────────
+                    "output": generated_text,
+                    "run": record.get("run", ""),
+                    "condition": record.get("condition", ""),
+                }
+            )
 
             if i % 5 == 0:
                 gc.collect()
@@ -199,146 +214,190 @@ def generate_predictions(
     # ── Parse responses ───────────────────────────────────
     parsed = df["output"].apply(parse_response)
     df["chosen_option"] = [p[0] for p in parsed]
-    df["reasoning"]     = [p[1] for p in parsed]
+    df["reasoning"] = [p[1] for p in parsed]
 
-    # ── Score accuracy ────────────────────────────────────
-    df["correct_option_pos"] = pd.to_numeric(df["correct_option_pos"], errors="coerce")
-    df["correct"] = df["chosen_option"] == df["correct_option_pos"]
+    # =========================================================
+    # METRICS (OLD METRICS.PY - NO PARAMETERS)
+    # =========================================================
 
-    # ── Print accuracy summary ────────────────────────────
-    total     = len(df)
-    n_parsed  = df["chosen_option"].notna().sum()
-    n_correct = df["correct"].sum()
+    try:
+        overall = compute_classification_metrics(df)
+        context_df = context_metrics(df)
+        irony_df = irony_metrics(df)
+        interaction_df = interaction_metrics(df)
 
-    print(f"\n{'='*50}")
-    print(f"RESULTS  —  {model_name}  |  {prompt_type}  |  {dataset_name}")
-    print(f"{'='*50}")
-    print(f"Total items     : {total}")
-    print(f"Parsed responses: {n_parsed}  ({total - n_parsed} unparseable)")
-    print(f"Correct         : {n_correct}")
-    print(f"Accuracy        : {n_correct / n_parsed * 100:.1f}%" if n_parsed else "Accuracy: N/A")
+        # =========================================================
+        # SAVE METRICS FILE
+        # =========================================================
 
-    print(f"\n--- by irony_label ---")
-    print(
-        df.groupby("irony_label")["correct"]
-        .agg(["sum", "count"])
-        .assign(accuracy=lambda x: (x["sum"] / x["count"] * 100).round(1))
-        .rename(columns={"sum": "correct", "count": "total"})
-        .to_string()
-    )
+        os.makedirs(os.path.dirname(metrics_path), exist_ok=True)
 
-    print(f"\n--- by context_level ---")
-    print(
-        df.groupby("context_level")["correct"]
-        .agg(["sum", "count"])
-        .assign(accuracy=lambda x: (x["sum"] / x["count"] * 100).round(1))
-        .rename(columns={"sum": "correct", "count": "total"})
-        .to_string()
-    )
+        with open(metrics_path, "w") as f:
+            f.write(f"Model      : {model_name}\n")
+            f.write(f"Dataset    : {dataset_name}\n")
+            f.write(f"Prompt Type: {prompt_type}\n")
+            f.write(f"{'=' * 50}\n\n")
 
-    print(f"\n--- by context × irony ---")
-    print(
-        df.groupby(["context_level", "irony_label"])["correct"]
-        .agg(["sum", "count"])
-        .assign(accuracy=lambda x: (x["sum"] / x["count"] * 100).round(1))
-        .rename(columns={"sum": "correct", "count": "total"})
-        .to_string()
-    )
+            f.write(f"Accuracy : {overall['accuracy']:.3f}\n")
+            f.write(f"Precision: {overall['precision']:.3f}\n")
+            f.write(f"Recall   : {overall['recall']:.3f}\n")
+            f.write(f"F1       : {overall['f1']:.3f}\n\n")
 
-    # ── Save scored output ────────────────────────────────
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    df.to_csv(output_path, index=False)
-    print(f"\n✓ Saved: {output_path}")
+            f.write("--- Context Level ---\n")
+            f.write(context_df.to_string(index=False))
+            f.write("\n\n")
+
+            f.write("--- Irony ---\n")
+            f.write(irony_df.to_string(index=False))
+            f.write("\n\n")
+
+            f.write("--- Context × Irony ---\n")
+            f.write(interaction_df.to_string(index=False))
+            f.write("\n")
+
+        print(f"\n✓ Metrics saved to: {metrics_path}")
+
+    except Exception as e:
+        print(f"ERROR computing metrics: {e}")
+        import traceback
+
+        traceback.print_exc()
 
     return df
+
 
 # =========================================================
 # MAIN
 # =========================================================
 
 if __name__ == "__main__":
-
     print("Starting inference pipeline...")
 
-    # 🔥 FLAT CSV STRUCTURE
-    csv_files = [
-        f for f in os.listdir(DATASETS_DIR)
-        if f.endswith(".csv")
-    ]
+    # ── Get CSV files ──────────────────────────────────────
+    csv_files = [f for f in os.listdir(DATASETS_DIR) if f.endswith(".csv")]
 
     if not csv_files:
         print("No CSV files found in ./data")
         exit()
 
-print(f"Found datasets: {csv_files}")
+    print(f"Found datasets: {csv_files}")
 
-all_results = []
+    all_results = []
 
-for model_key, model_name in MODELS.items():  
-    print(f"\nLoading model: {model_key} ({model_name})")
+    for model_key, model_name in MODELS.items():
+        print(f"\n{'=' * 60}")
+        print(f"Loading model: {model_key} ({model_name})")
+        print(f"{'=' * 60}")
 
-    model, tokenizer = load_model(model_name)
+        try:
+            model, tokenizer = load_model(model_name)
 
-    pipe = pipeline(
-        "text-generation",
-        model=model,
-        tokenizer=tokenizer,
-        dtype=torch.bfloat16,
-        device_map="auto"
-    )
+            pipe = pipeline(
+                "text-generation",
+                model=model,
+                tokenizer=tokenizer,
+                dtype=torch.bfloat16,
+                device_map="auto",
+            )
 
-    for csv_file in csv_files:
+            # ── Dataset loop ─────────────────────────────────
+            for csv_file in csv_files:
+                dataset_path = os.path.join(DATASETS_DIR, csv_file)
+                dataset_name = csv_file.replace(".csv", "")
 
-        dataset_path = os.path.join(DATASETS_DIR, csv_file)
-        dataset_name = csv_file.replace(".csv", "")
+            if dataset_name not in CONDITION_MAP:
+                print(f"Skipping {dataset_name} — not in CONDITION_MAP")
+                continue
 
-        # After loading the full dataset:
-        full_df = load_and_shuffle_dataset(dataset_path, model_key)
-        run_splits = build_run_splits(full_df, base_seed=SEEDS[model_key], model_key=model_key, output_dir=DATASETS_DIR, dataset_name=dataset_name)
+            print(f"\nLoading dataset: {dataset_name}")
 
-        for run_idx, run_df in enumerate(run_splits, 1):
-            print(f"\n--- Run {run_idx}/4 ({len(run_df)} items) ---")
+            # After loading the full dataset:
+            full_df = load_and_shuffle_dataset(dataset_path, model_key)
+            run_splits = build_run_splits(
+                full_df,
+                base_seed=SEEDS[model_key],
+                model_key=model_key,
+                output_dir=DATASETS_DIR,
+                dataset_name=dataset_name,
+            )
+
+            for run_idx, run_df in enumerate(run_splits, 1):
+                print(f"\n--- Run {run_idx}/4 ({len(run_df)} items) ---")
 
             for prompt_type, prompt_file in PROMPT_FILES.items():
-                run_df["prompt"] = run_df.apply(
-                    lambda row: build_prompt(row, CONDITION_MAP[dataset_name], prompt_file), axis=1
+                print(f"\n{'─' * 50}")
+                print(f"Running prompt: {prompt_type}")
+                print(f"{'─' * 50}")
+
+                metrics_path = os.path.join(
+                    OUTPUTS_DIR,
+                    "metrics",
+                    f"{model_key}_{dataset_name}_{prompt_type}_metrics.txt",
                 )
-                records_list = run_df.to_dict(orient="records")
+
+                # Build prompts
+                dataset_copy = dataset.copy()
+                dataset_copy["prompt"] = dataset_copy.apply(
+                    lambda row: build_prompt(
+                        row, CONDITION_MAP[dataset_name], prompt_file
+                    ),
+                    axis=1,
+                )
+                records_list = dataset_copy.to_dict(orient="records")
 
                 output_path = os.path.join(
                     OUTPUTS_DIR,
                     prompt_type,
                     model_key,
-                    f"{model_key}_{dataset_name}_run{run_idx}.csv"
+                    f"{model_key}_{dataset_name}.csv",
                 )
 
-                result_df = generate_predictions(
-                    pipe=pipe,
-                    tokenizer=tokenizer,
-                    dataset=records_list,
-                    model_name=model_key,
-                    prompt_type=prompt_type,
-                    dataset_name=dataset_name,
-                    output_path=output_path
+                os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+                output_file = os.path.join(
+                    OUTPUTS_DIR, f"{model_key}_{dataset_name}.csv"
                 )
+                try:
+                    # Run inference
+                    result_df = generate_predictions(
+                        pipe=pipe,
+                        tokenizer=tokenizer,
+                        dataset=records_list,
+                        model_name=model_key,
+                        prompt_type=prompt_type,
+                        dataset_name=dataset_name,
+                        output_path=output_path,
+                        metrics_path=metrics_path,
+                    )
+
+                    if result_df is not None and not result_df.empty:
+                        result_df.to_csv(output_path, index=False)
+                        print(f"✓ Results saved to: {output_path}")
+                        all_results.append(result_df)
+                    else:
+                        print(f"⚠ WARNING: result_df is empty or None")
+
+                except Exception as e:
+                    print(f"ERROR during inference for {prompt_type}: {e}")
+                    import traceback
+
+                    traceback.print_exc()
+                    continue
+
                 all_results.append(result_df)
 
-            # Save per-model file
-            model_results = [r for r in all_results if r["model"].iloc[0] == model_key]
-            print(model_results)
-            print(model_key)
+            del model
+            del tokenizer
+            del pipe
 
-            if model_results:
-                save_combined(
-                    model_results,
-                    output_path=os.path.join(OUTPUTS_DIR, prompt_type, f"{model_key}_results.csv")
-                )
+            gc.collect()
+            torch.cuda.empty_cache()
 
-        del model
-        del tokenizer
-        del pipe
+        except Exception as e:
+            print(f"ERROR loading model {model_key}: {e}")
+        import traceback
 
-        gc.collect()
-        torch.cuda.empty_cache()
+        traceback.print_exc()
+        continue
 
-    print("\nInference completed successfully.")
+print("\nInference completed successfully.")
