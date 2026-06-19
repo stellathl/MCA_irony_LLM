@@ -9,6 +9,8 @@
 
 # util/latin_square_split.py
 
+import os
+
 import pandas as pd
 import numpy as np
 
@@ -23,7 +25,7 @@ LATIN_SQUARE = np.array([
     [3, 0, 1, 2],
 ])
 
-def build_run_splits(df: pd.DataFrame) -> list[pd.DataFrame]:
+def build_run_splits(df: pd.DataFrame, output_dir: str, dataset_name: str) -> list[pd.DataFrame]:
     df = df.copy()
     df["condition"] = df["Item_ID"].str.extract(r"C1_\d+_(A_I|A_NI|UA_I|UA_NI)$")
 
@@ -63,6 +65,13 @@ def build_run_splits(df: pd.DataFrame) -> list[pd.DataFrame]:
 
         run_df = pd.DataFrame(rows).reset_index(drop=True)
         run_df["run"] = run_idx + 1
+        # ── Save this run's CSV ───────────────────────────
+        run_output_dir = os.path.join(output_dir, "latin_square_splits")
+        os.makedirs(run_output_dir, exist_ok=True)
+        run_path = os.path.join(run_output_dir, f"{dataset_name}_run{run_idx + 1}.csv")
+        run_df.to_csv(run_path, index=False)
+        print(f"✓ Saved run {run_idx + 1} → {run_path}")
+
         runs.append(run_df)
 
     _verify_coverage(runs, df, conditions, base_items)
@@ -111,28 +120,33 @@ def _verify_coverage(
     print(f"✓ Latin Square coverage verified")
     print(f"{'='*55}\n")
 
+def combine_results(all_results: list[pd.DataFrame]):
+    """
+    Concatenates all per-run result DataFrames (across all models,
+    prompt types, and runs)
+    """
+    combined = pd.concat(all_results, ignore_index=True)
+
+    # Put identifier columns first for readability
+    front_cols = [
+        "Item_ID","base_item","presentation_order","seed",
+        "context_level","irony_label","correct_option_pos",
+        "correct_option_text","model","dataset","prompt_type",
+        "prompt","output","run","condition","chosen_option","reasoning"   
+    ]
+
+    # Only keep cols that actually exist"," then append any extras
+    existing   = [c for c in front_cols if c in combined.columns]
+    extra_cols = [c for c in combined.columns if c not in existing]
+    combined   = combined[existing + extra_cols]
+    return combined
 
 def save_combined(all_results: list[pd.DataFrame], output_path: str):
     """
     Concatenates all per-run result DataFrames (across all models,
     prompt types, and runs) into one CSV with a clear column order.
     """
-    combined = pd.concat(all_results, ignore_index=True)
-
-    # Put identifier columns first for readability
-    front_cols = [
-        "model", "prompt_type", "run", "dataset",
-        "Item_ID", "base_item", "condition",
-        "context_level", "irony_label",
-        "presentation_order", "seed",
-        "correct_option_pos", "correct_option_text",
-        "chosen_option", "correct", "reasoning",
-        "output", "prompt",
-    ]
-    # Only keep cols that actually exist, then append any extras
-    existing   = [c for c in front_cols if c in combined.columns]
-    extra_cols = [c for c in combined.columns if c not in existing]
-    combined   = combined[existing + extra_cols]
+    combined = combine_results(all_results)
 
     combined.to_csv(output_path, index=False)
 
