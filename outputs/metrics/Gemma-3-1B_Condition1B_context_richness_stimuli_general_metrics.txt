@@ -1,26 +1,26 @@
-Model      : Gemma-3-1B
+Model      : google/gemma-3-1b-it
 Dataset    : Condition1B_context_richness_stimuli
 Prompt Type: general
 ==================================================
 
-Accuracy : 0.463
-Precision: 0.464
-Recall   : 0.462
-F1       : 0.463
+Accuracy : 0.458
+Precision: 0.459
+Recall   : 0.457
+F1       : 0.458
 
 --- Context Level ---
 context_level   n  accuracy  precision  recall    f1
-    ambiguous 108     0.491      0.492   0.497 0.490
-  unambiguous 108     0.435      0.441   0.439 0.434
+    ambiguous 108     0.491      0.491   0.497 0.491
+  unambiguous 108     0.426      0.431   0.431 0.425
 
 --- Irony ---
 irony_label   n  accuracy  precision  recall    f1
-     ironic 108     0.204      0.204   0.202 0.202
- non-ironic 108     0.722      0.732   0.725 0.725
+     ironic 108     0.204      0.204   0.202 0.201
+ non-ironic 108     0.713      0.724   0.715 0.715
 
 --- Context × Irony ---
 context_level irony_label  n  accuracy  precision  recall    f1
-    ambiguous      ironic 54     0.222      0.223   0.221 0.217
+    ambiguous      ironic 54     0.222      0.218   0.221 0.216
     ambiguous  non-ironic 54     0.759      0.781   0.757 0.766
   unambiguous      ironic 54     0.185      0.201   0.203 0.184
-  unambiguous  non-ironic 54     0.685      0.693   0.691 0.683
+  unambiguous  non-ironic 54     0.667      0.672   0.670 0.665
