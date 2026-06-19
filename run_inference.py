@@ -9,7 +9,7 @@ from transformers import (
     pipeline
 )
 from util.parse import parse_response
-from util.shuffle_options import build_run_splits, format_options, get_correct_option_text, parse_options, save_combined
+from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, parse_options, save_combined
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
@@ -139,8 +139,6 @@ def generate_predictions(
     model_name,
     prompt_type,
     dataset_name,
-    output_path,
-    metrics_path 
 ):
     """
     Generate predictions for dataset and compute metrics.
@@ -214,55 +212,6 @@ def generate_predictions(
     df["chosen_option"] = [p[0] for p in parsed]
     df["reasoning"]     = [p[1] for p in parsed]
 
-    # =========================================================
-    # METRICS (OLD METRICS.PY - NO PARAMETERS)
-    # =========================================================
-
-    
-    try:
-        overall = compute_classification_metrics(df)
-        context_df = context_metrics(df)
-        irony_df = irony_metrics(df)
-        interaction_df = interaction_metrics(df)
-
-        # =========================================================
-        # SAVE METRICS FILE
-        # =========================================================
-        
-        os.makedirs(os.path.dirname(metrics_path), exist_ok=True)   
-        
-        with open(metrics_path, "w") as f:
-
-            f.write(f"Model      : {model_name}\n")
-            f.write(f"Dataset    : {dataset_name}\n")
-            f.write(f"Prompt Type: {prompt_type}\n")
-            f.write(f"{'='*50}\n\n")
-
-            f.write(f"Accuracy : {overall['accuracy']:.3f}\n")
-            f.write(f"Precision: {overall['precision']:.3f}\n")
-            f.write(f"Recall   : {overall['recall']:.3f}\n")
-            f.write(f"F1       : {overall['f1']:.3f}\n\n")
-
-            f.write("--- Context Level ---\n")
-            f.write(context_df.to_string(index=False))
-            f.write("\n\n")
-
-            f.write("--- Irony ---\n")
-            f.write(irony_df.to_string(index=False))
-            f.write("\n\n")
-
-            f.write("--- Context × Irony ---\n")
-            f.write(interaction_df.to_string(index=False))
-            f.write("\n")
-
-        print(f"\n✓ Metrics saved to: {metrics_path}")
-
-    except Exception as e:
-        print(f"ERROR computing metrics: {e}")
-        import traceback
-        traceback.print_exc()
-
-
     return df
 
 
@@ -323,8 +272,9 @@ if __name__ == "__main__":
                 except Exception as e:
                     print(f"ERROR loading dataset {dataset_name}: {e}")
                     continue
-      
-                run_splits = build_run_splits(dataset)
+                
+                # Generate latin square split data and csv files
+                run_splits = build_run_splits(dataset, DATASETS_DIR, dataset_name)
 
                 for run_idx, run_df in enumerate(run_splits, 1):
                     print(f"\n--- Run {run_idx}/4 ({len(run_df)} items) ---")
@@ -343,13 +293,13 @@ if __name__ == "__main__":
                         )
 
                         os.makedirs(os.path.dirname(metrics_path), exist_ok=True)
-
-                            # ── Build prompts ──────────────────────────
-                        dataset_copy = dataset.copy()
-                        dataset_copy["prompt"] = run_df.apply(
-                            lambda row: build_prompt(row, CONDITION_MAP[dataset_name], prompt_file), axis=1
+                    # ── Build prompts on run_df copy ──────────
+                        run_df_copy = run_df.copy()
+                        run_df_copy["prompt"] = run_df_copy.apply(
+                            lambda row: build_prompt(row, CONDITION_MAP[dataset_name], prompt_file),
+                            axis=1
                         )
-                        records_list = run_df.to_dict(orient="records")
+                        records_list = run_df_copy.to_dict(orient="records")  # ← from copy
 
                         output_path = os.path.join(
                             OUTPUTS_DIR,
@@ -368,23 +318,15 @@ if __name__ == "__main__":
                                 model_name=model_key,
                                 prompt_type=prompt_type,
                                 dataset_name=dataset_name,
-                                output_path=output_path,
-                                metrics_path=metrics_path 
+                                # output_path=output_path,
+                                # metrics_path=metrics_path 
                             )
 
                             if result_df is not None and not result_df.empty:
                                 result_df.to_csv(output_path, index=False)
                                 print(f"✓ Results saved to: {output_path}")
-                                all_results.append(result_df)
-
-                                # Save per-model file
-                                model_results = [r for r in all_results if r["model"].iloc[0] == model_key]
-
-                                if model_results:
-                                    save_combined(
-                                        model_results,
-                                        output_path=os.path.join(OUTPUTS_DIR, prompt_type, f"{model_key}_results.csv")
-                                    )
+                                all_results.append(result_df)     
+                                                  
                             else:
                                 print(f"⚠ WARNING: result_df is empty or None")
 
@@ -394,77 +336,140 @@ if __name__ == "__main__":
                             traceback.print_exc()
                             continue
 
-                        del model
-                        del tokenizer
-                        del pipe
+            # ── after ALL datasets/runs/prompts for this model ──
+            model_results = [r for r in all_results if r["model"].iloc[0] == model_key]
+            if model_results:
+                save_combined(
+                    model_results,
+                    output_path=os.path.join(OUTPUTS_DIR, f"{model_key}_results.csv")
+                )
 
-                        gc.collect()
-                        torch.cuda.empty_cache()
+            # =========================================================
+            # METRICS 
+            # =========================================================
+
+            
+            try:
+                print("all_results after all run per model", all_results)
+                combined_results = combine_results(all_results)
+
+                overall = compute_classification_metrics(combined_results)
+                context_df = context_metrics(combined_results)
+                irony_df = irony_metrics(combined_results)
+                interaction_df = interaction_metrics(combined_results)
+
+                # =========================================================
+                # SAVE METRICS FILE
+                # =========================================================
+                
+                os.makedirs(os.path.dirname(metrics_path), exist_ok=True)   
+                
+                with open(metrics_path, "w") as f:
+
+                    f.write(f"Model      : {model_name}\n")
+                    f.write(f"Dataset    : {dataset_name}\n")
+                    f.write(f"Prompt Type: {prompt_type}\n")
+                    f.write(f"{'='*50}\n\n")
+
+                    f.write(f"Accuracy : {overall['accuracy']:.3f}\n")
+                    f.write(f"Precision: {overall['precision']:.3f}\n")
+                    f.write(f"Recall   : {overall['recall']:.3f}\n")
+                    f.write(f"F1       : {overall['f1']:.3f}\n\n")
+
+                    f.write("--- Context Level ---\n")
+                    f.write(context_df.to_string(index=False))
+                    f.write("\n\n")
+
+                    f.write("--- Irony ---\n")
+                    f.write(irony_df.to_string(index=False))
+                    f.write("\n\n")
+
+                    f.write("--- Context × Irony ---\n")
+                    f.write(interaction_df.to_string(index=False))
+                    f.write("\n")
+
+                print(f"\n✓ Metrics saved to: {metrics_path}")
+
+            except Exception as e:
+                print(f"ERROR computing metrics: {e}")
+                import traceback
+                traceback.print_exc()
+
 
         except Exception as e:
             print(f"ERROR loading model {model_key}: {e}")
             import traceback
             traceback.print_exc()
-            continue
+
+        finally:                        
+            try:
+                del model, tokenizer, pipe
+            except NameError:
+                pass
+            gc.collect()
+            torch.cuda.empty_cache()
+            print(f"✓ Cleaned up model: {model_key}")
 
 
-    # =========================================================
-    # CROSS-MODEL SUMMARY
-    # =========================================================
+# =========================================================
+# CROSS-MODEL SUMMARY
+# =========================================================
+
+print(f"\n{'='*60}")
+print("CROSS-MODEL SUMMARY")
+print(f"{'='*60}")
+
+if all_results:
+    summary_rows = []
+    combined_results = combine_results(all_results)
+    print("all results at the end",all_results)
     
-    print(f"\n{'='*60}")
-    print("CROSS-MODEL SUMMARY")
-    print(f"{'='*60}")
-
-    if all_results:
-        summary_rows = []
+    for result_df in all_results:
+        if result_df is None or result_df.empty:
+            continue
+            
+        model_name = result_df["model"].iloc[0] if "model" in result_df.columns else "Unknown"
         
-        for result_df in all_results:
-            if result_df is None or result_df.empty:
-                continue
+        for (context, irony), grp in result_df.groupby(
+            ["context_level", "irony_label"], 
+            dropna=False
+        ):
+            # Calculate accuracy
+            if "chosen_option" in grp.columns and "correct_option_pos" in grp.columns:
+                acc = (grp["chosen_option"] == grp["correct_option_pos"]).mean() * 100
+            else:
+                acc = 0
                 
-            model_name = result_df["model"].iloc[0] if "model" in result_df.columns else "Unknown"
-            
-            for (context, irony), grp in result_df.groupby(
-                ["context_level", "irony_label"], 
-                dropna=False
-            ):
-                # Calculate accuracy
-                if "chosen_option" in grp.columns and "correct_option_pos" in grp.columns:
-                    acc = (grp["chosen_option"] == grp["correct_option_pos"]).mean() * 100
-                else:
-                    acc = 0
-                    
-                summary_rows.append({
-                    "model"        : model_name,
-                    "context_level": context,
-                    "irony_label"  : irony,
-                    "accuracy"     : round(acc, 1),
-                    "n"            : len(grp),
-                })
+            summary_rows.append({
+                "model"        : model_name,
+                "context_level": context,
+                "irony_label"  : irony,
+                "accuracy"     : round(acc, 1),
+                "n"            : len(grp),
+            })
 
-        if summary_rows:
-            summary = pd.DataFrame(summary_rows)
-            
-            # Print pivot table
-            pivot = summary.pivot_table(
-                index=["context_level", "irony_label"],
-                columns="model",
-                values="accuracy",
-                aggfunc="first"
-            )
-            print("\nAccuracy by Context and Irony:")
-            print(pivot.to_string())
-            
-            # Save summary
-            summary_csv = os.path.join(OUTPUTS_DIR, "accuracy_summary.csv")
-            summary.to_csv(summary_csv, index=False)
-            print(f"\n✓ Saved → {summary_csv}")
-        else:
-            print("No summary rows to display")
+    if summary_rows:
+        summary = pd.DataFrame(summary_rows)
+        
+        # Print pivot table
+        pivot = summary.pivot_table(
+            index=["context_level", "irony_label"],
+            columns="model",
+            values="accuracy",
+            aggfunc="first"
+        )
+        print("\nAccuracy by Context and Irony:")
+        print(pivot.to_string())
+        
+        # Save summary
+        summary_csv = os.path.join(OUTPUTS_DIR, "accuracy_summary.csv")
+        summary.to_csv(summary_csv, index=False)
+        print(f"\n✓ Saved → {summary_csv}")
     else:
-        print("⚠ No results to summarize")
+        print("No summary rows to display")
+else:
+    print("⚠ No results to summarize")
 
-    print(f"\n{'='*60}")
-    print("✓ Inference pipeline completed successfully!")
-    print(f"{'='*60}")
+print(f"\n{'='*60}")
+print("✓ Inference pipeline completed successfully!")
+print(f"{'='*60}")
