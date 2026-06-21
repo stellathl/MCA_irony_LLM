@@ -46,6 +46,9 @@ def load_and_shuffle_dataset(csv_path, model_key):
     Load the master CSV, assign correct answer texts, then apply a
     seeded shuffle of both item order and answer-option positions.
     Returns a DataFrame ready to feed into the inference loop.
+    
+    ⭐ 
+    : Stores the ORIGINAL position of each option
     """
     seed = SEEDS.get(model_key)
     if seed is None:
@@ -78,15 +81,26 @@ def load_and_shuffle_dataset(csv_path, model_key):
 
     # ── Shuffle answer options per row (seeded) ───────────
     rng = random.Random(seed)
-    shuffled_options     = []
-    correct_option_pos   = []
-    distractor_positions = []
+    shuffled_options           = []
+    correct_option_pos         = []
+    distractor_positions       = []
+    original_option_mapping    = []  # ⭐ NEW: Orijinal pozisyon mapping
 
     for _, row in df.iterrows():
         options      = parse_options(row["answering_options"])
         correct_text = row["correct_option_text"]
 
-        rng.shuffle(options)
+        # ⭐ BEFORE shuffling: Store the original index of each option
+        # options[0] = option 1, options[1] = option 2, vb.
+        original_indices = list(range(len(options)))  # [0, 1, 2, 3] (1-indexed olarak [1, 2, 3, 4])
+        
+        # Aynı shuffle seed'i kullanarak optionleri ve indeksleri beraber karıştır
+        combined = list(zip(options, original_indices))
+        rng.shuffle(combined)
+        shuffled_options_temp, shuffled_indices = zip(*combined)
+        
+        options = list(shuffled_options_temp)
+        original_map = [idx + 1 for idx in shuffled_indices]  # 1-indexed: [1, 2, 3, 4]
 
         new_pos = next(
             (i + 1 for i, opt in enumerate(options) if opt == correct_text),
@@ -99,14 +113,16 @@ def load_and_shuffle_dataset(csv_path, model_key):
         shuffled_options.append(format_options(options))
         correct_option_pos.append(new_pos)
         distractor_positions.append(str(distractor_pos))
+        original_option_mapping.append(str(original_map))  # ⭐ Store the mapping: [1, 3, 4, 2] vb.
 
-    df["answering_options"]   = shuffled_options
-    df["correct_option_pos"]  = correct_option_pos   # ground truth for scoring
-    df["distractor_positions"] = distractor_positions
-    df["seed"]                = seed
+    df["answering_options"]        = shuffled_options
+    df["correct_option_pos"]       = correct_option_pos   # ground truth for scoring
+    df["distractor_positions"]     = distractor_positions
+    df["original_option_mapping"]  = original_option_mapping  # ⭐ NEW 
+    df["seed"]                     = seed
 
     print(f"\nSample after shuffle:")
-    print(df[["Item_ID", "irony_label", "correct_option_pos", "presentation_order"]].head(6))
+    print(df[["Item_ID", "irony_label", "correct_option_pos", "original_option_mapping", "presentation_order"]].head(6))
 
     return df
 
@@ -145,6 +161,7 @@ def generate_predictions(
     """
     Generate predictions for dataset and compute metrics.
     
+    ⭐ NEW:
     Returns:
         pd.DataFrame: Results dataframe with predictions and metrics
     """
@@ -198,6 +215,8 @@ def generate_predictions(
                 "prompt"             : prompt,
                 # ── Raw model output ─────────────────────
                 "output"             : generated_text,
+                # ── Orijinal mapping (karıştırmadan önceki optionler) ──
+                "original_option_mapping": record.get("original_option_mapping", ""),
             })
 
             if i % 5 == 0:
@@ -209,8 +228,37 @@ def generate_predictions(
 
     # ── Parse responses ───────────────────────────────────
     parsed = df["output"].apply(parse_response)
-    df["chosen_option"] = [p[0] for p in parsed]
+    df["chosen_option"] = [p[0] for p in parsed]  # Karıştırılmış haldeki selections (1, 2, 3, 4)
     df["reasoning"]     = [p[1] for p in parsed]
+
+    # ⭐ NEW: Convert shuffled selection → ORIGINAL selection
+    def convert_to_original_option(row):
+        """
+        Convert the shuffled selection to the original selection.
+        
+        Example:
+        - original_option_mapping = "[1, 3, 4, 2]"
+        - Shuffled position 3 seçildi
+        - mapping[3-1] = mapping[2] = 4 (orijinal option 4)
+        """
+        if pd.isna(row["chosen_option"]):
+            return None
+        
+        try:
+            import ast
+            mapping = ast.literal_eval(row["original_option_mapping"])
+            chosen_shuffled = int(row["chosen_option"])
+            
+            # Index check
+            if 1 <= chosen_shuffled <= len(mapping):
+                original_option = mapping[chosen_shuffled - 1]
+                return original_option
+            else:
+                return None
+        except:
+            return None
+    
+    df["chosen_original_option"] = df.apply(convert_to_original_option, axis=1)
 
     # =========================================================
     # METRICS (OLD METRICS.PY - NO PARAMETERS)
@@ -236,15 +284,6 @@ def generate_predictions(
             f.write(f"Prompt Type: {prompt_type}\n")
             f.write(f"{'='*50}\n\n")
 
-            f.write(f"Accuracy : {overall['accuracy']:.3f}\n")
-            f.write(f"Precision: {overall['precision']:.3f}\n")
-            f.write(f"Recall   : {overall['recall']:.3f}\n")
-            f.write(f"F1       : {overall['f1']:.3f}\n\n")
-
-            f.write("--- Context Level ---\n")
-            f.write(context_df.to_string(index=False))
-            f.write("\n\n")
-
             f.write("--- Irony ---\n")
             f.write(irony_df.to_string(index=False))
             f.write("\n\n")
@@ -252,6 +291,44 @@ def generate_predictions(
             f.write("--- Context × Irony ---\n")
             f.write(interaction_df.to_string(index=False))
             f.write("\n")
+
+            # ⭐ NEW : ORIGINAL OPTION STATISTICS
+            f.write("\n" + "="*50 + "\n")
+            f.write("--- ORIGINAL OPTION DISTRIBUTION ---\n")
+           
+            f.write("="*50 + "\n\n")
+
+            # Correct/Incorrect analysis
+            option_stats = []
+            for orig_opt in [1, 2, 3, 4]:
+                mask = df["chosen_original_option"] == orig_opt
+                count = mask.sum()
+                
+                if count > 0:
+                    correct = (df[mask]["chosen_original_option"] == df[mask]["correct_option_pos"]).sum()
+                    incorrect = count - correct
+                    accuracy = correct / count
+                    
+                    option_stats.append({
+                        "Original Option": orig_opt,
+                        "Selection Count": count,
+                        "Correct": correct,
+                        "Incorrect": incorrect,
+                        "Accuracy %": f"{accuracy*100:.1f}%",
+                        "Selection %": f"{(count/len(df))*100:.1f}%"
+                    })
+            
+            if option_stats:
+                stats_df = pd.DataFrame(option_stats)
+                f.write(stats_df.to_string(index=False))
+                f.write("\n\n")
+            
+            # Seçim oranları (pie chart verisi)
+            f.write("Selection Distribution:\n")
+            selection_counts = df["chosen_original_option"].value_counts().sort_index()
+            for opt, count in selection_counts.items():
+                pct = (count / len(df)) * 100
+                f.write(f"  Option {opt}: {count:3d} selections ({pct:5.1f}%)\n")
 
         print(f"\n✓ Metrics saved to: {metrics_path}")
 
