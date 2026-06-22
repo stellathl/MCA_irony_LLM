@@ -33,7 +33,7 @@ MAX_NEW_TOKENS = 150
 TEMPERATURE = 0.1
 
 CONDITION_MAP = {
-    "Condition1B_context_richness_stimuli": "condition_1",
+    "Condition1B_context_richness_stimuli": "condition",
 }
 
 
