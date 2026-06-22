@@ -1,0 +1,32 @@
+Model      : google/gemma-3-1b-it
+Dataset    : Condition1B_context_richness_stimuli
+Prompt Type: general_reasoning
+==================================================
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 216     0.245      0.236   0.242 0.231
+ non-ironic 213     0.695      0.707   0.693 0.697
+
+--- Context × Irony ---
+context_level irony_label   n  accuracy  precision  recall    f1
+    ambiguous      ironic 108     0.278      0.249   0.254 0.250
+    ambiguous  non-ironic 106     0.745      0.766   0.736 0.746
+  unambiguous      ironic 108     0.213      0.227   0.240 0.207
+  unambiguous  non-ironic 107     0.645      0.648   0.645 0.642
+
+==================================================
+--- ORIGINAL OPTION DISTRIBUTION ---
+==================================================
+
+ Original Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+               1              287       79        208      27.5%       66.4%
+               2               99       35         64      35.4%       22.9%
+               3               29        7         22      24.1%        6.7%
+               4               14        4         10      28.6%        3.2%
+
+Selection Distribution:
+  Option 1.0: 287 selections ( 66.4%)
+  Option 2.0:  99 selections ( 22.9%)
+  Option 3.0:  29 selections (  6.7%)
+  Option 4.0:  14 selections (  3.2%)
