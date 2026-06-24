@@ -357,6 +357,7 @@ if __name__ == "__main__":
                         output_path = os.path.join(
                             OUTPUTS_DIR,
                             prompt_type,
+                            model_key,
                             f"{model_key}_{dataset_name}_run{run_idx}.csv"
                         )
 
