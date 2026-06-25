@@ -9,7 +9,7 @@ from transformers import (
     pipeline
 )
 from util.parse import parse_response
-from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, letter_to_pos, parse_options, pos_to_letter, save_combined, seeded_rng_for_item
+from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, letter_to_pos, parse_options, pos_to_letter, save_combined
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
@@ -96,7 +96,6 @@ def load_and_shuffle_dataset(csv_path, model_key):
         
         # Aynı shuffle seed'i kullanarak optionleri ve indeksleri beraber karıştır
         combined = list(zip(options, original_indices))
-        rng = seeded_rng_for_item(seed, row["Item_ID"])
         rng.shuffle(combined)
         shuffled_options_temp, shuffled_indices = zip(*combined)
         

@@ -220,9 +220,3 @@ def get_correct_option_text(row):
     if len(options) < 2:
         return None
     return options[1] if row["irony_label"] == "ironic" else options[0]
-
-
-def seeded_rng_for_item(global_seed, item_id):
-    # Deterministic per-item seed, independent of row order/count
-    h = hashlib.sha256(f"{global_seed}_{item_id}".encode()).hexdigest()
-    return random.Random(int(h, 16))
