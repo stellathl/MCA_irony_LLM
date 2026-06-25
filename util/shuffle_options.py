@@ -9,7 +9,9 @@
 
 # util/latin_square_split.py
 
+import hashlib
 import os
+import random
 
 import pandas as pd
 import numpy as np
@@ -25,6 +27,26 @@ LATIN_SQUARE = np.array([
     [2, 3, 0, 1],
     [3, 0, 1, 2],
 ])
+
+import string
+LETTERS = string.ascii_lowercase
+
+def pos_to_letter(pos):
+    """1-indexed int → letter: 1 -> 'a', 2 -> 'b', ..."""
+    return LETTERS[pos - 1]
+
+def letter_to_pos(x):
+    """Accepts a letter ('a'-'d') or an int/float position; returns 1-indexed int. Returns None if unparseable."""
+    if pd.isna(x):
+        return None
+    if isinstance(x, (int, float)):
+        return int(x)
+    s = str(x).strip().lower()
+    if s.isdigit():
+        return int(s)
+    if s in LETTERS:
+        return LETTERS.index(s) + 1
+    return None
 
 def build_run_splits(df: pd.DataFrame, output_dir: str, dataset_name: str) -> list[pd.DataFrame]:
     df = df.copy()
@@ -198,3 +220,9 @@ def get_correct_option_text(row):
     if len(options) < 2:
         return None
     return options[1] if row["irony_label"] == "ironic" else options[0]
+
+
+def seeded_rng_for_item(global_seed, item_id):
+    # Deterministic per-item seed, independent of row order/count
+    h = hashlib.sha256(f"{global_seed}_{item_id}".encode()).hexdigest()
+    return random.Random(int(h, 16))
