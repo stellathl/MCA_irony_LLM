@@ -46,8 +46,8 @@ def build_run_splits(df: pd.DataFrame, output_dir: str, dataset_name: str) -> li
     print(f"Total rows       : {len(df)}  (expected {len(base_items) * 4})")
 
     assert len(conditions) == 4, f"Expected 4 conditions, got {conditions}"
-    assert len(base_items) == 54, f"Expected 54 base items, got {len(base_items)}"
-    assert len(df) == 216, f"Expected 216 rows, got {len(df)}"
+    assert len(base_items) == 72, f"Expected 72 base items, got {len(base_items)}"
+    assert len(df) == 288, f"Expected 288 rows, got {len(df)}"
 
     runs = []
     for run_idx in range(4):
