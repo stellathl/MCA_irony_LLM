@@ -1,4 +1,4 @@
-Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,run,condition,chosen_option,reasoning
+Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,chosen_option,reasoning,chosen_original_option
 C1_01_UA_NI,C1_01,169,1,unambiguous,non-ironic,4,The cat was easy to lift up.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He lifted the skinny cat from the table.
 Target utterance: He says:  """"That was easy!""""
@@ -9,7 +9,7 @@ What meaning is He most likely conveying?
 4. The cat was easy to lift up.
 Answer:
 ","4
-",4,UA_NI,4,
+","[3, 2, 4, 1]",4,UA_NI,4,,1
 C1_02_A_I,C1_02,10,1,ambiguous,ironic,1,The dog was very light to pick up.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She picked up her overweigth dog.
 Target utterance: She says: """"Heaviest dog ever.""""
@@ -20,7 +20,7 @@ What meaning is She most likely conveying?
 4. She just adopted a new puppy.
 Answer:
 ","2
-",4,A_I,2,
+","[2, 1, 3, 4]",4,A_I,2,,1
 C1_03_A_NI,C1_03,151,1,ambiguous,non-ironic,1,Their friend was very easy to lift.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: A few friends picked up there thin friend.
 Target utterance: They say: """"Light as a feather.""""
@@ -31,7 +31,7 @@ What meaning is They most likely conveying?
 4. The feather fell gently to the ground.
 Answer:
 ","1
-",4,A_NI,1,
+","[1, 4, 2, 3]",4,A_NI,1,,1
 C1_04_UA_I,C1_04,66,1,unambiguous,ironic,4,The cake tasted really bad.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She ate an disgusting cake.
 Target utterance: She says: """"What a delicious cake.""""
@@ -42,7 +42,7 @@ What meaning is She most likely conveying?
 4. The cake tasted really bad.
 Answer:
 ","1
-",4,UA_I,1,
+","[1, 4, 3, 2]",4,UA_I,1,,1
 C1_05_UA_NI,C1_05,31,1,unambiguous,non-ironic,1,The medicine tasted surprisingly pleasant.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He swallowed the medicine and found it disgusting.
 Target utterance: He says: """"Better than expected.""""
@@ -53,7 +53,7 @@ What meaning is He most likely conveying?
 4. She was looking for a new pharmacy.
 Answer:
 ","1
-",4,UA_NI,1,
+","[1, 2, 3, 4]",4,UA_NI,1,,1
 C1_06_A_I,C1_06,201,1,ambiguous,ironic,2,The smoothie was thoroughly nasty.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They took a sip of their smoothies and found it palatable.
 Target utterance: They say: """"What a treat.""""
@@ -64,7 +64,7 @@ What meaning is They most likely conveying?
 4. She bought a new blender.
 Answer:
 ","3
-",4,A_I,3,
+","[4, 2, 1, 3]",4,A_I,3,,1
 C1_07_A_NI,C1_07,203,1,ambiguous,non-ironic,2,The babysitter were taking good care of the kids.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They hired a fearless babysitter.
 Target utterance: They say: """"The kids are in good hands""""
@@ -75,7 +75,7 @@ What meaning is They most likely conveying?
 4. They booked a holiday trip.
 Answer:
 ","2
-",4,A_NI,2,
+","[2, 1, 3, 4]",4,A_NI,2,,1
 C1_08_UA_I,C1_08,175,1,unambiguous,ironic,3,The police officer did not make them feel safe at all.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They met a petrified police officer.
 Target utterance: They say: """"We felt so save around you""""
@@ -86,7 +86,7 @@ What meaning is They most likely conveying?
 4. They were looking for a new apartment.
 Answer:
 ","2
-",4,UA_I,2,
+","[3, 1, 2, 4]",4,UA_I,2,,1
 C1_09_UA_NI,C1_09,34,1,unambiguous,non-ironic,2,Seeing the pilot put her completely at ease.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She noticed the brave pilot before boarding.
 Target utterance: She says: """"That really settled my nerves.""""
@@ -97,7 +97,7 @@ What meaning is She most likely conveying?
 4. She noticed that the pilot made her feel even more anxious.
 Answer:
 ","2
-",4,UA_NI,2,
+","[3, 1, 4, 2]",4,UA_NI,2,,1
 C1_10_A_I,C1_10,113,1,ambiguous,ironic,3,"She clearly looked worn out, not refreshed at all.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He saw his tired girlfriend.
 Target utterance: He says: """"You look so refreshed.""""
@@ -108,7 +108,7 @@ What meaning is He most likely conveying?
 4. To him, she looked well-rested and full of energy.
 Answer:
 ","3
-",4,A_I,3,
+","[3, 4, 2, 1]",4,A_I,3,,2
 C1_11_A_NI,C1_11,160,1,ambiguous,non-ironic,2,Her colleague seemed very energetic today.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She saw her energetic colleague.
 Target utterance: She says: """"You seem so full of energy today.""""
@@ -119,7 +119,7 @@ What meaning is She most likely conveying?
 4. She filled up the car with energy.
 Answer:
 ","2
-",4,A_NI,2,
+","[2, 1, 4, 3]",4,A_NI,2,,1
 C1_12_UA_I,C1_12,136,1,unambiguous,ironic,4,They felt really exhausted after the sleepover.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: After the slept over they were exhausted.
 Target utterance: They say:  """"We never felt more rested in our lifes.""""
@@ -130,7 +130,7 @@ What meaning is They most likely conveying?
 4. They felt really exhausted after the sleepover.
 Answer:
 ","4
-",4,UA_I,4,
+","[1, 3, 4, 2]",4,UA_I,4,,2
 C1_13_UA_NI,C1_13,28,1,unambiguous,non-ironic,2,Her idea was innovative.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She had a novel idea.
 Target utterance: She says: """"Truly ahead of its time.""""
@@ -141,7 +141,7 @@ What meaning is She most likely conveying?
 4. She redecorated her office.
 Answer:
 ","2
-",4,UA_NI,2,
+","[2, 1, 3, 4]",4,UA_NI,2,,1
 C1_14_A_I,C1_14,164,1,ambiguous,ironic,3,The birthday party was a disappointment.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She left the birthday party feeling happy.
 Target utterance: She says: """"Truly a night to remember.""""
@@ -152,7 +152,7 @@ What meaning is She most likely conveying?
 4. She had trouble remembering things.
 Answer:
 ","2
-",4,A_I,2,
+","[4, 1, 2, 3]",4,A_I,2,,1
 C1_15_A_NI,C1_15,184,1,ambiguous,non-ironic,1,Her exam answers were impressively smart.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: Her answers in the exam were stupid.
 Target utterance: She says: """"What a genius.""""
@@ -163,7 +163,7 @@ What meaning is She most likely conveying?
 4. She had a high IQ.
 Answer:
 ","3
-",4,A_NI,3,
+","[1, 4, 2, 3]",4,A_NI,3,,2
 C1_16_UA_I,C1_16,4,1,unambiguous,ironic,4,The meal was a real disappointment.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: After the restaurant visit he was full.
 Target utterance: He says: """"Best dinner ever.""""
@@ -174,7 +174,7 @@ What meaning is He most likely conveying?
 4. The meal was a real disappointment.
 Answer:
 ","3
-",4,UA_I,3,
+","[3, 4, 1, 2]",4,UA_I,3,,1
 C1_17_UA_NI,C1_17,50,1,unambiguous,non-ironic,4,The library was a calm and quiet environment.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She walked into the library and it was inaudible.
 Target utterance: She says: """"Perfect place to concentrate.""""
@@ -185,7 +185,7 @@ What meaning is She most likely conveying?
 4. The library was a calm and quiet environment.
 Answer:
 ","4
-",4,UA_NI,4,
+","[4, 3, 2, 1]",4,UA_NI,4,,1
 C1_18_A_I,C1_18,193,1,ambiguous,ironic,2,"In his view, it was a stale method he had seen many times before.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: It was an old approach. 
 Target utterance: He says: """"How refreshingly innovative.""""
@@ -196,7 +196,7 @@ What meaning is He most likely conveying?
 4. He researched new methods for several months.
 Answer:
 ","1
-",4,A_I,1,
+","[1, 2, 3, 4]",4,A_I,1,,1
 C1_19_A_NI,C1_19,65,1,ambiguous,non-ironic,3,The wedding was a beautiful and enchanting occasion.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She left the wedding feeling sad.
 Target utterance: She says: """"What a magical day.""""
@@ -207,7 +207,7 @@ What meaning is She most likely conveying?
 4. It had been a dull, disappointing event from start to finish.
 Answer:
 ","3
-",4,A_NI,3,
+","[4, 3, 1, 2]",4,A_NI,3,,1
 C1_20_UA_I,C1_20,1,1,unambiguous,ironic,4,"As far as they were concerned, it was a poor suggestion they were stuck with.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: His colleague's suggestion was brilliant.
 Target utterance: They say: """"We really lucked out with that one.""""
@@ -218,7 +218,7 @@ What meaning is They most likely conveying?
 4. As far as they were concerned, it was a poor suggestion they were stuck with.
 Answer:
 ","2
-",4,UA_I,2,
+","[4, 1, 3, 2]",4,UA_I,2,,1
 C1_21_UA_NI,C1_21,145,1,unambiguous,non-ironic,2,The buffet was a rich and satisfying spread.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He left the buffet feeling starving.
 Target utterance: He says: """"Truly a feast for the senses."" ""
@@ -229,7 +229,7 @@ What meaning is He most likely conveying?
 4. He looked forward to the event all week.
 Answer:
 ","2
-",4,UA_NI,2,
+","[2, 1, 3, 4]",4,UA_NI,2,,1
 C1_22_A_I,C1_22,9,1,ambiguous,ironic,1,The lecture was dull and hard to sit through.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She sat through the entire lecture and found it loud.
 Target utterance: She says: """"Could barely stay awake.""""
@@ -240,7 +240,7 @@ What meaning is She most likely conveying?
 4. The lecture was engaging and easy to follow.
 Answer:
 ","1
-",4,A_I,1,
+","[2, 3, 4, 1]",4,A_I,1,,2
 C1_23_A_NI,C1_23,55,1,ambiguous,non-ironic,3,She found the tradition beautifully enduring and meaningful.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: The tradition was new.
 Target utterance: She says: """"How wonderfully timeless.""""
@@ -251,7 +251,7 @@ What meaning is She most likely conveying?
 4. She read about the tradition in a local history book.
 Answer:
 ","3
-",4,A_NI,3,
+","[2, 3, 1, 4]",4,A_NI,3,,1
 C1_24_UA_I,C1_24,15,1,unambiguous,ironic,3,"They felt it had been a cold, hollow, and unmemorable goodbye.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They left the funeral feeling delighted.
 Target utterance: They say: """"A truly moving farewell.""""
@@ -262,7 +262,7 @@ What meaning is They most likely conveying?
 4. The farewell ceremony was deeply touching for everyone present.
 Answer:
 ","4
-",4,UA_I,4,
+","[3, 4, 2, 1]",4,UA_I,4,,1
 C1_25_UA_NI,C1_25,92,1,unambiguous,non-ironic,2,His debating skills were genuinely impressive to watch.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: His argument in the debate was idiotic.
 Target utterance: She says: """"What a master of rhetoric.""""
@@ -273,7 +273,7 @@ What meaning is She most likely conveying?
 4. She judged the competition that night.
 Answer:
 ","3
-",4,UA_NI,3,
+","[3, 1, 2, 4]",4,UA_NI,3,,2
 C1_26_A_I,C1_26,147,1,ambiguous,ironic,2,There was barely anything to eat; they left unsatisfied.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They left the picnic feeling satiated.
 Target utterance: They say: """"Food for the soul.""""
@@ -284,7 +284,7 @@ What meaning is They most likely conveying?
 4. They spent the morning preparing sandwiches and snacks.
 Answer:
 ","3
-",4,A_I,3,
+","[3, 2, 1, 4]",4,A_I,3,,1
 C1_27_A_NI,C1_27,77,1,ambiguous,non-ironic,1,Her neighbour was wonderfully peaceful and considerate.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He could hear his neighbour being quiet.
 Target utterance: He says: """"Truly a blessing to live next to.""""
@@ -295,7 +295,7 @@ What meaning is He most likely conveying?
 4. He looked for a new place to live.
 Answer:
 ","1
-",4,A_NI,1,
+","[1, 2, 3, 4]",4,A_NI,1,,1
 C1_28_UA_I,C1_28,101,1,unambiguous,ironic,2,He struggled with the system and nearly lost the appointment.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He booked an appointment through a system, which was impossible to use.
 Target utterance: He says:  """"That was about as easy as it gets.""""
@@ -306,7 +306,7 @@ What meaning is He most likely conveying?
 4. He always booked restaurants well ahead of time.
 Answer:
 ","4
-",4,UA_I,4,
+","[1, 2, 4, 3]",4,UA_I,4,,3
 C1_29_UA_NI,C1_29,178,1,unambiguous,non-ironic,4,Her kitchen was neatly arranged and tidy after cooking.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She finished cooking and the kitchen was dirty.
 Target utterance: She says: """"I'm actually organized.""""
@@ -317,7 +317,7 @@ What meaning is She most likely conveying?
 4. Her kitchen was neatly arranged and tidy after cooking.
 Answer:
 ","4
-",4,UA_NI,4,
+","[2, 3, 4, 1]",4,UA_NI,4,,1
 C1_30_A_I,C1_30,64,1,ambiguous,ironic,2,"There was nothing amusing about it, it was far too heavy.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They watched a serious movie, and everyone enjoyed it.
 Target utterance: They say.: """"That was the perfect movie for a laugh.""""
@@ -328,7 +328,7 @@ What meaning is They most likely conveying?
 4. They saw three documentaries that week.
 Answer:
 ","1
-",4,A_I,1,
+","[1, 2, 3, 4]",4,A_I,1,,1
 C1_31_A_NI,C1_31,176,1,ambiguous,non-ironic,1,The restaurant visit was a genuinely enjoyable experience.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She had a good meal at a restaurant.
 Target utterance: She says: """"That was a great restaurant visit.""""
@@ -339,7 +339,7 @@ What meaning is She most likely conveying?
 4. She found the whole restaurant visit disappointing.
 Answer:
 ","1
-",4,A_NI,1,
+","[1, 4, 3, 2]",4,A_NI,1,,1
 C1_32_UA_I,C1_32,150,1,unambiguous,ironic,1,"Anyone could have done it, there were no special abilities required.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They finished an trivial task for a math class.
 Target utterance: They say: """"We must be very smart.""""
@@ -350,7 +350,7 @@ What meaning is They most likely conveying?
 4. They were always smart about managing her money.
 Answer:
 ","3
-",4,UA_I,3,
+","[2, 4, 1, 3]",4,UA_I,3,,1
 C1_33_UA_NI,C1_33,173,1,unambiguous,non-ironic,1,She had clearly neglected the room and let it get very dirty.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: The room was filthy and they cleaned it.
 Target utterance: They say.: """"Looks like you waited way too long to clean.""""
@@ -361,7 +361,7 @@ What meaning is They most likely conveying?
 4. He always waited too long before replying to messages.
 Answer:
 ","1
-",4,UA_NI,1,
+","[1, 4, 2, 3]",4,UA_NI,1,,1
 C1_34_A_I,C1_34,120,1,ambiguous,ironic,3,"The musical was purely for laughs, there was nothing thought-provoking about it.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: The musical she watched last night was really funny.
 Target utterance: She says: """"This made me question my life.""""
@@ -372,7 +372,7 @@ What meaning is She most likely conveying?
 4. The musical provoked genuine reflection long after it ended.
 Answer:
 ","4
-",4,A_I,4,
+","[3, 4, 2, 1]",4,A_I,4,,1
 C1_35_A_NI,C1_35,213,1,ambiguous,non-ironic,1,The experience was good enough that repeating it made sense.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He had a good experience at the airport.
 Target utterance: He says: """"I’d definitely come back again.""""
@@ -383,7 +383,7 @@ What meaning is He most likely conveying?
 4. Nobody would want to go through that again.
 Answer:
 ","1
-",4,A_NI,1,
+","[1, 3, 4, 2]",4,A_NI,1,,1
 C1_36_UA_I,C1_36,195,1,unambiguous,ironic,1,The questions were straightforward and required little effort.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She prepared easy questions for the students.
 Target utterance: She says: """"I hope they're prepared for this.""""
@@ -394,7 +394,7 @@ What meaning is She most likely conveying?
 4. She went for a walk and found some birds.
 Answer:
 ","1
-",4,UA_I,1,
+","[2, 1, 3, 4]",4,UA_I,1,,2
 C1_37_UA_NI,C1_37,90,1,unambiguous,non-ironic,4,They found the street genuinely attractive and pleasant.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: The street was pristine.
 Target utterance: They say:  """"Such a beautiful street""""
@@ -405,7 +405,7 @@ What meaning is They most likely conveying?
 4. They found the street genuinely attractive and pleasant.
 Answer:
 ","4
-",4,UA_NI,4,
+","[4, 3, 2, 1]",4,UA_NI,4,,1
 C1_38_A_I,C1_38,141,1,ambiguous,ironic,2,"It was entirely predictable, nobody was the least bit shocked.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: The situation was hilarious.
 Target utterance: She says: """"I never would have guessed that.""""
@@ -416,7 +416,7 @@ What meaning is She most likely conveying?
 4. She estimated the cost correctly on her first attempt.
 Answer:
 ","1
-",4,A_I,1,
+","[1, 2, 3, 4]",4,A_I,1,,1
 C1_39_A_NI,C1_39,20,1,ambiguous,non-ironic,2,He recieved an expected results and is happy with it.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He studied hard for the exam, and the results were good.
 Target utterance: He says: """"Well, this is amazing.""""
@@ -427,7 +427,7 @@ What meaning is He most likely conveying?
 4. He was dancing at the ballroom.
 Answer:
 ","1
-",4,A_NI,1,
+","[2, 1, 3, 4]",4,A_NI,1,,2
 C1_40_UA_I,C1_40,81,1,unambiguous,ironic,4,The ground was dried out.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: After the weather changed, the ground became parched.
 Target utterance: She says: """"We can play with the mud now.""""
@@ -438,7 +438,7 @@ What meaning is She most likely conveying?
 4. The ground was dried out.
 Answer:
 ","2
-",4,UA_I,2,
+","[4, 1, 3, 2]",4,UA_I,2,,1
 C1_41_UA_NI,C1_41,129,1,unambiguous,non-ironic,2,The garden was struggling without any water.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: The garden was soaked in the morning.
 Target utterance: They say:  """"That’s enough water for the day.""""
@@ -449,7 +449,7 @@ What meaning is They most likely conveying?
 4. They were thinking about building a new garden shed.
 Answer:
 ","2
-",4,UA_NI,2,
+","[2, 1, 4, 3]",4,UA_NI,2,,1
 C1_42_A_I,C1_42,154,1,ambiguous,ironic,4,The plants had been wilting due to lack of water.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: The field was dry.
 Target utterance: He says: """"It is good for plants""""
@@ -460,7 +460,7 @@ What meaning is He most likely conveying?
 4. The plants had been wilting due to lack of water.
 Answer:
 ","3
-",4,A_I,3,
+","[3, 4, 1, 2]",4,A_I,3,,1
 C1_43_A_NI,C1_43,146,1,ambiguous,non-ironic,1,She admired the car.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She saw a pretty car on the street.
 Target utterance: She says: """"That’s a real beauty.""""
@@ -471,7 +471,7 @@ What meaning is she most likely conveying?
 4. She thought the car is ugly.
 Answer:
 ","1
-",4,A_NI,1,
+","[1, 3, 4, 2]",4,A_NI,1,,1
 C1_44_UA_I,C1_44,114,1,unambiguous,ironic,2,They thought the concert was small.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They attended a concert at a tiny venue.
 
@@ -484,7 +484,7 @@ What meaning is they most likely conveying?
 4. They organized a massive event for dating.
 Answer:
 ","3
-",4,UA_I,3,
+","[4, 2, 1, 3]",4,UA_I,3,,1
 C1_45_UA_NI,C1_45,24,1,unambiguous,non-ironic,4,The weather conditions were perfect.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He went to the beach, and the weather was hot.
 Target utterance: he says: """"The weather really delivered.""""
@@ -495,7 +495,7 @@ What meaning is he most likely conveying?
 4. The weather conditions were perfect.
 Answer:
 ","3
-",4,UA_NI,3,
+","[3, 4, 2, 1]",4,UA_NI,3,,2
 C1_46_A_I,C1_46,93,1,ambiguous,ironic,3,I thought the outfit is ugly.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: I wore an ugly outfit to attend the award ceremony.
 Target utterance: I say: """"I look amazing today.""""
@@ -506,7 +506,7 @@ What meaning is I most likely conveying?
 4. I admired the outfit.
 Answer:
 ","3
-",4,A_I,3,
+","[3, 4, 2, 1]",4,A_I,3,,2
 C1_47_A_NI,C1_47,70,1,ambiguous,non-ironic,2,He thought there are more than enough brownie.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He baked a tiny brownie.
 Target utterance: he says: """"This should be enough for the entire city.""""
@@ -517,7 +517,7 @@ What meaning is he most likely conveying?
 4. He thought the brownie was not enough.
 Answer:
 ","2
-",4,A_NI,2,
+","[3, 1, 4, 2]",4,A_NI,2,,1
 C1_48_UA_I,C1_48,76,1,unambiguous,ironic,1,Her coffee did not taste good.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She took a sip of the cold coffee.
 Target utterance: She says: """"This is what fresh coffee tastes like.""""
@@ -528,7 +528,7 @@ What meaning is she most likely conveying?
 4. Her coffee tasted like fresh mint.
 Answer:
 ","2
-",4,UA_I,2,
+","[2, 1, 4, 3]",4,UA_I,2,,1
 C1_49_UA_NI,C1_49,60,1,unambiguous,non-ironic,3,They thought the bird was beautiful.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They saw a stunning bird.
 Target utterance: They say: """"A real looker.""""
@@ -539,7 +539,7 @@ What meaning is They most likely conveying?
 4. They had a great time on a trip.
 Answer:
 ","1
-",4,UA_NI,1,
+","[3, 2, 1, 4]",4,UA_NI,1,,3
 C1_50_A_I,C1_50,139,1,ambiguous,ironic,4,They thought the dog was small.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They met a small dog.
 Target utterance: They say: """"The dog can swallow us whole.""""
@@ -550,7 +550,7 @@ What meaning is they most likely conveying?
 4. They thought the dog was small.
 Answer:
 ","4
-",4,A_I,4,
+","[4, 1, 3, 2]",4,A_I,4,,2
 C1_51_A_NI,C1_51,104,1,ambiguous,non-ironic,4,They thought the lead was promising.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: They received a warm lead.
 Target utterance: They say: """"This is the opportunity of a lifetime.”""
@@ -561,7 +561,7 @@ What meaning is they most likely conveying?
 4. They thought the lead was promising.
 Answer:
 ","2
-",4,A_NI,2,
+","[4, 3, 2, 1]",4,A_NI,2,,3
 C1_52_UA_I,C1_52,61,1,unambiguous,ironic,4,The weather conditions were awful.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: I found a nice kettle which was overpriced.
 Target utterance: I say: """"What a steal.""""
@@ -572,7 +572,7 @@ What meaning is I most likely conveying?
 4. The weather conditions were awful.
 Answer:
 ","1
-",4,UA_I,1,
+","[4, 3, 1, 2]",4,UA_I,1,,4
 C1_53_UA_NI,C1_53,94,1,unambiguous,non-ironic,4,The vase was worth a lot of money.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: He broke an free vase.
 
@@ -584,7 +584,7 @@ What meaning is He most likely conveying?
 4. The vase was worth a lot of money.
 Answer:
 ","1
-",4,UA_NI,1,
+","[3, 2, 4, 1]",4,UA_NI,1,,3
 C1_54_A_I,C1_54,189,1,ambiguous,ironic,2,The perfume was not pricy.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from 1 to 4. Read each story and choose the number corresponding to the most likely meaning. You can only answer with 1, 2, 3, or 4.
 Context: She wore expensive perfume.
 Target utterance: She says: """"The fragrance is worth every cent.""""
@@ -595,4 +595,4 @@ What meaning is She most likely conveying?
 4. The ocean was calm and quiet.
 Answer:
 ","3
-",4,A_I,3,
+","[1, 2, 3, 4]",4,A_I,3,,3

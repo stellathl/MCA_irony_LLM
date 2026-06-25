@@ -33,7 +33,7 @@ MAX_NEW_TOKENS = 150
 TEMPERATURE = 0.1
 
 CONDITION_MAP = {
-    "Condition1B_context_richness_stimuli": "condition_1",
+    "Condition1B_context_richness_stimuli": "condition",
 }
 
 
@@ -358,6 +358,7 @@ if __name__ == "__main__":
                         output_path = os.path.join(
                             OUTPUTS_DIR,
                             prompt_type,
+                            model_key,
                             f"{model_key}_{dataset_name}_run{run_idx}.csv"
                         )
 
