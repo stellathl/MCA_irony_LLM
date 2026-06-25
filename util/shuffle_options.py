@@ -13,6 +13,7 @@ import os
 
 import pandas as pd
 import numpy as np
+import string
 
 # Fixed Latin Square rotation for 4 conditions
 # Rows = runs (0-3), Cols = condition slot index mod 4
@@ -169,21 +170,22 @@ def save_combined(all_results: list[pd.DataFrame], output_path: str):
 
     return combined
 
-
 def parse_options(text):
-    """Split a numbered answering_options string into a plain list."""
+    """Split a lettered (a./A./a)) or numbered answering_options string into a plain list."""
     lines = [l.strip() for l in str(text).strip().split("\n") if l.strip()]
     options = []
     for line in lines:
-        if line and line[0].isdigit() and len(line) > 2 and line[1] in ".):":
+        # matches "a. ", "a) ", "A. ", "A) ", "1. ", "1) " etc.
+        if len(line) > 2 and line[1] in ".)" and (line[0].isalpha() or line[0].isdigit()):
             options.append(line[2:].strip())
         else:
             options.append(line)
     return options
 
 def format_options(options):
-    """Rejoin a list of options into a numbered string."""
-    return "\n".join(f"{i+1}. {opt}" for i, opt in enumerate(options))
+    """Rejoin a list of options into a lettered string: a. b. c. d. ..."""
+    letters = string.ascii_lowercase 
+    return "\n".join(f"{letters[i]}. {opt}" for i, opt in enumerate(options))
 
 def get_correct_option_text(row):
     """
