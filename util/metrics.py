@@ -1,6 +1,8 @@
 import pandas as pd
 from sklearn.metrics import precision_recall_fscore_support
 
+from util.shuffle_options import letter_to_pos
+
 
 def compute_classification_metrics(
     df,
@@ -22,8 +24,8 @@ def compute_classification_metrics(
             "f1": 0.0
         }
 
-    y_true = df[gold_col].astype(int)
-    y_pred = df[pred_col].astype(int)
+    y_true = df[gold_col].apply(letter_to_pos)
+    y_pred = df[pred_col].apply(letter_to_pos)
 
     accuracy = (y_true == y_pred).mean()
 
@@ -57,8 +59,8 @@ def compute_group_metrics(sub_df):
     if len(sub_df) == 0:
         return 0.0, 0.0, 0.0, 0.0
 
-    y_true = sub_df["correct_option_pos"].astype(int)
-    y_pred = sub_df["chosen_option"].astype(int)
+    y_true = sub_df["correct_option_pos"].apply(letter_to_pos)
+    y_pred = sub_df["chosen_original_option"].apply(letter_to_pos) 
 
     accuracy = (y_true == y_pred).mean()
 

@@ -9,7 +9,7 @@ from transformers import (
     pipeline
 )
 from util.parse import parse_response
-from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, parse_options, save_combined
+from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, letter_to_pos, parse_options, pos_to_letter, save_combined
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
@@ -100,14 +100,14 @@ def load_and_shuffle_dataset(csv_path, model_key):
         shuffled_options_temp, shuffled_indices = zip(*combined)
         
         options = list(shuffled_options_temp)
-        original_map = [idx + 1 for idx in shuffled_indices]  # 1-indexed: [1, 2, 3, 4]
+        original_map = [pos_to_letter(idx + 1) for idx in shuffled_indices]  # e.g. ['a','c','d','b']
 
         new_pos = next(
-            (i + 1 for i, opt in enumerate(options) if opt == correct_text),
+            (pos_to_letter(i + 1) for i, opt in enumerate(options) if opt == correct_text),
             None
         )
         distractor_pos = [
-            i + 1 for i, opt in enumerate(options) if opt != correct_text
+            pos_to_letter(i + 1) for i, opt in enumerate(options) if opt != correct_text
         ]
 
         shuffled_options.append(format_options(options))
@@ -247,15 +247,15 @@ def generate_predictions(
         try:
             import ast
             mapping = ast.literal_eval(row["original_option_mapping"])
-            chosen_shuffled = int(row["chosen_option"])
             
             # Index check
+            chosen_shuffled = letter_to_pos(row["chosen_option"])
             if 1 <= chosen_shuffled <= len(mapping):
                 original_option = mapping[chosen_shuffled - 1]
                 return original_option
             else:
                 return None
-        except:
+        except Exception:
             return None
 
     df["chosen_original_option"] = df.apply(convert_to_original_option, axis=1)
@@ -457,7 +457,7 @@ if all_results:
 
             # Correct/Incorrect analysis
             option_stats = []
-            for orig_opt in [1, 2, 3, 4]:
+            for orig_opt in ["a", "b", "c", "d"]:
                 mask = combined_results["chosen_original_option"] == orig_opt
                 count = mask.sum()
                 

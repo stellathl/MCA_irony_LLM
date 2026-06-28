@@ -9,10 +9,13 @@
 
 # util/latin_square_split.py
 
+import hashlib
 import os
+import random
 
 import pandas as pd
 import numpy as np
+import string
 
 # Fixed Latin Square rotation for 4 conditions
 # Rows = runs (0-3), Cols = condition slot index mod 4
@@ -24,6 +27,26 @@ LATIN_SQUARE = np.array([
     [2, 3, 0, 1],
     [3, 0, 1, 2],
 ])
+
+import string
+LETTERS = string.ascii_lowercase
+
+def pos_to_letter(pos):
+    """1-indexed int → letter: 1 -> 'a', 2 -> 'b', ..."""
+    return LETTERS[pos - 1]
+
+def letter_to_pos(x):
+    """Accepts a letter ('a'-'d') or an int/float position; returns 1-indexed int. Returns None if unparseable."""
+    if pd.isna(x):
+        return None
+    if isinstance(x, (int, float)):
+        return int(x)
+    s = str(x).strip().lower()
+    if s.isdigit():
+        return int(s)
+    if s in LETTERS:
+        return LETTERS.index(s) + 1
+    return None
 
 def build_run_splits(df: pd.DataFrame, output_dir: str, dataset_name: str) -> list[pd.DataFrame]:
     df = df.copy()
@@ -169,21 +192,22 @@ def save_combined(all_results: list[pd.DataFrame], output_path: str):
 
     return combined
 
-
 def parse_options(text):
-    """Split a numbered answering_options string into a plain list."""
+    """Split a lettered (a./A./a)) or numbered answering_options string into a plain list."""
     lines = [l.strip() for l in str(text).strip().split("\n") if l.strip()]
     options = []
     for line in lines:
-        if line and line[0].isdigit() and len(line) > 2 and line[1] in ".):":
+        # matches "a. ", "a) ", "A. ", "A) ", "1. ", "1) " etc.
+        if len(line) > 2 and line[1] in ".)" and (line[0].isalpha() or line[0].isdigit()):
             options.append(line[2:].strip())
         else:
             options.append(line)
     return options
 
 def format_options(options):
-    """Rejoin a list of options into a numbered string."""
-    return "\n".join(f"{i+1}. {opt}" for i, opt in enumerate(options))
+    """Rejoin a list of options into a lettered string: a. b. c. d. ..."""
+    letters = string.ascii_lowercase 
+    return "\n".join(f"{letters[i]}. {opt}" for i, opt in enumerate(options))
 
 def get_correct_option_text(row):
     """

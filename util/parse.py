@@ -12,19 +12,19 @@ def parse_response(response_text):
         "2. Because..."
         "Option 2, because..."
         "2\nBecause..."
-    Returns (chosen_number, reasoning_text)
+    Returns (chosen, reasoning_text)
     """
     if pd.isna(response_text) or str(response_text).strip() == "":
         return None, None
 
     text = str(response_text).strip()
 
-    # Extract the first number that appears (1–4)
-    match = re.search(r"\b([1-4])\b", text)
+    # Extract the first letter that appears (a–d)
+    match = re.search(r"\b([a-dA-D])\b", text)
     if not match:
         return None, text  # couldn't parse a number
 
-    chosen = int(match.group(1))
+    chosen = match.group(1).lower() if match else None
 
     # Everything after the number is the reasoning
     reasoning = text[match.end():].strip()
