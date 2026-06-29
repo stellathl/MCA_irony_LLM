@@ -1,7 +1,8 @@
+import os
 import pandas as pd
 from sklearn.metrics import precision_recall_fscore_support
 
-from util.shuffle_options import letter_to_pos
+from util.shuffle_options import combine_results, letter_to_pos
 
 
 def compute_classification_metrics(
@@ -151,3 +152,95 @@ def interaction_metrics(df):
         })
 
     return pd.DataFrame(rows)
+
+    # =========================================================
+    # METRICS (OLD METRICS.PY - NO PARAMETERS)
+    # =========================================================
+def save_metrics(all_results, metrics_path: str, model_name: str, dataset_name:str, prompt_type: str):
+    if all_results is None:
+        return
+    if isinstance(all_results, pd.DataFrame):
+        if all_results.empty:
+            return
+        combined_results = all_results  # already combined, skip combine_results()
+    else:
+        if len(all_results) == 0:
+            return
+        combined_results = combine_results(all_results)
+        
+    try:
+        print("all_results after all run per model", all_results)
+        combined_results = all_results
+
+        overall = compute_classification_metrics(combined_results)
+        context_df = context_metrics(combined_results)
+        irony_df = irony_metrics(combined_results)
+        interaction_df = interaction_metrics(combined_results)
+
+
+        # =========================================================
+        # SAVE METRICS FILE
+        # =========================================================
+        
+        os.makedirs(os.path.dirname(metrics_path), exist_ok=True)   
+        
+        with open(metrics_path, "w") as f:
+
+            f.write(f"Model      : {model_name}\n")
+            f.write(f"Dataset    : {dataset_name}\n")
+            f.write(f"Prompt Type: {prompt_type}\n")
+            f.write(f"{'='*50}\n\n")
+
+            f.write("--- Irony ---\n")
+            f.write(irony_df.to_string(index=False))
+            f.write("\n\n")
+
+            f.write("--- Context × Irony ---\n")
+            f.write(interaction_df.to_string(index=False))
+            f.write("\n")
+
+            # ⭐ NEW : ORIGINAL OPTION STATISTICS
+            f.write("\n" + "="*50 + "\n")
+            f.write("--- ORIGINAL OPTION DISTRIBUTION ---\n")
+            
+            f.write("="*50 + "\n\n")
+
+            # Correct/Incorrect analysis
+            option_stats = []
+            for orig_opt in ["a", "b", "c", "d"]:
+                mask = combined_results["chosen_original_option"] == orig_opt
+                count = mask.sum()
+                
+                if count > 0:
+                    correct = (combined_results[mask]["chosen_original_option"] == combined_results[mask]["correct_option_pos"]).sum()
+                    incorrect = count - correct
+                    accuracy = correct / count
+                    
+                    option_stats.append({
+                        "Original Option": orig_opt,
+                        "Selection Count": count,
+                        "Correct": correct,
+                        "Incorrect": incorrect,
+                        "Accuracy %": f"{accuracy*100:.1f}%",
+                        "Selection %": f"{(count/len(combined_results))*100:.1f}%"
+                    })
+            
+            if option_stats:
+                stats_df = pd.DataFrame(option_stats)
+                f.write(stats_df.to_string(index=False))
+                f.write("\n\n")
+            
+            # Seçim oranları (pie chart verisi)
+            f.write("Selection Distribution:\n")
+            selection_counts = combined_results["chosen_original_option"].value_counts().sort_index()
+            for opt, count in selection_counts.items():
+                pct = (count / len(combined_results)) * 100
+                f.write(f"  Option {opt}: {count:3d} selections ({pct:5.1f}%)\n")
+
+        print(f"\n✓ Metrics saved to: {metrics_path}")
+
+    except Exception as e:
+        print(f"ERROR computing metrics: {e}")
+        import traceback
+        traceback.print_exc()
+
