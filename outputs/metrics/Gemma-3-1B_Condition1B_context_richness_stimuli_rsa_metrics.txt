@@ -1,0 +1,32 @@
+Model      : google/gemma-3-1b-it
+Dataset    : Condition1B_context_richness_stimuli_ver_1
+Prompt Type: rsa
+==================================================
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 144     0.236      0.168   0.258 0.186
+ non-ironic 144     0.382      0.568   0.388 0.316
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 72     0.236      0.153   0.243 0.179
+    ambiguous  non-ironic 72     0.403      0.639   0.422 0.346
+  unambiguous      ironic 72     0.236      0.183   0.269 0.189
+  unambiguous  non-ironic 72     0.361      0.355   0.354 0.276
+
+==================================================
+--- ORIGINAL OPTION DISTRIBUTION ---
+==================================================
+
+ Original Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+               1              116       26         90      22.4%       40.3%
+               2               71       21         50      29.6%       24.7%
+               3               48        2         46       4.2%       16.7%
+               4               53       15         38      28.3%       18.4%
+
+Selection Distribution:
+  Option 1: 116 selections ( 40.3%)
+  Option 2:  71 selections ( 24.7%)
+  Option 3:  48 selections ( 16.7%)
+  Option 4:  53 selections ( 18.4%)

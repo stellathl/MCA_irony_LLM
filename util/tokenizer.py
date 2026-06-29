@@ -20,7 +20,6 @@ from util.constants import (MODELS, PROMPT_FILES)
 # Adjust the system prompt and template to your actual task
 # ─────────────────────────────────────────────────────────
 
-# YAML
 def read_yaml(yaml_file_path: str) -> dict:
     with open(yaml_file_path, "r") as f:
         data = yaml.safe_load(f)
@@ -32,21 +31,46 @@ def write_yaml(yaml_contents: dict, yaml_file_path: str) -> None:
     with open(yaml_file_path, "w") as f:
         yaml.dump(yaml_contents, f)
 
-def build_prompt(row: pd.Series, condition: str, template: str) -> str:
-    GENERAL_PROMPT_TEMPLATE = read_yaml(f'prompts/{template}')
-    template = GENERAL_PROMPT_TEMPLATE[condition]
-    question_line = template["question"].format(pronoun=row["pronoun"])
-    cg_framing  = str(row.get("cg_framing",         "")).strip()
+def build_prompt(row, condition, template_file, prompt_type="general"):
+    """
+    Build prompt based on prompt type.
+    - general: needs question, cg_framing
+    - rsa: only needs context, speaker, target_utterance, options
+    """
+    template = read_yaml(f"prompts/{template_file}")[condition]
+    task = template["task"]
     
-    return template["task"].format(
-        context=row.get("context", ""),
-        target_utterance=row["target_utterance"],
-        question=question_line,    
-        cg_framing=cg_framing,
-        speaker=row.get("speaker", ""),
-        options=row.get("answering_options", ""), # once the options are ready
-    )
-
+    # ── General prompt parameters ──
+    if prompt_type.lower() == "general":
+        question_line = template.get("question", "").format(pronoun=row.get("pronoun", ""))
+        cg_framing = str(row.get("cg_framing", "")).strip()
+        
+        return task.format(
+            context=row.get("context", ""),
+            target_utterance=row.get("target_utterance", ""),
+            question=question_line,
+            cg_framing=cg_framing,
+            speaker=row.get("speaker", ""),
+            options=row.get("answering_options", "")
+        )
+    
+    # ── RSA prompt parameters ──
+    elif prompt_type.lower() == "rsa":
+        return task.format(
+            context=row.get("context", ""),
+            speaker=row.get("speaker", ""),
+            target_utterance=row.get("target_utterance", ""),
+            options=row.get("answering_options", "")
+        )
+    
+    # ── Default ──
+    else:
+        return task.format(
+            context=row.get("context", ""),
+            speaker=row.get("speaker", ""),
+            target_utterance=row.get("target_utterance", ""),
+            options=row.get("answering_options", "")
+        )
 # ─────────────────────────────────────────────────────────
 # TOKENIZER LOADING
 # ─────────────────────────────────────────────────────────
@@ -196,7 +220,7 @@ if __name__ == "__main__":
     # 2. Condition 1B with general template
     print("\nCounting tokens — Condition 1B …")
     df1 = pd.read_csv(c1b_path)
-    df1["_prompt"] = df1.apply(lambda row: build_prompt(row, "condition_1", PROMPT_FILES.get("general")), axis=1)
+    df1["_prompt"] = df1.apply(lambda row: build_prompt(row, "condition", PROMPT_FILES.get("general")), axis=1)
     print("First prompt\n", df1["_prompt"].iloc[0])
     df1 = count_tokens_df(df1, "_prompt", tokenizers)
     print_report("Condition 1B – Context Richness", df1)
@@ -205,7 +229,7 @@ if __name__ == "__main__":
     # 3. Condition 2 with general template
     print("\nCounting tokens — Condition 2 …")
     df2 = pd.read_csv(c2_path)
-    df2["_prompt"] = df2.apply(lambda row: build_prompt(row, "condition_2", PROMPT_FILES.get("general")), axis=1)
+    df2["_prompt"] = df2.apply(lambda row: build_prompt(row, "condition", PROMPT_FILES.get("general")), axis=1)
     print("First prompt\n", df2["_prompt"].iloc[0])
     df2 = count_tokens_df(df2, "_prompt", tokenizers)
     print_report("Condition 2 – Common Ground", df2)

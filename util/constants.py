@@ -12,9 +12,9 @@ MODELS = {
 }
 
 PROMPT_FILES = {
-    "general": "general_prompt.yaml",
-    "general_reasoning": "general_prompt_with_reasoning.yaml"
-    #"rsa": "rsa_prompt.yaml",
+    #"general": "general_prompt.yaml",
+    #ç"general_reasoning": "general_prompt_with_reasoning.yaml"
+    "rsa": "rsa_prompt.yaml",
     #"reasoning": "reasoning_prompt.yaml"
 }
 
