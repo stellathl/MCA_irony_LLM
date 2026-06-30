@@ -170,7 +170,6 @@ def save_metrics(all_results, metrics_path: str, model_name: str, dataset_name:s
         
     try:
         print("all_results after all run per model", all_results)
-        combined_results = all_results
 
         overall = compute_classification_metrics(combined_results)
         context_df = context_metrics(combined_results)
@@ -244,3 +243,54 @@ def save_metrics(all_results, metrics_path: str, model_name: str, dataset_name:s
         import traceback
         traceback.print_exc()
 
+
+# =========================================================
+# OPTION A: rebuild from per-run CSVs
+#   outputs/{prompt_type}/{model_key}/{model_key}_{dataset_name}_run{N}.csv
+# =========================================================
+
+def load_from_run_csvs(outputs_dir, model_key,dataset_name, prompt_type):
+    pattern = os.path.join(
+        outputs_dir, prompt_type, model_key,
+        f"{model_key}_{dataset_name}_run*.csv"
+    )
+    run_files = sorted(glob.glob(pattern))
+
+    if not run_files:
+        print(f"No run CSVs found matching: {pattern}")
+        return None
+
+    print(f"Found {len(run_files)} run CSV(s):")
+    for f in run_files:
+        print(f"  - {f}")
+
+    dfs = [pd.read_csv(f) for f in run_files]
+    combined = pd.concat(dfs, ignore_index=True)
+    print(f"\nCombined shape: {combined.shape}")
+    return combined
+
+
+# =========================================================
+# OPTION B: load from the already-combined per-model CSV
+#   outputs/{model_key}_results.csv
+#   (filter down to just this dataset + prompt_type, since
+#    that file currently mixes all prompt types together)
+# =========================================================
+
+def load_from_combined_csv(outputs_dir, model_key,dataset_name, prompt_type):
+    path = os.path.join(outputs_dir, f"{model_key}_results.csv")
+
+    if not os.path.exists(path):
+        print(f"Combined results file not found: {path}")
+        return None
+
+    df = pd.read_csv(path)
+    print(f"Loaded combined file: {path} ({df.shape[0]} rows)")
+
+    filtered = df[
+        (df["dataset"] == dataset_name) &
+        (df["prompt_type"] == prompt_type)
+    ].copy()
+
+    print(f"Filtered to dataset={dataset_name}, prompt_type={prompt_type}: {filtered.shape[0]} rows")
+    return filtered

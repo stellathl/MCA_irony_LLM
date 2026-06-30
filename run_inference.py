@@ -13,7 +13,7 @@ from util.shuffle_options import build_run_splits, combine_results, format_optio
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
-    save_metrics
+    save_metrics, load_from_combined_csv, load_from_run_csvs
 )
 
 # =========================================================
@@ -385,17 +385,41 @@ if __name__ == "__main__":
                             traceback.print_exc()
                             continue
                 
+                # Once the run/prompt loop is done, save metrics at dataset level
+                for prompt_type, prompt_file in PROMPT_FILES.items():
+                    # ── after ALL datasets/runs/prompts for this model ──
+                        # Try option A first (per-run CSVs), fall back to option B
+                    combined_results = load_from_run_csvs(OUTPUTS_DIR, model_key, dataset_name, prompt_type)
+                    if all_results:                   
+                        model_results = [r for r in all_results if r["model"].iloc[0] == model_key]
+                        model_prompt_results = [r for r in model_results if r["prompt"].iloc[0] == prompt_type]
+                        if model_prompt_results:
+                            combined_model_prompt_results = save_combined(
+                                model_prompt_results,
+                                output_path=os.path.join(OUTPUTS_DIR, f"{model_key}_results.csv")
+                            )  
 
-                # ── after ALL datasets/runs/prompts for this model ──
-                model_results = [r for r in all_results if r["model"].iloc[0] == model_key]
-                model_prompt_results = [r for r in model_results if r["prompt"].iloc[0] == prompt_type]
-                if model_prompt_results:
-                    combined_model_prompt_results = save_combined(
-                        model_prompt_results,
-                        output_path=os.path.join(OUTPUTS_DIR, f"{model_key}_results.csv")
-                    )       
-                    save_metrics(combined_model_prompt_results, metrics_path, model_name, dataset_name, prompt_type)
-                    
+                    if combined_results is None or combined_results.empty:
+                        print("\nFalling back to combined per-model CSV...")
+                        combined_results = load_from_combined_csv(OUTPUTS_DIR, model_key, dataset_name, prompt_type)
+
+                    if combined_results is None or combined_results.empty:
+                        print("\nNo data found — check OUTPUTS_DIR / MODEL_KEY / DATASET_NAME / PROMPT_TYPE.")
+                        exit(1)
+
+                    metrics_path = os.path.join(
+                        OUTPUTS_DIR, "metrics",
+                        f"{model_key}_{dataset_name}_{prompt_type}_metrics.txt"
+                    )
+
+                    save_metrics(
+                        combined_results,
+                        metrics_path,
+                        model_key,
+                        dataset_name,
+                        prompt_type
+                    )
+     
             print(f"\n{'='*60}")
             print(f"Cleaning up model: {model_key}")
             print(f"{'='*60}")
