@@ -33,6 +33,14 @@ CONDITION_MAP = {
     "Condition1B_context_richness_stimuli": "condition",
 }
 
+SYSTEM_PROMPT = (
+    "You are completing a structured multiple-choice task. "
+    "Read the passage and question, then choose the single best answer "
+    "from the given options. "
+    "Carefully follow the exact output format specified in the instructions "
+    "below — do not add extra commentary, headers, or formatting beyond "
+    "what is requested."
+)
 
 # =========================================================
 # LOAD & SHUFFLE DATASET  (seeded — reproducible)
@@ -171,7 +179,10 @@ def generate_predictions(
             prompt = record["prompt"]
 
             try:
-                messages = [{"role": "user", "content": prompt}]
+                messages = [
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt} 
+                ]
                 formatted_prompt = tokenizer.apply_chat_template(
                     messages,
                     tokenize=False,
