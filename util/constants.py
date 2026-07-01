@@ -37,5 +37,5 @@ MAX_CONTEXT = {
     "OLMo-2-7B":           131_072,
     "Qwen3-8B":            131_072,
     "Gpt2-1.5B":            1_024,
-    "Llama-3-8B":          131_072,  # was missing — caused ⚠
+    "Llama-3-8B":          131_072,
 }
