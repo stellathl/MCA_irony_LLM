@@ -88,13 +88,13 @@ def count_tokens_df(df: pd.DataFrame, prompt_col: str,
 # ─────────────────────────────────────────────────────────
 # EXPERIMENT SCALE CONSTANTS
 # ─────────────────────────────────────────────────────────
-N_STIMULI        = 250
+N_STIMULI        = 72
 N_PROMPT_TYPES   = 3
-N_CONDITIONS     = 3
+N_RUNS_PER_FILE    = 4
 N_MODELS         = len(MODELS)
 FEWSHOT_TOKENS   = 0   # set to estimated tokens per few-shot block if used
 
-TOTAL_RUNS = N_STIMULI * N_PROMPT_TYPES * N_CONDITIONS * N_MODELS
+TOTAL_RUNS = N_STIMULI * N_PROMPT_TYPES * N_RUNS_PER_FILE * N_MODELS
 
 
 def print_report(label: str, df: pd.DataFrame):
@@ -144,7 +144,7 @@ def print_hpc_summary(results: dict):
     print(f"\n{'═'*75}")
     print(f"  HPC PLANNING SUMMARY")
     print(f"  Scale: {N_STIMULI} stimuli × {N_PROMPT_TYPES} prompt types × "
-          f"{N_CONDITIONS} conditions × {N_MODELS} models")
+          f"{N_RUNS_PER_FILE} conditions × {N_MODELS} models")
     print(f"  Total inference runs: {TOTAL_RUNS:,}")
     if FEWSHOT_TOKENS:
         print(f"  Few-shot overhead:    +{FEWSHOT_TOKENS} tokens/prompt")
