@@ -12,8 +12,8 @@ No model weights are downloaded — tokenizer files only.
 
 import pandas as pd
 import yaml
-from transformers import AutoTokenizer
-from util.constants import (MODELS, PROMPT_FILES)
+from transformers import AutoTokenizer, GPT2Tokenizer
+from constants import (MAX_CONTEXT, MODELS, PROMPT_FILES)
 
 # ─────────────────────────────────────────────────────────
 # PROMPT BUILDER
@@ -56,7 +56,10 @@ def load_tokenizers() -> dict:
     for name, model_id in MODELS.items():
         print(f"  Loading {name} ({model_id}) …", flush=True)
         try:
-            tok = AutoTokenizer.from_pretrained(model_id)
+            if(name == "Gpt2-1.5B"):
+                tok = GPT2Tokenizer.from_pretrained(model_id)
+            else:
+                tok = AutoTokenizer.from_pretrained(model_id)   
             tokenizers[name] = tok
             vocab_size = tok.vocab_size
             print(f"    ✓  vocab_size={vocab_size:,}")
@@ -81,28 +84,17 @@ def count_tokens_df(df: pd.DataFrame, prompt_col: str,
         print(f"  {name:<25}  done  (median={df[col].median():.0f})")
     return df
 
-# ─────────────────────────────────────────────────────────
-# REPORTING
-# ─────────────────────────────────────────────────────────
-MAX_CONTEXT = {
-    "Gemma-3-4B":          131_072,
-    "Mistral-7B-Instruct":  32_768,
-    "OLMo-2-7B":           131_072,
-    "Qwen3-8B":            131_072,
-    "ModernBERT-8B":         8_192,
-    "Llama-3-8B":          131_072,  # was missing — caused ⚠
-}
 
 # ─────────────────────────────────────────────────────────
 # EXPERIMENT SCALE CONSTANTS
 # ─────────────────────────────────────────────────────────
-N_STIMULI        = 250
+N_STIMULI        = 72
 N_PROMPT_TYPES   = 3
-N_CONDITIONS     = 3
+N_RUNS_PER_FILE    = 4
 N_MODELS         = len(MODELS)
 FEWSHOT_TOKENS   = 0   # set to estimated tokens per few-shot block if used
 
-TOTAL_RUNS = N_STIMULI * N_PROMPT_TYPES * N_CONDITIONS * N_MODELS
+TOTAL_RUNS = N_STIMULI * N_PROMPT_TYPES * N_RUNS_PER_FILE * N_MODELS
 
 
 def print_report(label: str, df: pd.DataFrame):
@@ -152,7 +144,7 @@ def print_hpc_summary(results: dict):
     print(f"\n{'═'*75}")
     print(f"  HPC PLANNING SUMMARY")
     print(f"  Scale: {N_STIMULI} stimuli × {N_PROMPT_TYPES} prompt types × "
-          f"{N_CONDITIONS} conditions × {N_MODELS} models")
+          f"{N_RUNS_PER_FILE} conditions × {N_MODELS} models")
     print(f"  Total inference runs: {TOTAL_RUNS:,}")
     if FEWSHOT_TOKENS:
         print(f"  Few-shot overhead:    +{FEWSHOT_TOKENS} tokens/prompt")
@@ -180,10 +172,14 @@ def print_hpc_summary(results: dict):
 if __name__ == "__main__":
     import sys
 
-    c1b_path = sys.argv[1] if len(sys.argv) > 1 else \
-        "data/Condition1B_context_richness_stimuli.csv"
-    c2_path  = sys.argv[2] if len(sys.argv) > 2 else \
-        "data/Condition2_common_ground_stimuli.csv"
+    run1_path = sys.argv[1] if len(sys.argv) > 1 else \
+        "data/latin_square_splits/Condition1B_context_richness_stimuli_run1.csv"
+    run2_path  = sys.argv[2] if len(sys.argv) > 2 else \
+        "data/latin_square_splits/Condition1B_context_richness_stimuli_run2.csv"
+    run3_path  = sys.argv[2] if len(sys.argv) > 2 else \
+        "data/latin_square_splits/Condition1B_context_richness_stimuli_run3.csv"
+    run4_path  = sys.argv[2] if len(sys.argv) > 2 else \
+        "data/latin_square_splits/Condition1B_context_richness_stimuli_run4.csv"
 
     # 1. Load tokenizers
     print("Loading tokenizers …")
@@ -193,23 +189,38 @@ if __name__ == "__main__":
 
     results = {}
 
-    # 2. Condition 1B with general template
-    print("\nCounting tokens — Condition 1B …")
-    df1 = pd.read_csv(c1b_path)
-    df1["_prompt"] = df1.apply(lambda row: build_prompt(row, "condition_1", PROMPT_FILES.get("general")), axis=1)
+    # with general template
+    print("\nCounting tokens — Run 1 …")
+    df1 = pd.read_csv(run1_path)
+    df1["_prompt"] = df1.apply(lambda row: build_prompt(row, "condition", PROMPT_FILES.get("general")), axis=1)
     print("First prompt\n", df1["_prompt"].iloc[0])
     df1 = count_tokens_df(df1, "_prompt", tokenizers)
     print_report("Condition 1B – Context Richness", df1)
-    results["Condition1B"] = df1
+    results["Run1"] = df1
 
-    # 3. Condition 2 with general template
-    print("\nCounting tokens — Condition 2 …")
-    df2 = pd.read_csv(c2_path)
-    df2["_prompt"] = df2.apply(lambda row: build_prompt(row, "condition_2", PROMPT_FILES.get("general")), axis=1)
+    print("\nCounting tokens — Run 2 …")
+    df2 = pd.read_csv(run2_path)
+    df2["_prompt"] = df2.apply(lambda row: build_prompt(row, "condition", PROMPT_FILES.get("general")), axis=1)
     print("First prompt\n", df2["_prompt"].iloc[0])
     df2 = count_tokens_df(df2, "_prompt", tokenizers)
-    print_report("Condition 2 – Common Ground", df2)
-    results["Condition2"] = df2
+    print_report("Run 2", df2)
+    results["Run2"] = df2
+
+    print("\nCounting tokens — Run 3 …")
+    df3 = pd.read_csv(run3_path)
+    df3["_prompt"] = df3.apply(lambda row: build_prompt(row, "condition", PROMPT_FILES.get("general")), axis=1)
+    print("First prompt\n", df3["_prompt"].iloc[0])
+    df3 = count_tokens_df(df3, "_prompt", tokenizers)
+    print_report("Run 3", df3)
+    results["Run3"] = df3
+
+    print("\nCounting tokens — Run 4 …")
+    df4 = pd.read_csv(run4_path)
+    df4["_prompt"] = df4.apply(lambda row: build_prompt(row, "condition", PROMPT_FILES.get("general")), axis=1)
+    print("First prompt\n", df4["_prompt"].iloc[0])
+    df4 = count_tokens_df(df4, "_prompt", tokenizers)
+    print_report("Run 4", df4)
+    results["Run4"] = df4
 
     # 4. Grand total
     combined = pd.concat(results.values(), ignore_index=True)
@@ -225,7 +236,7 @@ if __name__ == "__main__":
     print_hpc_summary(results)
 
     # 5. Save per-row CSV
-    out = "token_counts_real.csv"
+    out = "token_counts.csv"
     drop = ["_prompt"]
     combined.drop(columns=[c for c in drop if c in combined.columns]).to_csv(out, index=False)
     print(f"\n  Saved → {out}")
