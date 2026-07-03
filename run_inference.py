@@ -8,15 +8,12 @@ from transformers import (
     AutoTokenizer,
     pipeline
 )
+from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, letter_to_pos, parse_options, pos_to_letter, save_combined
 from util.parse import parse_response, parse_response_rsa
-from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, parse_options, save_combined
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
-    compute_classification_metrics,
-    context_metrics,
-    irony_metrics,
-    interaction_metrics
+    save_metrics, load_from_combined_csv, load_from_run_csvs
 )
 
 # =========================================================
@@ -36,6 +33,14 @@ CONDITION_MAP = {
     "Condition1B_context_richness_stimuli": "condition",
 }
 
+SYSTEM_PROMPT = (
+    "You are completing a structured multiple-choice task. "
+    "Read the passage and question, then choose the single best answer "
+    "from the given options. "
+    "Carefully follow the exact output format specified in the instructions "
+    "below — do not add extra commentary, headers, or formatting beyond "
+    "what is requested."
+)
 
 # =========================================================
 # LOAD & SHUFFLE DATASET  (seeded — reproducible)
@@ -100,14 +105,14 @@ def load_and_shuffle_dataset(csv_path, model_key):
         shuffled_options_temp, shuffled_indices = zip(*combined)
         
         options = list(shuffled_options_temp)
-        original_map = [idx + 1 for idx in shuffled_indices]  # 1-indexed: [1, 2, 3, 4]
+        original_map = [pos_to_letter(idx + 1) for idx in shuffled_indices]  # e.g. ['a','c','d','b']
 
         new_pos = next(
-            (i + 1 for i, opt in enumerate(options) if opt == correct_text),
+            (pos_to_letter(i + 1) for i, opt in enumerate(options) if opt == correct_text),
             None
         )
         distractor_pos = [
-            i + 1 for i, opt in enumerate(options) if opt != correct_text
+            pos_to_letter(i + 1) for i, opt in enumerate(options) if opt != correct_text
         ]
 
         shuffled_options.append(format_options(options))
@@ -174,7 +179,10 @@ def generate_predictions(
             prompt = record["prompt"]
 
             try:
-                messages = [{"role": "user", "content": prompt}]
+                messages = [
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt} 
+                ]
                 formatted_prompt = tokenizer.apply_chat_template(
                     messages,
                     tokenize=False,
@@ -251,15 +259,15 @@ def generate_predictions(
         try:
             import ast
             mapping = ast.literal_eval(row["original_option_mapping"])
-            chosen_shuffled = int(row["chosen_option"])
             
             # Index check
+            chosen_shuffled = letter_to_pos(row["chosen_option"])
             if 1 <= chosen_shuffled <= len(mapping):
                 original_option = mapping[chosen_shuffled - 1]
                 return original_option
             else:
                 return None
-        except:
+        except Exception:
             return None
 
     df["chosen_original_option"] = df.apply(convert_to_original_option, axis=1)
@@ -393,15 +401,41 @@ if __name__ == "__main__":
                             traceback.print_exc()
                             continue
                 
+                # Once the run/prompt loop is done, save metrics at dataset level
+                for prompt_type, prompt_file in PROMPT_FILES.items():
+                    # ── after ALL datasets/runs/prompts for this model ──
+                        # Try option A first (per-run CSVs), fall back to option B
+                    combined_results = load_from_run_csvs(OUTPUTS_DIR, model_key, dataset_name, prompt_type)
+                    if all_results:                   
+                        model_results = [r for r in all_results if r["model"].iloc[0] == model_key]
+                        model_prompt_results = [r for r in model_results if r["prompt"].iloc[0] == prompt_type]
+                        if model_prompt_results:
+                            combined_model_prompt_results = save_combined(
+                                model_prompt_results,
+                                output_path=os.path.join(OUTPUTS_DIR, f"{model_key}_results.csv")
+                            )  
 
-                # ── after ALL datasets/runs/prompts for this model ──
-                model_results = [r for r in all_results if r["model"].iloc[0] == model_key]
-                if model_results:
-                    save_combined(
-                        model_results,
-                        output_path=os.path.join(OUTPUTS_DIR, f"{model_key}_results.csv")
-                    )       
+                    if combined_results is None or combined_results.empty:
+                        print("\nFalling back to combined per-model CSV...")
+                        combined_results = load_from_combined_csv(OUTPUTS_DIR, model_key, dataset_name, prompt_type)
 
+                    if combined_results is None or combined_results.empty:
+                        print("\nNo data found — check OUTPUTS_DIR / MODEL_KEY / DATASET_NAME / PROMPT_TYPE.")
+                        exit(1)
+
+                    metrics_path = os.path.join(
+                        OUTPUTS_DIR, "metrics",
+                        f"{model_key}_{dataset_name}_{prompt_type}_metrics.txt"
+                    )
+
+                    save_metrics(
+                        combined_results,
+                        metrics_path,
+                        model_key,
+                        dataset_name,
+                        prompt_type
+                    )
+     
             print(f"\n{'='*60}")
             print(f"Cleaning up model: {model_key}")
             print(f"{'='*60}")
@@ -417,85 +451,3 @@ if __name__ == "__main__":
             import traceback
             traceback.print_exc()
             continue
-
-    # =========================================================
-    # METRICS (OLD METRICS.PY - NO PARAMETERS)
-    # =========================================================
-
-if all_results:
-    try:
-        print("all_results after all run per model", all_results)
-        combined_results = combine_results(all_results)
-
-        overall = compute_classification_metrics(combined_results)
-        context_df = context_metrics(combined_results)
-        irony_df = irony_metrics(combined_results)
-        interaction_df = interaction_metrics(combined_results)
-
-
-        # =========================================================
-        # SAVE METRICS FILE
-        # =========================================================
-        
-        os.makedirs(os.path.dirname(metrics_path), exist_ok=True)   
-        
-        with open(metrics_path, "w") as f:
-
-            f.write(f"Model      : {model_name}\n")
-            f.write(f"Dataset    : {dataset_name}\n")
-            f.write(f"Prompt Type: {prompt_type}\n")
-            f.write(f"{'='*50}\n\n")
-
-            f.write("--- Irony ---\n")
-            f.write(irony_df.to_string(index=False))
-            f.write("\n\n")
-
-            f.write("--- Context × Irony ---\n")
-            f.write(interaction_df.to_string(index=False))
-            f.write("\n")
-
-            # ⭐ NEW : ORIGINAL OPTION STATISTICS
-            f.write("\n" + "="*50 + "\n")
-            f.write("--- ORIGINAL OPTION DISTRIBUTION ---\n")
-            
-            f.write("="*50 + "\n\n")
-
-            # Correct/Incorrect analysis
-            option_stats = []
-            for orig_opt in [1, 2, 3, 4]:
-                mask = combined_results["chosen_original_option"] == orig_opt
-                count = mask.sum()
-                
-                if count > 0:
-                    correct = (combined_results[mask]["chosen_original_option"] == combined_results[mask]["correct_option_pos"]).sum()
-                    incorrect = count - correct
-                    accuracy = correct / count
-                    
-                    option_stats.append({
-                        "Original Option": orig_opt,
-                        "Selection Count": count,
-                        "Correct": correct,
-                        "Incorrect": incorrect,
-                        "Accuracy %": f"{accuracy*100:.1f}%",
-                        "Selection %": f"{(count/len(combined_results))*100:.1f}%"
-                    })
-            
-            if option_stats:
-                stats_df = pd.DataFrame(option_stats)
-                f.write(stats_df.to_string(index=False))
-                f.write("\n\n")
-            
-            # Seçim oranları (pie chart verisi)
-            f.write("Selection Distribution:\n")
-            selection_counts = combined_results["chosen_original_option"].value_counts().sort_index()
-            for opt, count in selection_counts.items():
-                pct = (count / len(combined_results)) * 100
-                f.write(f"  Option {opt}: {count:3d} selections ({pct:5.1f}%)\n")
-
-        print(f"\n✓ Metrics saved to: {metrics_path}")
-
-    except Exception as e:
-        print(f"ERROR computing metrics: {e}")
-        import traceback
-        traceback.print_exc()
-
