@@ -8,8 +8,8 @@ from transformers import (
     AutoTokenizer,
     pipeline
 )
-from util.parse import parse_response
 from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, letter_to_pos, parse_options, pos_to_letter, save_combined
+from util.parse import parse_response, parse_response_rsa
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
@@ -235,8 +235,12 @@ def generate_predictions(
     df = pd.DataFrame(records)
 
     # ── Parse responses ───────────────────────────────────
-    parsed = df["output"].apply(parse_response)
-    df["chosen_option"] = [p[0] for p in parsed]  # Karıştırılmış haldeki selections (1, 2, 3, 4)
+    if prompt_type.lower() == "rsa":
+        parsed = df["output"].apply(parse_response_rsa)
+    else:
+        parsed = df["output"].apply(parse_response)
+
+    df["chosen_option"] = [p[0] for p in parsed]  # comapred selections (1, 2, 3, 4)
     df["reasoning"]     = [p[1] for p in parsed]
 
     # Convert shuffled selection → ORIGINAL selection
@@ -355,7 +359,8 @@ if __name__ == "__main__":
                             lambda row: build_prompt(
                                 row, 
                                 CONDITION_MAP[dataset_name], 
-                                prompt_file
+                                prompt_file,
+                                prompt_type=prompt_type
                             ), 
                             axis=1
                         )
