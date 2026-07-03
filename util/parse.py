@@ -39,6 +39,7 @@ def parse_response_rsa(response_text):
     Priority:
     1. Final Answer
     2. Pragmatic Listener (L1)
+    3. L1
     """
 
     if pd.isna(response_text) or str(response_text).strip() == "":
@@ -55,8 +56,9 @@ def parse_response_rsa(response_text):
 
     if m:
         chosen = m.group(1).lower()
+
     else:
-        # 2. L1
+        # 2. Pragmatic Listener (L1)
         m = re.search(
             r"Pragmatic\s+Listener.*?\(L1\)\s*:?\s*([a-d])",
             text,
@@ -65,7 +67,18 @@ def parse_response_rsa(response_text):
 
         if m:
             chosen = m.group(1).lower()
+
         else:
-            chosen = None
+            # 3. L1
+            m = re.search(
+                r"\bL1\b\s*[:=-]?\s*([a-d])",
+                text,
+                re.IGNORECASE,
+            )
+
+            if m:
+                chosen = m.group(1).lower()
+            else:
+                chosen = None
 
     return chosen, text
