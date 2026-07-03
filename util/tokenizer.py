@@ -13,7 +13,7 @@ No model weights are downloaded — tokenizer files only.
 import pandas as pd
 import yaml
 from transformers import AutoTokenizer, GPT2Tokenizer
-from constants import (MAX_CONTEXT, MODELS, PROMPT_FILES)
+from util.constants import (MAX_CONTEXT, MODELS, PROMPT_FILES)
 
 # ─────────────────────────────────────────────────────────
 # PROMPT BUILDER
