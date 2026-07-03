@@ -12,5 +12,5 @@ source .env
 python -m venv ~/envs/irony
 source ~/envs/irony/bin/activate
 pip install -r requirements.txt
-hf auth login --token HF_TOKEN
+hf auth login --token "$HF_TOKEN"
 python run_inference.py
