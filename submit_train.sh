@@ -6,6 +6,7 @@
 #SBATCH --mem=15000
 #SBATCH --partition=kisski
 #SBATCH --gpus=A100:1
+module load spack
 spack load miniconda
 source .env
 
