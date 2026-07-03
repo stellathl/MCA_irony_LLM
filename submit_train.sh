@@ -4,8 +4,8 @@
 #SBATCH --ntasks=1
 #SBATCH --threads-per-core=1
 #SBATCH --mem=15000
-#SBATCH --partition=gpu
-#SBATCH --gres=gpu:A100:1
+#SBATCH --partition=kisski
+#SBATCH --gpus=A100:1
 spack load miniconda
 source .env
 
