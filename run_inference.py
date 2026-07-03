@@ -235,9 +235,9 @@ def generate_predictions(
     df = pd.DataFrame(records)
 
     # ── Parse responses ───────────────────────────────────
-    parsed = df["output"].apply(parse_response)
-    df["chosen_option"] = [p[0] for p in parsed]  # Karıştırılmış haldeki selections (1, 2, 3, 4)
-    df["reasoning"]     = [p[1] for p in parsed]
+    parsed = df.apply(lambda row: parse_response(row['output'], row['prompt_type']), axis=1)
+    df['chosen_option'] = [p[0] for p in parsed]
+    df['reasoning']     = [p[1] for p in parsed]
 
     # Convert shuffled selection → ORIGINAL selection
     def convert_to_original_option(row):
