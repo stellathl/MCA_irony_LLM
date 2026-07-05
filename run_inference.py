@@ -238,7 +238,7 @@ def generate_predictions(
     if prompt_type.lower() == "rsa":
         parsed = df["output"].apply(parse_response_rsa)
     else:
-            parsed = df.apply(lambda row: parse_response(row['output'], row['prompt_type']), axis=1)
+        parsed = df["output"].apply(parse_response)
 
     df["chosen_option"] = [p[0] for p in parsed]  # comapred selections (1, 2, 3, 4)
     df["reasoning"]     = [p[1] for p in parsed]
