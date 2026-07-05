@@ -43,13 +43,11 @@ def build_prompt(row, condition, template_file, prompt_type="general"):
     # ── General prompt parameters ──
     if prompt_type.lower() == "general":
         question_line = template.get("question", "").format(pronoun=row.get("pronoun", ""))
-        cg_framing = str(row.get("cg_framing", "")).strip()
         
         return task.format(
             context=row.get("context", ""),
             target_utterance=row.get("target_utterance", ""),
             question=question_line,
-            cg_framing=cg_framing,
             speaker=row.get("speaker", ""),
             options=row.get("answering_options", "")
         )
@@ -63,11 +61,13 @@ def build_prompt(row, condition, template_file, prompt_type="general"):
             options=row.get("answering_options", "")
         )
     
-    # ── Default ──
+    # ── Default ── (reasoning)
     else:
+        question_line = template.get("question", "").format(pronoun=row.get("pronoun", ""))
         return task.format(
             context=row.get("context", ""),
             speaker=row.get("speaker", ""),
+            question=question_line,
             target_utterance=row.get("target_utterance", ""),
             options=row.get("answering_options", "")
         )
