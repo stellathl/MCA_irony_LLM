@@ -15,17 +15,18 @@ PROMPT_FILES = {
     "rsa": "rsa_prompt.yaml",
     "general": "general_prompt.yaml",
     "general_reasoning": "general_prompt_with_reasoning.yaml"
-    #"rsa": "rsa_prompt.yaml",
 }
 
+SHARED_SEEDS = 1
+
 SEEDS = {
-    "Gemma-3-1B"         : 1,
-    "Gemma-3-4B"         : 42,
-    "Mistral-7B-Instruct": 77,
-    "OLMo-2-7B"          : 123,
-    "Qwen3-8B"           : 256,
-    "Gpt2-1.5B"      : 999,
-    "Llama-3-8B"         : 1337,
+    "Gemma-3-1B"         : SHARED_SEEDS,
+    "Gemma-3-4B"         : SHARED_SEEDS,
+    "Mistral-7B-Instruct": SHARED_SEEDS,
+    "OLMo-2-7B"          : SHARED_SEEDS,
+    "Qwen3-8B"           : SHARED_SEEDS,
+    "Gpt2-1.5B"      : SHARED_SEEDS,
+    "Llama-3-8B"         : SHARED_SEEDS,
 }
 
 # ─────────────────────────────────────────────────────────
