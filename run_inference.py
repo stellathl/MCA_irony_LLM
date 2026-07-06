@@ -149,7 +149,7 @@ def load_model(model_name):
 
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "right"
-
+    print("gpu?cpu?",next(model.parameters()).device)
     return model, tokenizer
 
 

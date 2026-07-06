@@ -14,12 +14,18 @@ MODELS = {
 PROMPT_FILES = {
     "rsa": "rsa_prompt.yaml",
     "general": "general_prompt.yaml",
+<<<<<<< Updated upstream
     "general_reasoning": "general_prompt_with_reasoning.yaml"
+=======
+    #"general_reasoning": "general_prompt_with_reasoning.yaml"
+    #"rsa": "rsa_prompt.yaml",
+>>>>>>> Stashed changes
 }
 
 SHARED_SEEDS = 1
 
 SEEDS = {
+<<<<<<< Updated upstream
     "Gemma-3-1B"         : SHARED_SEEDS,
     "Gemma-3-4B"         : SHARED_SEEDS,
     "Mistral-7B-Instruct": SHARED_SEEDS,
@@ -41,3 +47,13 @@ MAX_CONTEXT = {
     "Gpt2-1.5B":            1_024,
     "Llama-3-8B":          131_072,
 }
+=======
+    "Gemma-3-1B"         : 1,
+    "Gemma-3-4B"         : 42,
+    "Mistral-7B-Instruct": 77,
+    "OLMo-2-7B"          : 123,
+    "Qwen3-8B"           : 256,
+    "ModernBERT-8B"      : 999,
+    "Llama-3-8B"         : 1337,
+}
+>>>>>>> Stashed changes
