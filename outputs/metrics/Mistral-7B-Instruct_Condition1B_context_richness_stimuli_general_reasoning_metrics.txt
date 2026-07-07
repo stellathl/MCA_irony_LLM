@@ -1,0 +1,32 @@
+Model      : Mistral-7B-Instruct
+Dataset    : Condition1B_context_richness_stimuli
+Prompt Type: general_reasoning
+==================================================
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 144     0.278      0.130   0.251 0.168
+ non-ironic 144     0.229      0.113   0.197 0.135
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 72     0.222      0.108   0.211 0.137
+    ambiguous  non-ironic 72     0.208      0.104   0.176 0.124
+  unambiguous      ironic 72     0.333      0.153   0.290 0.198
+  unambiguous  non-ironic 72     0.250      0.123   0.218 0.146
+
+==================================================
+--- ORIGINAL OPTION DISTRIBUTION ---
+==================================================
+
+Original Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+              a              204       56        148      27.5%       70.8%
+              b               80       17         63      21.2%       27.8%
+              c                2        0          2       0.0%        0.7%
+              d                2        0          2       0.0%        0.7%
+
+Selection Distribution:
+  Option a: 204 selections ( 70.8%)
+  Option b:  80 selections ( 27.8%)
+  Option c:   2 selections (  0.7%)
+  Option d:   2 selections (  0.7%)
