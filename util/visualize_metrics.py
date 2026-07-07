@@ -251,7 +251,7 @@ def plot_interaction_heatmaps(interaction_df: pd.DataFrame, plots_dir: str):
         r, c = divmod(idx, n_cols)
         ax = axes[r][c]
         sub = interaction_df[interaction_df["run_label"] == run_label]
-        pivot = sub.pivot(index="context_level", columns="irony_label", values="accuracy")
+        pivot = sub.pivot_table(index="context_level", columns="irony_label", values="accuracy", aggfunc="mean")
         sns.heatmap(pivot, annot=True, fmt=".2f", vmin=0, vmax=1, cmap="YlGnBu", ax=ax, cbar=idx == 0)
         ax.set_title(run_label, fontsize=12)
         ax.set_xlabel("")
