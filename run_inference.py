@@ -3,6 +3,9 @@ import gc
 import random
 import torch
 import pandas as pd
+import subprocess
+import sys
+from pathlib import Path
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
@@ -456,3 +459,14 @@ if __name__ == "__main__":
             import traceback
             traceback.print_exc()
             continue
+
+metrics_dir = Path("outputs/metrics")
+
+subprocess.run(
+    [
+        sys.executable,
+        "util/visualize_metrics.py",
+        str(metrics_dir),
+    ],
+    check=True,
+)
