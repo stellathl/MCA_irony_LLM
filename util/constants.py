@@ -14,7 +14,7 @@ MODELS = {
 PROMPT_FILES = {
     "rsa": "rsa_prompt.yaml",
     "general": "general_prompt.yaml",
-    "general_reasoning": "general_prompt_with_reasoning.yaml
+    "general_reasoning": "general_prompt_with_reasoning.yaml"
 }
 
 SHARED_SEEDS = 1
