@@ -1,4 +1,4 @@
-Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,chosen_option,reasoning,chosen_original_option
+Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,chosen_option,reasoning,chosen_original_option,rsa_l0,rsa_s1,rsa_l1,rsa_final,rsa_raw_text
 C1_01_A_I,C1_01,113,1,ambiguous,ironic,c,The cat was really hard to lift up.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -35,7 +35,10 @@ Final Answer: a
 ","['c', 'd', 'b', 'a']",1,A_I,a,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): c
-Final Answer: a",c
+Final Answer: a",c,a,b,c,a,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): c
+Final Answer: a"
 C1_02_A_NI,C1_02,63,1,ambiguous,non-ironic,b,The dog was really heavy to pick up.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -71,7 +74,10 @@ Final Answer:
 Final Answer: b","['d', 'a', 'b', 'c']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_03_UA_I,C1_03,216,1,unambiguous,ironic,d,Getting their friend off the ground took a lot of effort.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -108,7 +114,10 @@ Final Answer: b
 ","['a', 'c', 'd', 'b']",1,UA_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",c
+Final Answer: b",c,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_04_UA_NI,C1_04,242,1,unambiguous,non-ironic,d,Holding my nephew took all my strength.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -140,9 +149,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): d","['b', 'c', 'd', 'a']",1,UA_NI,d,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): d","['b', 'c', 'd', 'a']",1,UA_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): d",a
+3. Pragmatic Listener (L1): d",,a,b,d,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): d"
 C1_05_A_I,C1_05,122,1,ambiguous,ironic,c,The cake tasted really bad.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -174,9 +185,15 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a","['a', 'd', 'b', 'c']",1,A_I,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a
+Final Answer: a
+","['a', 'd', 'b', 'c']",1,A_I,a,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a",a
+3. Pragmatic Listener (L1): a
+Final Answer: a",a,a,a,a,a,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): a
+3. Pragmatic Listener (L1): a
+Final Answer: a"
 C1_06_A_NI,C1_06,132,1,ambiguous,non-ironic,c,The medicine tasted surprisingly pleasant.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -213,7 +230,10 @@ Final Answer: c
 ","['d', 'b', 'a', 'c']",1,A_NI,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_07_UA_I,C1_07,249,1,unambiguous,ironic,c,The smoothie was thoroughly nasty.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -249,7 +269,10 @@ Final Answer:
 Final Answer: b","['c', 'a', 'b', 'd']",1,UA_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_08_UA_NI,C1_08,96,1,unambiguous,non-ironic,a,They liked every single bite of the burger.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -281,9 +304,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a","['a', 'd', 'c', 'b']",1,UA_NI,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a","['a', 'd', 'c', 'b']",1,UA_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a",a
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): a
+3. Pragmatic Listener (L1): a"
 C1_09_A_I,C1_09,218,1,ambiguous,ironic,a,The babysitter was not taking good care of the kids.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -319,7 +344,10 @@ Final Answer:
 Final Answer: b","['b', 'a', 'd', 'c']",1,A_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_10_A_NI,C1_10,288,1,ambiguous,non-ironic,d,The police officer made them feel very safe.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -357,7 +385,11 @@ b","['d', 'c', 'b', 'a']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
 Final Answer:
-b",c
+b",c,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer:
+b"
 C1_11_UA_I,C1_11,58,1,unambiguous,ironic,d,Seeing the pilot made her feel even more anxious.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -393,7 +425,10 @@ Final Answer:
 Final Answer: b","['d', 'a', 'c', 'b']",1,UA_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_12_UA_NI,C1_12,128,1,unambiguous,non-ironic,b,His father showed no fear at all.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -431,7 +466,11 @@ b","['d', 'a', 'c', 'b']",1,UA_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
 Final Answer:
-b",a
+b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer:
+b"
 C1_13_A_I,C1_13,102,1,ambiguous,ironic,a,"His girlfriend clearly looked worn out, not refreshed at all.",Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -468,7 +507,10 @@ Final Answer: c
 ","['b', 'd', 'a', 'c']",1,A_I,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_14_A_NI,C1_14,135,1,ambiguous,non-ironic,d,Her colleague seemed very energetic today.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -500,9 +542,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): d","['d', 'c', 'b', 'a']",1,A_NI,d,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): d","['d', 'c', 'b', 'a']",1,A_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): d",a
+3. Pragmatic Listener (L1): d",,a,b,d,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): d"
 C1_15_UA_I,C1_15,15,1,unambiguous,ironic,c,They felt really exhausted after the sleepover.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -539,7 +583,10 @@ Final Answer: c
 ","['c', 'd', 'b', 'a']",1,UA_I,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",b
+Final Answer: c",b,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_16_UA_NI,C1_16,111,1,unambiguous,non-ironic,c,I felt fully prepared and ready for the exam.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -576,7 +623,10 @@ Final Answer: c
 ","['b', 'd', 'a', 'c']",1,UA_NI,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_17_A_I,C1_17,241,1,ambiguous,ironic,c,Her idea was outdated.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -608,9 +658,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a","['a', 'd', 'b', 'c']",1,A_I,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a","['a', 'd', 'b', 'c']",1,A_I,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a",a
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): a
+3. Pragmatic Listener (L1): a"
 C1_18_A_NI,C1_18,134,1,ambiguous,non-ironic,a,He found the approach genuinely new and creative.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -647,7 +699,10 @@ Final Answer: b
 ","['a', 'b', 'c', 'd']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",b
+Final Answer: b",b,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_19_UA_I,C1_19,209,1,unambiguous,ironic,a,"To her, the tradition felt stale and long past its use.",Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -684,7 +739,10 @@ Final Answer: c
 ","['b', 'd', 'a', 'c']",1,UA_I,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_20_UA_NI,C1_20,87,1,unambiguous,non-ironic,d,She liked the smell of her car.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -716,9 +774,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a","['c', 'd', 'b', 'a']",1,UA_NI,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a","['c', 'd', 'b', 'a']",1,UA_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a",c
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): a
+3. Pragmatic Listener (L1): a"
 C1_21_A_I,C1_21,247,1,ambiguous,ironic,b,The birthday party was a disappointment.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -755,7 +815,10 @@ Final Answer: b
 ","['c', 'b', 'd', 'a']",1,A_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",b
+Final Answer: b",b,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_22_A_NI,C1_22,8,1,ambiguous,non-ironic,d,The wedding was a beautiful and enchanting occasion.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -792,7 +855,10 @@ Final Answer: d
 ","['c', 'd', 'b', 'a']",1,A_NI,d,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): d
 3. Pragmatic Listener (L1): d
-Final Answer: d",a
+Final Answer: d",a,a,d,d,d,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): d
+3. Pragmatic Listener (L1): d
+Final Answer: d"
 C1_23_UA_I,C1_23,4,1,unambiguous,ironic,d,They had found the film funny from start to finish.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -829,7 +895,10 @@ Final Answer: c
 ","['c', 'd', 'a', 'b']",1,UA_I,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_24_UA_NI,C1_24,21,1,unambiguous,non-ironic,c,The message brought good news.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -866,7 +935,10 @@ Final Answer: c
 ","['c', 'b', 'a', 'd']",1,UA_NI,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_25_A_I,C1_25,181,1,ambiguous,ironic,c,Her exam answers were embarrassingly poor.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -905,7 +977,11 @@ a
 2. Informative Speaker (S1): a
 3. Pragmatic Listener (L1): a
 Final Answer:
-a",a
+a",a,a,a,a,a,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): a
+3. Pragmatic Listener (L1): a
+Final Answer:
+a"
 C1_26_A_NI,C1_26,133,1,ambiguous,non-ironic,a,They were genuinely fortunate to have such a strong suggestion.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -937,13 +1013,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): d
-Final Answer:
-d","['a', 'b', 'c', 'd']",1,A_NI,d,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): d","['a', 'b', 'c', 'd']",1,A_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): d
-Final Answer:
-d",d
+3. Pragmatic Listener (L1): d",,a,b,d,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): d"
 C1_27_UA_I,C1_27,120,1,unambiguous,ironic,c,His argument was weak and poorly constructed.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -975,10 +1049,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a
-","['c', 'd', 'b', 'a']",1,UA_I,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a","['c', 'd', 'b', 'a']",1,UA_I,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a",c
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): a
+3. Pragmatic Listener (L1): a"
 C1_28_UA_NI,C1_28,238,1,unambiguous,non-ironic,c,She believed that his business plan would be successful.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1010,9 +1085,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): b","['b', 'c', 'a', 'd']",1,UA_NI,b,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): b","['b', 'c', 'a', 'd']",1,UA_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): b",c
+3. Pragmatic Listener (L1): b",,a,b,b,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b"
 C1_29_A_I,C1_29,50,1,ambiguous,ironic,c,The restaurant visit was a real disappointment.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1049,7 +1126,10 @@ Final Answer: d
 ","['d', 'c', 'b', 'a']",1,A_I,d,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): d
-Final Answer: d",a
+Final Answer: d",a,a,b,d,d,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): d
+Final Answer: d"
 C1_30_A_NI,C1_30,68,1,ambiguous,non-ironic,c,The buffet was a rich.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1085,7 +1165,10 @@ Final Answer:
 Final Answer: b","['c', 'b', 'a', 'd']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",b
+Final Answer: b",b,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_31_UA_I,C1_31,27,1,unambiguous,ironic,b,There was barely anything to eat; they left unsatisfied.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1122,7 +1205,10 @@ Final Answer: c
 ","['c', 'b', 'a', 'd']",1,UA_I,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_32_UA_NI,C1_32,73,1,unambiguous,non-ironic,c,His plate had been full with food and he ate it all up.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1159,7 +1245,10 @@ Final Answer: c
 ","['b', 'd', 'a', 'c']",1,UA_NI,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_33_A_I,C1_33,199,1,ambiguous,ironic,a,The library was far too noisy to concentrate.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1196,7 +1285,10 @@ Final Answer: a
 ","['b', 'd', 'c', 'a']",1,A_I,a,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): c
-Final Answer: a",b
+Final Answer: a",b,a,b,c,a,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): c
+Final Answer: a"
 C1_34_A_NI,C1_34,283,1,ambiguous,non-ironic,b,The concert was surprisingly quiet.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1234,7 +1326,11 @@ b","['b', 'a', 'c', 'd']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
 Final Answer:
-b",a
+b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer:
+b"
 C1_35_UA_I,C1_35,117,1,unambiguous,ironic,d,The movie was very loud.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1270,7 +1366,10 @@ Final Answer:
 Final Answer: b","['c', 'a', 'd', 'b']",1,UA_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_36_UA_NI,C1_36,214,1,unambiguous,non-ironic,b,He thinks that his neighbours' are having a great party with music.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1308,7 +1407,11 @@ b","['b', 'a', 'd', 'c']",1,UA_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
 Final Answer:
-b",a
+b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer:
+b"
 C1_37_A_I,C1_37,282,1,ambiguous,ironic,a,The questions were straightforward and required little effort.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1347,7 +1450,11 @@ c
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): c
 Final Answer:
-c",a
+c",a,a,b,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): c
+Final Answer:
+c"
 C1_38_A_NI,C1_38,194,1,ambiguous,non-ironic,b,Booking the appointment was straightforward and effortless.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1383,7 +1490,10 @@ Final Answer:
 Final Answer: b","['c', 'a', 'b', 'd']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_39_UA_I,C1_39,80,1,unambiguous,ironic,a,"Anyone could have done the task, no special abilities required.",Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1416,9 +1526,11 @@ Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): d
-","['b', 'c', 'd', 'a']",1,UA_I,d,"1. Literal Listener (L0): a
+","['b', 'c', 'd', 'a']",1,UA_I,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): d",a
+3. Pragmatic Listener (L1): d",,a,b,d,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): d"
 C1_40_UA_NI,C1_40,145,1,unambiguous,non-ironic,b,Making the payment was a smooth and effortless experience.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1454,7 +1566,10 @@ Final Answer:
 Final Answer: b","['b', 'a', 'c', 'd']",1,UA_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_41_A_I,C1_41,206,1,ambiguous,ironic,b,Her kitchen was a mess.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1490,7 +1605,10 @@ Final Answer:
 Final Answer: b","['d', 'b', 'c', 'a']",1,A_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",b
+Final Answer: b",b,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_42_A_NI,C1_42,223,1,ambiguous,non-ironic,a,The room was tidied up well before it got too messy.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1522,9 +1640,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a","['a', 'd', 'c', 'b']",1,A_NI,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a","['a', 'd', 'c', 'b']",1,A_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a",a
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): a
+3. Pragmatic Listener (L1): a"
 C1_43_UA_I,C1_43,95,1,unambiguous,ironic,a,The street was far from pretty.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1561,7 +1681,10 @@ Final Answer: a
 ","['b', 'c', 'd', 'a']",1,UA_I,a,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): c
-Final Answer: a",b
+Final Answer: a",b,a,b,c,a,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): c
+Final Answer: a"
 C1_44_UA_NI,C1_44,12,1,unambiguous,non-ironic,a,The floor was very clean.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1598,7 +1721,10 @@ Final Answer: d
 ","['a', 'c', 'd', 'b']",1,UA_NI,d,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): d
 3. Pragmatic Listener (L1): d
-Final Answer: d",b
+Final Answer: d",b,a,d,d,d,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): d
+3. Pragmatic Listener (L1): d
+Final Answer: d"
 C1_45_A_I,C1_45,115,1,ambiguous,ironic,b,The movie wasn't amusing.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1635,7 +1761,10 @@ Final Answer: c
 ","['d', 'b', 'a', 'c']",1,A_I,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_46_A_NI,C1_46,36,1,ambiguous,non-ironic,a,The musical left her deeply moved.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1672,7 +1801,10 @@ Final Answer: b
 ","['a', 'c', 'b', 'd']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",c
+Final Answer: b",c,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_47_UA_I,C1_47,79,1,unambiguous,ironic,a,The situation was far too serious.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1705,11 +1837,16 @@ Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b
-","['b', 'd', 'c', 'a']",1,UA_I,b,"1. Literal Listener (L0): a
+Final Answer:
+b","['b', 'd', 'c', 'a']",1,UA_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",d
+Final Answer:
+b",d,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer:
+b"
 C1_48_UA_NI,C1_48,130,1,unambiguous,non-ironic,a,The talk contained humour.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1742,9 +1879,11 @@ Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): d
-","['a', 'c', 'd', 'b']",1,UA_NI,d,"1. Literal Listener (L0): a
+","['a', 'c', 'd', 'b']",1,UA_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): d",b
+3. Pragmatic Listener (L1): d",,a,b,d,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): d"
 C1_49_A_I,C1_49,184,1,ambiguous,ironic,c,The airport experience was thoroughly unpleasant.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1781,7 +1920,10 @@ Final Answer: c
 ","['a', 'd', 'b', 'c']",1,A_I,c,"1. Literal Listener (L0): d
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",b
+Final Answer: c",b,d,c,c,c,"1. Literal Listener (L0): d
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_50_A_NI,C1_50,39,1,ambiguous,non-ironic,b,The exam results were impressive,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1817,7 +1959,10 @@ Final Answer:
 Final Answer: b","['d', 'a', 'c', 'b']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_51_UA_I,C1_51,42,1,unambiguous,ironic,b,They found the play entertaining.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1850,11 +1995,13 @@ Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b
-","['c', 'b', 'd', 'a']",1,UA_I,b,"1. Literal Listener (L0): a
+Final Answer: b","['c', 'b', 'd', 'a']",1,UA_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",b
+Final Answer: b",b,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_52_UA_NI,C1_52,110,1,unambiguous,non-ironic,c,The rmeal was a genuinely enjoyable experience.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1891,7 +2038,10 @@ Final Answer: c
 ","['b', 'd', 'a', 'c']",1,UA_NI,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_53_A_I,C1_53,94,1,ambiguous,ironic,b,The ground was dried out.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1923,9 +2073,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): d
-3. Pragmatic Listener (L1): d","['c', 'b', 'd', 'a']",1,A_I,d,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): d","['c', 'b', 'd', 'a']",1,A_I,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): d
-3. Pragmatic Listener (L1): d",a
+3. Pragmatic Listener (L1): d",,a,d,d,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): d
+3. Pragmatic Listener (L1): d"
 C1_54_A_NI,C1_54,141,1,ambiguous,non-ironic,a,The garden was struggling without any water.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1961,7 +2113,10 @@ Final Answer:
 Final Answer: b","['a', 'b', 'c', 'd']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",b
+Final Answer: b",b,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_55_UA_I,C1_55,108,1,unambiguous,ironic,c,The plants had been wilting due to lack of water.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1998,7 +2153,10 @@ Final Answer: c
 ","['c', 'd', 'b', 'a']",1,UA_I,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",b
+Final Answer: c",b,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_56_UA_NI,C1_56,101,1,unambiguous,non-ironic,a,Her hair was soaking wet.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2030,9 +2188,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a","['a', 'b', 'd', 'c']",1,UA_NI,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a","['a', 'b', 'd', 'c']",1,UA_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a",a
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): a
+3. Pragmatic Listener (L1): a"
 C1_57_A_I,C1_57,23,1,ambiguous,ironic,b,I thought the outfit was ugly.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2068,7 +2228,10 @@ Final Answer:
 Final Answer: b","['a', 'b', 'd', 'c']",1,A_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",b
+Final Answer: b",b,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_58_A_NI,C1_58,33,1,ambiguous,non-ironic,d,She admired the car.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2101,11 +2264,14 @@ Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): c
-Final Answer: c
-","['c', 'd', 'b', 'a']",1,A_NI,c,"1. Literal Listener (L0): a
+Final Answer: a
+","['c', 'd', 'b', 'a']",1,A_NI,a,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): c
-Final Answer: c",b
+Final Answer: a",c,a,b,c,a,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): c
+Final Answer: a"
 C1_59_UA_I,C1_59,175,1,unambiguous,ironic,c,The painting was genuinely beautiful.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2141,7 +2307,10 @@ Final Answer:
 Final Answer: b","['c', 'a', 'b', 'd']",1,UA_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_60_UA_NI,C1_60,19,1,unambiguous,non-ironic,a,They thought the bird was beautiful.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2173,9 +2342,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a","['a', 'd', 'b', 'c']",1,UA_NI,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a","['a', 'd', 'b', 'c']",1,UA_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a",a
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): a
+3. Pragmatic Listener (L1): a"
 C1_61_A_I,C1_61,85,1,ambiguous,ironic,a,The kettle was expensive.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2212,7 +2383,10 @@ Final Answer: c
 ","['b', 'c', 'a', 'd']",1,A_I,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_62_A_NI,C1_62,13,1,ambiguous,non-ironic,b,The vase was worth a lot of money.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2249,7 +2423,10 @@ Final Answer:
 Final Answer: b","['c', 'a', 'd', 'b']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_63_UA_I,C1_63,189,1,unambiguous,ironic,b,The perfume was not pricy.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2281,12 +2458,18 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): b
-Final Answer: b
-","['a', 'b', 'c', 'd']",1,UA_I,b,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): d
+Final Answer:
+d
+","['a', 'b', 'c', 'd']",1,UA_I,d,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): b
-Final Answer: b",b
+3. Pragmatic Listener (L1): d
+Final Answer:
+d",d,a,b,d,d,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): d
+Final Answer:
+d"
 C1_64_UA_NI,C1_64,285,1,unambiguous,non-ironic,a,The bag was worth a lot.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2318,9 +2501,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a","['a', 'c', 'd', 'b']",1,UA_NI,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a","['a', 'c', 'd', 'b']",1,UA_NI,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): a
-3. Pragmatic Listener (L1): a",a
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): a
+3. Pragmatic Listener (L1): a"
 C1_65_A_I,C1_65,61,1,ambiguous,ironic,d,The house felt spacious and huge.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2357,7 +2542,10 @@ Final Answer: c
 ","['d', 'c', 'a', 'b']",1,A_I,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_66_A_NI,C1_66,149,1,ambiguous,non-ironic,c,They thought the concert was huge.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2394,7 +2582,10 @@ Final Answer: c
 ","['d', 'c', 'a', 'b']",1,A_NI,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_67_UA_I,C1_67,193,1,unambiguous,ironic,b,She thought the spider was huge.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2426,9 +2617,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): b","['a', 'b', 'c', 'd']",1,UA_I,b,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): b","['a', 'b', 'c', 'd']",1,UA_I,,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
-3. Pragmatic Listener (L1): b",b
+3. Pragmatic Listener (L1): b",,a,b,b,,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b"
 C1_68_UA_NI,C1_68,34,1,unambiguous,non-ironic,b,I thought the dog was huge.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2461,10 +2654,14 @@ Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b","['c', 'a', 'd', 'b']",1,UA_NI,b,"1. Literal Listener (L0): a
+Final Answer: b
+","['c', 'a', 'd', 'b']",1,UA_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_69_A_I,C1_69,88,1,ambiguous,ironic,d,The pool was super warm.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2500,7 +2697,10 @@ Final Answer:
 Final Answer: b","['c', 'a', 'd', 'b']",1,A_I,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_70_A_NI,C1_70,160,1,ambiguous,non-ironic,b,The weather conditions were perfect.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2533,12 +2733,13 @@ Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer:
-b","['b', 'a', 'd', 'c']",1,A_NI,b,"1. Literal Listener (L0): a
+Final Answer: b","['b', 'a', 'd', 'c']",1,A_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer:
-b",a
+Final Answer: b",a,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
 C1_71_UA_I,C1_71,154,1,unambiguous,ironic,d,The room was really warm.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2575,7 +2776,10 @@ Final Answer: c
 ","['c', 'd', 'a', 'b']",1,UA_I,c,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): c
 3. Pragmatic Listener (L1): c
-Final Answer: c",a
+Final Answer: c",a,a,c,c,c,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): c
+3. Pragmatic Listener (L1): c
+Final Answer: c"
 C1_72_UA_NI,C1_72,5,1,unambiguous,non-ironic,d,Her coffee was delicious.,Gemma-3-1B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2611,4 +2815,7 @@ Final Answer:
 Final Answer: b","['d', 'c', 'b', 'a']",1,UA_NI,b,"1. Literal Listener (L0): a
 2. Informative Speaker (S1): b
 3. Pragmatic Listener (L1): b
-Final Answer: b",c
+Final Answer: b",c,a,b,b,b,"1. Literal Listener (L0): a
+2. Informative Speaker (S1): b
+3. Pragmatic Listener (L1): b
+Final Answer: b"
