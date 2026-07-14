@@ -11,6 +11,7 @@ from transformers import (
     AutoTokenizer,
     pipeline
 )
+from util.confidence import get_option_confidence
 from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, letter_to_pos, parse_options, pos_to_letter, save_combined
 from util.parse import parse_response, parse_response_rsa
 from util.tokenizer import build_prompt
@@ -199,6 +200,17 @@ def generate_predictions(
                 )
                 generated_text = result[0]["generated_text"][len(formatted_prompt):]
 
+                try:
+                    confidence_dist, option_logits_dist = get_option_confidence(
+                        model=pipe.model,
+                        tokenizer=tokenizer,
+                        formatted_prompt=formatted_prompt,
+                        generated_text=generated_text
+                    )
+                except Exception as e:
+                    print(f"Confidence extraction failed on record #{i}: {e}")
+                    confidence_dist = {l: None for l in ("a", "b", "c", "d")}
+
                 print(f"INPUT :\n{prompt}")
                 print(f"OUTPUT:\n{generated_text}")
 
@@ -228,6 +240,9 @@ def generate_predictions(
                 "original_option_mapping": record.get("original_option_mapping", ""),
                 "run"                : record.get("run", ""),       
                 "condition"          : record.get("condition", ""), 
+                "option_logits_raw": str(option_logits_dist),
+                "confidence_dist": str(confidence_dist),  # store as string, parse with ast.literal_eval later
+                "confidence_top_prob": max(v for v in confidence_dist.values() if v is not None),
             })
 
             if i % 5 == 0:
