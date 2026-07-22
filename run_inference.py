@@ -14,6 +14,7 @@ from transformers import (
 from util.shuffle_options import build_run_splits, format_options, get_correct_option_text, letter_to_pos, parse_options, pos_to_letter, save_combined
 from util.parse import parse_response, parse_response_rsa, add_rsa_columns
 from util.tokenizer import build_prompt
+from util.confidence import get_option_confidence
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
     save_metrics, load_from_combined_csv, load_from_run_csvs, save_rsa_metrics
@@ -479,13 +480,3 @@ if __name__ == "__main__":
             traceback.print_exc()
             continue
 
-metrics_dir = Path("outputs/metrics")
-
-subprocess.run(
-    [
-        sys.executable,
-        "util/visualize_metrics.py",
-        str(metrics_dir),
-    ],
-    check=True,
-)
