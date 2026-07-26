@@ -1,4 +1,4 @@
-Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,option_logits_raw,confidence_dist,confidence_top_prob,chosen_option,reasoning,chosen_original_option
+Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,option_logits_raw,confidence_dist,confidence_top_prob,chosen_option,reasoning,chosen_original_option,rsa_l0,rsa_s1,rsa_l1,rsa_final,rsa_raw_text
 C1_01_A_I,C1_01,113,1,ambiguous,ironic,c,The cat was really hard to lift up.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He lifted the overweight cat from the table.
 Target utterance: He said:  """"That was easy!""""
@@ -9,7 +9,7 @@ c. The cat was really hard to lift up.
 d. The cat was easy to lift up.
 Answer:
 ","d
-","['c', 'd', 'b', 'a']",1,A_I,"{'a': 27.0, 'b': 23.625, 'c': 24.75, 'd': 40.25}","{'a': 1.760342797751946e-06, 'b': 6.023562093560031e-08, 'c': 1.8553876657279034e-07, 'd': 0.9999979734420776}",0.9999979734420776,d,,a
+","['c', 'd', 'b', 'a']",1,A_I,"{'a': 27.625, 'b': 24.25, 'c': 25.5, 'd': 41.25}","{'a': 1.2098655588488327e-06, 'b': 4.139932130442503e-08, 'c': 1.4449783236614167e-07, 'd': 0.9999986886978149}",0.9999986886978149,d,,a,,,,,d
 C1_02_A_NI,C1_02,63,1,ambiguous,non-ironic,b,The dog was really heavy to pick up.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She picked up her overweight dog.
 Target utterance: She said: """"Heaviest dog ever.""""
@@ -20,7 +20,7 @@ c. The dog was very light to pick up.
 d. It was the heaviest package she ever carried.
 Answer:
 ","b
-","['d', 'a', 'b', 'c']",1,A_NI,"{'a': 27.0, 'b': 44.0, 'c': 27.25, 'd': 24.375}","{'a': 4.139937104241653e-08, 'b': 0.9999998807907104, 'c': 5.315784434856141e-08, 'd': 2.998960413336249e-09}",0.9999998807907104,b,,a
+","['d', 'a', 'b', 'c']",1,A_NI,"{'a': 27.375, 'b': 44.0, 'c': 27.25, 'd': 24.375}","{'a': 6.023573462243803e-08, 'b': 0.9999998807907104, 'c': 5.315784434856141e-08, 'd': 2.998960413336249e-09}",0.9999998807907104,b,,a,,,,,b
 C1_03_UA_I,C1_03,216,1,unambiguous,ironic,d,Getting their friend off the ground took a lot of effort.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They lift their obese friend.
 Target utterance: They said: """"Light as a feather.""""
@@ -31,7 +31,7 @@ c. They decided to go out for dinner with their friend.
 d. Getting their friend off the ground took a lot of effort.
 Answer:
 ","a
-","['a', 'c', 'd', 'b']",1,UA_I,"{'a': 43.75, 'b': 25.875, 'c': 29.75, 'd': 25.375}","{'a': 0.9999991655349731, 'b': 1.7257814732829502e-08, 'c': 8.315280410897685e-07, 'd': 1.0467392286273025e-08}",0.9999991655349731,a,,a
+","['a', 'c', 'd', 'b']",1,UA_I,"{'a': 43.25, 'b': 26.0, 'c': 29.75, 'd': 25.375}","{'a': 0.9999985694885254, 'b': 3.224182165695311e-08, 'c': 1.370957193103095e-06, 'd': 1.7257804074688465e-08}",0.9999985694885254,a,,a,,,,,a
 C1_04_UA_NI,C1_04,242,1,unambiguous,non-ironic,d,Holding my nephew took all my strength.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: I held my obese nephew in my arms.
 Target utterance: I said: """"Heavier than an elephant.""""
@@ -42,7 +42,7 @@ c. My nephew ate a burger that day.
 d. Holding my nephew took all my strength.
 Answer:
 ","d
-","['b', 'c', 'd', 'a']",1,UA_NI,"{'a': 26.875, 'b': 23.125, 'c': 24.25, 'd': 40.5}","{'a': 1.2098655588488327e-06, 'b': 2.8453310818576938e-08, 'c': 8.764236980596252e-08, 'd': 0.9999986886978149}",0.9999986886978149,d,,a
+","['b', 'c', 'd', 'a']",1,UA_NI,"{'a': 27.125, 'b': 23.5, 'c': 24.5, 'd': 40.75}","{'a': 1.2098655588488327e-06, 'b': 3.2241825209666786e-08, 'c': 8.764236980596252e-08, 'd': 0.9999986886978149}",0.9999986886978149,d,,a,,,,,d
 C1_05_A_I,C1_05,122,1,ambiguous,ironic,c,The cake tasted really bad.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She ate a palatable cake.
 Target utterance: She said: """"What an amazing flavour.""""
@@ -53,7 +53,7 @@ c. The cake tasted really bad.
 d. The soup smelled absolutely delicious
 Answer:
 ","a
-","['a', 'd', 'b', 'c']",1,A_I,"{'a': 41.25, 'b': 24.5, 'c': 28.375, 'd': 23.75}","{'a': 0.9999973773956299, 'b': 5.3157712898155296e-08, 'c': 2.5612819172238233e-06, 'd': 2.5109924806088202e-08}",0.9999973773956299,a,,a
+","['a', 'd', 'b', 'c']",1,A_I,"{'a': 41.5, 'b': 24.625, 'c': 28.375, 'd': 24.0}","{'a': 0.9999978542327881, 'b': 4.6911541318195304e-08, 'c': 1.9947294731537113e-06, 'd': 2.5109937240586078e-08}",0.9999978542327881,a,,a,,,,,a
 C1_06_A_NI,C1_06,132,1,ambiguous,non-ironic,c,The medicine tasted surprisingly pleasant.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He swallowed the medicine and found it palatable
 Target utterance: He said: """"Tastier than expected.""""
@@ -64,7 +64,7 @@ c. The medicine tasted surprisingly pleasant.
 d. The cake was tastier than expected.
 Answer:
 ","c
-","['d', 'b', 'a', 'c']",1,A_NI,"{'a': 20.625, 'b': 21.75, 'c': 38.25, 'd': 22.125}","{'a': 2.2159488466400035e-08, 'b': 6.825602838489431e-08, 'c': 0.9999998807907104, 'd': 9.931193289958173e-08}",0.9999998807907104,c,,a
+","['d', 'b', 'a', 'c']",1,A_NI,"{'a': 21.25, 'b': 22.375, 'c': 38.5, 'd': 22.5}","{'a': 3.2241860736803574e-08, 'b': 9.931192579415438e-08, 'c': 0.9999997615814209, 'd': 1.1253514742293191e-07}",0.9999997615814209,c,,a,,,,,c
 C1_07_UA_I,C1_07,249,1,unambiguous,ironic,c,The smoothie was thoroughly nasty.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: I took a sip of my smoothie and found it delicious.
 Target utterance: I said: """"What a treat.""""
@@ -75,7 +75,7 @@ c. The smoothie was thoroughly nasty.
 d. She was looking for a new smoothie recipe.
 Answer:
 ","b
-","['c', 'a', 'b', 'd']",1,UA_I,"{'a': 27.375, 'b': 44.25, 'c': 27.375, 'd': 24.0}","{'a': 4.691163368875095e-08, 'b': 0.9999998807907104, 'c': 4.691163368875095e-08, 'd': 1.605227839540646e-09}",0.9999998807907104,b,,a
+","['c', 'a', 'b', 'd']",1,UA_I,"{'a': 26.75, 'b': 43.5, 'c': 27.125, 'd': 23.625}","{'a': 5.315784434856141e-08, 'b': 0.9999998807907104, 'c': 7.734421103577915e-08, 'd': 2.335592830249311e-09}",0.9999998807907104,b,,a,,,,,b
 C1_08_UA_NI,C1_08,96,1,unambiguous,non-ironic,a,They liked every single bite of the burger.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They ate a delicious burger.
 Target utterance: They said: """"This burger tasted like heaven.""""
@@ -86,7 +86,7 @@ c. The burger was the most expensive item on the menu.
 d. They could barely force themselves to swallow the burger.
 Answer:
 ","a
-","['a', 'd', 'c', 'b']",1,UA_NI,"{'a': 43.25, 'b': 26.625, 'c': 30.0, 'd': 26.125}","{'a': 0.9999980926513672, 'b': 6.023562804102767e-08, 'c': 1.7603429114387836e-06, 'd': 3.653475033615905e-08}",0.9999980926513672,a,,a
+","['a', 'd', 'c', 'b']",1,UA_NI,"{'a': 43.25, 'b': 26.875, 'c': 30.25, 'd': 26.25}","{'a': 0.999997615814209, 'b': 7.734403340009521e-08, 'c': 2.2603239813179243e-06, 'd': 4.1399275119147205e-08}",0.999997615814209,a,,a,,,,,a
 C1_09_A_I,C1_09,218,1,ambiguous,ironic,a,The babysitter was not taking good care of the kids.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They hired a fearless babysitter.
 Target utterance: They said: """"The kids are not safe at all.""""
@@ -97,7 +97,7 @@ c. The babysitter parked her car outside.
 d. The kids had very clean hands.
 Answer:
 ","a
-","['b', 'a', 'd', 'c']",1,A_I,"{'a': 42.0, 'b': 25.0, 'c': 29.375, 'd': 25.125}","{'a': 0.999996542930603, 'b': 4.139923248658306e-08, 'c': 3.288748530394514e-06, 'd': 4.6911477369349086e-08}",0.999996542930603,a,,b
+","['b', 'a', 'd', 'c']",1,A_I,"{'a': 42.5, 'b': 25.125, 'c': 29.25, 'd': 25.125}","{'a': 0.9999982118606567, 'b': 2.8453296607722223e-08, 'c': 1.760343138812459e-06, 'd': 2.8453296607722223e-08}",0.9999982118606567,a,,b,,,,,a
 C1_10_A_NI,C1_10,288,1,ambiguous,non-ironic,d,The police officer made them feel very safe.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They met a fearless police officer.
 Target utterance: They said: """"We felt so safe around you""""
@@ -107,8 +107,8 @@ b. They were sitting in a very safe seat.
 c. The police officer did not make them feel safe at all.
 d. The police officer made them feel very safe.
 Answer:
-","b
-","['d', 'c', 'b', 'a']",1,A_NI,"{'a': 28.25, 'b': 44.5, 'c': 28.375, 'd': 25.25}","{'a': 8.764246217651817e-08, 'b': 0.9999997615814209, 'c': 9.931192579415438e-08, 'd': 4.363461147960379e-09}",0.9999997615814209,b,,c
+","c
+","['d', 'c', 'b', 'a']",1,A_NI,"{'a': 25.375, 'b': 25.375, 'c': 43.5, 'd': 24.5}","{'a': 1.3440409674103648e-08, 'b': 1.3440409674103648e-08, 'c': 1.0, 'd': 5.602796449011294e-09}",1.0,c,,b,,,,,c
 C1_11_UA_I,C1_11,58,1,unambiguous,ironic,d,Seeing the pilot made her feel even more anxious.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She noticed the brave pilot before boarding.
 Target utterance: She said: """"That really shook me up.""""
@@ -119,7 +119,7 @@ c. She settled into her seat and fastened the belt.
 d. Seeing the pilot made her feel even more anxious.
 Answer:
 ","b
-","['d', 'a', 'c', 'b']",1,UA_I,"{'a': 26.5, 'b': 43.0, 'c': 27.25, 'd': 24.75}","{'a': 6.825602127946695e-08, 'b': 0.9999997615814209, 'c': 1.4449798868554353e-07, 'd': 1.1861117421574363e-08}",0.9999997615814209,b,,a
+","['d', 'a', 'c', 'b']",1,UA_I,"{'a': 27.0, 'b': 43.75, 'c': 27.75, 'd': 25.0}","{'a': 5.315784434856141e-08, 'b': 0.9999998807907104, 'c': 1.1253516163378663e-07, 'd': 7.194131956822503e-09}",0.9999998807907104,b,,a,,,,,b
 C1_12_UA_NI,C1_12,128,1,unambiguous,non-ironic,b,His father showed no fear at all.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He saw his brave father.
 Target utterance: He said: """"Brave as a lion""""
@@ -130,7 +130,7 @@ c. The lion prowled across the savannah.
 d. His father's face was full of fear.
 Answer:
 ","b
-","['d', 'a', 'c', 'b']",1,UA_NI,"{'a': 25.0, 'b': 42.25, 'c': 25.875, 'd': 23.375}","{'a': 3.224186428951725e-08, 'b': 0.9999998807907104, 'c': 7.734421103577915e-08, 'd': 6.3487992640887114e-09}",0.9999998807907104,b,,a
+","['d', 'a', 'c', 'b']",1,UA_NI,"{'a': 25.5, 'b': 43.0, 'c': 26.375, 'd': 23.625}","{'a': 2.510998697857758e-08, 'b': 0.9999998807907104, 'c': 6.023573462243803e-08, 'd': 3.850741503441668e-09}",0.9999998807907104,b,,a,,,,,b
 C1_13_A_I,C1_13,102,1,ambiguous,ironic,a,"His girlfriend clearly looked worn out, not refreshed at all.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He saw his energetic girlfriend.
 Target utterance: He said: """"You look like you've been awake since birth.""""
@@ -141,7 +141,7 @@ c. To him, his girlfriend looked well-rested and full of energy.
 d. He had just bought her a refreshing cold drink.
 Answer:
 ","a
-","['b', 'd', 'a', 'c']",1,A_I,"{'a': 41.25, 'b': 24.375, 'c': 29.125, 'd': 24.75}","{'a': 0.9999945163726807, 'b': 4.691138499879344e-08, 'c': 5.42221869181958e-06, 'd': 6.825565890267171e-08}",0.9999945163726807,a,,b
+","['b', 'd', 'a', 'c']",1,A_I,"{'a': 41.5, 'b': 24.75, 'c': 29.5, 'd': 25.125}","{'a': 0.9999936819076538, 'b': 5.315751394618928e-08, 'c': 6.144173767097527e-06, 'd': 7.734372786671884e-08}",0.9999936819076538,a,,b,,,,,a
 C1_14_A_NI,C1_14,135,1,ambiguous,non-ironic,d,Her colleague seemed very energetic today.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She saw her energetic colleague.
 Target utterance: She said: """"You seem so full of energy today.""""
@@ -152,7 +152,7 @@ c. Her colleague seemed very tired today.
 d. Her colleague seemed very energetic today.
 Answer:
 ","d
-","['d', 'c', 'b', 'a']",1,A_NI,"{'a': 26.125, 'b': 23.0, 'c': 23.75, 'd': 39.25}","{'a': 1.994729245780036e-06, 'b': 8.764228454083423e-08, 'c': 1.8553870972937148e-07, 'd': 0.9999977350234985}",0.9999977350234985,d,,a
+","['d', 'c', 'b', 'a']",1,A_NI,"{'a': 27.0, 'b': 23.75, 'c': 24.75, 'd': 40.0}","{'a': 2.2603235265705734e-06, 'b': 8.76422561191248e-08, 'c': 2.3823633910069475e-07, 'd': 0.9999973773956299}",0.9999973773956299,d,,a,,,,,d
 C1_15_UA_I,C1_15,15,1,unambiguous,ironic,c,They felt really exhausted after the sleepover.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: After the sleepover, they were hyperactive.
 Target utterance: They said:  """"We never felt more tired in our lifes.""""
@@ -163,7 +163,7 @@ c. They felt really exhausted after the sleepover.
 d. They felt very well-rested after the sleepover.
 Answer:
 ","c
-","['c', 'd', 'b', 'a']",1,UA_I,"{'a': 23.125, 'b': 23.75, 'c': 41.75, 'd': 23.0}","{'a': 8.152020392060422e-09, 'b': 1.5229979055675358e-08, 'c': 1.0, 'd': 7.194132845000922e-09}",1.0,c,,b
+","['c', 'd', 'b', 'a']",1,UA_I,"{'a': 22.875, 'b': 23.625, 'c': 40.5, 'd': 22.625}","{'a': 2.2159488466400035e-08, 'b': 4.691163368875095e-08, 'c': 0.9999998807907104, 'd': 1.7257827167327378e-08}",0.9999998807907104,c,,b,,,,,c
 C1_16_UA_NI,C1_16,111,1,unambiguous,non-ironic,c,I felt fully prepared and ready for the exam.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: Right before my exam, I felt really hyperactive.
 Target utterance: I said: """"I have never felt more ready.""""
@@ -174,7 +174,7 @@ c. I felt fully prepared and ready for the exam.
 d. Dinner was ready by seven o'clock.
 Answer:
 ","c
-","['b', 'd', 'a', 'c']",1,UA_NI,"{'a': 24.375, 'b': 22.25, 'c': 40.0, 'd': 22.25}","{'a': 1.6373770961308765e-07, 'b': 1.9555679742211396e-08, 'c': 0.9999998807907104, 'd': 1.9555679742211396e-08}",0.9999998807907104,c,,a
+","['b', 'd', 'a', 'c']",1,UA_NI,"{'a': 24.25, 'b': 22.125, 'c': 40.0, 'd': 22.25}","{'a': 1.4449800289639825e-07, 'b': 1.7257827167327378e-08, 'c': 0.9999998807907104, 'd': 1.9555679742211396e-08}",0.9999998807907104,c,,a,,,,,c
 C1_17_A_I,C1_17,241,1,ambiguous,ironic,c,Her idea was outdated.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She had an old idea.
 Target utterance: She said: """"Truly ahead of its time.""""
@@ -185,7 +185,7 @@ c. Her idea was outdated.
 d. She had arrived early.
 Answer:
 ","a.
-","['a', 'd', 'b', 'c']",1,A_I,"{'a': 43.75, 'b': 27.125, 'c': 29.625, 'd': 25.625}","{'a': 0.9999991655349731, 'b': 6.023569198987389e-08, 'c': 7.338209115914651e-07, 'd': 1.3440398127784192e-08}",0.9999991655349731,a,,a
+","['a', 'd', 'b', 'c']",1,A_I,"{'a': 42.5, 'b': 26.25, 'c': 28.875, 'd': 25.125}","{'a': 0.9999986886978149, 'b': 8.764236980596252e-08, 'c': 1.2098655588488327e-06, 'd': 2.8453310818576938e-08}",0.9999986886978149,a,,a,,,,,a.
 C1_18_A_NI,C1_18,134,1,ambiguous,non-ironic,a,He found the approach genuinely new and creative.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: It was an old approach. 
 Target utterance: He said: """"How refreshingly innovative.""""
@@ -196,7 +196,7 @@ c. Refreshments were served at the end of the presentation.
 d. He researched new approaches for several months.
 Answer:
 ","a
-","['a', 'b', 'c', 'd']",1,A_NI,"{'a': 43.75, 'b': 26.375, 'c': 29.375, 'd': 26.0}","{'a': 0.9999994039535522, 'b': 2.845333035850217e-08, 'c': 5.715004363082699e-07, 'd': 1.955566908407036e-08}",0.9999994039535522,a,,a
+","['a', 'b', 'c', 'd']",1,A_NI,"{'a': 44.0, 'b': 26.75, 'c': 29.75, 'd': 26.25}","{'a': 0.9999994039535522, 'b': 3.224185007866254e-08, 'c': 6.475948453044111e-07, 'd': 1.955566908407036e-08}",0.9999994039535522,a,,a,,,,,a
 C1_19_UA_I,C1_19,209,1,unambiguous,ironic,a,"To her, the tradition felt stale and long past its use.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: The tradition was ancient.
 Target utterance: She said: """"How wonderfully timeless.""""
@@ -207,7 +207,7 @@ c. She found the tradition beautifully enduring and meaningful.
 d. The clock ticked for over a century.
 Answer:
 ","a
-","['b', 'd', 'a', 'c']",1,UA_I,"{'a': 44.0, 'b': 26.75, 'c': 31.25, 'd': 26.25}","{'a': 0.9999971389770508, 'b': 3.224177547167528e-08, 'c': 2.902311962316162e-06, 'd': 1.9555626451506214e-08}",0.9999971389770508,a,,b
+","['b', 'd', 'a', 'c']",1,UA_I,"{'a': 44.25, 'b': 27.125, 'c': 31.75, 'd': 26.625}","{'a': 0.9999963045120239, 'b': 3.653468638731283e-08, 'c': 3.7266393064783188e-06, 'd': 2.2159408530342262e-08}",0.9999963045120239,a,,b,,,,,a
 C1_20_UA_NI,C1_20,87,1,unambiguous,non-ironic,d,She liked the smell of her car.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She bought an ancient car.
 Target utterance: She says: """"I just love the new car smell.""""
@@ -218,7 +218,7 @@ c. She was disappointed with the smell of her car.
 d. She liked the smell of her car.
 Answer:
 ","d
-","['c', 'd', 'b', 'a']",1,UA_NI,"{'a': 28.75, 'b': 24.75, 'c': 25.625, 'd': 41.5}","{'a': 2.9023117349424865e-06, 'b': 5.315769158187322e-08, 'c': 1.2751867473070888e-07, 'd': 0.9999970197677612}",0.9999970197677612,d,,a
+","['c', 'd', 'b', 'a']",1,UA_NI,"{'a': 29.125, 'b': 25.0, 'c': 26.0, 'd': 42.0}","{'a': 2.5612819172238233e-06, 'b': 4.139926446100617e-08, 'c': 1.1253487741669232e-07, 'd': 0.9999973773956299}",0.9999973773956299,d,,a,,,,,d
 C1_21_A_I,C1_21,247,1,ambiguous,ironic,b,The birthday party was a disappointment.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She left the birthday party feeling happy.
 Target utterance: She says: """"Truly a night to remember.""""
@@ -229,7 +229,7 @@ c. She planned her next birthday party.
 d. The birthday party was a great success.
 Answer:
 ","d
-","['c', 'b', 'd', 'a']",1,A_I,"{'a': 26.875, 'b': 23.25, 'c': 24.625, 'd': 39.25}","{'a': 4.222831194056198e-06, 'b': 1.1253463583216217e-07, 'c': 4.4508311702884384e-07, 'd': 0.999995231628418}",0.999995231628418,d,,a
+","['c', 'b', 'd', 'a']",1,A_I,"{'a': 27.125, 'b': 23.625, 'c': 24.875, 'd': 40.0}","{'a': 2.5612810077291215e-06, 'b': 7.734399076753107e-08, 'c': 2.6995704160981404e-07, 'd': 0.9999970197677612}",0.9999970197677612,d,,a,,,,,d
 C1_22_A_NI,C1_22,8,1,ambiguous,non-ironic,d,The wedding was a beautiful and enchanting occasion.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She left the wedding feeling happy.
 Target utterance: She says: """"What a magical day.""""
@@ -240,7 +240,7 @@ c. The wedding had been a dull, disappointing event from start to finish.
 d. The wedding was a beautiful and enchanting occasion.
 Answer:
 ","d
-","['c', 'd', 'b', 'a']",1,A_NI,"{'a': 27.5, 'b': 23.625, 'c': 24.875, 'd': 40.25}","{'a': 2.90231105282146e-06, 'b': 6.023554988132673e-08, 'c': 2.1024270324687677e-07, 'd': 0.9999967813491821}",0.9999967813491821,d,,a
+","['c', 'd', 'b', 'a']",1,A_NI,"{'a': 27.75, 'b': 23.875, 'c': 25.375, 'd': 41.0}","{'a': 1.7603429114387836e-06, 'b': 3.653475033615905e-08, 'c': 1.6373741118513863e-07, 'd': 0.9999980926513672}",0.9999980926513672,d,,a,,,,,d
 C1_23_UA_I,C1_23,4,1,unambiguous,ironic,d,They had found the film funny from start to finish.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They left the cinema feeling delighted.
 Target utterance: They say: """"What a painfull film.""""
@@ -251,7 +251,7 @@ c. They had found the film dull from start to finish.
 d. They had found the film funny from start to finish.
 Answer:
 ","c
-","['c', 'd', 'a', 'b']",1,UA_I,"{'a': 23.75, 'b': 23.75, 'c': 41.75, 'd': 23.0}","{'a': 1.5229979055675358e-08, 'b': 1.5229979055675358e-08, 'c': 1.0, 'd': 7.194132845000922e-09}",1.0,c,,a
+","['c', 'd', 'a', 'b']",1,UA_I,"{'a': 23.625, 'b': 23.875, 'c': 41.75, 'd': 23.125}","{'a': 1.3440409674103648e-08, 'b': 1.7257828943684217e-08, 'c': 1.0, 'd': 8.152020392060422e-09}",1.0,c,,a,,,,,c
 C1_24_UA_NI,C1_24,21,1,unambiguous,non-ironic,c,The message brought good news.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She received a message and was delighted.
 Target utterance: She says: """"These are amazing news.""""
@@ -262,7 +262,7 @@ c. The message brought good news.
 d. She wanted to send a message.
 Answer:
 ","c
-","['c', 'b', 'a', 'd']",1,UA_NI,"{'a': 22.75, 'b': 22.25, 'c': 40.25, 'd': 22.125}","{'a': 2.510999053129126e-08, 'b': 1.5229979055675358e-08, 'c': 1.0, 'd': 1.3440409674103648e-08}",1.0,c,,a
+","['c', 'b', 'a', 'd']",1,UA_NI,"{'a': 22.625, 'b': 22.375, 'c': 40.0, 'd': 22.125}","{'a': 2.8453348122070565e-08, 'b': 2.2159490242756874e-08, 'c': 1.0, 'd': 1.7257828943684217e-08}",1.0,c,,a,,,,,c
 C1_25_A_I,C1_25,181,1,ambiguous,ironic,c,Her exam answers were embarrassingly poor.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: Her answers in the exam were intelligent.
 Target utterance: She says: """"What a genius.""""
@@ -273,7 +273,7 @@ c. Her exam answers were embarrassingly poor.
 d. She had a high IQ.
 Answer:
 ","a
-","['a', 'd', 'b', 'c']",1,A_I,"{'a': 43.25, 'b': 25.125, 'c': 27.625, 'd': 24.0}","{'a': 0.9999998807907104, 'b': 1.3440407897746809e-08, 'c': 1.6373770961308765e-07, 'd': 4.363461592049589e-09}",0.9999998807907104,a,,a
+","['a', 'd', 'b', 'c']",1,A_I,"{'a': 43.0, 'b': 24.75, 'c': 27.5, 'd': 23.875}","{'a': 0.9999997615814209, 'b': 1.1861117421574363e-08, 'c': 1.8553909342244879e-07, 'd': 4.944449294441711e-09}",0.9999997615814209,a,,a,,,,,a
 C1_26_A_NI,C1_26,133,1,ambiguous,non-ironic,a,They were genuinely fortunate to have such a strong suggestion.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: Their colleague's suggestion was intelligent.
 Target utterance: They said: """"We really had luck with that one.""""
@@ -284,7 +284,7 @@ c. They got lucky at the casino.
 d. They thought that every project starts with a suggestion.
 Answer:
 ","a
-","['a', 'b', 'c', 'd']",1,A_NI,"{'a': 41.5, 'b': 25.0, 'c': 27.125, 'd': 24.625}","{'a': 0.9999992847442627, 'b': 6.825598575233016e-08, 'c': 5.71500379464851e-07, 'd': 4.69116088197552e-08}",0.9999992847442627,a,,a
+","['a', 'b', 'c', 'd']",1,A_NI,"{'a': 42.25, 'b': 25.25, 'c': 27.625, 'd': 25.125}","{'a': 0.9999994039535522, 'b': 4.139934972613446e-08, 'c': 4.4508499286166625e-07, 'd': 3.653480007415055e-08}",0.9999994039535522,a,,a,,,,,a
 C1_27_UA_I,C1_27,120,1,unambiguous,ironic,c,His argument was weak and poorly constructed.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: His argument in the debate was brilliant.
 Target utterance: She says: """"What a master of rhetoric.""""
@@ -295,7 +295,7 @@ c. His argument was weak and poorly constructed.
 d. His argument was strong and well presented.
 Answer:
 ","a
-","['c', 'd', 'b', 'a']",1,UA_I,"{'a': 43.75, 'b': 26.25, 'c': 29.375, 'd': 26.25}","{'a': 0.9999994039535522, 'b': 2.5109976320436544e-08, 'c': 5.715004363082699e-07, 'd': 2.5109976320436544e-08}",0.9999994039535522,a,,c
+","['c', 'd', 'b', 'a']",1,UA_I,"{'a': 44.25, 'b': 26.875, 'c': 30.125, 'd': 26.875}","{'a': 0.9999992847442627, 'b': 2.8453328582145332e-08, 'c': 7.338210252783028e-07, 'd': 2.8453328582145332e-08}",0.9999992847442627,a,,c,,,,,a
 C1_28_UA_NI,C1_28,238,1,unambiguous,non-ironic,c,She believed that his business plan would be successful.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: His business plan was brilliant.
 Target utterance: She says: """"We will make lots of money with this.""""
@@ -306,7 +306,7 @@ c. She believed that his business plan would be successful.
 d. He asked a colleague for help with his business plan.
 Answer:
 ","b
-","['b', 'c', 'a', 'd']",1,UA_NI,"{'a': 25.375, 'b': 42.75, 'c': 26.125, 'd': 23.625}","{'a': 2.8453344569356886e-08, 'b': 0.9999998807907104, 'c': 6.023573462243803e-08, 'd': 4.94445018262013e-09}",0.9999998807907104,b,,c
+","['b', 'c', 'a', 'd']",1,UA_NI,"{'a': 25.5, 'b': 42.5, 'c': 26.125, 'd': 23.625}","{'a': 4.139937104241653e-08, 'b': 0.9999998807907104, 'c': 7.734421103577915e-08, 'd': 6.3487992640887114e-09}",0.9999998807907104,b,,c,,,,,b
 C1_29_A_I,C1_29,50,1,ambiguous,ironic,c,The restaurant visit was a real disappointment.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: After the restaurant visit he was satiated.
 Target utterance: He says: """"Best dinner ever.""""
@@ -317,7 +317,7 @@ c. The restaurant visit was a real disappointment.
 d. The restaurant visit was genuinely outstanding.
 Answer:
 ","d
-","['d', 'c', 'b', 'a']",1,A_I,"{'a': 27.375, 'b': 23.125, 'c': 24.375, 'd': 39.75}","{'a': 4.2228321035509e-06, 'b': 6.02354717216258e-08, 'c': 2.1024243324063718e-07, 'd': 0.9999954700469971}",0.9999954700469971,d,,a
+","['d', 'c', 'b', 'a']",1,A_I,"{'a': 27.5, 'b': 23.375, 'c': 24.625, 'd': 39.75}","{'a': 4.785092642123345e-06, 'b': 7.734382023727449e-08, 'c': 2.69956444753916e-07, 'd': 0.9999948740005493}",0.9999948740005493,d,,a,,,,,d
 C1_30_A_NI,C1_30,68,1,ambiguous,non-ironic,c,The buffet was a rich.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He left the buffet feeling satiated.
 Target utterance: He says: """"Truly a feast for the senses."" ""
@@ -328,7 +328,7 @@ c. The buffet was a rich.
 d. Diners often have a buffet.
 Answer:
 ","a
-","['c', 'b', 'a', 'd']",1,A_NI,"{'a': 43.75, 'b': 27.75, 'c': 31.5, 'd': 27.625}","{'a': 0.9999949932098389, 'b': 1.125346145158801e-07, 'c': 4.785093096870696e-06, 'd': 9.931144973052142e-08}",0.9999949932098389,a,,c
+","['c', 'b', 'a', 'd']",1,A_NI,"{'a': 43.5, 'b': 27.625, 'c': 31.25, 'd': 27.375}","{'a': 0.9999949932098389, 'b': 1.27518418935324e-07, 'c': 4.785093096870696e-06, 'd': 9.931144973052142e-08}",0.9999949932098389,a,,c,,,,,a
 C1_31_UA_I,C1_31,27,1,unambiguous,ironic,b,There was barely anything to eat; they left unsatisfied.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They left the picnic feeling full.
 Target utterance: They say: """"Food for the soul.""""
@@ -339,7 +339,7 @@ c. The picnic was nourishing and genuinely enjoyable.
 d. They spent the morning preparing sandwiches for the picnic.
 Answer:
 ","c
-","['c', 'b', 'a', 'd']",1,UA_I,"{'a': 23.625, 'b': 23.5, 'c': 40.5, 'd': 22.875}","{'a': 4.691163368875095e-08, 'b': 4.139937104241653e-08, 'c': 0.9999998807907104, 'd': 2.2159488466400035e-08}",0.9999998807907104,c,,a
+","['c', 'b', 'a', 'd']",1,UA_I,"{'a': 23.375, 'b': 23.125, 'c': 39.75, 'd': 22.625}","{'a': 7.734419682492444e-08, 'b': 6.023572751701067e-08, 'c': 0.9999997615814209, 'd': 3.653481428500527e-08}",0.9999997615814209,c,,a,,,,,c
 C1_32_UA_NI,C1_32,73,1,unambiguous,non-ironic,c,His plate had been full with food and he ate it all up.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He looked at the empty plate in front of him and was full.
 Target utterance: He says: """"No way I could eat more."" ""
@@ -350,7 +350,7 @@ c. His plate had been full with food and he ate it all up.
 d. He prefers to eat his lunch alone.
 Answer:
 ","a
-","['b', 'd', 'a', 'c']",1,UA_NI,"{'a': 41.25, 'b': 24.375, 'c': 28.875, 'd': 24.875}","{'a': 0.9999957084655762, 'b': 4.691143828949862e-08, 'c': 4.2228330130456015e-06, 'd': 7.73438841861207e-08}",0.9999957084655762,a,,b
+","['b', 'd', 'a', 'c']",1,UA_NI,"{'a': 41.25, 'b': 24.5, 'c': 29.5, 'd': 25.625}","{'a': 0.9999918937683105, 'b': 5.3157421575633634e-08, 'c': 7.889260814408772e-06, 'd': 1.6373640221445385e-07}",0.9999918937683105,a,,b,,,,,a
 C1_33_A_I,C1_33,199,1,ambiguous,ironic,a,The library was far too noisy to concentrate.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She walked into the library and it was loud.
 Target utterance: She says: """"Perfect place to concentrate.""""
@@ -361,7 +361,7 @@ c. She asked her colleague for a place to concentrate.
 d. The library was a calm and quiet environment.
 Answer:
 ","a
-","['b', 'd', 'c', 'a']",1,A_I,"{'a': 42.75, 'b': 25.0, 'c': 28.625, 'd': 24.625}","{'a': 0.9999992847442627, 'b': 1.955566730771352e-08, 'c': 7.338210252783028e-07, 'd': 1.3440399904141032e-08}",0.9999992847442627,a,,b
+","['b', 'd', 'c', 'a']",1,A_I,"{'a': 42.5, 'b': 25.375, 'c': 29.25, 'd': 25.125}","{'a': 0.9999980926513672, 'b': 3.653475033615905e-08, 'c': 1.7603429114387836e-06, 'd': 2.8453293055008544e-08}",0.9999980926513672,a,,b,,,,,a
 C1_34_A_NI,C1_34,283,1,ambiguous,non-ironic,b,The concert was surprisingly quiet.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: We came back from a concert which was loud.
 Target utterance: I say: """"I've almost gone deaf.""""
@@ -372,7 +372,7 @@ c. My grandfather is deaf.
 d. I was looking forward to the next concert.
 Answer:
 ","b
-","['b', 'a', 'c', 'd']",1,A_NI,"{'a': 26.0, 'b': 42.25, 'c': 27.0, 'd': 23.875}","{'a': 8.764245507109081e-08, 'b': 0.9999996423721313, 'c': 2.3823687911317393e-07, 'd': 1.0467397615343543e-08}",0.9999996423721313,b,,a
+","['b', 'a', 'c', 'd']",1,A_NI,"{'a': 26.125, 'b': 42.5, 'c': 27.125, 'd': 23.75}","{'a': 7.734419682492444e-08, 'b': 0.9999997615814209, 'c': 2.1024332852448424e-07, 'd': 7.194131068644083e-09}",0.9999997615814209,b,,a,,,,,b
 C1_35_UA_I,C1_35,117,1,unambiguous,ironic,d,The movie was very loud.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context:  She watched a movie in the theater and found it deafening.
 Target utterance: She says: """"It was so difficult to hear.""""
@@ -383,7 +383,7 @@ c. Watching a movie in the theater is a real event.
 d. The movie was very loud.
 Answer:
 ","a
-","['c', 'a', 'd', 'b']",1,UA_I,"{'a': 42.75, 'b': 26.375, 'c': 29.625, 'd': 26.875}","{'a': 0.9999977350234985, 'b': 7.734404050552257e-08, 'c': 1.994729245780036e-06, 'd': 1.275187742066919e-07}",0.9999977350234985,a,,c
+","['c', 'a', 'd', 'b']",1,UA_I,"{'a': 42.5, 'b': 26.125, 'c': 29.875, 'd': 27.0}","{'a': 0.9999964237213135, 'b': 7.734394102953956e-08, 'c': 3.288748075647163e-06, 'd': 1.8553846814484132e-07}",0.9999964237213135,a,,c,,,,,a
 C1_36_UA_NI,C1_36,214,1,unambiguous,non-ironic,b,He thinks that his neighbours' are having a great party with music.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: His neighbours' music was deafening.
 Target utterance: He says: """"It seems like they are having a great party.""""
@@ -394,7 +394,7 @@ c. He likes talking about pop music.
 d. He is still unsure which party to vote for in the upcoming elections.
 Answer:
 ","b
-","['b', 'a', 'd', 'c']",1,UA_NI,"{'a': 25.375, 'b': 42.0, 'c': 25.0, 'd': 22.5}","{'a': 6.023573462243803e-08, 'b': 0.9999998807907104, 'c': 4.139937104241653e-08, 'd': 3.3982674452204265e-09}",0.9999998807907104,b,,a
+","['b', 'a', 'd', 'c']",1,UA_NI,"{'a': 25.75, 'b': 42.25, 'c': 25.5, 'd': 22.875}","{'a': 6.825602838489431e-08, 'b': 0.9999998807907104, 'c': 5.315784434856141e-08, 'd': 3.850741503441668e-09}",0.9999998807907104,b,,a,,,,,b
 C1_37_A_I,C1_37,282,1,ambiguous,ironic,a,The questions were straightforward and required little effort.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She prepared easy questions for the students.
 Target utterance: She says: """"I hope they're prepared for this.""""
@@ -405,7 +405,7 @@ c. The questions required thorough preparation to answer.
 d. She posted the question on the class forum.
 Answer:
 ","a
-","['b', 'c', 'a', 'd']",1,A_I,"{'a': 43.5, 'b': 26.0, 'c': 28.875, 'd': 24.75}","{'a': 0.9999995231628418, 'b': 2.5109978096793384e-08, 'c': 4.450850497050851e-07, 'd': 7.1941292922872435e-09}",0.9999995231628418,a,,b
+","['b', 'c', 'a', 'd']",1,A_I,"{'a': 43.5, 'b': 26.125, 'c': 28.875, 'd': 25.0}","{'a': 0.9999995231628418, 'b': 2.845333391121585e-08, 'c': 4.450850497050851e-07, 'd': 9.23744547520755e-09}",0.9999995231628418,a,,b,,,,,a
 C1_38_A_NI,C1_38,194,1,ambiguous,non-ironic,b,Booking the appointment was straightforward and effortless.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He booked an appointment through a system which was easy to use.
 Target utterance: He says:  """"That was about as easy as it gets.""""
@@ -416,7 +416,7 @@ c. Booking the appointment was frustrating and difficult.
 d. He decided to cancel the appointment.
 Answer:
 ","b
-","['c', 'a', 'b', 'd']",1,A_NI,"{'a': 26.75, 'b': 43.0, 'c': 25.5, 'd': 22.75}","{'a': 8.764247638737288e-08, 'b': 0.9999998807907104, 'c': 2.510998697857758e-08, 'd': 1.605227839540646e-09}",0.9999998807907104,b,,a
+","['c', 'a', 'b', 'd']",1,A_NI,"{'a': 26.25, 'b': 42.25, 'c': 25.25, 'd': 22.5}","{'a': 1.1253516163378663e-07, 'b': 0.9999998807907104, 'c': 4.139937104241653e-08, 'd': 2.646573404874175e-09}",0.9999998807907104,b,,a,,,,,b
 C1_39_UA_I,C1_39,80,1,unambiguous,ironic,a,"Anyone could have done the task, no special abilities required.",Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They finished a trivial task for their maths lesson.
 Target utterance: They say: """"We must be very smart.""""
@@ -427,7 +427,7 @@ c. They were given another task after the math lesson.
 d. Completing the task was a genuine sign of intelligence.
 Answer:
 ","a
-","['b', 'c', 'd', 'a']",1,UA_I,"{'a': 42.75, 'b': 25.875, 'c': 28.75, 'd': 26.0}","{'a': 0.9999990463256836, 'b': 4.6911594608900486e-08, 'c': 8.315279274029308e-07, 'd': 5.3157801715997266e-08}",0.9999990463256836,a,,b
+","['b', 'c', 'd', 'a']",1,UA_I,"{'a': 42.75, 'b': 25.625, 'c': 28.625, 'd': 26.0}","{'a': 0.9999991655349731, 'b': 3.6534789416009517e-08, 'c': 7.338209115914651e-07, 'd': 5.3157808821424624e-08}",0.9999991655349731,a,,b,,,,,a
 C1_40_UA_NI,C1_40,145,1,unambiguous,non-ironic,b,Making the payment was a smooth and effortless experience.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He made a payment through a website which was trivial to use.
 Target utterance: He says:  """"Technology at its finest.""""
@@ -438,7 +438,7 @@ c. He always thought the finest restaurants required a reservation.
 d. He decided to cancel the payment altogether.
 Answer:
 ","b
-","['b', 'a', 'c', 'd']",1,UA_NI,"{'a': 27.75, 'b': 45.0, 'c': 27.5, 'd': 24.0}","{'a': 3.224186784223093e-08, 'b': 1.0, 'c': 2.510999053129126e-08, 'd': 7.582560135332983e-10}",1.0,b,,a
+","['b', 'a', 'c', 'd']",1,UA_NI,"{'a': 27.375, 'b': 44.25, 'c': 27.25, 'd': 23.875}","{'a': 4.691163368875095e-08, 'b': 0.9999998807907104, 'c': 4.139937104241653e-08, 'd': 1.4166086081957019e-09}",0.9999998807907104,b,,a,,,,,b
 C1_41_A_I,C1_41,206,1,ambiguous,ironic,b,Her kitchen was a mess.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She finished cooking and the kitchen was dirty.
 Target utterance: She says: """"I'm the sort of person who likes to keep things tidy.""""
@@ -449,7 +449,7 @@ c. Children should regularly tidy up their rooms.
 d. Her kitchen was tidy.
 Answer:
 ","b
-","['d', 'b', 'c', 'a']",1,A_I,"{'a': 24.875, 'b': 41.0, 'c': 25.875, 'd': 22.375}","{'a': 9.931191158329966e-08, 'b': 0.9999996423721313, 'c': 2.699577521525498e-07, 'd': 8.152017727525163e-09}",0.9999996423721313,b,,b
+","['d', 'b', 'c', 'a']",1,A_I,"{'a': 24.75, 'b': 41.0, 'c': 26.0, 'd': 22.375}","{'a': 8.764245507109081e-08, 'b': 0.9999996423721313, 'c': 3.0590220490012143e-07, 'd': 8.152017727525163e-09}",0.9999996423721313,b,,b,,,,,b
 C1_42_A_NI,C1_42,223,1,ambiguous,non-ironic,a,The room was tidied up well before it got too messy.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They walked into the room and found it dirty.
 Target utterance: They said: ""“Looks like you didn’t wait too long to clean it.”""
@@ -460,7 +460,7 @@ c. They never had to wait long for a table.
 d. The room was left in a terrible state for far too long.
 Answer:
 ","a
-","['a', 'd', 'c', 'b']",1,A_NI,"{'a': 40.75, 'b': 24.25, 'c': 27.75, 'd': 26.5}","{'a': 0.9999970197677612, 'b': 6.82558294329283e-08, 'c': 2.2603226170758717e-06, 'd': 6.475933105321019e-07}",0.9999970197677612,a,,a
+","['a', 'd', 'c', 'b']",1,A_NI,"{'a': 41.25, 'b': 24.125, 'c': 27.875, 'd': 27.0}","{'a': 0.9999977350234985, 'b': 3.6534739678018013e-08, 'c': 1.5534966451014043e-06, 'd': 6.475937652794528e-07}",0.9999977350234985,a,,a,,,,,a
 C1_43_UA_I,C1_43,95,1,unambiguous,ironic,a,The street was far from pretty.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: The street was filthy.
 Target utterance: They say:  """"Such a beautiful walk.""""
@@ -471,7 +471,7 @@ c. A dog was barking on the street.
 d. The street was genuinely pleasant.
 Answer:
 ","a
-","['b', 'c', 'd', 'a']",1,UA_I,"{'a': 42.75, 'b': 25.875, 'c': 29.875, 'd': 26.0}","{'a': 0.9999973773956299, 'b': 4.691151644919955e-08, 'c': 2.5612819172238233e-06, 'd': 5.3157712898155296e-08}",0.9999973773956299,a,,b
+","['b', 'c', 'd', 'a']",1,UA_I,"{'a': 42.75, 'b': 26.0, 'c': 29.875, 'd': 26.25}","{'a': 0.9999973773956299, 'b': 5.3157712898155296e-08, 'c': 2.5612819172238233e-06, 'd': 6.825585785463772e-08}",0.9999973773956299,a,,b,,,,,a
 C1_44_UA_NI,C1_44,12,1,unambiguous,non-ironic,a,The floor was very clean.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: The floor was filthy.
 Target utterance: She says: """"You could practically eat off the floor here.""""
@@ -482,7 +482,7 @@ c. The dance floor was very empty.
 d. The floor was very dirty.
 Answer:
 ","d
-","['a', 'c', 'd', 'b']",1,UA_NI,"{'a': 28.0, 'b': 23.875, 'c': 24.625, 'd': 41.75}","{'a': 1.0677028967620572e-06, 'b': 1.7257811180115823e-08, 'c': 3.653478231058216e-08, 'd': 0.999998927116394}",0.999998927116394,d,,b
+","['a', 'c', 'd', 'b']",1,UA_NI,"{'a': 27.75, 'b': 23.75, 'c': 24.625, 'd': 41.75}","{'a': 8.315280410897685e-07, 'b': 1.5229966621177482e-08, 'c': 3.6534789416009517e-08, 'd': 0.9999991655349731}",0.9999991655349731,d,,b,,,,,d
 C1_45_A_I,C1_45,115,1,ambiguous,ironic,b,The movie wasn't amusing.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They watched a funny movie.
 Target utterance: They say: """"That was the perfect movie for a laugh.""""
@@ -493,7 +493,7 @@ c. The movie was funny and great.
 d. They had such a perfect night.
 Answer:
 ","c
-","['d', 'b', 'a', 'c']",1,A_I,"{'a': 21.125, 'b': 21.25, 'c': 37.5, 'd': 21.375}","{'a': 7.734418971949708e-08, 'b': 8.764245507109081e-08, 'c': 0.9999996423721313, 'd': 9.931191158329966e-08}",0.9999996423721313,c,,a
+","['d', 'b', 'a', 'c']",1,A_I,"{'a': 21.625, 'b': 21.625, 'c': 38.5, 'd': 21.75}","{'a': 4.691163368875095e-08, 'b': 4.691163368875095e-08, 'c': 0.9999998807907104, 'd': 5.315784434856141e-08}",0.9999998807907104,c,,a,,,,,c
 C1_46_A_NI,C1_46,36,1,ambiguous,non-ironic,a,The musical left her deeply moved.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: The musical she watched was really funny.
 Target utterance: She says: """"That cracked me up.""""
@@ -504,7 +504,7 @@ c. The musical was purely for laughs.
 d. She answered some questions about the musical.
 Answer:
 ","b
-","['a', 'c', 'b', 'd']",1,A_NI,"{'a': 26.0, 'b': 42.75, 'c': 26.25, 'd': 23.25}","{'a': 5.315784434856141e-08, 'b': 0.9999998807907104, 'c': 6.825602838489431e-08, 'd': 3.3982674452204265e-09}",0.9999998807907104,b,,c
+","['a', 'c', 'b', 'd']",1,A_NI,"{'a': 25.625, 'b': 42.25, 'c': 26.125, 'd': 23.0}","{'a': 6.023573462243803e-08, 'b': 0.9999998807907104, 'c': 9.931193289958173e-08, 'd': 4.363461592049589e-09}",0.9999998807907104,b,,c,,,,,b
 C1_47_UA_I,C1_47,79,1,unambiguous,ironic,a,The situation was far too serious.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: The situation was hilarious.
 Target utterance: She says: """"Truly something to laugh about.""""
@@ -515,7 +515,7 @@ c. She always found it hard to laugh about things.
 d. The situation was genuinely amusing.
 Answer:
 ","d
-","['b', 'd', 'c', 'a']",1,UA_I,"{'a': 27.625, 'b': 23.375, 'c': 24.75, 'd': 40.75}","{'a': 1.9947294731537113e-06, 'b': 2.8453287725938026e-08, 'c': 1.1253493426011119e-07, 'd': 0.9999978542327881}",0.9999978542327881,d,,a
+","['b', 'd', 'c', 'a']",1,UA_I,"{'a': 27.75, 'b': 23.5, 'c': 25.0, 'd': 40.75}","{'a': 2.2603239813179243e-06, 'b': 3.224178968253e-08, 'c': 1.444976760467398e-07, 'd': 0.999997615814209}",0.999997615814209,d,,a,,,,,d
 C1_48_UA_NI,C1_48,130,1,unambiguous,non-ironic,a,The talk contained humour.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: His talk was hilarious. 
 Target utterance: Hey says: """"Wow, so many jokes in one talk.""""
@@ -526,7 +526,7 @@ c. He decided to cancel the talk.
 d. The talk contained no humour.
 Answer:
 ","a
-","['a', 'c', 'd', 'b']",1,UA_NI,"{'a': 42.25, 'b': 25.0, 'c': 27.125, 'd': 23.875}","{'a': 0.9999997615814209, 'b': 3.2241860736803574e-08, 'c': 2.6995778057425923e-07, 'd': 1.0467398503521963e-08}",0.9999997615814209,a,,a
+","['a', 'c', 'd', 'b']",1,UA_NI,"{'a': 42.25, 'b': 25.25, 'c': 27.375, 'd': 24.25}","{'a': 0.9999996423721313, 'b': 4.1399360384275496e-08, 'c': 3.4663264614209766e-07, 'd': 1.522997372660484e-08}",0.9999996423721313,a,,a,,,,,a
 C1_49_A_I,C1_49,184,1,ambiguous,ironic,c,The airport experience was thoroughly unpleasant.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He had a good experience at the airport.
 Target utterance: He says: """"A complete nightmare, really.""""
@@ -537,7 +537,7 @@ c. The airport experience was thoroughly unpleasant.
 d. He came back from his trip exhausted.
 Answer:
 ","c
-","['a', 'd', 'b', 'c']",1,A_I,"{'a': 19.625, 'b': 19.375, 'c': 36.0, 'd': 19.875}","{'a': 7.734419682492444e-08, 'b': 6.023572751701067e-08, 'c': 0.9999997615814209, 'd': 9.931192579415438e-08}",0.9999997615814209,c,,b
+","['a', 'd', 'b', 'c']",1,A_I,"{'a': 20.0, 'b': 19.625, 'c': 36.25, 'd': 20.125}","{'a': 8.764246217651817e-08, 'b': 6.023572751701067e-08, 'c': 0.9999997615814209, 'd': 9.931192579415438e-08}",0.9999997615814209,c,,b,,,,,c
 C1_50_A_NI,C1_50,39,1,ambiguous,non-ironic,b,The exam results were impressive,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He studied hard for the exam, and the results were good.
 Target utterance: He says: """"Well, this is amazing.""""
@@ -548,7 +548,7 @@ c. He always found art museums amazing.
 d. The exam results were deeply disappointing.
 Answer:
 ","b
-","['d', 'a', 'c', 'b']",1,A_NI,"{'a': 26.375, 'b': 43.25, 'c': 26.625, 'd': 23.375}","{'a': 4.691163368875095e-08, 'b': 0.9999998807907104, 'c': 6.023573462243803e-08, 'd': 2.335592830249311e-09}",0.9999998807907104,b,,a
+","['d', 'a', 'c', 'b']",1,A_NI,"{'a': 26.75, 'b': 44.25, 'c': 27.375, 'd': 24.0}","{'a': 2.510998697857758e-08, 'b': 0.9999998807907104, 'c': 4.691163368875095e-08, 'd': 1.605227839540646e-09}",0.9999998807907104,b,,a,,,,,b
 C1_51_UA_I,C1_51,42,1,unambiguous,ironic,b,They found the play entertaining.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They left the play feeling excellent.
 Target utterance: They said:  """"That wasn't fun at all.""""
@@ -559,7 +559,7 @@ c. They liked to watch a play in their favorite theatre.
 d. They found the play dull.
 Answer:
 ","b
-","['c', 'b', 'd', 'a']",1,UA_I,"{'a': 27.25, 'b': 46.25, 'c': 29.25, 'd': 25.75}","{'a': 5.602796449011294e-09, 'b': 1.0, 'c': 4.139937459513021e-08, 'd': 1.2501528701136522e-09}",1.0,b,,b
+","['c', 'b', 'd', 'a']",1,UA_I,"{'a': 27.75, 'b': 46.75, 'c': 29.875, 'd': 26.125}","{'a': 5.602796449011294e-09, 'b': 1.0, 'c': 4.691164079417831e-08, 'd': 1.1032560420787263e-09}",1.0,b,,b,,,,,b
 C1_52_UA_NI,C1_52,110,1,unambiguous,non-ironic,c,The rmeal was a genuinely enjoyable experience.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She had an excellent meal at a restaurant.
 Target utterance: She says: """"That was a great restaurant visit.""""
@@ -570,7 +570,7 @@ c. The rmeal was a genuinely enjoyable experience.
 d. She always enjoyed a restaurant visit before a big day out.
 Answer:
 ","c
-","['b', 'd', 'a', 'c']",1,UA_NI,"{'a': 22.125, 'b': 21.375, 'c': 39.0, 'd': 21.0}","{'a': 4.691164079417831e-08, 'b': 2.2159490242756874e-08, 'c': 1.0, 'd': 1.5229979055675358e-08}",1.0,c,,a
+","['b', 'd', 'a', 'c']",1,UA_NI,"{'a': 22.375, 'b': 21.375, 'c': 39.0, 'd': 21.0}","{'a': 6.023573462243803e-08, 'b': 2.2159488466400035e-08, 'c': 0.9999998807907104, 'd': 1.522997727931852e-08}",0.9999998807907104,c,,a,,,,,c
 C1_53_A_I,C1_53,94,1,ambiguous,ironic,b,The ground was dried out.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: After the weather changed, the ground became wet.
 Target utterance: She says: """"Perfect conditions for a picnic..""""
@@ -581,7 +581,7 @@ c. The ground was uneven where she stood.
 d. The ground was moist and muddy after the rain.
 Answer:
 ","d
-","['c', 'b', 'd', 'a']",1,A_I,"{'a': 27.125, 'b': 23.875, 'c': 25.0, 'd': 40.0}","{'a': 2.5612810077291215e-06, 'b': 9.931164868248743e-08, 'c': 3.059014090922574e-07, 'd': 0.9999970197677612}",0.9999970197677612,d,,a
+","['c', 'b', 'd', 'a']",1,A_I,"{'a': 27.5, 'b': 24.125, 'c': 25.5, 'd': 40.5}","{'a': 2.260323299196898e-06, 'b': 7.734400497838578e-08, 'c': 3.0590146593567624e-07, 'd': 0.9999972581863403}",0.9999972581863403,d,,a,,,,,d
 C1_54_A_NI,C1_54,141,1,ambiguous,non-ironic,a,The garden was struggling without any water.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: The garden was wet in the morning.
 Target utterance: They said: """"That’s enough water for the day.""""
@@ -592,7 +592,7 @@ c. They wanted a new water feature.
 d. They played some boardgames in the garden.
 Answer:
 ","a
-","['a', 'b', 'c', 'd']",1,A_NI,"{'a': 43.5, 'b': 25.125, 'c': 28.875, 'd': 25.125}","{'a': 0.9999995231628418, 'b': 1.0467395838986704e-08, 'c': 4.450850497050851e-07, 'd': 1.0467395838986704e-08}",0.9999995231628418,a,,a
+","['a', 'b', 'c', 'd']",1,A_NI,"{'a': 43.0, 'b': 24.875, 'c': 29.0, 'd': 25.0}","{'a': 0.9999991655349731, 'b': 1.3440398127784192e-08, 'c': 8.315280410897685e-07, 'd': 1.5229966621177482e-08}",0.9999991655349731,a,,a,,,,,a
 C1_55_UA_I,C1_55,108,1,unambiguous,ironic,c,The plants had been wilting due to lack of water.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: The field was soaked.
 Target utterance: He says: """"Terrible news for anything trying to grow..""""
@@ -603,7 +603,7 @@ c. The plants had been wilting due to lack of water.
 d. The plants had been getting plenty of moisture to grow.
 Answer:
 ","c
-","['c', 'd', 'b', 'a']",1,UA_I,"{'a': 22.5, 'b': 22.5, 'c': 40.0, 'd': 22.25}","{'a': 2.510999053129126e-08, 'b': 2.510999053129126e-08, 'c': 1.0, 'd': 1.9555681518568235e-08}",1.0,c,,b
+","['c', 'd', 'b', 'a']",1,UA_I,"{'a': 22.75, 'b': 22.875, 'c': 40.5, 'd': 22.375}","{'a': 1.9555681518568235e-08, 'b': 2.2159490242756874e-08, 'c': 1.0, 'd': 1.3440409674103648e-08}",1.0,c,,b,,,,,c
 C1_56_UA_NI,C1_56,101,1,unambiguous,non-ironic,a,Her hair was soaking wet.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She saw her soaked hair.
 Target utterance: She said: """"The rain really caught me by surprise.""""
@@ -614,7 +614,7 @@ c. She had her hair cut short last week.
 d. They organised a surprise party for him.
 Answer:
 ","a
-","['a', 'b', 'd', 'c']",1,UA_NI,"{'a': 42.75, 'b': 25.0, 'c': 28.125, 'd': 24.125}","{'a': 0.9999995231628418, 'b': 1.9555672636784038e-08, 'c': 4.450850497050851e-07, 'd': 8.152016839346743e-09}",0.9999995231628418,a,,a
+","['a', 'b', 'd', 'c']",1,UA_NI,"{'a': 42.25, 'b': 25.0, 'c': 28.125, 'd': 24.375}","{'a': 0.9999992847442627, 'b': 3.224184652594886e-08, 'c': 7.338210252783028e-07, 'd': 1.725781650918634e-08}",0.9999992847442627,a,,a,,,,,a
 C1_57_A_I,C1_57,23,1,ambiguous,ironic,b,I thought the outfit was ugly.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: I wore a pretty outfit to attend the award ceremony.
 Target utterance: I say: """"I really didn't try at all today.""""
@@ -625,7 +625,7 @@ c. The comedians on the stage enjoyed themselves.
 d. I received an amazing award.
 Answer:
 ","b
-","['a', 'b', 'd', 'c']",1,A_I,"{'a': 24.625, 'b': 41.25, 'c': 26.125, 'd': 22.875}","{'a': 6.023572041158332e-08, 'b': 0.9999996423721313, 'c': 2.699577521525498e-07, 'd': 1.0467397615343543e-08}",0.9999996423721313,b,,b
+","['a', 'b', 'd', 'c']",1,A_I,"{'a': 25.625, 'b': 42.75, 'c': 27.125, 'd': 23.625}","{'a': 3.653481428500527e-08, 'b': 0.9999997615814209, 'c': 1.6373768119137821e-07, 'd': 4.944449294441711e-09}",0.9999997615814209,b,,b,,,,,b
 C1_58_A_NI,C1_58,33,1,ambiguous,non-ironic,d,She admired the car.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She saw a pretty car on the street.
 Target utterance: She says: """"That’s a real beauty.""""
@@ -636,7 +636,7 @@ c. She thought the car was ugly.
 d. She admired the car.
 Answer:
 ","d
-","['c', 'd', 'b', 'a']",1,A_NI,"{'a': 27.0, 'b': 22.875, 'c': 24.0, 'd': 40.0}","{'a': 2.2603239813179243e-06, 'b': 3.6534732572590656e-08, 'c': 1.1253490583840176e-07, 'd': 0.999997615814209}",0.999997615814209,d,,a
+","['c', 'd', 'b', 'a']",1,A_NI,"{'a': 26.875, 'b': 22.625, 'c': 24.125, 'd': 39.5}","{'a': 3.288748530394514e-06, 'b': 4.6911477369349086e-08, 'c': 2.1024266061431263e-07, 'd': 0.999996542930603}",0.999996542930603,d,,a,,,,,d
 C1_59_UA_I,C1_59,175,1,unambiguous,ironic,c,The painting was genuinely beautiful.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He looked at a stunning painting.
 Target utterance: He said: """"That's hard to look at.""""
@@ -647,7 +647,7 @@ c. The painting was genuinely beautiful.
 d. They spent the weekend for this painting.
 Answer:
 ","b
-","['c', 'a', 'b', 'd']",1,UA_I,"{'a': 25.875, 'b': 43.0, 'c': 27.375, 'd': 24.375}","{'a': 3.653481428500527e-08, 'b': 0.9999997615814209, 'c': 1.6373768119137821e-07, 'd': 8.152018615703582e-09}",0.9999997615814209,b,,a
+","['c', 'a', 'b', 'd']",1,UA_I,"{'a': 26.125, 'b': 43.25, 'c': 27.625, 'd': 24.5}","{'a': 3.653481428500527e-08, 'b': 0.9999997615814209, 'c': 1.6373768119137821e-07, 'd': 7.194131068644083e-09}",0.9999997615814209,b,,a,,,,,b
 C1_60_UA_NI,C1_60,19,1,unambiguous,non-ironic,a,They thought the bird was beautiful.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They saw a stunning bird.
 Target utterance: They said: """"A real eye-catcher.""""
@@ -658,7 +658,7 @@ c. They thought the bird was not beautiful.
 d. The bird looked at them really closely.
 Answer:
 ","a
-","['a', 'd', 'b', 'c']",1,UA_NI,"{'a': 43.5, 'b': 26.375, 'c': 29.25, 'd': 26.0}","{'a': 0.9999992847442627, 'b': 3.6534796521436874e-08, 'c': 6.475947884609923e-07, 'd': 2.5109972767722866e-08}",0.9999992847442627,a,,a
+","['a', 'd', 'b', 'c']",1,UA_NI,"{'a': 43.5, 'b': 26.5, 'c': 29.5, 'd': 26.375}","{'a': 0.9999990463256836, 'b': 4.1399335515279745e-08, 'c': 8.315279274029308e-07, 'd': 3.653478586329584e-08}",0.9999990463256836,a,,a,,,,,a
 C1_61_A_I,C1_61,85,1,ambiguous,ironic,a,The kettle was expensive.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: I found a nice kettle which was expensive.
 Target utterance: I said: """"What a steal.""""
@@ -669,7 +669,7 @@ c. The kettle was a real bargain.
 d. The kettle boiled over..
 Answer:
 ","c
-","['b', 'c', 'a', 'd']",1,A_I,"{'a': 24.0, 'b': 23.125, 'c': 41.25, 'd': 23.125}","{'a': 3.224186784223093e-08, 'b': 1.3440409674103648e-08, 'c': 1.0, 'd': 1.3440409674103648e-08}",1.0,c,,a
+","['b', 'c', 'a', 'd']",1,A_I,"{'a': 24.125, 'b': 23.25, 'c': 41.25, 'd': 23.375}","{'a': 3.6534821390432626e-08, 'b': 1.5229979055675358e-08, 'c': 1.0, 'd': 1.7257828943684217e-08}",1.0,c,,a,,,,,c
 C1_62_A_NI,C1_62,13,1,ambiguous,non-ironic,b,The vase was worth a lot of money.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He broke an expensive vase.
 
@@ -681,7 +681,7 @@ c. He went on a hike and picked up flowers.
 d. The vase was not pricy.
 Answer:
 ","b
-","['c', 'a', 'd', 'b']",1,A_NI,"{'a': 25.375, 'b': 41.5, 'c': 26.125, 'd': 23.25}","{'a': 9.931191158329966e-08, 'b': 0.9999996423721313, 'c': 2.1024331431362953e-07, 'd': 1.1861115645217524e-08}",0.9999996423721313,b,,a
+","['c', 'a', 'd', 'b']",1,A_NI,"{'a': 25.25, 'b': 41.25, 'c': 26.25, 'd': 23.125}","{'a': 1.1253511900122248e-07, 'b': 0.9999995231628418, 'c': 3.05902176478412e-07, 'd': 1.344040345685471e-08}",0.9999995231628418,b,,a,,,,,b
 C1_63_UA_I,C1_63,189,1,unambiguous,ironic,b,The perfume was not pricy.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She was wearing overpriced perfume.
 Target utterance: She said: """"Smells like it's from a gas station.""""
@@ -692,7 +692,7 @@ c. The fragrance label was worth reading.
 d. The ocean was calm and quiet.
 Answer:
 ","a
-","['a', 'b', 'c', 'd']",1,UA_I,"{'a': 43.0, 'b': 24.875, 'c': 27.375, 'd': 23.75}","{'a': 0.9999998807907104, 'b': 1.3440407897746809e-08, 'c': 1.6373770961308765e-07, 'd': 4.363461592049589e-09}",0.9999998807907104,a,,a
+","['a', 'b', 'c', 'd']",1,UA_I,"{'a': 43.0, 'b': 25.125, 'c': 27.375, 'd': 23.75}","{'a': 0.9999998807907104, 'b': 1.7257827167327378e-08, 'c': 1.6373770961308765e-07, 'd': 4.363461592049589e-09}",0.9999998807907104,a,,a,,,,,a
 C1_64_UA_NI,C1_64,285,1,unambiguous,non-ironic,a,The bag was worth a lot.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She got an overpriced bag.
 Target utterance: She said: """"Looks like a real designer piece.""""
@@ -703,7 +703,7 @@ c. She had dark bags under her eyes.
 d. The bag was worth very little.
 Answer:
 ","a
-","['a', 'c', 'd', 'b']",1,UA_NI,"{'a': 42.5, 'b': 25.125, 'c': 28.125, 'd': 24.375}","{'a': 0.9999994039535522, 'b': 2.845333035850217e-08, 'c': 5.715004363082699e-07, 'd': 1.3440401680497871e-08}",0.9999994039535522,a,,a
+","['a', 'c', 'd', 'b']",1,UA_NI,"{'a': 42.0, 'b': 24.75, 'c': 27.625, 'd': 24.0}","{'a': 0.9999994039535522, 'b': 3.224185007866254e-08, 'c': 5.715004363082699e-07, 'd': 1.522997017389116e-08}",0.9999994039535522,a,,a,,,,,a
 C1_65_A_I,C1_65,61,1,ambiguous,ironic,d,The house felt spacious and huge.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They moved into a big house.
 Target utterance: They said: """"You can barely turn around in here.""""
@@ -714,7 +714,7 @@ c. The house felt cramped and tiny.
 d. The house felt spacious and huge.
 Answer:
 ","c
-","['d', 'c', 'a', 'b']",1,A_I,"{'a': 22.625, 'b': 23.5, 'c': 40.75, 'd': 23.5}","{'a': 1.3440407897746809e-08, 'b': 3.224186428951725e-08, 'c': 0.9999998807907104, 'd': 3.224186428951725e-08}",0.9999998807907104,c,,a
+","['d', 'c', 'a', 'b']",1,A_I,"{'a': 22.75, 'b': 23.625, 'c': 41.0, 'd': 23.375}","{'a': 1.1861120086109622e-08, 'b': 2.8453348122070565e-08, 'c': 1.0, 'd': 2.2159490242756874e-08}",1.0,c,,a,,,,,c
 C1_66_A_NI,C1_66,149,1,ambiguous,non-ironic,c,They thought the concert was huge.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: They attended a concert at a big venue.
 Target utterance: They said: """"What a massive event.""""
@@ -725,7 +725,7 @@ c. They thought the concert was huge.
 d. They thought the concert was small.
 Answer:
 ","c
-","['d', 'c', 'a', 'b']",1,A_NI,"{'a': 22.875, 'b': 22.5, 'c': 39.25, 'd': 22.5}","{'a': 7.734419682492444e-08, 'b': 5.3157837243134054e-08, 'c': 0.9999997615814209, 'd': 5.3157837243134054e-08}",0.9999997615814209,c,,a
+","['d', 'c', 'a', 'b']",1,A_NI,"{'a': 22.0, 'b': 21.75, 'c': 37.75, 'd': 21.625}","{'a': 1.444979602638341e-07, 'b': 1.125351332120772e-07, 'c': 0.9999996423721313, 'd': 9.931191158329966e-08}",0.9999996423721313,c,,a,,,,,c
 C1_67_UA_I,C1_67,193,1,unambiguous,ironic,b,She thought the spider was huge.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She spotted a enormous spider.
 Target utterance: She said: """"Almost didn't see it.""""
@@ -736,7 +736,7 @@ c. She went to see her doctor on Monday.
 d. She drew a spider diagram to plan her essay.
 Answer:
 ","b
-","['a', 'b', 'c', 'd']",1,UA_I,"{'a': 26.25, 'b': 43.5, 'c': 26.5, 'd': 23.5}","{'a': 3.224186428951725e-08, 'b': 0.9999998807907104, 'c': 4.139937104241653e-08, 'd': 2.061153470123145e-09}",0.9999998807907104,b,,b
+","['a', 'b', 'c', 'd']",1,UA_I,"{'a': 26.5, 'b': 44.25, 'c': 27.125, 'd': 23.875}","{'a': 1.9555681518568235e-08, 'b': 1.0, 'c': 3.6534821390432626e-08, 'd': 1.4166088302403068e-09}",1.0,b,,b,,,,,b
 C1_68_UA_NI,C1_68,34,1,unambiguous,non-ironic,b,I thought the dog was huge.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: I met an enormous dog.
 Target utterance: I said: """"He could swallow me whole.""""
@@ -747,7 +747,7 @@ c. The dog wore a collar.
 d. I thought the dog was small.
 Answer:
 ","b
-","['c', 'a', 'd', 'b']",1,UA_NI,"{'a': 26.125, 'b': 43.5, 'c': 26.75, 'd': 23.75}","{'a': 2.8453344569356886e-08, 'b': 0.9999998807907104, 'c': 5.315784434856141e-08, 'd': 2.646573404874175e-09}",0.9999998807907104,b,,a
+","['c', 'a', 'd', 'b']",1,UA_NI,"{'a': 25.875, 'b': 43.0, 'c': 26.75, 'd': 23.875}","{'a': 3.653481783771895e-08, 'b': 0.9999998807907104, 'c': 8.764247638737288e-08, 'd': 4.94445018262013e-09}",0.9999998807907104,b,,a,,,,,b
 C1_69_A_I,C1_69,88,1,ambiguous,ironic,d,The pool was super warm.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She jumped into a warm pool.
 Target utterance: She said:  """"One could catch a cold in here.""""
@@ -758,7 +758,7 @@ c. She played a game of pool in the bar.
 d. The pool was super warm.
 Answer:
 ","b
-","['c', 'a', 'd', 'b']",1,A_I,"{'a': 29.375, 'b': 47.5, 'c': 30.625, 'd': 26.75}","{'a': 1.3440407897746809e-08, 'b': 0.9999998807907104, 'c': 4.691163368875095e-08, 'd': 9.736199624299502e-10}",0.9999998807907104,b,,a
+","['c', 'a', 'd', 'b']",1,A_I,"{'a': 29.5, 'b': 47.5, 'c': 30.625, 'd': 26.5}","{'a': 1.522997727931852e-08, 'b': 0.9999998807907104, 'c': 4.691163368875095e-08, 'd': 7.582559025109958e-10}",0.9999998807907104,b,,a,,,,,b
 C1_70_A_NI,C1_70,160,1,ambiguous,non-ironic,b,The weather conditions were perfect.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: He went to the beach, and the weather was warm.
 Target utterance: He said: """"Couldn't have asked for better weather.""""
@@ -769,7 +769,7 @@ c. He meant to harvest the houseplants, but forgot about it.
 d. The delivery driver arrived in heavy rain.
 Answer:
 ","b
-","['b', 'a', 'd', 'c']",1,A_NI,"{'a': 26.0, 'b': 41.75, 'c': 26.125, 'd': 22.75}","{'a': 1.444979602638341e-07, 'b': 0.9999996423721313, 'c': 1.637376669805235e-07, 'd': 5.602794228565244e-09}",0.9999996423721313,b,,a
+","['b', 'a', 'd', 'c']",1,A_NI,"{'a': 25.625, 'b': 41.0, 'c': 25.75, 'd': 22.375}","{'a': 2.102432858919201e-07, 'b': 0.9999995231628418, 'c': 2.382368506914645e-07, 'd': 8.152016839346743e-09}",0.9999995231628418,b,,a,,,,,b
 C1_71_UA_I,C1_71,154,1,unambiguous,ironic,d,The room was really warm.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: I walked into a hot room. 
 Target utterance: I said:  """"Feels like the North Pole in here.""""
@@ -780,7 +780,7 @@ c. The room was freezing cold.
 d. The room was really warm.
 Answer:
 ","c
-","['c', 'd', 'a', 'b']",1,UA_I,"{'a': 25.5, 'b': 25.75, 'c': 44.0, 'd': 26.625}","{'a': 9.23744991609965e-09, 'b': 1.1861120086109622e-08, 'c': 1.0, 'd': 2.8453348122070565e-08}",1.0,c,,a
+","['c', 'd', 'a', 'b']",1,UA_I,"{'a': 26.0, 'b': 26.125, 'c': 44.25, 'd': 26.625}","{'a': 1.1861120086109622e-08, 'b': 1.3440409674103648e-08, 'c': 1.0, 'd': 2.2159490242756874e-08}",1.0,c,,a,,,,,c
 C1_72_UA_NI,C1_72,5,1,unambiguous,non-ironic,d,Her coffee was delicious.,Gemma-3-1B,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
 Context: She took a sip of the hot coffee.
 Target utterance: She said: """"This is what freshly made coffee tastes like.""""
@@ -791,4 +791,4 @@ c. Her coffee did not taste good.
 d. Her coffee was delicious.
 Answer:
 ","d
-","['d', 'c', 'b', 'a']",1,UA_NI,"{'a': 26.625, 'b': 23.5, 'c': 24.5, 'd': 39.75}","{'a': 1.9947290184063604e-06, 'b': 8.764227743540687e-08, 'c': 2.382363959441136e-07, 'd': 0.999997615814209}",0.999997615814209,d,,a
+","['d', 'c', 'b', 'a']",1,UA_NI,"{'a': 26.625, 'b': 23.875, 'c': 24.75, 'd': 39.5}","{'a': 2.561280780355446e-06, 'b': 1.637372122331726e-07, 'c': 3.927851253138215e-07, 'd': 0.9999969005584717}",0.9999969005584717,d,,a,,,,,d
