@@ -6,7 +6,6 @@ from sklearn.metrics import precision_recall_fscore_support
 
 from util.shuffle_options import combine_results, letter_to_pos
 
-
 def compute_classification_metrics(
     df,
     pred_col="chosen_option",
@@ -32,7 +31,6 @@ def compute_classification_metrics(
 
     accuracy = (y_true == y_pred).mean()
 
-    # Single class check - macro average doesn't work with one class
     unique_classes = y_true.unique()
     if len(unique_classes) == 1:
         precision = recall = f1 = 0.0
@@ -53,21 +51,18 @@ def compute_classification_metrics(
 
     return overall
 
-
-def compute_group_metrics(sub_df):
+def compute_group_metrics(sub_df, pred_col="chosen_original_option", gold_col="correct_option_pos"):
     """
     Compute metrics for a subset of the data.
     """
-    # Empty DataFrame check
     if len(sub_df) == 0:
         return 0.0, 0.0, 0.0, 0.0
 
-    y_true = sub_df["correct_option_pos"].apply(letter_to_pos)
-    y_pred = sub_df["chosen_original_option"].apply(letter_to_pos) 
+    y_true = sub_df[gold_col].apply(letter_to_pos)
+    y_pred = sub_df[pred_col].apply(letter_to_pos)
 
     accuracy = (y_true == y_pred).mean()
 
-    # Single class check
     if len(y_true.unique()) == 1:
         return accuracy, 0.0, 0.0, 0.0
 
@@ -81,18 +76,14 @@ def compute_group_metrics(sub_df):
     return accuracy, precision, recall, f1
 
 
-def context_metrics(df):
+def context_metrics(df, pred_col="chosen_original_option", gold_col="correct_option_pos"):
     """
     Compute metrics for ambiguous vs unambiguous contexts.
     """
     rows = []
-
     for context, grp in df.groupby("context_level"):
-        # Clean missing data
-        grp_clean = grp.dropna(subset=["chosen_option", "correct_option_pos"])
-        
-        acc, p, r, f1 = compute_group_metrics(grp_clean)
-
+        grp_clean = grp.dropna(subset=[pred_col, gold_col])
+        acc, p, r, f1 = compute_group_metrics(grp_clean, pred_col, gold_col)
         rows.append({
             "context_level": context,
             "n": len(grp_clean),
@@ -101,22 +92,17 @@ def context_metrics(df):
             "recall": round(r, 3),
             "f1": round(f1, 3)
         })
-
     return pd.DataFrame(rows)
 
 
-def irony_metrics(df):
+def irony_metrics(df, pred_col="chosen_original_option", gold_col="correct_option_pos"):
     """
     Compute metrics for ironic vs non-ironic examples.
     """
     rows = []
-
     for irony, grp in df.groupby("irony_label"):
-        # Clean missing data
-        grp_clean = grp.dropna(subset=["chosen_option", "correct_option_pos"])
-        
-        acc, p, r, f1 = compute_group_metrics(grp_clean)
-
+        grp_clean = grp.dropna(subset=[pred_col, gold_col])
+        acc, p, r, f1 = compute_group_metrics(grp_clean, pred_col, gold_col)
         rows.append({
             "irony_label": irony,
             "n": len(grp_clean),
@@ -125,24 +111,17 @@ def irony_metrics(df):
             "recall": round(r, 3),
             "f1": round(f1, 3)
         })
-
     return pd.DataFrame(rows)
 
 
-def interaction_metrics(df):
+def interaction_metrics(df, pred_col="chosen_original_option", gold_col="correct_option_pos"):
     """
     Compute metrics for context_level × irony_label interaction.
     """
     rows = []
-
-    for (context, irony), grp in df.groupby(
-        ["context_level", "irony_label"]
-    ):
-        # Clean missing data
-        grp_clean = grp.dropna(subset=["chosen_option", "correct_option_pos"])
-        
-        acc, p, r, f1 = compute_group_metrics(grp_clean)
-
+    for (context, irony), grp in df.groupby(["context_level", "irony_label"]):
+        grp_clean = grp.dropna(subset=[pred_col, gold_col])
+        acc, p, r, f1 = compute_group_metrics(grp_clean, pred_col, gold_col)
         rows.append({
             "context_level": context,
             "irony_label": irony,
@@ -152,7 +131,6 @@ def interaction_metrics(df):
             "recall": round(r, 3),
             "f1": round(f1, 3)
         })
-
     return pd.DataFrame(rows)
 
     # =========================================================
@@ -296,3 +274,92 @@ def load_from_combined_csv(outputs_dir, model_key,dataset_name, prompt_type):
 
     print(f"Filtered to dataset={dataset_name}, prompt_type={prompt_type}: {filtered.shape[0]} rows")
     return filtered
+def save_rsa_metrics(df, metrics_path, model_key, dataset_name, prompt_type="rsa"):
+    """
+    Compute and save per-stage RSA metrics (L0, S1, L1, Final), each broken
+    down by irony, context × irony, and option distribution — same format
+    as save_metrics(), but repeated once per RSA stage.
+    """
+    if df is None or df.empty:
+        print("No data to compute RSA metrics on.")
+        return
+
+    stage_cols = {
+        "L0 (Literal Listener)":     "rsa_l0",
+        "S1 (Informative Speaker)":  "rsa_s1",
+        "L1 (Pragmatic Listener)":   "rsa_l1",
+        "Final Answer":              "rsa_final",
+    }
+
+    try:
+        os.makedirs(os.path.dirname(metrics_path), exist_ok=True)
+
+        with open(metrics_path, "w") as f:
+            f.write(f"Model      : {model_key}\n")
+            f.write(f"Dataset    : {dataset_name}\n")
+            f.write(f"Prompt Type: {prompt_type}\n")
+            f.write(f"{'='*50}\n\n")
+
+            for stage_label, pred_col in stage_cols.items():
+                if pred_col not in df.columns:
+                    f.write(f"### {stage_label} — column '{pred_col}' not found, skipping\n\n")
+                    continue
+
+                stage_df = df.dropna(subset=[pred_col, "correct_option_pos"])
+
+                f.write(f"{'#'*60}\n")
+                f.write(f"### STAGE: {stage_label}\n")
+                f.write(f"{'#'*60}\n\n")
+
+                if stage_df.empty:
+                    f.write("No valid predictions for this stage.\n\n")
+                    continue
+
+                irony_df = irony_metrics(stage_df, pred_col=pred_col)
+                interaction_df = interaction_metrics(stage_df, pred_col=pred_col)
+
+                f.write("--- Irony ---\n")
+                f.write(irony_df.to_string(index=False))
+                f.write("\n\n")
+
+                f.write("--- Context × Irony ---\n")
+                f.write(interaction_df.to_string(index=False))
+                f.write("\n\n")
+
+                # Option distribution for this stage
+                f.write("--- Option Distribution ---\n")
+                option_stats = []
+                for opt in ["a", "b", "c", "d"]:
+                    mask = stage_df[pred_col] == opt
+                    count = mask.sum()
+                    if count > 0:
+                        correct = (stage_df[mask][pred_col] == stage_df[mask]["correct_option_pos"]).sum()
+                        incorrect = count - correct
+                        accuracy = correct / count
+                        option_stats.append({
+                            "Option": opt,
+                            "Selection Count": count,
+                            "Correct": correct,
+                            "Incorrect": incorrect,
+                            "Accuracy %": f"{accuracy*100:.1f}%",
+                            "Selection %": f"{(count/len(stage_df))*100:.1f}%"
+                        })
+
+                if option_stats:
+                    stats_df = pd.DataFrame(option_stats)
+                    f.write(stats_df.to_string(index=False))
+                    f.write("\n\n")
+
+                f.write("Selection Distribution:\n")
+                selection_counts = stage_df[pred_col].value_counts().sort_index()
+                for opt, count in selection_counts.items():
+                    pct = (count / len(stage_df)) * 100
+                    f.write(f"  Option {opt}: {count:3d} selections ({pct:5.1f}%)\n")
+                f.write("\n\n")
+
+        print(f"\n✓ RSA stage metrics saved to: {metrics_path}")
+
+    except Exception as e:
+        print(f"ERROR computing RSA metrics: {e}")
+        import traceback
+        traceback.print_exc()
