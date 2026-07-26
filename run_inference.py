@@ -13,7 +13,7 @@ from transformers import (
 )
 from util.confidence import get_option_confidence
 from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, letter_to_pos, parse_options, pos_to_letter, save_combined
-from util.parse import parse_response, parse_response_rsa
+from util.parse import add_rsa_columns, parse_response, parse_response_rsa
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
@@ -259,12 +259,14 @@ def generate_predictions(
 
     # ── Parse responses ───────────────────────────────────
     if prompt_type.lower() == "rsa":
-        parsed = df["output"].apply(parse_response_rsa)
+        df = add_rsa_columns(df, output_col="output")
+        # RSA's "final" stage is the analogue of chosen_option/reasoning downstream
+        df["chosen_option"] = df["rsa_final"]
+        df["reasoning"] = None  # RSA has no single reasoning field; l0/s1/l1/final are separate
     else:
-            parsed = df.apply(lambda row: parse_response(row['output'], row['prompt_type']), axis=1)
-
-    df["chosen_option"] = [p[0] for p in parsed]  # comapred selections (1, 2, 3, 4)
-    df["reasoning"]     = [p[1] for p in parsed]
+        parsed = df.apply(lambda row: parse_response(row['output'], row['prompt_type']), axis=1)
+        df["chosen_option"] = [p[0] for p in parsed]  # comapred selections (1, 2, 3, 4)
+        df["reasoning"]     = [p[1] for p in parsed]
 
     # Convert shuffled selection → ORIGINAL selection
     def convert_to_original_option(row):
