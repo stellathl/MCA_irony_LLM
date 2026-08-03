@@ -192,11 +192,18 @@ def generate_predictions(
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": prompt} 
                 ]
-                formatted_prompt = tokenizer.apply_chat_template(
-                    messages,
-                    tokenize=False,
-                    add_generation_prompt=True
-                )
+
+                if tokenizer.chat_template is not None:
+                    formatted_prompt = tokenizer.apply_chat_template(
+                        messages,
+                        tokenize=False,
+                        add_generation_prompt=True,
+                        
+                    )
+                else:
+                    # GPT doesn't accept chat_template format, we need to manually just inser this
+                    formatted_prompt = f"{SYSTEM_PROMPT}\n\n{prompt}"
+
                 result = pipe(
                     formatted_prompt,
                     max_new_tokens=MAX_NEW_TOKENS,
