@@ -276,7 +276,8 @@ def generate_predictions(
         
     else:
         parsed = df.apply(lambda row: parse_response(row['output'], row['prompt_type']), axis=1)
-        df["chosen_option"] = [p[0] for p in parsed]  # comapred selections (1, 2, 3, 4)
+        # parsed is a Series of tuples: (chosen_letter, reasoning_text)
+        df["chosen_option"] = [p[0] for p in parsed]
         df["reasoning"]     = [p[1] for p in parsed]
 
     # Convert shuffled selection → ORIGINAL selection
