@@ -11,10 +11,10 @@ from transformers import (
     AutoTokenizer,
     pipeline
 )
-from util.confidence import get_option_confidence
 from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, letter_to_pos, parse_options, pos_to_letter, save_combined
 from util.parse import add_rsa_columns, parse_response, parse_response_rsa
 from util.tokenizer import build_prompt
+from util.confidence import get_option_confidence
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
     save_metrics, load_from_combined_csv, load_from_run_csvs, save_rsa_metrics
@@ -273,11 +273,11 @@ def generate_predictions(
     def convert_to_original_option(row):
         """
         Convert the shuffled selection to the original selection.
-        
+
         Example:
-        - original_option_mapping = "[1, 3, 4, 2]"
-        - Shuffled position 3 seçildi
-        - mapping[3-1] = mapping[2] = 4 (orijinal option 4)
+        - original_option_mapping = "['a', 'c', 'd', 'b']"
+        - Model selected 'c' (shuffled position 3)
+        - mapping[3-1] = mapping[2] = 'd' (original option 'd')
         """
         if pd.isna(row["chosen_option"]):
             return None
@@ -462,7 +462,6 @@ if __name__ == "__main__":
                         dataset_name,
                         prompt_type
                     )
-
                     # ── RSA-specific combined stage metrics ────────────────
                     if prompt_type.lower() == "rsa":
                         combined_rsa_metrics_path = os.path.join(
@@ -470,7 +469,7 @@ if __name__ == "__main__":
                             f"{model_key}_{dataset_name}_{prompt_type}_combined_rsa_stage_metrics.txt"
                         )
                         save_rsa_metrics(combined_results, combined_rsa_metrics_path, model_key, dataset_name, prompt_type)
-     
+
             print(f"\n{'='*60}")
             print(f"Cleaning up model: {model_key}")
             print(f"{'='*60}")
@@ -486,3 +485,4 @@ if __name__ == "__main__":
             import traceback
             traceback.print_exc()
             continue
+
