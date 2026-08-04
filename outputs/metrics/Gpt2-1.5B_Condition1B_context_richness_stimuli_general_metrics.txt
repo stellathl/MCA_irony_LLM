@@ -1,0 +1,32 @@
+Model      : Gpt2-1.5B
+Dataset    : Condition1B_context_richness_stimuli
+Prompt Type: general
+==================================================
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 143     0.189      0.199   0.202 0.201
+ non-ironic 142     0.535      0.511   0.507 0.508
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 71     0.183      0.175   0.192 0.181
+    ambiguous  non-ironic 71     0.507      0.501   0.485 0.484
+  unambiguous      ironic 72     0.194      0.214   0.210 0.210
+  unambiguous  non-ironic 71     0.563      0.529   0.527 0.526
+
+==================================================
+--- ORIGINAL OPTION DISTRIBUTION ---
+==================================================
+
+Original Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+              a               72       39         33      54.2%       25.0%
+              b               83       20         63      24.1%       28.8%
+              c               60       23         37      38.3%       20.8%
+              d               70       21         49      30.0%       24.3%
+
+Selection Distribution:
+  Option a:  72 selections ( 25.0%)
+  Option b:  83 selections ( 28.8%)
+  Option c:  60 selections ( 20.8%)
+  Option d:  70 selections ( 24.3%)

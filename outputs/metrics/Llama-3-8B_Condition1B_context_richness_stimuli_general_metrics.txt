@@ -1,0 +1,32 @@
+Model      : Llama-3-8B
+Dataset    : Condition1B_context_richness_stimuli
+Prompt Type: general
+==================================================
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 144     0.312      0.145   0.280 0.185
+ non-ironic 144     0.236      0.125   0.203 0.138
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 72     0.278      0.127   0.263 0.164
+    ambiguous  non-ironic 72     0.222      0.120   0.188 0.132
+  unambiguous      ironic 72     0.347      0.164   0.301 0.207
+  unambiguous  non-ironic 72     0.250      0.129   0.218 0.145
+
+==================================================
+--- ORIGINAL OPTION DISTRIBUTION ---
+==================================================
+
+Original Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+              a              217       62        155      28.6%       75.3%
+              b               68       17         51      25.0%       23.6%
+              c                1        0          1       0.0%        0.3%
+              d                2        0          2       0.0%        0.7%
+
+Selection Distribution:
+  Option a: 217 selections ( 75.3%)
+  Option b:  68 selections ( 23.6%)
+  Option c:   1 selections (  0.3%)
+  Option d:   2 selections (  0.7%)
