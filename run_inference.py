@@ -13,11 +13,11 @@ from transformers import (
 )
 from util.confidence import get_option_confidence
 from util.shuffle_options import build_run_splits, combine_results, format_options, get_correct_option_text, letter_to_pos, parse_options, pos_to_letter, save_combined
-from util.parse import parse_response, parse_response_rsa
+from util.parse import add_rsa_columns, parse_response, parse_response_rsa
 from util.tokenizer import build_prompt
 from util.constants import (MODELS, PROMPT_FILES, SEEDS)
 from util.metrics import (
-    save_metrics, load_from_combined_csv, load_from_run_csvs
+    save_metrics, load_from_combined_csv, load_from_run_csvs, save_rsa_metrics
 )
 
 # =========================================================
@@ -260,11 +260,14 @@ def generate_predictions(
     # ── Parse responses ───────────────────────────────────
     if prompt_type.lower() == "rsa":
         parsed = df["output"].apply(parse_response_rsa)
+        # parsed is a Series of dicts: {"l0":..., "s1":..., "l1":..., "final":..., "raw_text":...}
+        df["chosen_option"] = [p["final"] for p in parsed]   # use the Final Answer as the chosen option
+        df["reasoning"]     = [p["raw_text"] for p in parsed]  # keep full raw text as "reasoning"
     else:
-            parsed = df.apply(lambda row: parse_response(row['output'], row['prompt_type']), axis=1)
-
-    df["chosen_option"] = [p[0] for p in parsed]  # comapred selections (1, 2, 3, 4)
-    df["reasoning"]     = [p[1] for p in parsed]
+        parsed = df.apply(lambda row: parse_response(row['output'], row['prompt_type']), axis=1)
+        # parsed is a Series of tuples: (chosen_letter, reasoning_text)
+        df["chosen_option"] = [p[0] for p in parsed]
+        df["reasoning"]     = [p[1] for p in parsed]
 
     # Convert shuffled selection → ORIGINAL selection
     def convert_to_original_option(row):
@@ -412,6 +415,7 @@ if __name__ == "__main__":
                             )
 
                             if result_df is not None and not result_df.empty:
+                                result_df = add_rsa_columns(result_df, output_col="output") 
                                 result_df.to_csv(output_path, index=False)
                                 print(f"✓ Results saved to: {output_path}")
                                 all_results.append(result_df)
@@ -458,6 +462,14 @@ if __name__ == "__main__":
                         dataset_name,
                         prompt_type
                     )
+
+                    # ── RSA-specific combined stage metrics ────────────────
+                    if prompt_type.lower() == "rsa":
+                        combined_rsa_metrics_path = os.path.join(
+                            OUTPUTS_DIR, "metrics",
+                            f"{model_key}_{dataset_name}_{prompt_type}_combined_rsa_stage_metrics.txt"
+                        )
+                        save_rsa_metrics(combined_results, combined_rsa_metrics_path, model_key, dataset_name, prompt_type)
      
             print(f"\n{'='*60}")
             print(f"Cleaning up model: {model_key}")
@@ -474,14 +486,3 @@ if __name__ == "__main__":
             import traceback
             traceback.print_exc()
             continue
-
-metrics_dir = Path("outputs/metrics")
-
-subprocess.run(
-    [
-        sys.executable,
-        "util/visualize_metrics.py",
-        str(metrics_dir),
-    ],
-    check=True,
-)
