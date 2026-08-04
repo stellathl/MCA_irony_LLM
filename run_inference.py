@@ -266,10 +266,14 @@ def generate_predictions(
 
     # ── Parse responses ───────────────────────────────────
     if prompt_type.lower() == "rsa":
-        df = add_rsa_columns(df, output_col="output")
-        # RSA's "final" stage is the analogue of chosen_option/reasoning downstream
-        df["chosen_option"] = [p["final"] for p in parsed]   # use the Final Answer as the chosen option
-        df["reasoning"]     = [p["raw_text"] for p in parsed]  # keep full raw text as "reasoning"
+        try:
+            df = add_rsa_columns(df, output_col="output")
+            # RSA's "final" stage is the analogue of chosen_option/reasoning downstream
+            df["chosen_option"] = df["rsa_final"]
+            df["reasoning"] = [p["raw_text"] for p in parsed]  # keep full raw text as "reasoning" # RSA has no single reasoning field; l0/s1/l1/final are separate
+        except Exception as e:
+            print(f"ERROR on record #{i}: {e}")
+        
     else:
         parsed = df.apply(lambda row: parse_response(row['output'], row['prompt_type']), axis=1)
         df["chosen_option"] = [p[0] for p in parsed]  # comapred selections (1, 2, 3, 4)
@@ -421,7 +425,6 @@ if __name__ == "__main__":
                             )
 
                             if result_df is not None and not result_df.empty:
-                                result_df = add_rsa_columns(result_df, output_col="output") 
                                 result_df.to_csv(output_path, index=False)
                                 print(f"✓ Results saved to: {output_path}")
                                 all_results.append(result_df)
