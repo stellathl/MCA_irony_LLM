@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name="mca-irony"
-#SBATCH --time=24:00:00
+#SBATCH --time=05:00:00
 #SBATCH --ntasks=1
 #SBATCH --threads-per-core=1
 #SBATCH --mem=40G

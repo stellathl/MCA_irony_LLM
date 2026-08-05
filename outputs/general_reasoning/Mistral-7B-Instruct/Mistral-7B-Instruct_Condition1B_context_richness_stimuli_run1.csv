@@ -1,4 +1,4 @@
-Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,chosen_option,reasoning,chosen_original_option
+Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,option_logits_raw,confidence_dist,confidence_top_prob,chosen_option,reasoning,chosen_original_option
 C1_01_A_I,C1_01,113,1,ambiguous,ironic,c,The cat was really hard to lift up.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He lifted the overweight cat from the table.
 Target utterance: He said:  """"That was easy!""""
@@ -11,11 +11,11 @@ Reasoning:
 Answer:
 ","d. The cat was easy to lift up.
 Reasoning:
-- The action of lifting the cat from the table suggests that the person was referring to the cat, not an exam or a cat bed.
-- The statement ""That was easy!"" is typically used to express that a task was not difficult, which aligns with the action of easily lifting the cat.
-- The other options (a, b, c) do not relate to the context provided in the story.","['c', 'd', 'b', 'a']",1,A_I,d,"- The action of lifting the cat from the table suggests that the person was referring to the cat, not an exam or a cat bed.
-- The statement ""That was easy!"" is typically used to express that a task was not difficult, which aligns with the action of easily lifting the cat.
-- The other options (a, b, c) do not relate to the context provided in the story.",a
+- The action of lifting the cat from the table implies that the person was interacting with the cat.
+- The statement ""That was easy!"" is a common expression used when a task or action is completed with little effort or difficulty.
+- Given the context, it is reasonable to assume that the person is commenting on the ease of lifting the cat, not referring to an exam or a cat bed.","['c', 'd', 'b', 'a']",1,A_I,"{'a': 7.34375, 'b': 10.6875, 'c': 11.375, 'd': 22.875}","{'a': 1.7982792144266568e-07, 'b': 5.093652816867689e-06, 'c': 1.0129938345926348e-05, 'd': 0.999984622001648}",0.999984622001648,d,"- The action of lifting the cat from the table implies that the person was interacting with the cat.
+- The statement ""That was easy!"" is a common expression used when a task or action is completed with little effort or difficulty.
+- Given the context, it is reasonable to assume that the person is commenting on the ease of lifting the cat, not referring to an exam or a cat bed.",a
 C1_02_A_NI,C1_02,63,1,ambiguous,non-ironic,b,The dog was really heavy to pick up.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She picked up her overweight dog.
 Target utterance: She said: """"Heaviest dog ever.""""
@@ -29,11 +29,13 @@ Answer:
 ","b. The dog was really heavy to pick up.
 
 Reasoning:
-- The action of picking up the dog suggests that the person was handling the dog's weight.
-- The statement ""Heaviest dog ever"" implies that the dog is unusually heavy compared to other dogs.
-- The context does not suggest that the person has just adopted a new dog or that the dog was light. Therefore, the most likely meaning is that the dog was really heavy to pick up.","['d', 'a', 'b', 'c']",1,A_NI,b,"- The action of picking up the dog suggests that the person was handling the dog's weight.
-- The statement ""Heaviest dog ever"" implies that the dog is unusually heavy compared to other dogs.
-- The context does not suggest that the person has just adopted a new dog or that the dog was light. Therefore, the most likely meaning is that the dog was really heavy to pick up.",a
+- The action of picking up the dog implies that the dog is heavy.
+- The statement ""Heaviest dog ever"" suggests that the dog is unusually heavy compared to other dogs.
+- The context does not suggest that she has just adopted a new dog or that the dog was light.
+- The context also does not imply that she was carrying a package.","['d', 'a', 'b', 'c']",1,A_NI,"{'a': 6.4375, 'b': 22.0, 'c': 8.5, 'd': 8.75}","{'a': 1.7429731258289394e-07, 'b': 0.9999966621398926, 'c': 1.3709545783058275e-06, 'd': 1.7603404103283538e-06}",0.9999966621398926,b,"- The action of picking up the dog implies that the dog is heavy.
+- The statement ""Heaviest dog ever"" suggests that the dog is unusually heavy compared to other dogs.
+- The context does not suggest that she has just adopted a new dog or that the dog was light.
+- The context also does not imply that she was carrying a package.",a
 C1_03_UA_I,C1_03,216,1,unambiguous,ironic,d,Getting their friend off the ground took a lot of effort.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They lift their obese friend.
 Target utterance: They said: """"Light as a feather.""""
@@ -48,10 +50,10 @@ Answer:
 
 Reasoning:
 - The phrase ""Light as a feather"" is often used to describe something that is very light or easy to lift.
-- In this context, the friends are lifting their obese friend, so it is reasonable to assume that they are saying the friend was easy to lift.
-- The other options do not fit the situation as they do not relate to the act of lifting the friend.","['a', 'c', 'd', 'b']",1,UA_I,a,"- The phrase ""Light as a feather"" is often used to describe something that is very light or easy to lift.
-- In this context, the friends are lifting their obese friend, so it is reasonable to assume that they are saying the friend was easy to lift.
-- The other options do not fit the situation as they do not relate to the act of lifting the friend.",a
+- In this context, the friends are lifting their obese friend, so it is reasonable to infer that they are saying their friend was easy to lift.
+- The other options do not make sense in the given situation. The phrase ""Light as a feather"" does not refer to a falling feather (b), and there is no indication of dinner plans (c). Additionally, the statement does not suggest that lifting their friend took a lot of effort (d).","['a', 'c', 'd', 'b']",1,UA_I,"{'a': 21.625, 'b': 8.125, 'c': 7.65625, 'd': 6.71875}","{'a': 0.9999973773956299, 'b': 1.3709554878005292e-06, 'c': 8.579220320825698e-07, 'd': 3.359670870395348e-07}",0.9999973773956299,a,"- The phrase ""Light as a feather"" is often used to describe something that is very light or easy to lift.
+- In this context, the friends are lifting their obese friend, so it is reasonable to infer that they are saying their friend was easy to lift.
+- The other options do not make sense in the given situation. The phrase ""Light as a feather"" does not refer to a falling feather (b), and there is no indication of dinner plans (c). Additionally, the statement does not suggest that lifting their friend took a lot of effort (d).",a
 C1_04_UA_NI,C1_04,242,1,unambiguous,non-ironic,d,Holding my nephew took all my strength.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: I held my obese nephew in my arms.
 Target utterance: I said: """"Heavier than an elephant.""""
@@ -65,13 +67,11 @@ Answer:
 ","d. Holding my nephew took all my strength.
 
 Reasoning:
-- The statement ""Heavier than an elephant"" implies that the person is comparing the weight of their nephew to that of an elephant, suggesting that the nephew is very heavy.
-- In the given context, the person is holding their nephew, which would require physical strength.
-- Therefore, it is reasonable to infer that the person is conveying that holding their nephew took all their strength, as the nephew is so heavy.
-- The other options do not make sense in the given context. ""Holding my nephew took nothing of my strength"" contradicts the idea that the nephew is heavy. ""The","['b', 'c', 'd', 'a']",1,UA_NI,d,"- The statement ""Heavier than an elephant"" implies that the person is comparing the weight of their nephew to that of an elephant, suggesting that the nephew is very heavy.
-- In the given context, the person is holding their nephew, which would require physical strength.
-- Therefore, it is reasonable to infer that the person is conveying that holding their nephew took all their strength, as the nephew is so heavy.
-- The other options do not make sense in the given context. ""Holding my nephew took nothing of my strength"" contradicts the idea that the nephew is heavy. ""The",a
+- The phrase ""Heavier than an elephant"" is often used to describe something very heavy.
+- In this context, the speaker is holding their nephew, who is obese, and describes him as being heavier than an elephant, implying that he is very heavy and takes a lot of strength to hold.
+- The other options do not make sense in the given context. For example, the statement ""Holding my nephew took nothing of my strength"" would imply the opposite of what the speaker said, and ""The elephant lumbered slowly across the plain"" and ""My nephew ate a burger that day","['b', 'c', 'd', 'a']",1,UA_NI,"{'a': 9.75, 'b': 10.875, 'c': 11.1875, 'd': 22.625}","{'a': 2.5612343961256556e-06, 'b': 7.88915713201277e-06, 'c': 1.0783199286379386e-05, 'd': 0.99997878074646}",0.99997878074646,d,"- The phrase ""Heavier than an elephant"" is often used to describe something very heavy.
+- In this context, the speaker is holding their nephew, who is obese, and describes him as being heavier than an elephant, implying that he is very heavy and takes a lot of strength to hold.
+- The other options do not make sense in the given context. For example, the statement ""Holding my nephew took nothing of my strength"" would imply the opposite of what the speaker said, and ""The elephant lumbered slowly across the plain"" and ""My nephew ate a burger that day",a
 C1_05_A_I,C1_05,122,1,ambiguous,ironic,c,The cake tasted really bad.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She ate a palatable cake.
 Target utterance: She said: """"What an amazing flavour.""""
@@ -85,10 +85,10 @@ Answer:
 ","a. The cake tasted really good.
 Reasoning:
 - The statement ""What an amazing flavour"" is a positive comment about the taste of the cake.
-- There is no mention of candles or soup, so options b, c, and d can be ruled out.
-- The word ""palatable"" in the context means ""pleasant to eat or drink"" which supports the interpretation that the cake tasted good.","['a', 'd', 'b', 'c']",1,A_I,a,"- The statement ""What an amazing flavour"" is a positive comment about the taste of the cake.
-- There is no mention of candles or soup, so options b, c, and d can be ruled out.
-- The word ""palatable"" in the context means ""pleasant to eat or drink"" which supports the interpretation that the cake tasted good.",a
+- There is no mention of candles or soup in the context, so options b and d can be ruled out.
+- Option c, ""The cake tasted really bad,"" is also unlikely as the statement is positive.","['a', 'd', 'b', 'c']",1,A_I,"{'a': 22.375, 'b': 8.4375, 'c': 7.40625, 'd': 6.40625}","{'a': 0.9999986886978149, 'b': 8.851565667100658e-07, 'c': 3.1561228297505295e-07, 'd': 1.1610727312927338e-07}",0.9999986886978149,a,"- The statement ""What an amazing flavour"" is a positive comment about the taste of the cake.
+- There is no mention of candles or soup in the context, so options b and d can be ruled out.
+- Option c, ""The cake tasted really bad,"" is also unlikely as the statement is positive.",a
 C1_06_A_NI,C1_06,132,1,ambiguous,non-ironic,c,The medicine tasted surprisingly pleasant.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He swallowed the medicine and found it palatable
 Target utterance: He said: """"Tastier than expected.""""
@@ -104,11 +104,9 @@ Answer:
 Reasoning:
 - The context states that he swallowed the medicine, which suggests he consumed it.
 - The target utterance ""Tastier than expected"" implies a positive surprise about the taste.
-- Since the context mentions medicine, not a cake, option d can be ruled out.
-- Options a and b are not supported by the information given in the context or the target utterance.","['d', 'b', 'a', 'c']",1,A_NI,c,"- The context states that he swallowed the medicine, which suggests he consumed it.
+- Since the context mentions medicine, not a cake or food item, options a, b, and d can be ruled out.","['d', 'b', 'a', 'c']",1,A_NI,"{'a': 6.6875, 'b': 8.9375, 'c': 22.0, 'd': 8.625}","{'a': 2.238020329059509e-07, 'b': 2.1233745428617112e-06, 'c': 0.9999960660934448, 'd': 1.5534940303041367e-06}",0.9999960660934448,c,"- The context states that he swallowed the medicine, which suggests he consumed it.
 - The target utterance ""Tastier than expected"" implies a positive surprise about the taste.
-- Since the context mentions medicine, not a cake, option d can be ruled out.
-- Options a and b are not supported by the information given in the context or the target utterance.",a
+- Since the context mentions medicine, not a cake or food item, options a, b, and d can be ruled out.",a
 C1_07_UA_I,C1_07,249,1,unambiguous,ironic,c,The smoothie was thoroughly nasty.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: I took a sip of my smoothie and found it delicious.
 Target utterance: I said: """"What a treat.""""
@@ -122,11 +120,11 @@ Answer:
 ","b. The smoothie was thoroughly enjoyable.
 
 Reasoning:
-- The person took a sip of the smoothie and found it delicious, which implies that they enjoyed it.
-- ""What a treat"" is an expression often used to indicate something that is enjoyable or a pleasure.
-- The other options do not fit the context as there is no indication of giving a treat to a dog, expressing dislike for the smoothie, or looking for a new smoothie recipe.","['c', 'a', 'b', 'd']",1,UA_I,b,"- The person took a sip of the smoothie and found it delicious, which implies that they enjoyed it.
-- ""What a treat"" is an expression often used to indicate something that is enjoyable or a pleasure.
-- The other options do not fit the context as there is no indication of giving a treat to a dog, expressing dislike for the smoothie, or looking for a new smoothie recipe.",a
+- The person took a sip of the smoothie and found it delicious, which suggests that they enjoyed it.
+- ""What a treat"" is an expression often used to indicate something enjoyable or pleasurable.
+- The other options do not fit the context as there is no indication of giving a treat to a dog, expressing dislike for the smoothie, or searching for a new smoothie recipe.","['c', 'a', 'b', 'd']",1,UA_I,"{'a': 7.0, 'b': 21.25, 'c': 9.4375, 'd': 8.8125}","{'a': 6.475875125033781e-07, 'b': 0.9999880790710449, 'c': 7.4112467700615525e-06, 'd': 3.966954409406753e-06}",0.9999880790710449,b,"- The person took a sip of the smoothie and found it delicious, which suggests that they enjoyed it.
+- ""What a treat"" is an expression often used to indicate something enjoyable or pleasurable.
+- The other options do not fit the context as there is no indication of giving a treat to a dog, expressing dislike for the smoothie, or searching for a new smoothie recipe.",a
 C1_08_UA_NI,C1_08,96,1,unambiguous,non-ironic,a,They liked every single bite of the burger.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They ate a delicious burger.
 Target utterance: They said: """"This burger tasted like heaven.""""
@@ -140,13 +138,11 @@ Answer:
 ","a. They liked every single bite of the burger.
 
 Reasoning:
-- The phrase ""This burger tasted like heaven"" is a common idiom used to express extreme pleasure or enjoyment of food.
-- In this context, there is no indication that the person is comparing the burger to anything else, so it is unlikely that they are saying the burger is better than pizza (b).
-- The price of the burger is not mentioned, so it is not likely that they are saying the burger was the most expensive item on the menu (c).
-- The phrase does not suggest that the person found the burger unpalatable or difficult to eat (d).","['a', 'd', 'c', 'b']",1,UA_NI,a,"- The phrase ""This burger tasted like heaven"" is a common idiom used to express extreme pleasure or enjoyment of food.
-- In this context, there is no indication that the person is comparing the burger to anything else, so it is unlikely that they are saying the burger is better than pizza (b).
-- The price of the burger is not mentioned, so it is not likely that they are saying the burger was the most expensive item on the menu (c).
-- The phrase does not suggest that the person found the burger unpalatable or difficult to eat (d).",a
+- The phrase ""This burger tasted like heaven"" is a common idiom used to express extreme enjoyment or pleasure in food.
+- The context provided does not suggest any comparison with other food items or mention of the burger's price.
+- The statement does not imply any difficulty in swallowing the burger.","['a', 'd', 'c', 'b']",1,UA_NI,"{'a': 22.125, 'b': 8.375, 'c': 7.5625, 'd': 6.40625}","{'a': 0.9999983310699463, 'b': 1.0677022146410309e-06, 'c': 4.737899814699631e-07, 'd': 1.4908462731000327e-07}",0.9999983310699463,a,"- The phrase ""This burger tasted like heaven"" is a common idiom used to express extreme enjoyment or pleasure in food.
+- The context provided does not suggest any comparison with other food items or mention of the burger's price.
+- The statement does not imply any difficulty in swallowing the burger.",a
 C1_09_A_I,C1_09,218,1,ambiguous,ironic,a,The babysitter was not taking good care of the kids.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They hired a fearless babysitter.
 Target utterance: They said: """"The kids are not safe at all.""""
@@ -160,11 +156,11 @@ Answer:
 ","a. The babysitter was not taking good care of the kids.
 
 Reasoning:
-- The statement ""The kids are not safe at all"" suggests a concern about the safety of the children, which would be a concern if the babysitter was not taking good care of them.
-- The context of hiring a ""fearless babysitter"" implies that they were looking for someone who could handle potentially challenging situations, so it is unlikely that the babysitter parked her car outside or that the kids had very clean hands would be a concern in this context.
-- The statement does not provide any information about the cleanliness of the kids' hands, so option d can be ruled out.","['b', 'a', 'd', 'c']",1,A_I,a,"- The statement ""The kids are not safe at all"" suggests a concern about the safety of the children, which would be a concern if the babysitter was not taking good care of them.
-- The context of hiring a ""fearless babysitter"" implies that they were looking for someone who could handle potentially challenging situations, so it is unlikely that the babysitter parked her car outside or that the kids had very clean hands would be a concern in this context.
-- The statement does not provide any information about the cleanliness of the kids' hands, so option d can be ruled out.",b
+- The statement ""The kids are not safe at all"" suggests that the children are in danger or not secure, which is likely due to the babysitter's actions or lack thereof.
+- The context of hiring a ""fearless"" babysitter implies that they were expecting a responsible and capable caregiver.
+- The options ""The kids had very clean hands"" and ""The babysitter parked her car outside"" do not relate to the situation or the statement made.","['b', 'a', 'd', 'c']",1,A_I,"{'a': 22.0, 'b': 9.0625, 'c': 8.5625, 'd': 7.75}","{'a': 0.9999955892562866, 'b': 2.406097564744414e-06, 'c': 1.4593719015465467e-06, 'd': 6.475924010374001e-07}",0.9999955892562866,a,"- The statement ""The kids are not safe at all"" suggests that the children are in danger or not secure, which is likely due to the babysitter's actions or lack thereof.
+- The context of hiring a ""fearless"" babysitter implies that they were expecting a responsible and capable caregiver.
+- The options ""The kids had very clean hands"" and ""The babysitter parked her car outside"" do not relate to the situation or the statement made.",b
 C1_10_A_NI,C1_10,288,1,ambiguous,non-ironic,d,The police officer made them feel very safe.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They met a fearless police officer.
 Target utterance: They said: """"We felt so safe around you""""
@@ -176,13 +172,12 @@ d. The police officer made them feel very safe.
 Reasoning:
 Answer:
 ","d. The police officer made them feel very safe.
-
 Reasoning:
-- The context of the story describes meeting a fearless police officer, which implies a sense of safety.
-- The target utterance ""We felt so safe around you"" directly expresses that the people felt safe in the presence of the police officer.
-- The other options do not relate to the situation described in the story.","['d', 'c', 'b', 'a']",1,A_NI,d,"- The context of the story describes meeting a fearless police officer, which implies a sense of safety.
-- The target utterance ""We felt so safe around you"" directly expresses that the people felt safe in the presence of the police officer.
-- The other options do not relate to the situation described in the story.",a
+- The statement ""We felt so safe around you"" directly implies that the speaker felt a sense of security or safety in the presence of the police officer.
+- There is no mention of coffee, seats, or any negative feelings about the police officer in the statement.
+- The context of meeting a fearless police officer suggests that the speaker would likely feel safe around them, making option d the most likely meaning.","['d', 'c', 'b', 'a']",1,A_NI,"{'a': 8.9375, 'b': 10.5625, 'c': 10.25, 'd': 22.0}","{'a': 2.1233388451946666e-06, 'b': 1.0783204743347596e-05, 'c': 7.889160769991577e-06, 'd': 0.9999792575836182}",0.9999792575836182,d,"- The statement ""We felt so safe around you"" directly implies that the speaker felt a sense of security or safety in the presence of the police officer.
+- There is no mention of coffee, seats, or any negative feelings about the police officer in the statement.
+- The context of meeting a fearless police officer suggests that the speaker would likely feel safe around them, making option d the most likely meaning.",a
 C1_11_UA_I,C1_11,58,1,unambiguous,ironic,d,Seeing the pilot made her feel even more anxious.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She noticed the brave pilot before boarding.
 Target utterance: She said: """"That really shook me up.""""
@@ -198,9 +193,9 @@ Answer:
 Reasoning:
 - The context describes the person noticing the pilot before boarding, which suggests a connection or awareness of the pilot.
 - The target utterance ""That really shook me up"" is a common phrase used to express fear or anxiety.
-- None of the other options (a, b, c) provide a clear connection between the situation and the phrase ""That really shook me up"".","['d', 'a', 'c', 'b']",1,UA_I,d,"- The context describes the person noticing the pilot before boarding, which suggests a connection or awareness of the pilot.
+- None of the other options (a, b, c) provide a clear connection to the person feeling anxious after seeing the pilot.","['d', 'a', 'c', 'b']",1,UA_I,"{'a': 7.65625, 'b': 9.8125, 'c': 10.0, 'd': 22.5}","{'a': 3.5763349615081097e-07, 'b': 3.0894818792148726e-06, 'c': 3.726626573552494e-06, 'd': 0.999992847442627}",0.999992847442627,d,"- The context describes the person noticing the pilot before boarding, which suggests a connection or awareness of the pilot.
 - The target utterance ""That really shook me up"" is a common phrase used to express fear or anxiety.
-- None of the other options (a, b, c) provide a clear connection between the situation and the phrase ""That really shook me up"".",b
+- None of the other options (a, b, c) provide a clear connection to the person feeling anxious after seeing the pilot.",b
 C1_12_UA_NI,C1_12,128,1,unambiguous,non-ironic,b,His father showed no fear at all.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He saw his brave father.
 Target utterance: He said: """"Brave as a lion""""
@@ -215,7 +210,7 @@ Answer:
 Reasoning:
 - The phrase ""Brave as a lion"" is often used to describe someone who shows courage and fearlessness.
 - In the context of the story, the father is described as ""brave,"" so it is likely that the speaker is reinforcing this characteristic.
-- There is no mention of a lion or a blue jacket, and the father's fear is not suggested in the passage.","['d', 'a', 'c', 'b']",1,UA_NI,b,"- The phrase ""Brave as a lion"" is often used to describe someone who shows courage and fearlessness.
+- There is no mention of a lion or a blue jacket, and the father's fear is not suggested in the passage.","['d', 'a', 'c', 'b']",1,UA_NI,"{'a': 7.625, 'b': 21.875, 'c': 9.625, 'd': 10.0625}","{'a': 6.475870009126083e-07, 'b': 0.9999872446060181, 'c': 4.785056262335274e-06, 'd': 7.41124040359864e-06}",0.9999872446060181,b,"- The phrase ""Brave as a lion"" is often used to describe someone who shows courage and fearlessness.
 - In the context of the story, the father is described as ""brave,"" so it is likely that the speaker is reinforcing this characteristic.
 - There is no mention of a lion or a blue jacket, and the father's fear is not suggested in the passage.",a
 C1_13_A_I,C1_13,102,1,ambiguous,ironic,a,"His girlfriend clearly looked worn out, not refreshed at all.",Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
@@ -231,11 +226,11 @@ Answer:
 ","a. His girlfriend clearly looked worn out, not refreshed at all.
 
 Reasoning:
-- The phrase ""You look like you've been awake since birth"" is often used to suggest that someone appears tired or exhausted, as if they haven't had any rest.
-- In this context, the boyfriend is commenting on his girlfriend's appearance, which he perceives as tired or lacking energy.
-- There is no indication in the passage that the girlfriend looked well-rested, was about to receive a meal, or had just been given a drink.","['b', 'd', 'a', 'c']",1,A_I,a,"- The phrase ""You look like you've been awake since birth"" is often used to suggest that someone appears tired or exhausted, as if they haven't had any rest.
-- In this context, the boyfriend is commenting on his girlfriend's appearance, which he perceives as tired or lacking energy.
-- There is no indication in the passage that the girlfriend looked well-rested, was about to receive a meal, or had just been given a drink.",b
+- The phrase ""You look like you've been awake since birth"" is often used to express that someone appears tired or exhausted, as if they haven't had any rest.
+- In this context, the man is observing his girlfriend and making a comment about her appearance, which suggests she looks tired.
+- There is no indication in the passage that the man is planning a surprise meal, finding his girlfriend well-rested, or buying her a drink.","['b', 'd', 'a', 'c']",1,A_I,"{'a': 22.25, 'b': 9.875, 'c': 8.8125, 'd': 8.8125}","{'a': 0.9999929666519165, 'b': 4.222821644361829e-06, 'c': 1.459368149880902e-06, 'd': 1.459368149880902e-06}",0.9999929666519165,a,"- The phrase ""You look like you've been awake since birth"" is often used to express that someone appears tired or exhausted, as if they haven't had any rest.
+- In this context, the man is observing his girlfriend and making a comment about her appearance, which suggests she looks tired.
+- There is no indication in the passage that the man is planning a surprise meal, finding his girlfriend well-rested, or buying her a drink.",b
 C1_14_A_NI,C1_14,135,1,ambiguous,non-ironic,d,Her colleague seemed very energetic today.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She saw her energetic colleague.
 Target utterance: She said: """"You seem so full of energy today.""""
@@ -249,11 +244,11 @@ Answer:
 ","d. Her colleague seemed very energetic today.
 
 Reasoning:
-- The statement ""You seem so full of energy today"" is a comment about the person's current state or demeanor.
+- The statement ""You seem so full of energy today"" is a comment about the person's current state or behavior.
 - In the context of the story, the speaker (She) is observing her colleague, so it is reasonable to assume she is commenting on the colleague's energy level.
-- The options a, b, and c do not fit the context as they do not relate to the colleague's energy level or the situation described.","['d', 'c', 'b', 'a']",1,A_NI,d,"- The statement ""You seem so full of energy today"" is a comment about the person's current state or demeanor.
+- The options a, b, and c do not fit the context as they do not relate to the colleague's energy level or behavior.","['d', 'c', 'b', 'a']",1,A_NI,"{'a': 8.1875, 'b': 11.0, 'c': 10.8125, 'd': 23.0}","{'a': 3.6898438793286914e-07, 'b': 6.144141480035614e-06, 'c': 5.093671916256426e-06, 'd': 0.9999884366989136}",0.9999884366989136,d,"- The statement ""You seem so full of energy today"" is a comment about the person's current state or behavior.
 - In the context of the story, the speaker (She) is observing her colleague, so it is reasonable to assume she is commenting on the colleague's energy level.
-- The options a, b, and c do not fit the context as they do not relate to the colleague's energy level or the situation described.",a
+- The options a, b, and c do not fit the context as they do not relate to the colleague's energy level or behavior.",a
 C1_15_UA_I,C1_15,15,1,unambiguous,ironic,c,They felt really exhausted after the sleepover.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: After the sleepover, they were hyperactive.
 Target utterance: They said:  """"We never felt more tired in our lifes.""""
@@ -268,9 +263,9 @@ Answer:
 
 Reasoning:
 - The context describes the children as hyperactive after the sleepover, which is typically associated with energy and not tiredness.
-- The target utterance contradicts their hyperactive state, suggesting they felt the opposite - tired.
-- The options a, b, and d do not fit the context or the contradiction in the target utterance.","['c', 'd', 'b', 'a']",1,UA_I,c,"- The context describes the children as hyperactive after the sleepover, which is typically associated with energy and not tiredness.
-- The target utterance contradicts their hyperactive state, suggesting they felt the opposite - tired.
+- The target utterance contradicts their hyperactive behavior, suggesting they felt the opposite - tired.
+- The options a, b, and d do not fit the context or the contradiction in the target utterance.","['c', 'd', 'b', 'a']",1,UA_I,"{'a': 7.375, 'b': 9.5625, 'c': 22.25, 'd': 9.4375}","{'a': 3.4663059977901867e-07, 'b': 3.0894848350726534e-06, 'c': 0.9999938011169434, 'd': 2.726460934354691e-06}",0.9999938011169434,c,"- The context describes the children as hyperactive after the sleepover, which is typically associated with energy and not tiredness.
+- The target utterance contradicts their hyperactive behavior, suggesting they felt the opposite - tired.
 - The options a, b, and d do not fit the context or the contradiction in the target utterance.",b
 C1_16_UA_NI,C1_16,111,1,unambiguous,non-ironic,c,I felt fully prepared and ready for the exam.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: Right before my exam, I felt really hyperactive.
@@ -285,11 +280,11 @@ Answer:
 ","c. I felt fully prepared and ready for the exam.
 
 Reasoning:
-- The person is taking an exam, and they feel hyperactive, which is often associated with excitement or readiness.
-- The phrase ""I have never felt more ready"" suggests that the person is confident and prepared for the exam.
-- The other options do not fit the context of the situation described. For example, option a contradicts the person's statement, as feeling hyperactive is not typically associated with a lack of preparation. Option b is incorrect because it refers to the time the exam started, not the person's readiness. Option d is unrelated to the exam or the person's readiness.","['b', 'd', 'a', 'c']",1,UA_NI,c,"- The person is taking an exam, and they feel hyperactive, which is often associated with excitement or readiness.
-- The phrase ""I have never felt more ready"" suggests that the person is confident and prepared for the exam.
-- The other options do not fit the context of the situation described. For example, option a contradicts the person's statement, as feeling hyperactive is not typically associated with a lack of preparation. Option b is incorrect because it refers to the time the exam started, not the person's readiness. Option d is unrelated to the exam or the person's readiness.",a
+- The person is taking an exam, and they feel hyperactive, which is often associated with being energetic or excited.
+- Saying ""I have never felt more ready"" suggests that they are confident and prepared for the exam.
+- The other options do not fit the context of the situation described. For example, option a contradicts the person's statement, as feeling hyperactive is not typically a sign of being unprepared. Option b is about the time the exam starts, not the person's readiness, and option d is about dinner, not the exam.","['b', 'd', 'a', 'c']",1,UA_NI,"{'a': 7.6875, 'b': 10.1875, 'c': 21.75, 'd': 9.9375}","{'a': 7.81135213401285e-07, 'b': 9.516174031887203e-06, 'c': 0.9999823570251465, 'd': 7.411204023810569e-06}",0.9999823570251465,c,"- The person is taking an exam, and they feel hyperactive, which is often associated with being energetic or excited.
+- Saying ""I have never felt more ready"" suggests that they are confident and prepared for the exam.
+- The other options do not fit the context of the situation described. For example, option a contradicts the person's statement, as feeling hyperactive is not typically a sign of being unprepared. Option b is about the time the exam starts, not the person's readiness, and option d is about dinner, not the exam.",a
 C1_17_A_I,C1_17,241,1,ambiguous,ironic,c,Her idea was outdated.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She had an old idea.
 Target utterance: She said: """"Truly ahead of its time.""""
@@ -304,9 +299,9 @@ Answer:
 Reasoning:
 - The phrase ""Truly ahead of its time"" is often used to describe something that was innovative or forward-thinking for its era.
 - There is no indication in the passage that she had the idea to redecorate her office or that she had arrived early.
-- The phrase ""old idea"" suggests that the idea was not new at the time she was speaking, but it could still be innovative.","['a', 'd', 'b', 'c']",1,A_I,a,"- The phrase ""Truly ahead of its time"" is often used to describe something that was innovative or forward-thinking for its era.
+- The phrase ""old idea"" suggests that the idea was not new at the time she was expressing it, but it could still be innovative.","['a', 'd', 'b', 'c']",1,A_I,"{'a': 22.25, 'b': 8.75, 'c': 8.0, 'd': 7.125}","{'a': 0.9999977350234985, 'b': 1.3709560562347178e-06, 'c': 6.475937652794528e-07, 'd': 2.699572121400706e-07}",0.9999977350234985,a,"- The phrase ""Truly ahead of its time"" is often used to describe something that was innovative or forward-thinking for its era.
 - There is no indication in the passage that she had the idea to redecorate her office or that she had arrived early.
-- The phrase ""old idea"" suggests that the idea was not new at the time she was speaking, but it could still be innovative.",a
+- The phrase ""old idea"" suggests that the idea was not new at the time she was expressing it, but it could still be innovative.",a
 C1_18_A_NI,C1_18,134,1,ambiguous,non-ironic,a,He found the approach genuinely new and creative.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: It was an old approach. 
 Target utterance: He said: """"How refreshingly innovative.""""
@@ -320,10 +315,10 @@ Answer:
 ","a. He found the approach genuinely new and creative.
 Reasoning:
 - The phrase ""How refreshingly innovative"" suggests a positive reaction to something new and creative.
-- The context does not indicate that refreshments were served or that he had spent months researching new approaches.
-- The phrase ""It was an old approach"" suggests that the approach was not new, so it is unlikely that he found it stale or unoriginal.","['a', 'b', 'c', 'd']",1,A_NI,a,"- The phrase ""How refreshingly innovative"" suggests a positive reaction to something new and creative.
-- The context does not indicate that refreshments were served or that he had spent months researching new approaches.
-- The phrase ""It was an old approach"" suggests that the approach was not new, so it is unlikely that he found it stale or unoriginal.",a
+- The context does not indicate that refreshments were served or that he had researched new approaches for several months.
+- The approach being old suggests it was not something he had seen many times before, making option b less likely.","['a', 'b', 'c', 'd']",1,A_NI,"{'a': 22.25, 'b': 7.25, 'c': 7.5625, 'd': 6.6875}","{'a': 0.9999990463256836, 'b': 3.0590203436986485e-07, 'c': 4.1811850337580836e-07, 'd': 1.7429772469768068e-07}",0.9999990463256836,a,"- The phrase ""How refreshingly innovative"" suggests a positive reaction to something new and creative.
+- The context does not indicate that refreshments were served or that he had researched new approaches for several months.
+- The approach being old suggests it was not something he had seen many times before, making option b less likely.",a
 C1_19_UA_I,C1_19,209,1,unambiguous,ironic,a,"To her, the tradition felt stale and long past its use.",Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: The tradition was ancient.
 Target utterance: She said: """"How wonderfully timeless.""""
@@ -339,7 +334,7 @@ Answer:
 Reasoning:
 - The use of the word ""wonderfully"" suggests a positive sentiment.
 - The term ""timeless"" implies something that is enduring or lasting, which fits with the context of a tradition.
-- The other options do not fit the context or the positive connotation of the words used.","['b', 'd', 'a', 'c']",1,UA_I,c,"- The use of the word ""wonderfully"" suggests a positive sentiment.
+- The other options do not fit the context or the positive connotation of the words used.","['b', 'd', 'a', 'c']",1,UA_I,"{'a': 7.3125, 'b': 9.5, 'c': 22.375, 'd': 9.5625}","{'a': 2.873670155167929e-07, 'b': 2.5612744138925336e-06, 'c': 0.9999943971633911, 'd': 2.726462525970419e-06}",0.9999943971633911,c,"- The use of the word ""wonderfully"" suggests a positive sentiment.
 - The term ""timeless"" implies something that is enduring or lasting, which fits with the context of a tradition.
 - The other options do not fit the context or the positive connotation of the words used.",a
 C1_20_UA_NI,C1_20,87,1,unambiguous,non-ironic,d,She liked the smell of her car.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
@@ -353,13 +348,12 @@ d. She liked the smell of her car.
 Reasoning:
 Answer:
 ","d. She liked the smell of her car.
-
 Reasoning:
 - The statement ""I just love the new car smell"" is a common expression used when someone is pleased with the fresh, new scent that comes from a recently purchased vehicle.
 - There is no indication in the passage that she could smell something else (a), went to the gas station (b), or was disappointed (c).
-- The context of buying an ancient car does not necessarily mean it would have a bad smell, so it is unlikely she would be disappointed with the smell (c).","['c', 'd', 'b', 'a']",1,UA_NI,d,"- The statement ""I just love the new car smell"" is a common expression used when someone is pleased with the fresh, new scent that comes from a recently purchased vehicle.
+- The context of buying an ancient car does not necessarily mean it would have a bad smell, so it's unlikely she would be disappointed with the smell (c).","['c', 'd', 'b', 'a']",1,UA_NI,"{'a': 7.9375, 'b': 11.1875, 'c': 10.375, 'd': 22.375}","{'a': 5.368642632674892e-07, 'b': 1.3845912690158002e-05, 'c': 6.144086455606157e-06, 'd': 0.9999794960021973}",0.9999794960021973,d,"- The statement ""I just love the new car smell"" is a common expression used when someone is pleased with the fresh, new scent that comes from a recently purchased vehicle.
 - There is no indication in the passage that she could smell something else (a), went to the gas station (b), or was disappointed (c).
-- The context of buying an ancient car does not necessarily mean it would have a bad smell, so it is unlikely she would be disappointed with the smell (c).",a
+- The context of buying an ancient car does not necessarily mean it would have a bad smell, so it's unlikely she would be disappointed with the smell (c).",a
 C1_21_A_I,C1_21,247,1,ambiguous,ironic,b,The birthday party was a disappointment.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She left the birthday party feeling happy.
 Target utterance: She says: """"Truly a night to remember.""""
@@ -374,9 +368,9 @@ Answer:
 Reasoning:
 - The statement ""Truly a night to remember"" is often used to express that an event was enjoyable and memorable.
 - Since she left the party feeling happy, it is likely that the party was a success.
-- There is no indication in the text that she had trouble remembering things, planned her next birthday party, or that the party was a disappointment.","['c', 'b', 'd', 'a']",1,A_I,d,"- The statement ""Truly a night to remember"" is often used to express that an event was enjoyable and memorable.
+- There is no indication in the passage that she had trouble remembering things, planned her next birthday party, or that the party was a disappointment.","['c', 'b', 'd', 'a']",1,A_I,"{'a': 8.25, 'b': 10.125, 'c': 10.75, 'd': 22.75}","{'a': 5.043426654083305e-07, 'b': 3.288727384642698e-06, 'c': 6.144151484477334e-06, 'd': 0.9999901056289673}",0.9999901056289673,d,"- The statement ""Truly a night to remember"" is often used to express that an event was enjoyable and memorable.
 - Since she left the party feeling happy, it is likely that the party was a success.
-- There is no indication in the text that she had trouble remembering things, planned her next birthday party, or that the party was a disappointment.",a
+- There is no indication in the passage that she had trouble remembering things, planned her next birthday party, or that the party was a disappointment.",a
 C1_22_A_NI,C1_22,8,1,ambiguous,non-ironic,d,The wedding was a beautiful and enchanting occasion.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She left the wedding feeling happy.
 Target utterance: She says: """"What a magical day.""""
@@ -388,14 +382,15 @@ d. The wedding was a beautiful and enchanting occasion.
 Reasoning:
 Answer:
 ","d. The wedding was a beautiful and enchanting occasion.
+
 Reasoning:
-- The person left the wedding feeling happy, which suggests a positive experience.
-- The phrase ""What a magical day"" is a common expression used to describe a day that was special, enjoyable, and memorable.
-- There is no indication in the passage that a magician was present or that the person helped with the flowers, so options a and b can be ruled out.
-- Option c is contradicted by the fact that the person left the wedding feeling happy.","['c', 'd', 'b', 'a']",1,A_NI,d,"- The person left the wedding feeling happy, which suggests a positive experience.
-- The phrase ""What a magical day"" is a common expression used to describe a day that was special, enjoyable, and memorable.
-- There is no indication in the passage that a magician was present or that the person helped with the flowers, so options a and b can be ruled out.
-- Option c is contradicted by the fact that the person left the wedding feeling happy.",a
+- The context states that she left the wedding feeling happy.
+- Saying ""What a magical day"" is a common expression used to describe a day that was enjoyable and memorable, which aligns with her feeling happy.
+- There is no indication in the context that a magician was present or that she helped with the flowers, so options a and b can be ruled out.
+- Option c, ""The wedding had been a dull, disappointing event from start to finish,"" contradicts the context that she left feeling happy.","['c', 'd', 'b', 'a']",1,A_NI,"{'a': 7.75, 'b': 10.3125, 'c': 10.125, 'd': 21.875}","{'a': 7.338082355090592e-07, 'b': 9.516169484413695e-06, 'c': 7.889181688369717e-06, 'd': 0.9999818801879883}",0.9999818801879883,d,"- The context states that she left the wedding feeling happy.
+- Saying ""What a magical day"" is a common expression used to describe a day that was enjoyable and memorable, which aligns with her feeling happy.
+- There is no indication in the context that a magician was present or that she helped with the flowers, so options a and b can be ruled out.
+- Option c, ""The wedding had been a dull, disappointing event from start to finish,"" contradicts the context that she left feeling happy.",a
 C1_23_UA_I,C1_23,4,1,unambiguous,ironic,d,They had found the film funny from start to finish.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They left the cinema feeling delighted.
 Target utterance: They say: """"What a painfull film.""""
@@ -409,11 +404,11 @@ Answer:
 ","c. They had found the film dull from start to finish.
 
 Reasoning:
-- The context suggests that they left the cinema feeling delighted, which is the opposite of finding a film dull or painful.
-- The phrase ""What a painfull film"" implies a negative opinion about the film, as ""painful"" is typically used to describe something unpleasant or boring.
-- The options a, b, and d do not fit the context or the phrase used by the person. Option a is about an injection, not a film, and options b and d are positive interpretations that contradict the negative tone of the phrase.","['c', 'd', 'a', 'b']",1,UA_I,c,"- The context suggests that they left the cinema feeling delighted, which is the opposite of finding a film dull or painful.
-- The phrase ""What a painfull film"" implies a negative opinion about the film, as ""painful"" is typically used to describe something unpleasant or boring.
-- The options a, b, and d do not fit the context or the phrase used by the person. Option a is about an injection, not a film, and options b and d are positive interpretations that contradict the negative tone of the phrase.",a
+- The context describes the people leaving the cinema feeling delighted, which contradicts the statement ""What a painfull film.""
+- The term ""painful"" is often used to describe something that is unpleasant or boring, not physically painful.
+- The options ""They had found the film funny from start to finish"" (d) is the opposite of the context and the statement, as the people left the cinema feeling delighted, not bored or unamused.","['c', 'd', 'a', 'b']",1,UA_I,"{'a': 7.40625, 'b': 10.875, 'c': 22.375, 'd': 9.9375}","{'a': 3.1560816182718554e-07, 'b': 1.0129947440873366e-05, 'c': 0.9999855756759644, 'd': 3.966944404965034e-06}",0.9999855756759644,c,"- The context describes the people leaving the cinema feeling delighted, which contradicts the statement ""What a painfull film.""
+- The term ""painful"" is often used to describe something that is unpleasant or boring, not physically painful.
+- The options ""They had found the film funny from start to finish"" (d) is the opposite of the context and the statement, as the people left the cinema feeling delighted, not bored or unamused.",a
 C1_24_UA_NI,C1_24,21,1,unambiguous,non-ironic,c,The message brought good news.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She received a message and was delighted.
 Target utterance: She says: """"These are amazing news.""""
@@ -427,15 +422,11 @@ Answer:
 ","c. The message brought good news.
 
 Reasoning:
-- The person's delight indicates a positive reaction, suggesting that the message contained good news.
-- The phrase ""These are amazing news"" further emphasizes the positive nature of the message.
-- It is unlikely that the person would be delighted by negative news, so option b can be ruled out.
-- Option a, ""What she read was news to her,"" is not incorrect but does not convey the full meaning of the person's statement, which implies a positive reaction to the news.
-- Option d, ""She wanted to send a message,"" is not related to the situation described.","['c', 'b', 'a', 'd']",1,UA_NI,c,"- The person's delight indicates a positive reaction, suggesting that the message contained good news.
-- The phrase ""These are amazing news"" further emphasizes the positive nature of the message.
-- It is unlikely that the person would be delighted by negative news, so option b can be ruled out.
-- Option a, ""What she read was news to her,"" is not incorrect but does not convey the full meaning of the person's statement, which implies a positive reaction to the news.
-- Option d, ""She wanted to send a message,"" is not related to the situation described.",a
+- The person's delight suggests a positive reaction to the message.
+- The phrase ""These are amazing news"" indicates that the news is good or positive.
+- The options a, b, and d do not fit the context as the person did not express confusion, negativity, or a desire to send a message.","['c', 'b', 'a', 'd']",1,UA_NI,"{'a': 7.75, 'b': 9.3125, 'c': 22.625, 'd': 9.875}","{'a': 3.4663105452636955e-07, 'b': 1.6536843077119556e-06, 'c': 0.9999951124191284, 'd': 2.902306277974276e-06}",0.9999951124191284,c,"- The person's delight suggests a positive reaction to the message.
+- The phrase ""These are amazing news"" indicates that the news is good or positive.
+- The options a, b, and d do not fit the context as the person did not express confusion, negativity, or a desire to send a message.",a
 C1_25_A_I,C1_25,181,1,ambiguous,ironic,c,Her exam answers were embarrassingly poor.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: Her answers in the exam were intelligent.
 Target utterance: She says: """"What a genius.""""
@@ -450,10 +441,10 @@ Answer:
 
 Reasoning:
 - The speaker is commenting on the intelligence of the person's answers in the exam.
-- ""What a genius"" is a phrase used to express admiration or appreciation for someone's intelligence or cleverness.
-- There is no indication that the speaker is referring to studying for a future exam, poor exam answers, or IQ in this context.","['a', 'd', 'b', 'c']",1,A_I,a,"- The speaker is commenting on the intelligence of the person's answers in the exam.
-- ""What a genius"" is a phrase used to express admiration or appreciation for someone's intelligence or cleverness.
-- There is no indication that the speaker is referring to studying for a future exam, poor exam answers, or IQ in this context.",a
+- There is no indication that she is referring to her IQ or future exams.
+- The phrase ""What a genius"" is typically used to express admiration for someone's intelligence, not to imply poor performance or studying.","['a', 'd', 'b', 'c']",1,A_I,"{'a': 22.25, 'b': 7.71875, 'c': 7.03125, 'd': 6.5625}","{'a': 0.9999991655349731, 'b': 4.88830096401216e-07, 'c': 2.457992138715781e-07, 'd': 1.5381722562324285e-07}",0.9999991655349731,a,"- The speaker is commenting on the intelligence of the person's answers in the exam.
+- There is no indication that she is referring to her IQ or future exams.
+- The phrase ""What a genius"" is typically used to express admiration for someone's intelligence, not to imply poor performance or studying.",a
 C1_26_A_NI,C1_26,133,1,ambiguous,non-ironic,a,They were genuinely fortunate to have such a strong suggestion.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: Their colleague's suggestion was intelligent.
 Target utterance: They said: """"We really had luck with that one.""""
@@ -468,10 +459,10 @@ Answer:
 
 Reasoning:
 - The colleague's suggestion was intelligent, and the person is expressing gratitude or acknowledging the positive impact of the suggestion.
-- ""We"" implies that the success was a collaborative effort, not an individual one, which makes ""We really had luck"" an unlikely expression of personal luck unrelated to the colleague's suggestion.
-- ""We really had luck"" is not a common phrase to express a poor suggestion, starting a project, or gambling luck, so these options can be ruled out.","['a', 'b', 'c', 'd']",1,A_NI,a,"- The colleague's suggestion was intelligent, and the person is expressing gratitude or acknowledging the positive impact of the suggestion.
-- ""We"" implies that the success was a collaborative effort, not an individual one, which makes ""We really had luck"" an unlikely expression of personal luck unrelated to the colleague's suggestion.
-- ""We really had luck"" is not a common phrase to express a poor suggestion, starting a project, or gambling luck, so these options can be ruled out.",a
+- ""We"" implies that the success was a collaborative effort, not an individual one, which makes ""We really had luck"" an unlikely expression of personal luck at the casino.
+- ""Every project starts with a suggestion"" is a general statement that doesn't fit the context of a specific successful suggestion made by a colleague.","['a', 'b', 'c', 'd']",1,A_NI,"{'a': 21.875, 'b': 9.0, 'c': 8.5, 'd': 8.1875}","{'a': 0.9999947547912598, 'b': 2.5612753233872354e-06, 'c': 1.5534919839410577e-06, 'd': 1.1365590353307198e-06}",0.9999947547912598,a,"- The colleague's suggestion was intelligent, and the person is expressing gratitude or acknowledging the positive impact of the suggestion.
+- ""We"" implies that the success was a collaborative effort, not an individual one, which makes ""We really had luck"" an unlikely expression of personal luck at the casino.
+- ""Every project starts with a suggestion"" is a general statement that doesn't fit the context of a specific successful suggestion made by a colleague.",a
 C1_27_UA_I,C1_27,120,1,unambiguous,ironic,c,His argument was weak and poorly constructed.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: His argument in the debate was brilliant.
 Target utterance: She says: """"What a master of rhetoric.""""
@@ -483,12 +474,13 @@ d. His argument was strong and well presented.
 Reasoning:
 Answer:
 ","d. His argument was strong and well presented.
+
 Reasoning:
-- The statement ""What a master of rhetoric"" implies that the person being referred to (in this case, the person in the debate) is skilled in the art of persuasive speaking or argumentation, which is a positive connotation.
-- The context given, ""His argument in the debate was brilliant,"" supports this interpretation as it suggests that the argument was strong and well-presented, aligning with the idea of being a ""master of rhetoric.""
-- The other options do not fit the context or the statement made by the speaker. ""Sokrates was a master of rhetoric"" is not relevant to the given context, ""","['c', 'd', 'b', 'a']",1,UA_I,d,"- The statement ""What a master of rhetoric"" implies that the person being referred to (in this case, the person in the debate) is skilled in the art of persuasive speaking or argumentation, which is a positive connotation.
-- The context given, ""His argument in the debate was brilliant,"" supports this interpretation as it suggests that the argument was strong and well-presented, aligning with the idea of being a ""master of rhetoric.""
-- The other options do not fit the context or the statement made by the speaker. ""Sokrates was a master of rhetoric"" is not relevant to the given context, """,a
+- The statement ""What a master of rhetoric"" implies that the person being referred to (in this case, the person in the debate) has a high level of skill in the art of persuasive speaking or argumentation.
+- Given that the story mentions his argument in the debate was brilliant, it suggests that his argument was strong and well presented, which aligns with the meaning of being a ""master of rhetoric"".
+- The other options do not fit the context as they do not convey a positive evaluation of the argument. For example, options a and c are incorrect because they do not refer to the debate or the argument's quality","['c', 'd', 'b', 'a']",1,UA_I,"{'a': 7.0625, 'b': 10.5625, 'c': 10.5625, 'd': 22.625}","{'a': 1.7429586307571299e-07, 'b': 5.7718862080946565e-06, 'c': 5.7718862080946565e-06, 'd': 0.999988317489624}",0.999988317489624,d,"- The statement ""What a master of rhetoric"" implies that the person being referred to (in this case, the person in the debate) has a high level of skill in the art of persuasive speaking or argumentation.
+- Given that the story mentions his argument in the debate was brilliant, it suggests that his argument was strong and well presented, which aligns with the meaning of being a ""master of rhetoric"".
+- The other options do not fit the context as they do not convey a positive evaluation of the argument. For example, options a and c are incorrect because they do not refer to the debate or the argument's quality",a
 C1_28_UA_NI,C1_28,238,1,unambiguous,non-ironic,c,She believed that his business plan would be successful.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: His business plan was brilliant.
 Target utterance: She says: """"We will make lots of money with this.""""
@@ -502,11 +494,11 @@ Answer:
 ","c. She believed that his business plan would be successful.
 
 Reasoning:
-- The statement ""We will make lots of money with this"" suggests optimism and confidence about the potential success of the business plan.
-- The phrase ""his business plan"" indicates that the speaker is referring to a plan that belongs to someone else, in this case, the person being described in the context.
-- The context states that his business plan was brilliant, which aligns with the speaker's optimistic statement about making money. Therefore, it is most likely that she believes the business plan will be successful.","['b', 'c', 'a', 'd']",1,UA_NI,c,"- The statement ""We will make lots of money with this"" suggests optimism and confidence about the potential success of the business plan.
-- The phrase ""his business plan"" indicates that the speaker is referring to a plan that belongs to someone else, in this case, the person being described in the context.
-- The context states that his business plan was brilliant, which aligns with the speaker's optimistic statement about making money. Therefore, it is most likely that she believes the business plan will be successful.",a
+- The statement ""We will make lots of money with this"" suggests a positive outlook about the potential success of the business plan.
+- The phrase ""We"" implies that she is involved in the business plan, which suggests a positive relationship with the speaker.
+- The context states that his business plan was brilliant, which supports the idea that she believes it will be successful. Therefore, option c is the most likely meaning.","['b', 'c', 'a', 'd']",1,UA_NI,"{'a': 7.84375, 'b': 11.0, 'c': 22.25, 'd': 10.3125}","{'a': 5.539063749893103e-07, 'b': 1.3007035704504233e-05, 'c': 0.9999798536300659, 'd': 6.540348294947762e-06}",0.9999798536300659,c,"- The statement ""We will make lots of money with this"" suggests a positive outlook about the potential success of the business plan.
+- The phrase ""We"" implies that she is involved in the business plan, which suggests a positive relationship with the speaker.
+- The context states that his business plan was brilliant, which supports the idea that she believes it will be successful. Therefore, option c is the most likely meaning.",a
 C1_29_A_I,C1_29,50,1,ambiguous,ironic,c,The restaurant visit was a real disappointment.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: After the restaurant visit he was satiated.
 Target utterance: He says: """"Best dinner ever.""""
@@ -520,11 +512,11 @@ Answer:
 ","d. The restaurant visit was genuinely outstanding.
 
 Reasoning:
-- The person's statement ""Best dinner ever"" suggests that they found the dinner to be exceptional or superior to any other they have had before.
+- The person's statement ""Best dinner ever"" suggests that they found the meal exceptional or superior to any other they have had before.
 - There is no indication in the passage that the person had been looking forward to the visit for weeks or that the restaurant was the best-reviewed in the city.
-- The statement does not imply disappointment, as ""Best dinner ever"" is a positive expression.","['d', 'c', 'b', 'a']",1,A_I,d,"- The person's statement ""Best dinner ever"" suggests that they found the dinner to be exceptional or superior to any other they have had before.
+- The statement ""He was satiated"" implies that he was full and satisfied, which further supports the idea that the dinner was enjoyable.","['d', 'c', 'b', 'a']",1,A_I,"{'a': 8.5625, 'b': 11.4375, 'c': 10.4375, 'd': 22.875}","{'a': 6.083500352360716e-07, 'b': 1.078326295100851e-05, 'c': 3.966940766986227e-06, 'd': 0.999984622001648}",0.999984622001648,d,"- The person's statement ""Best dinner ever"" suggests that they found the meal exceptional or superior to any other they have had before.
 - There is no indication in the passage that the person had been looking forward to the visit for weeks or that the restaurant was the best-reviewed in the city.
-- The statement does not imply disappointment, as ""Best dinner ever"" is a positive expression.",a
+- The statement ""He was satiated"" implies that he was full and satisfied, which further supports the idea that the dinner was enjoyable.",a
 C1_30_A_NI,C1_30,68,1,ambiguous,non-ironic,c,The buffet was a rich.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He left the buffet feeling satiated.
 Target utterance: He says: """"Truly a feast for the senses."" ""
@@ -538,11 +530,11 @@ Answer:
 ","d. Diners often have a buffet.
 
 Reasoning:
-- The context indicates that he had just finished eating at a buffet.
-- The phrase ""Truly a feast for the senses"" suggests a positive experience, not a criticism or surprise (as in options a, b, and c).
-- The phrase ""Truly a feast for the senses"" is a common expression used to describe an enjoyable and sensory-rich experience, which is consistent with the context of a buffet meal.","['c', 'b', 'a', 'd']",1,A_NI,d,"- The context indicates that he had just finished eating at a buffet.
-- The phrase ""Truly a feast for the senses"" suggests a positive experience, not a criticism or surprise (as in options a, b, and c).
-- The phrase ""Truly a feast for the senses"" is a common expression used to describe an enjoyable and sensory-rich experience, which is consistent with the context of a buffet meal.",d
+- The person left the buffet feeling satiated, which suggests they enjoyed the food.
+- ""Truly a feast for the senses"" implies an overall positive experience, not just a physical one (tasting the food), but also a sensory one (seeing, smelling, etc.).
+- The other options do not fit the context as there is no indication of the feast being an annual event, the quality of the food being poor, or the buffet being rich (in terms of wealth or status).","['c', 'b', 'a', 'd']",1,A_NI,"{'a': 9.125, 'b': 10.125, 'c': 12.75, 'd': 22.25}","{'a': 1.9945696294598747e-06, 'b': 5.421802143246168e-06, 'c': 7.48456732253544e-05, 'd': 0.99991774559021}",0.99991774559021,d,"- The person left the buffet feeling satiated, which suggests they enjoyed the food.
+- ""Truly a feast for the senses"" implies an overall positive experience, not just a physical one (tasting the food), but also a sensory one (seeing, smelling, etc.).
+- The other options do not fit the context as there is no indication of the feast being an annual event, the quality of the food being poor, or the buffet being rich (in terms of wealth or status).",d
 C1_31_UA_I,C1_31,27,1,unambiguous,ironic,b,There was barely anything to eat; they left unsatisfied.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They left the picnic feeling full.
 Target utterance: They say: """"Food for the soul.""""
@@ -556,11 +548,11 @@ Answer:
 ","c. The picnic was nourishing and genuinely enjoyable.
 
 Reasoning:
-- The phrase ""Food for the soul"" is a common idiom that means something is nourishing or satisfying for the mind or spirit, not literally food.
+- The phrase ""Food for the soul"" is a common idiom that means something is nourishing or satisfying for the mind or spirit, not food for the physical body.
 - The context suggests that they left the picnic feeling full, which could imply that they were satisfied with the experience, not just the food.
-- The other options do not fit the context or the idiomatic expression ""Food for the soul.""","['c', 'b', 'a', 'd']",1,UA_I,c,"- The phrase ""Food for the soul"" is a common idiom that means something is nourishing or satisfying for the mind or spirit, not literally food.
+- The other options do not fit the context or the idiomatic expression. For example, option a is about music, not food, and options b and d are about the quantity or preparation of food, not the quality of the experience.","['c', 'b', 'a', 'd']",1,UA_I,"{'a': 7.90625, 'b': 9.375, 'c': 21.875, 'd': 10.1875}","{'a': 8.579132781960652e-07, 'b': 3.7266052004270023e-06, 'c': 0.9999871253967285, 'd': 8.398033969569951e-06}",0.9999871253967285,c,"- The phrase ""Food for the soul"" is a common idiom that means something is nourishing or satisfying for the mind or spirit, not food for the physical body.
 - The context suggests that they left the picnic feeling full, which could imply that they were satisfied with the experience, not just the food.
-- The other options do not fit the context or the idiomatic expression ""Food for the soul.""",a
+- The other options do not fit the context or the idiomatic expression. For example, option a is about music, not food, and options b and d are about the quantity or preparation of food, not the quality of the experience.",a
 C1_32_UA_NI,C1_32,73,1,unambiguous,non-ironic,c,His plate had been full with food and he ate it all up.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He looked at the empty plate in front of him and was full.
 Target utterance: He says: """"No way I could eat more."" ""
@@ -574,11 +566,11 @@ Answer:
 ","c. His plate had been full with food and he ate it all up.
 
 Reasoning:
-- The empty plate in front of him suggests that he had eaten something.
-- The statement ""No way I could eat more"" implies that he has already eaten a lot.
-- The other options do not fit the context as there is no indication that the waiter forgot to fill his plate, he did not go to a pottery, or he prefers to eat alone.","['b', 'd', 'a', 'c']",1,UA_NI,c,"- The empty plate in front of him suggests that he had eaten something.
-- The statement ""No way I could eat more"" implies that he has already eaten a lot.
-- The other options do not fit the context as there is no indication that the waiter forgot to fill his plate, he did not go to a pottery, or he prefers to eat alone.",a
+- The context describes him looking at an empty plate, which suggests that the plate was previously full.
+- The statement ""No way I could eat more"" implies that he has already eaten a substantial amount of food.
+- The other options do not fit the context or the statement made by the person. For example, option a is incorrect because the context does not suggest that the waiter forgot to fill his plate. Option b is incorrect because there is no indication that he went to a pottery store. Option d is incorrect because there is no indication that he prefers to eat alone.","['b', 'd', 'a', 'c']",1,UA_NI,"{'a': 7.0625, 'b': 9.375, 'c': 21.875, 'd': 12.0625}","{'a': 3.689669654249883e-07, 'b': 3.726434215423069e-06, 'c': 0.9999412298202515, 'd': 5.475954822031781e-05}",0.9999412298202515,c,"- The context describes him looking at an empty plate, which suggests that the plate was previously full.
+- The statement ""No way I could eat more"" implies that he has already eaten a substantial amount of food.
+- The other options do not fit the context or the statement made by the person. For example, option a is incorrect because the context does not suggest that the waiter forgot to fill his plate. Option b is incorrect because there is no indication that he went to a pottery store. Option d is incorrect because there is no indication that he prefers to eat alone.",a
 C1_33_A_I,C1_33,199,1,ambiguous,ironic,a,The library was far too noisy to concentrate.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She walked into the library and it was loud.
 Target utterance: She says: """"Perfect place to concentrate.""""
@@ -591,11 +583,11 @@ Reasoning:
 Answer:
 ","d. The library was a calm and quiet environment.
 Reasoning:
-- The statement ""Perfect place to concentrate"" implies that the library is a suitable environment for focusing on work or study, which is usually associated with a quiet and calm atmosphere.
-- The context does not suggest that the library was too noisy, as the person would not describe it as a ""perfect"" place if it was.
-- The statement does not indicate that the person was looking for a new book or asking a colleague for a place to concentrate.","['b', 'd', 'c', 'a']",1,A_I,d,"- The statement ""Perfect place to concentrate"" implies that the library is a suitable environment for focusing on work or study, which is usually associated with a quiet and calm atmosphere.
-- The context does not suggest that the library was too noisy, as the person would not describe it as a ""perfect"" place if it was.
-- The statement does not indicate that the person was looking for a new book or asking a colleague for a place to concentrate.",a
+- The statement ""Perfect place to concentrate"" implies that the library is suitable for focusing on work or studying, which suggests a quiet and calm environment.
+- The context does not indicate that the library was too noisy, nor does it suggest she was looking for a book or asking someone for a place to concentrate.
+- The statement does not provide any information about the library being a new place for her, so it is unlikely she was looking for a new book.","['b', 'd', 'c', 'a']",1,A_I,"{'a': 8.5625, 'b': 10.25, 'c': 11.3125, 'd': 22.625}","{'a': 7.811355544617982e-07, 'b': 4.222778898110846e-06, 'c': 1.22190149340895e-05, 'd': 0.9999828338623047}",0.9999828338623047,d,"- The statement ""Perfect place to concentrate"" implies that the library is suitable for focusing on work or studying, which suggests a quiet and calm environment.
+- The context does not indicate that the library was too noisy, nor does it suggest she was looking for a book or asking someone for a place to concentrate.
+- The statement does not provide any information about the library being a new place for her, so it is unlikely she was looking for a new book.",a
 C1_34_A_NI,C1_34,283,1,ambiguous,non-ironic,b,The concert was surprisingly quiet.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: We came back from a concert which was loud.
 Target utterance: I say: """"I've almost gone deaf.""""
@@ -608,11 +600,11 @@ Reasoning:
 Answer:
 ","a. The concert was pretty loud.
 Reasoning:
-- The person is stating that they have almost lost their hearing, which is a common complaint after exposure to loud noises.
-- There is no indication that the concert was quiet or that the person's grandfather is deaf.
-- The statement does not suggest anticipation for the next concert.","['b', 'a', 'c', 'd']",1,A_NI,a,"- The person is stating that they have almost lost their hearing, which is a common complaint after exposure to loud noises.
-- There is no indication that the concert was quiet or that the person's grandfather is deaf.
-- The statement does not suggest anticipation for the next concert.",b
+- The statement ""I've almost gone deaf"" suggests that the speaker's hearing was affected by the loudness of the concert.
+- In this context, the speaker is not stating a fact about their own hearing condition or expressing anticipation for the next concert.
+- The concert being quiet would not cause the speaker to say they've almost gone deaf.","['b', 'a', 'c', 'd']",1,A_NI,"{'a': 22.375, 'b': 7.5625, 'c': 7.9375, 'd': 8.25}","{'a': 0.9999983310699463, 'b': 3.6898802591167623e-07, 'c': 5.368743813960464e-07, 'd': 7.338202863138577e-07}",0.9999983310699463,a,"- The statement ""I've almost gone deaf"" suggests that the speaker's hearing was affected by the loudness of the concert.
+- In this context, the speaker is not stating a fact about their own hearing condition or expressing anticipation for the next concert.
+- The concert being quiet would not cause the speaker to say they've almost gone deaf.",b
 C1_35_UA_I,C1_35,117,1,unambiguous,ironic,d,The movie was very loud.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context:  She watched a movie in the theater and found it deafening.
 Target utterance: She says: """"It was so difficult to hear.""""
@@ -625,11 +617,11 @@ Reasoning:
 Answer:
 ","d. The movie was very loud.
 Reasoning:
-- The statement ""It was so difficult to hear"" suggests that the person was having trouble hearing something.
-- In the context of watching a movie in a theater, it is likely that the movie was too loud, making it difficult for her to hear.
-- The options a, b, and c do not fit the context or the statement made by the person.","['c', 'a', 'd', 'b']",1,UA_I,d,"- The statement ""It was so difficult to hear"" suggests that the person was having trouble hearing something.
-- In the context of watching a movie in a theater, it is likely that the movie was too loud, making it difficult for her to hear.
-- The options a, b, and c do not fit the context or the statement made by the person.",b
+- The person watched a movie in the theater and found it deafening, which suggests the movie was loud.
+- The statement ""It was so difficult to hear"" implies that the person had trouble hearing due to the loudness of the movie.
+- The other options do not fit the context as there is no indication that the person generally has hearing difficulties, the movie was too quiet, or that watching a movie in the theater is a real event (this is a given in the context).","['c', 'a', 'd', 'b']",1,UA_I,"{'a': 8.0625, 'b': 10.0, 'c': 11.75, 'd': 22.25}","{'a': 6.893387762829661e-07, 'b': 4.7849594011495356e-06, 'c': 2.7535539629752748e-05, 'd': 0.9999669790267944}",0.9999669790267944,d,"- The person watched a movie in the theater and found it deafening, which suggests the movie was loud.
+- The statement ""It was so difficult to hear"" implies that the person had trouble hearing due to the loudness of the movie.
+- The other options do not fit the context as there is no indication that the person generally has hearing difficulties, the movie was too quiet, or that watching a movie in the theater is a real event (this is a given in the context).",b
 C1_36_UA_NI,C1_36,214,1,unambiguous,non-ironic,b,He thinks that his neighbours' are having a great party with music.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: His neighbours' music was deafening.
 Target utterance: He says: """"It seems like they are having a great party.""""
@@ -644,10 +636,10 @@ Answer:
 
 Reasoning:
 - The context describes a situation where the music from the neighbours' party is deafening, which suggests that it is loud and enjoyable.
-- The person's statement ""It seems like they are having a great party"" indicates that he is interpreting the loud music as a sign of a fun and enjoyable party.
-- The other options do not fit the context or the statement made by the person. For example, option a suggests that he expected louder music, but the statement does not indicate any expectation. Option c is unrelated to the context as it mentions pop music, and option d is un","['b', 'a', 'd', 'c']",1,UA_NI,b,"- The context describes a situation where the music from the neighbours' party is deafening, which suggests that it is loud and enjoyable.
-- The person's statement ""It seems like they are having a great party"" indicates that he is interpreting the loud music as a sign of a fun and enjoyable party.
-- The other options do not fit the context or the statement made by the person. For example, option a suggests that he expected louder music, but the statement does not indicate any expectation. Option c is unrelated to the context as it mentions pop music, and option d is un",a
+- The person's statement ""It seems like they are having a great party"" indicates that he is inferring that the party is enjoyable based on the loud music.
+- The other options do not fit the context or the statement made by the person. For example, option a suggests that he expected louder music, but the statement does not indicate any expectation. Option c is unrelated to the context, and option d is not related to the situation described in the passage.","['b', 'a', 'd', 'c']",1,UA_NI,"{'a': 7.46875, 'b': 21.375, 'c': 8.6875, 'd': 8.5625}","{'a': 9.1324943696236e-07, 'b': 0.9999932050704956, 'c': 3.08948301608325e-06, 'd': 2.7264593427389627e-06}",0.9999932050704956,b,"- The context describes a situation where the music from the neighbours' party is deafening, which suggests that it is loud and enjoyable.
+- The person's statement ""It seems like they are having a great party"" indicates that he is inferring that the party is enjoyable based on the loud music.
+- The other options do not fit the context or the statement made by the person. For example, option a suggests that he expected louder music, but the statement does not indicate any expectation. Option c is unrelated to the context, and option d is not related to the situation described in the passage.",a
 C1_37_A_I,C1_37,282,1,ambiguous,ironic,a,The questions were straightforward and required little effort.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She prepared easy questions for the students.
 Target utterance: She says: """"I hope they're prepared for this.""""
@@ -661,13 +653,11 @@ Answer:
 ","c. The questions required thorough preparation to answer.
 
 Reasoning:
-- The context states that she prepared easy questions for the students, but the target utterance suggests that she expects the students to be prepared, which implies that the questions may not be easy to answer without preparation.
-- The other options do not fit the context as they do not relate to the questions she prepared.
-- Option b is not related to the situation as it refers to her personal preparation for a meeting, not the students' preparation for answering the questions.
-- Option d is not related to the situation as it refers to posting a question on a class forum, not expressing her expectation about the students' preparation for answering the questions.","['b', 'c', 'a', 'd']",1,A_I,c,"- The context states that she prepared easy questions for the students, but the target utterance suggests that she expects the students to be prepared, which implies that the questions may not be easy to answer without preparation.
-- The other options do not fit the context as they do not relate to the questions she prepared.
-- Option b is not related to the situation as it refers to her personal preparation for a meeting, not the students' preparation for answering the questions.
-- Option d is not related to the situation as it refers to posting a question on a class forum, not expressing her expectation about the students' preparation for answering the questions.",a
+- The context suggests that she prepared the questions for the students, implying that she expects the students to answer them.
+- The phrase ""I hope they're prepared for this"" indicates that she is expressing a hope that the students have prepared themselves to answer the questions, suggesting that the questions require preparation.
+- Options a and b do not fit the context as they do not relate to the students' preparation for the questions. Option d is not supported by the context as there is no indication that the questions were posted on a class forum.","['b', 'c', 'a', 'd']",1,A_I,"{'a': 6.4375, 'b': 9.5, 'c': 22.5, 'd': 9.5}","{'a': 1.0571652353519312e-07, 'b': 2.2603189790970646e-06, 'c': 0.9999953508377075, 'd': 2.2603189790970646e-06}",0.9999953508377075,c,"- The context suggests that she prepared the questions for the students, implying that she expects the students to answer them.
+- The phrase ""I hope they're prepared for this"" indicates that she is expressing a hope that the students have prepared themselves to answer the questions, suggesting that the questions require preparation.
+- Options a and b do not fit the context as they do not relate to the students' preparation for the questions. Option d is not supported by the context as there is no indication that the questions were posted on a class forum.",a
 C1_38_A_NI,C1_38,194,1,ambiguous,non-ironic,b,Booking the appointment was straightforward and effortless.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He booked an appointment through a system which was easy to use.
 Target utterance: He says:  """"That was about as easy as it gets.""""
@@ -682,10 +672,10 @@ Answer:
 
 Reasoning:
 - The context suggests that the person booked an appointment through a system, which implies some level of interaction or effort.
-- The phrase ""That was about as easy as it gets"" is typically used to express that something was simple or effortless.
-- The options a, c, and d do not fit the context or the phrase used by the person. Option a is unrelated to the appointment, option c contradicts the statement, and option d is not suggested by the context or the phrase.","['c', 'a', 'b', 'd']",1,A_NI,b,"- The context suggests that the person booked an appointment through a system, which implies some level of interaction or effort.
-- The phrase ""That was about as easy as it gets"" is typically used to express that something was simple or effortless.
-- The options a, c, and d do not fit the context or the phrase used by the person. Option a is unrelated to the appointment, option c contradicts the statement, and option d is not suggested by the context or the phrase.",a
+- The phrase ""That was about as easy as it gets"" is often used to express that something was simple or effortless.
+- The other options do not fit the context or the phrase used by the person. For example, ""He always found parallel parking easy as it gets"" (a) is not related to the appointment booking, ""Booking the appointment was frustrating and difficult"" (c) contradicts the phrase used, and ""He decided to cancel the appointment"" (d) is not suggested by the context","['c', 'a', 'b', 'd']",1,A_NI,"{'a': 7.59375, 'b': 21.75, 'c': 9.9375, 'd': 8.8125}","{'a': 7.112367370609718e-07, 'b': 0.9999895095825195, 'c': 7.411257229250623e-06, 'd': 2.4060830128291855e-06}",0.9999895095825195,b,"- The context suggests that the person booked an appointment through a system, which implies some level of interaction or effort.
+- The phrase ""That was about as easy as it gets"" is often used to express that something was simple or effortless.
+- The other options do not fit the context or the phrase used by the person. For example, ""He always found parallel parking easy as it gets"" (a) is not related to the appointment booking, ""Booking the appointment was frustrating and difficult"" (c) contradicts the phrase used, and ""He decided to cancel the appointment"" (d) is not suggested by the context",a
 C1_39_UA_I,C1_39,80,1,unambiguous,ironic,a,"Anyone could have done the task, no special abilities required.",Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They finished a trivial task for their maths lesson.
 Target utterance: They say: """"We must be very smart.""""
@@ -699,11 +689,11 @@ Answer:
 ","d. Completing the task was a genuine sign of intelligence.
 
 Reasoning:
-- The task was a maths lesson, which requires intelligence and problem-solving skills.
-- The statement ""We must be very smart"" suggests that they are proud of their performance and believe they demonstrated intelligence by completing the task.
-- There is no indication in the passage that anyone else could have done the task, they were given another task, or that they were always smart about managing their money.","['b', 'c', 'd', 'a']",1,UA_I,d,"- The task was a maths lesson, which requires intelligence and problem-solving skills.
-- The statement ""We must be very smart"" suggests that they are proud of their performance and believe they demonstrated intelligence by completing the task.
-- There is no indication in the passage that anyone else could have done the task, they were given another task, or that they were always smart about managing their money.",a
+- The task was a maths lesson, which requires intelligence to solve.
+- The statement ""We must be very smart"" implies that they are proud of their intelligence for completing the task.
+- There is no indication in the passage that anyone else could have done the task, or that they were given another task after the math lesson. Therefore, options a, c, and b can be ruled out.","['b', 'c', 'd', 'a']",1,UA_I,"{'a': 8.6875, 'b': 10.6875, 'c': 11.3125, 'd': 22.375}","{'a': 1.1365361842763377e-06, 'b': 8.39793028717395e-06, 'c': 1.5689400242990814e-05, 'd': 0.9999747276306152}",0.9999747276306152,d,"- The task was a maths lesson, which requires intelligence to solve.
+- The statement ""We must be very smart"" implies that they are proud of their intelligence for completing the task.
+- There is no indication in the passage that anyone else could have done the task, or that they were given another task after the math lesson. Therefore, options a, c, and b can be ruled out.",a
 C1_40_UA_NI,C1_40,145,1,unambiguous,non-ironic,b,Making the payment was a smooth and effortless experience.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He made a payment through a website which was trivial to use.
 Target utterance: He says:  """"Technology at its finest.""""
@@ -717,11 +707,11 @@ Answer:
 ","b. Making the payment was a smooth and effortless experience.
 
 Reasoning:
-- The statement ""Technology at its finest"" is typically used to express admiration or appreciation for a well-designed and user-friendly technological solution.
-- In this context, the person made a payment through a website, and the statement suggests that the process was easy and efficient, not complicated or difficult.
-- The other options do not fit the context as they do not convey a positive experience with the technology used for the payment.","['b', 'a', 'c', 'd']",1,UA_NI,b,"- The statement ""Technology at its finest"" is typically used to express admiration or appreciation for a well-designed and user-friendly technological solution.
-- In this context, the person made a payment through a website, and the statement suggests that the process was easy and efficient, not complicated or difficult.
-- The other options do not fit the context as they do not convey a positive experience with the technology used for the payment.",a
+- The statement ""Technology at its finest"" is typically used to express admiration or praise for a well-designed and efficient technological system.
+- In this context, the person made a payment through a website, and the statement suggests that the process was smooth and effortless, not complicated or painful.
+- The other options do not fit the context as they do not relate to the payment process or express a positive sentiment about it.","['b', 'a', 'c', 'd']",1,UA_NI,"{'a': 7.1875, 'b': 21.875, 'c': 10.9375, 'd': 9.4375}","{'a': 4.1810963580246607e-07, 'b': 0.9999778270721436, 'c': 1.777847319317516e-05, 'd': 3.966913936892524e-06}",0.9999778270721436,b,"- The statement ""Technology at its finest"" is typically used to express admiration or praise for a well-designed and efficient technological system.
+- In this context, the person made a payment through a website, and the statement suggests that the process was smooth and effortless, not complicated or painful.
+- The other options do not fit the context as they do not relate to the payment process or express a positive sentiment about it.",a
 C1_41_A_I,C1_41,206,1,ambiguous,ironic,b,Her kitchen was a mess.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She finished cooking and the kitchen was dirty.
 Target utterance: She says: """"I'm the sort of person who likes to keep things tidy.""""
@@ -732,13 +722,10 @@ c. Children should regularly tidy up their rooms.
 d. Her kitchen was tidy.
 Reasoning:
 Answer:
-","d. Her kitchen was tidy.
-Reasoning:
-- The statement ""I'm the sort of person who likes to keep things tidy"" suggests that the speaker prefers a clean and organized environment.
-- Given that she has just finished cooking, it is likely that the kitchen was not tidy before she started, but her statement implies that she would prefer it to be tidy.
-- The other options do not align with the context or the speaker's statement. For example, option a is about the kitchen being equipped, not clean, and options c and d do not relate to the speaker's personal preference or the current state of the kitchen.","['d', 'b', 'c', 'a']",1,A_I,d,"- The statement ""I'm the sort of person who likes to keep things tidy"" suggests that the speaker prefers a clean and organized environment.
-- Given that she has just finished cooking, it is likely that the kitchen was not tidy before she started, but her statement implies that she would prefer it to be tidy.
-- The other options do not align with the context or the speaker's statement. For example, option a is about the kitchen being equipped, not clean, and options c and d do not relate to the speaker's personal preference or the current state of the kitchen.",a
+","a. She is expressing that she prefers a clean and organized environment, implying that her kitchen is not currently tidy.
+b. She is not directly stating that her kitchen is messy, but her statement suggests that she dislikes a messy kitchen.
+c. While the statement does not necessarily imply a rule for others, it suggests a personal preference, not a general rule for children.
+d. The statement is not a confirmation that her kitchen is currently tidy, but rather an expression of her preference for tidiness.","['d', 'b', 'c', 'a']",1,A_I,"{'a': 21.25, 'b': 10.875, 'c': 9.9375, 'd': 11.5625}","{'a': 0.999894380569458, 'b': 3.1199590011965483e-05, 'c': 1.2217934454383794e-05, 'd': 6.204778765095398e-05}",0.999894380569458,a,,d
 C1_42_A_NI,C1_42,223,1,ambiguous,non-ironic,a,The room was tidied up well before it got too messy.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They walked into the room and found it dirty.
 Target utterance: They said: ""“Looks like you didn’t wait too long to clean it.”""
@@ -752,15 +739,11 @@ Answer:
 ","d. The room was left in a terrible state for far too long.
 
 Reasoning:
-- The statement ""You didn't wait too long to clean it"" implies that the room was not clean and the speaker is expressing disappointment or disapproval about the state of the room.
-- Options a, c, and b do not fit the context as they do not convey a negative sentiment about the cleanliness of the room.
-- Option a suggests the room was cleaned before it got too messy, which contradicts the fact that it was dirty when they entered.
-- Option c suggests waiting for a table, which has no relation to the cleanliness of the room.
-- Option b suggests booking","['a', 'd', 'c', 'b']",1,A_NI,d,"- The statement ""You didn't wait too long to clean it"" implies that the room was not clean and the speaker is expressing disappointment or disapproval about the state of the room.
-- Options a, c, and b do not fit the context as they do not convey a negative sentiment about the cleanliness of the room.
-- Option a suggests the room was cleaned before it got too messy, which contradicts the fact that it was dirty when they entered.
-- Option c suggests waiting for a table, which has no relation to the cleanliness of the room.
-- Option b suggests booking",b
+- The statement ""You didn't wait too long to clean it"" implies that the room was not cleaned in a timely manner, suggesting that it had been left in a dirty state for an extended period.
+- The options a, c, and b do not fit the context as they do not convey a negative sentiment about the cleanliness of the room.
+- The statement does not indicate that the room was tidied up well before it got too messy (a), nor does it suggest booking a different room (b) or waiting for a table (c).","['a', 'd', 'c', 'b']",1,A_NI,"{'a': 8.0, 'b': 11.0625, 'c': 10.25, 'd': 22.625}","{'a': 4.450789390375576e-07, 'b': 9.516207683191169e-06, 'c': 4.22279117628932e-06, 'd': 0.9999858140945435}",0.9999858140945435,d,"- The statement ""You didn't wait too long to clean it"" implies that the room was not cleaned in a timely manner, suggesting that it had been left in a dirty state for an extended period.
+- The options a, c, and b do not fit the context as they do not convey a negative sentiment about the cleanliness of the room.
+- The statement does not indicate that the room was tidied up well before it got too messy (a), nor does it suggest booking a different room (b) or waiting for a table (c).",b
 C1_43_UA_I,C1_43,95,1,unambiguous,ironic,a,The street was far from pretty.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: The street was filthy.
 Target utterance: They say:  """"Such a beautiful walk.""""
@@ -772,13 +755,12 @@ d. The street was genuinely pleasant.
 Reasoning:
 Answer:
 ","d. The street was genuinely pleasant.
-
 Reasoning:
-- The statement ""Such a beautiful walk"" implies that the speaker found the walk to be attractive or pleasing, which contradicts the initial description of the street as filthy.
-- The other options do not fit the context as there is no indication that the street was far from pretty (a), they went for a walk in the park (b), or a dog was barking on the street (c).
-- The statement does not suggest any negative connotation, so it is unlikely that the speaker is being sarcastic or ironic, which would be the case if they were saying ""such a beautiful walk"" in a situation where the walk was not pleasant","['b', 'c', 'd', 'a']",1,UA_I,d,"- The statement ""Such a beautiful walk"" implies that the speaker found the walk to be attractive or pleasing, which contradicts the initial description of the street as filthy.
-- The other options do not fit the context as there is no indication that the street was far from pretty (a), they went for a walk in the park (b), or a dog was barking on the street (c).
-- The statement does not suggest any negative connotation, so it is unlikely that the speaker is being sarcastic or ironic, which would be the case if they were saying ""such a beautiful walk"" in a situation where the walk was not pleasant",a
+- The statement ""Such a beautiful walk"" suggests that the person is expressing a positive opinion about the walk they took.
+- The context describes the street as filthy, which would typically be considered unpleasant. However, the person's statement contradicts this, indicating that they found the walk pleasant despite the filthy street.
+- Options a, b, and c do not fit the context or the person's statement.","['b', 'c', 'd', 'a']",1,UA_I,"{'a': 7.59375, 'b': 10.5625, 'c': 11.1875, 'd': 22.625}","{'a': 2.96485723083606e-07, 'b': 5.771856649516849e-06, 'c': 1.078324748959858e-05, 'd': 0.9999831914901733}",0.9999831914901733,d,"- The statement ""Such a beautiful walk"" suggests that the person is expressing a positive opinion about the walk they took.
+- The context describes the street as filthy, which would typically be considered unpleasant. However, the person's statement contradicts this, indicating that they found the walk pleasant despite the filthy street.
+- Options a, b, and c do not fit the context or the person's statement.",a
 C1_44_UA_NI,C1_44,12,1,unambiguous,non-ironic,a,The floor was very clean.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: The floor was filthy.
 Target utterance: She says: """"You could practically eat off the floor here.""""
@@ -791,11 +773,11 @@ Reasoning:
 Answer:
 ","d. The floor was very dirty.
 Reasoning:
-- The statement ""You could practically eat off the floor here"" is often used to express that a surface is extremely clean. However, in this context, the floor is described as filthy, so the opposite is true.
-- The phrase ""You could eat off the floor here"" would be inappropriate and nonsensical if the floor was clean.
-- The other options (a, b, c) do not relate to the cleanliness or dirtiness of the floor.","['a', 'c', 'd', 'b']",1,UA_NI,d,"- The statement ""You could practically eat off the floor here"" is often used to express that a surface is extremely clean. However, in this context, the floor is described as filthy, so the opposite is true.
-- The phrase ""You could eat off the floor here"" would be inappropriate and nonsensical if the floor was clean.
-- The other options (a, b, c) do not relate to the cleanliness or dirtiness of the floor.",b
+- The statement ""You could practically eat off the floor here"" is often used to express that a surface is extremely clean. However, in this context, the floor is described as filthy at the beginning, so it is unlikely that the speaker means the floor is clean.
+- The statement does not suggest that the speaker could eat a whole cake (b) or that the dance floor was very empty (c).
+- Therefore, the most likely meaning is that the floor is very dirty.","['a', 'c', 'd', 'b']",1,UA_NI,"{'a': 8.6875, 'b': 10.6875, 'c': 11.1875, 'd': 22.75}","{'a': 7.811364071130811e-07, 'b': 5.771860742243007e-06, 'c': 9.516189493297134e-06, 'd': 0.9999839067459106}",0.9999839067459106,d,"- The statement ""You could practically eat off the floor here"" is often used to express that a surface is extremely clean. However, in this context, the floor is described as filthy at the beginning, so it is unlikely that the speaker means the floor is clean.
+- The statement does not suggest that the speaker could eat a whole cake (b) or that the dance floor was very empty (c).
+- Therefore, the most likely meaning is that the floor is very dirty.",b
 C1_45_A_I,C1_45,115,1,ambiguous,ironic,b,The movie wasn't amusing.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They watched a funny movie.
 Target utterance: They say: """"That was the perfect movie for a laugh.""""
@@ -810,10 +792,10 @@ Answer:
 
 Reasoning:
 - The context of watching a funny movie suggests that the movie was amusing.
-- The phrase ""perfect movie"" implies that the movie was excellent or ideal for its intended purpose, which is to provide laughter.
-- The options a, b, and d do not fit the context or the phrase used by the person. Option a is incorrect because there is no indication that they watched multiple movies that week. Option b is incorrect because the phrase ""perfect movie"" would not be used to describe a movie that wasn't amusing. Option d is incorrect because while the movie might have contributed to a perfect night, the statement specifically refers to the movie itself","['d', 'b', 'a', 'c']",1,A_I,c,"- The context of watching a funny movie suggests that the movie was amusing.
-- The phrase ""perfect movie"" implies that the movie was excellent or ideal for its intended purpose, which is to provide laughter.
-- The options a, b, and d do not fit the context or the phrase used by the person. Option a is incorrect because there is no indication that they watched multiple movies that week. Option b is incorrect because the phrase ""perfect movie"" would not be used to describe a movie that wasn't amusing. Option d is incorrect because while the movie might have contributed to a perfect night, the statement specifically refers to the movie itself",a
+- The phrase ""perfect movie"" implies that the movie was excellent or ideal for what they were looking for, which in this case is a source of laughter.
+- The other options do not fit the context or the phrase used by the person. For example, ""They saw three movies that week"" would not be indicated by the phrase ""perfect movie for a laugh"". Similarly, ""The movie wasn't amusing"" contradicts the context of a funny movie, and ""They had such a perfect night"" does not necessarily imply that the movie was the perfect source of","['d', 'b', 'a', 'c']",1,A_I,"{'a': 8.0, 'b': 9.3125, 'c': 23.0, 'd': 9.6875}","{'a': 3.0590138067054795e-07, 'b': 1.136561422754312e-06, 'c': 0.9999969005584717, 'd': 1.6536872635697364e-06}",0.9999969005584717,c,"- The context of watching a funny movie suggests that the movie was amusing.
+- The phrase ""perfect movie"" implies that the movie was excellent or ideal for what they were looking for, which in this case is a source of laughter.
+- The other options do not fit the context or the phrase used by the person. For example, ""They saw three movies that week"" would not be indicated by the phrase ""perfect movie for a laugh"". Similarly, ""The movie wasn't amusing"" contradicts the context of a funny movie, and ""They had such a perfect night"" does not necessarily imply that the movie was the perfect source of",a
 C1_46_A_NI,C1_46,36,1,ambiguous,non-ironic,a,The musical left her deeply moved.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: The musical she watched was really funny.
 Target utterance: She says: """"That cracked me up.""""
@@ -828,10 +810,10 @@ Answer:
 
 Reasoning:
 - The phrase ""That cracked me up"" is a colloquial expression used to indicate that something was very funny.
-- The context of the musical being ""really funny"" supports this interpretation.
-- There is no indication that she was deeply moved, the joke was told by someone else, or that she was answering questions about the musical.","['a', 'c', 'b', 'd']",1,A_NI,c,"- The phrase ""That cracked me up"" is a colloquial expression used to indicate that something was very funny.
-- The context of the musical being ""really funny"" supports this interpretation.
-- There is no indication that she was deeply moved, the joke was told by someone else, or that she was answering questions about the musical.",b
+- The context suggests that the musical was the source of her laughter.
+- The other options do not fit the context as there is no indication that she was deeply moved, the joke was not mentioned, and there is no indication that she was answering questions about the musical.","['a', 'c', 'b', 'd']",1,A_NI,"{'a': 6.8125, 'b': 9.6875, 'c': 22.25, 'd': 10.1875}","{'a': 1.975035246459811e-07, 'b': 3.5008335999009432e-06, 'c': 0.9999905824661255, 'd': 5.771898941020481e-06}",0.9999905824661255,c,"- The phrase ""That cracked me up"" is a colloquial expression used to indicate that something was very funny.
+- The context suggests that the musical was the source of her laughter.
+- The other options do not fit the context as there is no indication that she was deeply moved, the joke was not mentioned, and there is no indication that she was answering questions about the musical.",b
 C1_47_UA_I,C1_47,79,1,unambiguous,ironic,a,The situation was far too serious.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: The situation was hilarious.
 Target utterance: She says: """"Truly something to laugh about.""""
@@ -844,11 +826,11 @@ Reasoning:
 Answer:
 ","d. The situation was genuinely amusing.
 Reasoning:
-- The use of the phrase ""Truly something to laugh about"" suggests that the person finds the situation humorous or amusing.
-- The context also supports this interpretation as the situation being described as ""hilarious"" implies a humorous or amusing event.
-- The other options do not fit the context as ""far too serious"" contradicts the description of the situation as hilarious, ""she always found it hard to laugh about things"" would not be said in response to a hilarious situation, and ""she tried to make the best of the situation"" could be a response to a difficult or challenging situation, not a hilarious one.","['b', 'd', 'c', 'a']",1,UA_I,d,"- The use of the phrase ""Truly something to laugh about"" suggests that the person finds the situation humorous or amusing.
-- The context also supports this interpretation as the situation being described as ""hilarious"" implies a humorous or amusing event.
-- The other options do not fit the context as ""far too serious"" contradicts the description of the situation as hilarious, ""she always found it hard to laugh about things"" would not be said in response to a hilarious situation, and ""she tried to make the best of the situation"" could be a response to a difficult or challenging situation, not a hilarious one.",a
+- The use of the phrase ""Truly something to laugh about"" suggests that the speaker found the situation humorous or amusing.
+- The context also supports this interpretation as the situation being described as ""hilarious"" implies a humorous or amusing nature.
+- The other options do not fit the context as ""Truly something to laugh about"" does not indicate a serious situation, difficulty in laughing, or trying to make the best of a situation.","['b', 'd', 'c', 'a']",1,UA_I,"{'a': 8.1875, 'b': 12.0, 'c': 10.4375, 'd': 22.5}","{'a': 6.083387233957183e-07, 'b': 2.7535514163901098e-05, 'c': 5.771757514594356e-06, 'd': 0.999966025352478}",0.999966025352478,d,"- The use of the phrase ""Truly something to laugh about"" suggests that the speaker found the situation humorous or amusing.
+- The context also supports this interpretation as the situation being described as ""hilarious"" implies a humorous or amusing nature.
+- The other options do not fit the context as ""Truly something to laugh about"" does not indicate a serious situation, difficulty in laughing, or trying to make the best of a situation.",a
 C1_48_UA_NI,C1_48,130,1,unambiguous,non-ironic,a,The talk contained humour.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: His talk was hilarious. 
 Target utterance: Hey says: """"Wow, so many jokes in one talk.""""
@@ -862,11 +844,11 @@ Answer:
 ","a. The talk contained humor.
 
 Reasoning:
-- The use of the word ""hilarious"" in the first sentence indicates that the talk was humorous.
-- The speaker's response ""Wow, so many jokes in one talk"" suggests that they were impressed by the number of jokes in the talk, not their age or style.
-- There is no indication in the passage that the talk was cancelled or that the speaker disliked the jokes, so options b, c, and d can be ruled out.","['a', 'c', 'd', 'b']",1,UA_NI,a,"- The use of the word ""hilarious"" in the first sentence indicates that the talk was humorous.
-- The speaker's response ""Wow, so many jokes in one talk"" suggests that they were impressed by the number of jokes in the talk, not their age or style.
-- There is no indication in the passage that the talk was cancelled or that the speaker disliked the jokes, so options b, c, and d can be ruled out.",a
+- The context describes the talk as hilarious, implying it contained humor.
+- The person's statement ""Wow, so many jokes in one talk"" suggests they found the talk amusing due to the abundance of jokes.
+- There is no indication in the context or the statement that the person is a fan of old jokes, that the talk was cancelled, or that the talk contained no humor.","['a', 'c', 'd', 'b']",1,UA_NI,"{'a': 22.0, 'b': 8.3125, 'c': 7.625, 'd': 6.59375}","{'a': 0.9999979734420776, 'b': 1.1365626733095269e-06, 'c': 5.714996405004058e-07, 'd': 2.03774462192996e-07}",0.9999979734420776,a,"- The context describes the talk as hilarious, implying it contained humor.
+- The person's statement ""Wow, so many jokes in one talk"" suggests they found the talk amusing due to the abundance of jokes.
+- There is no indication in the context or the statement that the person is a fan of old jokes, that the talk was cancelled, or that the talk contained no humor.",a
 C1_49_A_I,C1_49,184,1,ambiguous,ironic,c,The airport experience was thoroughly unpleasant.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He had a good experience at the airport.
 Target utterance: He says: """"A complete nightmare, really.""""
@@ -882,7 +864,7 @@ Answer:
 Reasoning:
 - The phrase ""A complete nightmare"" is typically used to describe a very bad or difficult experience.
 - In the context of the story, the person had a good experience at the airport, so options a, b, and d can be ruled out.
-- Therefore, the most likely meaning is that the airport experience was thoroughly unpleasant.","['a', 'd', 'b', 'c']",1,A_I,c,"- The phrase ""A complete nightmare"" is typically used to describe a very bad or difficult experience.
+- Therefore, the most likely meaning is that the airport experience was thoroughly unpleasant.","['a', 'd', 'b', 'c']",1,A_I,"{'a': 6.5, 'b': 9.9375, 'c': 22.5, 'd': 9.9375}","{'a': 1.1253438714220465e-07, 'b': 3.5008420127269346e-06, 'c': 0.9999929666519165, 'd': 3.5008420127269346e-06}",0.9999929666519165,c,"- The phrase ""A complete nightmare"" is typically used to describe a very bad or difficult experience.
 - In the context of the story, the person had a good experience at the airport, so options a, b, and d can be ruled out.
 - Therefore, the most likely meaning is that the airport experience was thoroughly unpleasant.",b
 C1_50_A_NI,C1_50,39,1,ambiguous,non-ironic,b,The exam results were impressive,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
@@ -900,9 +882,11 @@ Answer:
 Reasoning:
 - The context of the passage describes that he studied hard for the exam and the results were good.
 - The target utterance ""Well, this is amazing"" is a positive exclamation, typically used to express surprise or delight.
-- Options a, c, and d do not fit the context or the positive tone of the utterance.","['d', 'a', 'c', 'b']",1,A_NI,b,"- The context of the passage describes that he studied hard for the exam and the results were good.
+- Given the context, it is most likely that he is expressing his surprise and delight at the good results of the exam.
+- Options a, c, and d do not fit the context or the positive tone of the target utterance.","['d', 'a', 'c', 'b']",1,A_NI,"{'a': 9.8125, 'b': 21.5, 'c': 8.9375, 'd': 8.5}","{'a': 8.398023965128232e-06, 'b': 0.999985933303833, 'c': 3.5008172289963113e-06, 'd': 2.260297605971573e-06}",0.999985933303833,b,"- The context of the passage describes that he studied hard for the exam and the results were good.
 - The target utterance ""Well, this is amazing"" is a positive exclamation, typically used to express surprise or delight.
-- Options a, c, and d do not fit the context or the positive tone of the utterance.",a
+- Given the context, it is most likely that he is expressing his surprise and delight at the good results of the exam.
+- Options a, c, and d do not fit the context or the positive tone of the target utterance.",a
 C1_51_UA_I,C1_51,42,1,unambiguous,ironic,b,They found the play entertaining.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They left the play feeling excellent.
 Target utterance: They said:  """"That wasn't fun at all.""""
@@ -916,11 +900,11 @@ Answer:
 ","d. They found the play dull.
 
 Reasoning:
-- The story mentions that they left the play feeling excellent, which contradicts the statement ""That wasn't fun at all.""
-- If they had fun eating together, liked to watch a play in their favorite theatre, or found the play entertaining, they would not have said ""That wasn't fun at all.""
-- The statement ""That wasn't fun at all"" implies that they did not enjoy the play, which is consistent with the context of leaving a play feeling excellent but expressing dissatisfaction.","['c', 'b', 'd', 'a']",1,UA_I,d,"- The story mentions that they left the play feeling excellent, which contradicts the statement ""That wasn't fun at all.""
-- If they had fun eating together, liked to watch a play in their favorite theatre, or found the play entertaining, they would not have said ""That wasn't fun at all.""
-- The statement ""That wasn't fun at all"" implies that they did not enjoy the play, which is consistent with the context of leaving a play feeling excellent but expressing dissatisfaction.",a
+- The context states that they left the play feeling excellent, which contradicts the statement ""That wasn't fun at all.""
+- If they had found the play entertaining, they would not have left feeling excellent and then said ""That wasn't fun at all.""
+- The options a, c, and b do not fit the context or the statement made.","['c', 'b', 'd', 'a']",1,UA_I,"{'a': 7.1875, 'b': 11.375, 'c': 11.375, 'd': 23.125}","{'a': 1.197911672079499e-07, 'b': 7.889198968769051e-06, 'c': 7.889198968769051e-06, 'd': 0.9999841451644897}",0.9999841451644897,d,"- The context states that they left the play feeling excellent, which contradicts the statement ""That wasn't fun at all.""
+- If they had found the play entertaining, they would not have left feeling excellent and then said ""That wasn't fun at all.""
+- The options a, c, and b do not fit the context or the statement made.",a
 C1_52_UA_NI,C1_52,110,1,unambiguous,non-ironic,c,The rmeal was a genuinely enjoyable experience.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She had an excellent meal at a restaurant.
 Target utterance: She says: """"That was a great restaurant visit.""""
@@ -935,8 +919,8 @@ Answer:
 
 Reasoning:
 - The statement ""That was a great restaurant visit"" is a positive expression, indicating that the person had a good time at the restaurant.
-- There is no indication in the passage that the person found the meal disappointing (a), had been wanting to try the meal for months (b), or that the restaurant visit was a routine before a big day out (d). The statement itself suggests that the meal was enjoyable.","['b', 'd', 'a', 'c']",1,UA_NI,c,"- The statement ""That was a great restaurant visit"" is a positive expression, indicating that the person had a good time at the restaurant.
-- There is no indication in the passage that the person found the meal disappointing (a), had been wanting to try the meal for months (b), or that the restaurant visit was a routine before a big day out (d). The statement itself suggests that the meal was enjoyable.",a
+- There is no indication in the passage that the person found the meal disappointing (a), had been wanting to try the meal for months (b), or that the restaurant visit was a routine before a big day out (d). The statement is simply expressing enjoyment of the meal.","['b', 'd', 'a', 'c']",1,UA_NI,"{'a': 6.6875, 'b': 9.875, 'c': 22.25, 'd': 9.5}","{'a': 1.742966304618676e-07, 'b': 4.222820280119777e-06, 'c': 0.9999927282333374, 'd': 2.902299229390337e-06}",0.9999927282333374,c,"- The statement ""That was a great restaurant visit"" is a positive expression, indicating that the person had a good time at the restaurant.
+- There is no indication in the passage that the person found the meal disappointing (a), had been wanting to try the meal for months (b), or that the restaurant visit was a routine before a big day out (d). The statement is simply expressing enjoyment of the meal.",a
 C1_53_A_I,C1_53,94,1,ambiguous,ironic,b,The ground was dried out.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: After the weather changed, the ground became wet.
 Target utterance: She says: """"Perfect conditions for a picnic..""""
@@ -950,10 +934,10 @@ Answer:
 ","d. The ground was moist and muddy after the rain.
 Reasoning:
 - The weather changed, implying it rained, which would make the ground wet or muddy.
-- A picnic is an outdoor activity that typically requires a dry and comfortable surface to lay out food and seating.
-- The other options do not suggest a positive or appropriate condition for a picnic, such as kneeling in the mud (a), dried out ground (b), or uneven ground (c).","['c', 'b', 'd', 'a']",1,A_I,d,"- The weather changed, implying it rained, which would make the ground wet or muddy.
-- A picnic is an outdoor activity that typically requires a dry and comfortable surface to lay out food and seating.
-- The other options do not suggest a positive or appropriate condition for a picnic, such as kneeling in the mud (a), dried out ground (b), or uneven ground (c).",a
+- A picnic is an outdoor activity that typically requires a flat, dry surface. If the ground was dried out, uneven, or knitted in mud, it would not be suitable for a picnic.
+- The statement ""Perfect conditions for a picnic"" suggests that the person finds the current state of the ground ideal for having a picnic, which is most likely to be a wet and muddy ground after rain.","['c', 'b', 'd', 'a']",1,A_I,"{'a': 9.75, 'b': 10.0, 'c': 11.4375, 'd': 22.5}","{'a': 2.902255573644652e-06, 'b': 3.726570184880984e-06, 'c': 1.5689447536715306e-05, 'd': 0.999977707862854}",0.999977707862854,d,"- The weather changed, implying it rained, which would make the ground wet or muddy.
+- A picnic is an outdoor activity that typically requires a flat, dry surface. If the ground was dried out, uneven, or knitted in mud, it would not be suitable for a picnic.
+- The statement ""Perfect conditions for a picnic"" suggests that the person finds the current state of the ground ideal for having a picnic, which is most likely to be a wet and muddy ground after rain.",a
 C1_54_A_NI,C1_54,141,1,ambiguous,non-ironic,a,The garden was struggling without any water.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: The garden was wet in the morning.
 Target utterance: They said: """"That’s enough water for the day.""""
@@ -969,9 +953,9 @@ Answer:
 Reasoning:
 - The statement ""That’s enough water for the day"" suggests that the garden has received an adequate amount of water.
 - The context also mentions that the garden was wet in the morning, which implies that it was recently watered.
-- The other options do not fit the context as there is no indication that the garden was struggling, no mention of a water feature, or any board games being played.","['a', 'b', 'c', 'd']",1,A_NI,b,"- The statement ""That’s enough water for the day"" suggests that the garden has received an adequate amount of water.
+- The other options do not fit the context as there is no indication that the garden was struggling, no mention of a desire for a water feature, or any board games being played.","['a', 'b', 'c', 'd']",1,A_NI,"{'a': 6.3125, 'b': 21.875, 'c': 10.125, 'd': 9.8125}","{'a': 1.742955078043451e-07, 'b': 0.9999862909317017, 'c': 7.889216249168385e-06, 'd': 5.771874384663533e-06}",0.9999862909317017,b,"- The statement ""That’s enough water for the day"" suggests that the garden has received an adequate amount of water.
 - The context also mentions that the garden was wet in the morning, which implies that it was recently watered.
-- The other options do not fit the context as there is no indication that the garden was struggling, no mention of a water feature, or any board games being played.",b
+- The other options do not fit the context as there is no indication that the garden was struggling, no mention of a desire for a water feature, or any board games being played.",b
 C1_55_UA_I,C1_55,108,1,unambiguous,ironic,c,The plants had been wilting due to lack of water.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: The field was soaked.
 Target utterance: He says: """"Terrible news for anything trying to grow..""""
@@ -985,11 +969,11 @@ Answer:
 ","c. The plants had been wilting due to lack of water.
 
 Reasoning:
-- The field being soaked suggests that it has been excessively wet, which is not ideal for plant growth.
-- The statement ""Terrible news for anything trying to grow"" implies a negative impact on growth, which is consistent with the wilting of plants due to lack of water.
-- The other options do not provide a context that aligns with the given situation and the person's statement. For example, there is no indication that he had been reading about farming techniques, considering buying a tractor, or that the plants had been getting plenty of moisture to grow.","['c', 'd', 'b', 'a']",1,UA_I,c,"- The field being soaked suggests that it has been excessively wet, which is not ideal for plant growth.
-- The statement ""Terrible news for anything trying to grow"" implies a negative impact on growth, which is consistent with the wilting of plants due to lack of water.
-- The other options do not provide a context that aligns with the given situation and the person's statement. For example, there is no indication that he had been reading about farming techniques, considering buying a tractor, or that the plants had been getting plenty of moisture to grow.",b
+- The field being soaked suggests that it has too much water, which is not good for plants.
+- The statement ""Terrible news for anything trying to grow"" implies a negative impact on growth, which is consistent with the condition of the soaked field.
+- The other options do not relate to the situation described in the passage. For example, the person is not reading about farming techniques (a), considering buying a tractor (b), or receiving good news about the plants getting plenty of moisture to grow (d).","['c', 'd', 'b', 'a']",1,UA_I,"{'a': 7.4375, 'b': 10.25, 'c': 22.125, 'd': 9.6875}","{'a': 4.181141548542655e-07, 'b': 6.962226052564802e-06, 'c': 0.9999886751174927, 'd': 3.966956683143508e-06}",0.9999886751174927,c,"- The field being soaked suggests that it has too much water, which is not good for plants.
+- The statement ""Terrible news for anything trying to grow"" implies a negative impact on growth, which is consistent with the condition of the soaked field.
+- The other options do not relate to the situation described in the passage. For example, the person is not reading about farming techniques (a), considering buying a tractor (b), or receiving good news about the plants getting plenty of moisture to grow (d).",b
 C1_56_UA_NI,C1_56,101,1,unambiguous,non-ironic,a,Her hair was soaking wet.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She saw her soaked hair.
 Target utterance: She said: """"The rain really caught me by surprise.""""
@@ -1001,12 +985,13 @@ d. They organised a surprise party for him.
 Reasoning:
 Answer:
 ","a. Her hair was soaking wet.
+
 Reasoning:
-- The person saw her soaked hair, which suggests that her hair is wet.
-- The person's statement ""The rain really caught me by surprise"" implies that she was unexpectedly caught in the rain, which would result in her hair getting wet.
-- The other options do not make sense in the given context. Her hair being dry (b) contradicts the fact that it was soaked. The statement about a haircut (c) and a surprise party (d) are unrelated to the wet hair.","['a', 'b', 'd', 'c']",1,UA_NI,a,"- The person saw her soaked hair, which suggests that her hair is wet.
-- The person's statement ""The rain really caught me by surprise"" implies that she was unexpectedly caught in the rain, which would result in her hair getting wet.
-- The other options do not make sense in the given context. Her hair being dry (b) contradicts the fact that it was soaked. The statement about a haircut (c) and a surprise party (d) are unrelated to the wet hair.",a
+- The context describes her hair as soaked, and the target utterance suggests that the rain was the cause of her wet hair.
+- The other options do not relate to the situation described in the context.
+- The statement ""The rain really caught me by surprise"" implies that the rain was unexpected, which is consistent with her having wet hair due to the rain.","['a', 'b', 'd', 'c']",1,UA_NI,"{'a': 21.75, 'b': 7.75, 'c': 8.125, 'd': 8.0}","{'a': 0.9999969005584717, 'b': 8.315261652569461e-07, 'c': 1.209863398798916e-06, 'd': 1.0677007367121405e-06}",0.9999969005584717,a,"- The context describes her hair as soaked, and the target utterance suggests that the rain was the cause of her wet hair.
+- The other options do not relate to the situation described in the context.
+- The statement ""The rain really caught me by surprise"" implies that the rain was unexpected, which is consistent with her having wet hair due to the rain.",a
 C1_57_A_I,C1_57,23,1,ambiguous,ironic,b,I thought the outfit was ugly.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: I wore a pretty outfit to attend the award ceremony.
 Target utterance: I say: """"I really didn't try at all today.""""
@@ -1019,13 +1004,11 @@ Reasoning:
 Answer:
 ","b. I thought the outfit was ugly.
 Reasoning:
-- The person wore a pretty outfit to the award ceremony, but then stated they didn't try at all. This suggests that they may have put effort into their appearance but are now expressing dissatisfaction with the result, implying that they think the outfit is not good.
-- The statement does not indicate admiration for the outfit (a), as admiration would not be followed by a statement that they didn't try at all.
-- The statement does not mention the comedians on the stage (c), and there is no indication that the award ceremony was related to comedy.
-- The statement does not suggest that they received an award (d),","['a', 'b', 'd', 'c']",1,A_I,b,"- The person wore a pretty outfit to the award ceremony, but then stated they didn't try at all. This suggests that they may have put effort into their appearance but are now expressing dissatisfaction with the result, implying that they think the outfit is not good.
-- The statement does not indicate admiration for the outfit (a), as admiration would not be followed by a statement that they didn't try at all.
-- The statement does not mention the comedians on the stage (c), and there is no indication that the award ceremony was related to comedy.
-- The statement does not suggest that they received an award (d),",b
+- The person attended an award ceremony and wore a pretty outfit, which suggests they made an effort to look good.
+- The statement ""I really didn't try at all today"" is often used to express a lack of effort or care in one's appearance, especially when the opposite is true.
+- The other options do not fit the context or the statement made. For example, there is no indication that the person admired the outfit, thought the comedians on the stage enjoyed themselves, or received an award.","['a', 'b', 'd', 'c']",1,A_I,"{'a': 7.1875, 'b': 21.625, 'c': 10.875, 'd': 12.3125}","{'a': 5.368149800233368e-07, 'b': 0.9998877048492432, 'c': 2.1443000150611624e-05, 'd': 9.027840133057907e-05}",0.9998877048492432,b,"- The person attended an award ceremony and wore a pretty outfit, which suggests they made an effort to look good.
+- The statement ""I really didn't try at all today"" is often used to express a lack of effort or care in one's appearance, especially when the opposite is true.
+- The other options do not fit the context or the statement made. For example, there is no indication that the person admired the outfit, thought the comedians on the stage enjoyed themselves, or received an award.",b
 C1_58_A_NI,C1_58,33,1,ambiguous,non-ironic,d,She admired the car.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She saw a pretty car on the street.
 Target utterance: She says: """"That’s a real beauty.""""
@@ -1040,10 +1023,10 @@ Answer:
 
 Reasoning:
 - The context describes a person seeing a car, not a painting.
-- The phrase ""That’s a real beauty"" is commonly used to express admiration or appreciation for something, especially physical attractiveness.
-- There is no indication that she had booked the car or thought it was ugly.","['c', 'd', 'b', 'a']",1,A_NI,d,"- The context describes a person seeing a car, not a painting.
-- The phrase ""That’s a real beauty"" is commonly used to express admiration or appreciation for something, especially physical attractiveness.
-- There is no indication that she had booked the car or thought it was ugly.",a
+- The phrase ""That’s a real beauty"" is commonly used to express admiration or appreciation for something, especially when it is attractive or impressive.
+- The options a, b, and c do not fit the context or the phrase used.","['c', 'd', 'b', 'a']",1,A_NI,"{'a': 7.125, 'b': 10.625, 'c': 10.0, 'd': 22.125}","{'a': 3.0589745847464656e-07, 'b': 1.0129932888958137e-05, 'c': 5.42216230314807e-06, 'd': 0.9999841451644897}",0.9999841451644897,d,"- The context describes a person seeing a car, not a painting.
+- The phrase ""That’s a real beauty"" is commonly used to express admiration or appreciation for something, especially when it is attractive or impressive.
+- The options a, b, and c do not fit the context or the phrase used.",a
 C1_59_UA_I,C1_59,175,1,unambiguous,ironic,c,The painting was genuinely beautiful.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He looked at a stunning painting.
 Target utterance: He said: """"That's hard to look at.""""
@@ -1057,11 +1040,9 @@ Answer:
 ","b. The painting was genuinely ugly.
 
 Reasoning:
-- The statement ""That's hard to look at"" is often used to express displeasure or discomfort with something, especially when it is visually challenging or unpleasant.
-- In this context, since the person is looking at a painting and makes this statement, it suggests that the painting is not aesthetically pleasing to them.
-- There is no indication in the passage that the person gave a stern look, that the painting was beautiful, or that they spent the weekend for the painting.","['c', 'a', 'b', 'd']",1,UA_I,b,"- The statement ""That's hard to look at"" is often used to express displeasure or discomfort with something, especially when it is visually challenging or unpleasant.
-- In this context, since the person is looking at a painting and makes this statement, it suggests that the painting is not aesthetically pleasing to them.
-- There is no indication in the passage that the person gave a stern look, that the painting was beautiful, or that they spent the weekend for the painting.",a
+- The context describes the person looking at a painting, and the target utterance indicates that the painting is difficult to look at, which is a negative comment usually made about unattractive or unpleasant things.
+- The other options do not fit the context or the target utterance. ""He gave her a stern look"" (a) is not related to the painting. ""They spent the weekend for this painting"" (d) is not indicated in the context. ""The painting was genuinely beautiful"" (c) contradicts the statement ""That's hard to look at.""","['c', 'a', 'b', 'd']",1,UA_I,"{'a': 7.71875, 'b': 22.0, 'c': 10.625, 'd': 10.3125}","{'a': 6.276580393205222e-07, 'b': 0.9999796152114868, 'c': 1.1478666237962898e-05, 'd': 8.397971214435529e-06}",0.9999796152114868,b,"- The context describes the person looking at a painting, and the target utterance indicates that the painting is difficult to look at, which is a negative comment usually made about unattractive or unpleasant things.
+- The other options do not fit the context or the target utterance. ""He gave her a stern look"" (a) is not related to the painting. ""They spent the weekend for this painting"" (d) is not indicated in the context. ""The painting was genuinely beautiful"" (c) contradicts the statement ""That's hard to look at.""",a
 C1_60_UA_NI,C1_60,19,1,unambiguous,non-ironic,a,They thought the bird was beautiful.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They saw a stunning bird.
 Target utterance: They said: """"A real eye-catcher.""""
@@ -1075,11 +1056,11 @@ Answer:
 ","a. They thought the bird was beautiful.
 
 Reasoning:
-- The context describes seeing a stunning bird, which suggests the bird was visually appealing.
-- The phrase ""a real eye-catcher"" is often used to describe something that is attractive or noticeable.
-- There is no indication in the context that the bird looked at them, or that they had a great time on a trip, or that they thought the bird was not beautiful.","['a', 'd', 'b', 'c']",1,UA_NI,a,"- The context describes seeing a stunning bird, which suggests the bird was visually appealing.
-- The phrase ""a real eye-catcher"" is often used to describe something that is attractive or noticeable.
-- There is no indication in the context that the bird looked at them, or that they had a great time on a trip, or that they thought the bird was not beautiful.",a
+- The context describes seeing a stunning bird, which implies that the bird was attractive or beautiful.
+- The phrase ""a real eye-catcher"" is often used to describe something that is visually striking or attractive.
+- There is no indication in the context or the utterance that the bird looked at them, or that they had a great time on a trip, or that they thought the bird was not beautiful.","['a', 'd', 'b', 'c']",1,UA_NI,"{'a': 21.625, 'b': 8.875, 'c': 7.8125, 'd': 7.1875}","{'a': 0.9999955892562866, 'b': 2.9023076422163285e-06, 'c': 1.0030106523117865e-06, 'd': 5.36872903467156e-07}",0.9999955892562866,a,"- The context describes seeing a stunning bird, which implies that the bird was attractive or beautiful.
+- The phrase ""a real eye-catcher"" is often used to describe something that is visually striking or attractive.
+- There is no indication in the context or the utterance that the bird looked at them, or that they had a great time on a trip, or that they thought the bird was not beautiful.",a
 C1_61_A_I,C1_61,85,1,ambiguous,ironic,a,The kettle was expensive.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: I found a nice kettle which was expensive.
 Target utterance: I said: """"What a steal.""""
@@ -1093,11 +1074,11 @@ Answer:
 ","c. The kettle was a real bargain.
 
 Reasoning:
-- The phrase ""What a steal"" is an idiomatic expression used to describe something that is purchased at a very low price, considering its value or cost.
-- The context provided mentions that the kettle was expensive, but the speaker's statement ""What a steal"" suggests they found it at a significantly lower price than expected, making it a good deal.
-- The other options do not fit the context or the speaker's statement. ""A thief tried to steal my bag"" would not be expressed as ""What a steal,"" and ""The kettle boiled over"" is unrelated to the price or cost","['b', 'c', 'a', 'd']",1,A_I,c,"- The phrase ""What a steal"" is an idiomatic expression used to describe something that is purchased at a very low price, considering its value or cost.
-- The context provided mentions that the kettle was expensive, but the speaker's statement ""What a steal"" suggests they found it at a significantly lower price than expected, making it a good deal.
-- The other options do not fit the context or the speaker's statement. ""A thief tried to steal my bag"" would not be expressed as ""What a steal,"" and ""The kettle boiled over"" is unrelated to the price or cost",a
+- The phrase ""What a steal"" is an idiomatic expression used to describe something that is a good buy or a bargain, especially when it is much cheaper than expected or its value is much higher than its price.
+- The context suggests that the speaker found an expensive kettle, and saying ""What a steal"" implies that they are surprised and pleased about the price of the kettle.
+- The other options do not fit the context or the idiomatic expression used. For example, ""The kettle was expensive"" is a statement of fact, not a reaction to finding a good deal. ""A thief","['b', 'c', 'a', 'd']",1,A_I,"{'a': 8.375, 'b': 10.25, 'c': 22.25, 'd': 10.1875}","{'a': 9.42233498335554e-07, 'b': 6.144134204078e-06, 'c': 0.9999872446060181, 'd': 5.771879841631744e-06}",0.9999872446060181,c,"- The phrase ""What a steal"" is an idiomatic expression used to describe something that is a good buy or a bargain, especially when it is much cheaper than expected or its value is much higher than its price.
+- The context suggests that the speaker found an expensive kettle, and saying ""What a steal"" implies that they are surprised and pleased about the price of the kettle.
+- The other options do not fit the context or the idiomatic expression used. For example, ""The kettle was expensive"" is a statement of fact, not a reaction to finding a good deal. ""A thief",a
 C1_62_A_NI,C1_62,13,1,ambiguous,non-ironic,b,The vase was worth a lot of money.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He broke an expensive vase.
 
@@ -1112,13 +1093,11 @@ Answer:
 ","b. The vase was worth a lot of money.
 
 Reasoning:
-- The person's statement ""Well, there goes a priceless treasure"" suggests that the vase was valuable or precious to them.
-- The phrase ""priceless treasure"" is often used to describe something that is very valuable or irreplaceable.
-- The context of the story is that the person broke an expensive vase, which supports the interpretation that the vase was valuable.
-- The other options do not fit the context or the statement made by the person. For example, option a is contradictory because breaking an expensive vase would not typically be considered worth it. Option c is unrelated to the situation described","['c', 'a', 'd', 'b']",1,A_NI,b,"- The person's statement ""Well, there goes a priceless treasure"" suggests that the vase was valuable or precious to them.
-- The phrase ""priceless treasure"" is often used to describe something that is very valuable or irreplaceable.
-- The context of the story is that the person broke an expensive vase, which supports the interpretation that the vase was valuable.
-- The other options do not fit the context or the statement made by the person. For example, option a is contradictory because breaking an expensive vase would not typically be considered worth it. Option c is unrelated to the situation described",a
+- The person's statement ""Well, there goes a priceless treasure"" implies that the vase was valuable or precious.
+- The phrase ""priceless treasure"" is often used to describe something that is very expensive or valuable.
+- The context of the story is that the person broke an expensive vase, which supports the interpretation that the vase was valuable.","['c', 'a', 'd', 'b']",1,A_NI,"{'a': 8.375, 'b': 22.0, 'c': 8.6875, 'd': 7.65625}","{'a': 1.2098629440515651e-06, 'b': 0.999996542930603, 'c': 1.6536866951355478e-06, 'd': 5.896400807614555e-07}",0.999996542930603,b,"- The person's statement ""Well, there goes a priceless treasure"" implies that the vase was valuable or precious.
+- The phrase ""priceless treasure"" is often used to describe something that is very expensive or valuable.
+- The context of the story is that the person broke an expensive vase, which supports the interpretation that the vase was valuable.",a
 C1_63_UA_I,C1_63,189,1,unambiguous,ironic,b,The perfume was not pricy.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She was wearing overpriced perfume.
 Target utterance: She said: """"Smells like it's from a gas station.""""
@@ -1130,13 +1109,12 @@ d. The ocean was calm and quiet.
 Reasoning:
 Answer:
 ","b. The perfume was not pricy.
-
 Reasoning:
-- The statement ""Smells like it's from a gas station"" is often used to describe something as cheap or low-quality, not high-quality or expensive.
-- In this context, the person is implying that the perfume does not have the refined or distinctive scent one would expect from an expensive perfume.
-- The statement does not suggest that the perfume was pricy, but rather that it resembles the scent of cheaper perfumes typically found at gas stations.","['a', 'b', 'c', 'd']",1,UA_I,b,"- The statement ""Smells like it's from a gas station"" is often used to describe something as cheap or low-quality, not high-quality or expensive.
-- In this context, the person is implying that the perfume does not have the refined or distinctive scent one would expect from an expensive perfume.
-- The statement does not suggest that the perfume was pricy, but rather that it resembles the scent of cheaper perfumes typically found at gas stations.",b
+- The statement ""Smells like it's from a gas station"" is often used to describe something that is cheap or of low quality, which suggests that the speaker believes the perfume is not expensive.
+- The statement does not indicate that the perfume was pricy, nor does it mention the fragrance label or the ocean.
+- The context of the statement implies a comparison between the perfume and a gas station perfume, which are generally considered less expensive.","['a', 'b', 'c', 'd']",1,UA_I,"{'a': 6.75, 'b': 22.375, 'c': 10.25, 'd': 10.6875}","{'a': 1.6373546429804264e-07, 'b': 0.9999861717224121, 'c': 5.422173217084492e-06, 'd': 8.398025784117635e-06}",0.9999861717224121,b,"- The statement ""Smells like it's from a gas station"" is often used to describe something that is cheap or of low quality, which suggests that the speaker believes the perfume is not expensive.
+- The statement does not indicate that the perfume was pricy, nor does it mention the fragrance label or the ocean.
+- The context of the statement implies a comparison between the perfume and a gas station perfume, which are generally considered less expensive.",b
 C1_64_UA_NI,C1_64,285,1,unambiguous,non-ironic,a,The bag was worth a lot.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She got an overpriced bag.
 Target utterance: She said: """"Looks like a real designer piece.""""
@@ -1149,13 +1127,13 @@ Reasoning:
 Answer:
 ","a. The bag was worth a lot.
 Reasoning:
-- The phrase ""Looks like a real designer piece"" is often used to express admiration for an item that appears to be high-quality and expensive, especially when it comes to designer items.
+- The phrase ""Looks like a real designer piece"" is often used to express that something appears to be high-quality or expensive, especially when it comes to designer items.
 - In this context, the person is commenting on the bag, suggesting that it looks like an authentic designer item, which implies that it is valuable.
 - There is no indication in the passage that the person has any intention of wearing the bag or that they have dark bags under their eyes, so options b and c can be ruled out.
-- Option d, ""The bag was worth very little,"" is also unlikely because the phrase ""Looks like a real","['a', 'c', 'd', 'b']",1,UA_NI,a,"- The phrase ""Looks like a real designer piece"" is often used to express admiration for an item that appears to be high-quality and expensive, especially when it comes to designer items.
+- Option d, ""The bag was worth very little,"" is also unlikely because the phrase ""Looks like a real designer piece"" would","['a', 'c', 'd', 'b']",1,UA_NI,"{'a': 22.125, 'b': 9.5, 'c': 8.1875, 'd': 7.0}","{'a': 0.9999955892562866, 'b': 3.288745347163058e-06, 'c': 8.851537813825416e-07, 'd': 2.69956643705882e-07}",0.9999955892562866,a,"- The phrase ""Looks like a real designer piece"" is often used to express that something appears to be high-quality or expensive, especially when it comes to designer items.
 - In this context, the person is commenting on the bag, suggesting that it looks like an authentic designer item, which implies that it is valuable.
 - There is no indication in the passage that the person has any intention of wearing the bag or that they have dark bags under their eyes, so options b and c can be ruled out.
-- Option d, ""The bag was worth very little,"" is also unlikely because the phrase ""Looks like a real",a
+- Option d, ""The bag was worth very little,"" is also unlikely because the phrase ""Looks like a real designer piece"" would",a
 C1_65_A_I,C1_65,61,1,ambiguous,ironic,d,The house felt spacious and huge.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They moved into a big house.
 Target utterance: They said: """"You can barely turn around in here.""""
@@ -1169,11 +1147,11 @@ Answer:
 ","c. The house felt cramped and tiny.
 
 Reasoning:
-- The statement ""You can barely turn around in here"" suggests a feeling of confinement or smallness.
-- There is no mention of the color of the house or any turning in the story.
-- The house being described as big in the context does not contradict the feeling of smallness expressed in the statement.","['d', 'c', 'a', 'b']",1,A_I,c,"- The statement ""You can barely turn around in here"" suggests a feeling of confinement or smallness.
-- There is no mention of the color of the house or any turning in the story.
-- The house being described as big in the context does not contradict the feeling of smallness expressed in the statement.",a
+- The statement ""You can barely turn around in here"" suggests a feeling of confinement or lack of space.
+- The context does not provide any information about the color of the house or any turns taken.
+- The house being big would typically imply a sense of spaciousness, which contradicts the statement. Therefore, the most likely meaning is that the house felt cramped and tiny.","['d', 'c', 'a', 'b']",1,A_I,"{'a': 8.0625, 'b': 10.6875, 'c': 22.25, 'd': 9.6875}","{'a': 6.893520776429796e-07, 'b': 9.516212230664678e-06, 'c': 0.9999862909317017, 'd': 3.500818593238364e-06}",0.9999862909317017,c,"- The statement ""You can barely turn around in here"" suggests a feeling of confinement or lack of space.
+- The context does not provide any information about the color of the house or any turns taken.
+- The house being big would typically imply a sense of spaciousness, which contradicts the statement. Therefore, the most likely meaning is that the house felt cramped and tiny.",a
 C1_66_A_NI,C1_66,149,1,ambiguous,non-ironic,c,They thought the concert was huge.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: They attended a concert at a big venue.
 Target utterance: They said: """"What a massive event.""""
@@ -1190,10 +1168,10 @@ Reasoning:
 - The statement ""What a massive event"" implies a positive reaction to the size or scale of the concert.
 - There is no indication in the passage that they organized the event or that they have a preference for concerts.
 - The term ""massive"" is typically used to describe something large or very big, which suggests the concert was of a significant size.
-- The option ""They thought the concert was small"" is contradictory to the statement ""What a massive event.""","['d', 'c', 'a', 'b']",1,A_NI,c,"- The statement ""What a massive event"" implies a positive reaction to the size or scale of the concert.
+- The statement does not imply that the concert was small, as option d suggests.","['d', 'c', 'a', 'b']",1,A_NI,"{'a': 7.03125, 'b': 10.1875, 'c': 22.5, 'd': 9.125}","{'a': 1.9142758844736818e-07, 'b': 4.495173925533891e-06, 'c': 0.9999938011169434, 'd': 1.5534905060121673e-06}",0.9999938011169434,c,"- The statement ""What a massive event"" implies a positive reaction to the size or scale of the concert.
 - There is no indication in the passage that they organized the event or that they have a preference for concerts.
 - The term ""massive"" is typically used to describe something large or very big, which suggests the concert was of a significant size.
-- The option ""They thought the concert was small"" is contradictory to the statement ""What a massive event.""",a
+- The statement does not imply that the concert was small, as option d suggests.",a
 C1_67_UA_I,C1_67,193,1,unambiguous,ironic,b,She thought the spider was huge.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She spotted a enormous spider.
 Target utterance: She said: """"Almost didn't see it.""""
@@ -1207,11 +1185,11 @@ Answer:
 ","b. She thought the spider was huge.
 
 Reasoning:
-- The statement ""Almost didn't see it"" suggests that the spider was large enough to be easily overlooked, which supports the interpretation that the speaker thought the spider was huge.
+- The statement ""Almost didn't see it"" suggests that the spider was large enough to be difficult to notice, which aligns with the interpretation that she thought the spider was huge.
 - The other options do not make sense in the context of the situation described.
-- The statement does not indicate that the spider was tiny (a), the speaker did not mention a doctor's visit (c), and there is no mention of drawing a spider diagram (d).","['a', 'b', 'c', 'd']",1,UA_I,b,"- The statement ""Almost didn't see it"" suggests that the spider was large enough to be easily overlooked, which supports the interpretation that the speaker thought the spider was huge.
+- The phrase ""Almost didn't see it"" does not indicate that she thought the spider was tiny (a), she didn't go to the doctor (c), or that she drew a spider diagram (d).","['a', 'b', 'c', 'd']",1,UA_I,"{'a': 7.25, 'b': 22.0, 'c': 9.6875, 'd': 8.8125}","{'a': 3.9278367580664053e-07, 'b': 0.9999932050704956, 'c': 4.495171197049785e-06, 'd': 1.8738661538009183e-06}",0.9999932050704956,b,"- The statement ""Almost didn't see it"" suggests that the spider was large enough to be difficult to notice, which aligns with the interpretation that she thought the spider was huge.
 - The other options do not make sense in the context of the situation described.
-- The statement does not indicate that the spider was tiny (a), the speaker did not mention a doctor's visit (c), and there is no mention of drawing a spider diagram (d).",b
+- The phrase ""Almost didn't see it"" does not indicate that she thought the spider was tiny (a), she didn't go to the doctor (c), or that she drew a spider diagram (d).",b
 C1_68_UA_NI,C1_68,34,1,unambiguous,non-ironic,b,I thought the dog was huge.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: I met an enormous dog.
 Target utterance: I said: """"He could swallow me whole.""""
@@ -1223,13 +1201,12 @@ d. I thought the dog was small.
 Reasoning:
 Answer:
 ","b. I thought the dog was huge.
-
 Reasoning:
-- The statement ""He could swallow me whole"" implies that the speaker is expressing the dog's size in relation to their own, suggesting that the dog is large enough to potentially consume the speaker.
-- There is no mention of swallowing a pill, wearing a collar, or the dog being small in the given context.
-- The speaker's statement is a reaction to the size of the dog, not a statement about their own actions or the dog's accessories.","['c', 'a', 'd', 'b']",1,UA_NI,b,"- The statement ""He could swallow me whole"" implies that the speaker is expressing the dog's size in relation to their own, suggesting that the dog is large enough to potentially consume the speaker.
-- There is no mention of swallowing a pill, wearing a collar, or the dog being small in the given context.
-- The speaker's statement is a reaction to the size of the dog, not a statement about their own actions or the dog's accessories.",a
+- The statement ""He could swallow me whole"" implies that the speaker is expressing the dog's size in comparison to their own, suggesting that the dog is large.
+- There is no mention of swallowing a pill or a collar in the context.
+- The statement ""I thought the dog was small"" would not make sense given the context of the statement ""I met an enormous dog.""","['c', 'a', 'd', 'b']",1,UA_NI,"{'a': 8.1875, 'b': 22.375, 'c': 10.0, 'd': 8.625}","{'a': 6.893574209243525e-07, 'b': 0.9999940395355225, 'c': 4.222826191835338e-06, 'd': 1.067697667167522e-06}",0.9999940395355225,b,"- The statement ""He could swallow me whole"" implies that the speaker is expressing the dog's size in comparison to their own, suggesting that the dog is large.
+- There is no mention of swallowing a pill or a collar in the context.
+- The statement ""I thought the dog was small"" would not make sense given the context of the statement ""I met an enormous dog.""",a
 C1_69_A_I,C1_69,88,1,ambiguous,ironic,d,The pool was super warm.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She jumped into a warm pool.
 Target utterance: She said:  """"One could catch a cold in here.""""
@@ -1243,9 +1220,9 @@ Answer:
 ","d. The pool was super warm.
 Reasoning:
 - The statement ""One could catch a cold in here"" is typically used to express concern about a place being too cold, not too warm.
-- Since she just jumped into a warm pool, it is unlikely that she would be concerned about catching a cold.
-- The other options do not relate to the situation described in the passage.","['c', 'a', 'd', 'b']",1,A_I,d,"- The statement ""One could catch a cold in here"" is typically used to express concern about a place being too cold, not too warm.
-- Since she just jumped into a warm pool, it is unlikely that she would be concerned about catching a cold.
+- Since she just jumped into a warm pool, it is unlikely that she would express concern about catching a cold, as that would imply the pool was cold.
+- The other options do not relate to the situation described in the passage.","['c', 'a', 'd', 'b']",1,A_I,"{'a': 8.375, 'b': 10.125, 'c': 11.5, 'd': 22.75}","{'a': 5.714911708309955e-07, 'b': 3.2887046472751535e-06, 'c': 1.3007079360249918e-05, 'd': 0.9999831914901733}",0.9999831914901733,d,"- The statement ""One could catch a cold in here"" is typically used to express concern about a place being too cold, not too warm.
+- Since she just jumped into a warm pool, it is unlikely that she would express concern about catching a cold, as that would imply the pool was cold.
 - The other options do not relate to the situation described in the passage.",b
 C1_70_A_NI,C1_70,160,1,ambiguous,non-ironic,b,The weather conditions were perfect.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: He went to the beach, and the weather was warm.
@@ -1260,11 +1237,11 @@ Answer:
 ","b. The weather conditions were perfect.
 
 Reasoning:
-- The statement ""Couldn't have asked for better weather"" is a common idiom used to express satisfaction or pleasure with the weather.
-- The context describes the person going to the beach, which suggests a positive association with the weather.
-- The other options do not fit the context or the idiomatic expression used.","['b', 'a', 'd', 'c']",1,A_NI,b,"- The statement ""Couldn't have asked for better weather"" is a common idiom used to express satisfaction or pleasure with the weather.
-- The context describes the person going to the beach, which suggests a positive association with the weather.
-- The other options do not fit the context or the idiomatic expression used.",a
+- The statement ""Couldn't have asked for better weather"" is a common idiom used to express satisfaction with the weather.
+- The context describes the person going to the beach, which suggests a positive association with good weather.
+- The other options do not fit the context or the idiom, as they imply negative or unrelated situations.","['b', 'a', 'd', 'c']",1,A_NI,"{'a': 7.3125, 'b': 22.0, 'c': 9.5, 'd': 8.875}","{'a': 4.181163149041822e-07, 'b': 0.9999938011169434, 'c': 3.7266299841576256e-06, 'd': 1.9947215150750708e-06}",0.9999938011169434,b,"- The statement ""Couldn't have asked for better weather"" is a common idiom used to express satisfaction with the weather.
+- The context describes the person going to the beach, which suggests a positive association with good weather.
+- The other options do not fit the context or the idiom, as they imply negative or unrelated situations.",a
 C1_71_UA_I,C1_71,154,1,unambiguous,ironic,d,The room was really warm.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: I walked into a hot room. 
 Target utterance: I said:  """"Feels like the North Pole in here.""""
@@ -1280,9 +1257,9 @@ Answer:
 Reasoning:
 - The phrase ""Feels like the North Pole"" is often used to describe extremely cold temperatures.
 - In the context of walking into a hot room, it would be unusual to say that it feels like the North Pole if it was actually hot.
-- The other options do not fit the context or the phrase used.","['c', 'd', 'a', 'b']",1,UA_I,c,"- The phrase ""Feels like the North Pole"" is often used to describe extremely cold temperatures.
+- The other options do not fit the context of the situation described.","['c', 'd', 'a', 'b']",1,UA_I,"{'a': 7.375, 'b': 10.0, 'c': 22.25, 'd': 9.125}","{'a': 3.4663028714021493e-07, 'b': 4.785083092428977e-06, 'c': 0.999992847442627, 'd': 1.994719468711992e-06}",0.999992847442627,c,"- The phrase ""Feels like the North Pole"" is often used to describe extremely cold temperatures.
 - In the context of walking into a hot room, it would be unusual to say that it feels like the North Pole if it was actually hot.
-- The other options do not fit the context or the phrase used.",a
+- The other options do not fit the context of the situation described.",a
 C1_72_UA_NI,C1_72,5,1,unambiguous,non-ironic,d,Her coffee was delicious.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,general_reasoning,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. State the reasoning in 2-3 bullet points and the answer. You can only answer with a, b, c, or d.
 Context: She took a sip of the hot coffee.
 Target utterance: She said: """"This is what freshly made coffee tastes like.""""
@@ -1296,8 +1273,8 @@ Answer:
 ","d. Her coffee was delicious.
 
 Reasoning:
-- The context suggests that she has just taken a sip of the coffee.
-- The statement ""This is what freshly made coffee tastes like"" implies that she is comparing the taste of the coffee to the taste of freshly made coffee, suggesting that she finds it to be similar and possibly very good.
-- The options a, b, and c do not align with the context or the statement made. In a, she would not be comparing the taste of the coffee to an experiment in health science. In b, the coffee would not taste like fresh mint. In c, the statement would not be made if the coffee did not taste good.","['d', 'c', 'b', 'a']",1,UA_NI,d,"- The context suggests that she has just taken a sip of the coffee.
-- The statement ""This is what freshly made coffee tastes like"" implies that she is comparing the taste of the coffee to the taste of freshly made coffee, suggesting that she finds it to be similar and possibly very good.
-- The options a, b, and c do not align with the context or the statement made. In a, she would not be comparing the taste of the coffee to an experiment in health science. In b, the coffee would not taste like fresh mint. In c, the statement would not be made if the coffee did not taste good.",a
+- The context suggests that she has just taken a sip of the coffee, which implies that she has tasted it.
+- The statement ""This is what freshly made coffee tastes like"" indicates that she is comparing the taste of the coffee to the taste of freshly made coffee, suggesting that she finds it similar or identical.
+- The phrase ""This is what freshly made coffee tastes like"" does not suggest an experiment in health science, a taste of fresh mint, or a negative opinion about the coffee.","['d', 'c', 'b', 'a']",1,UA_NI,"{'a': 9.8125, 'b': 10.9375, 'c': 11.0625, 'd': 22.75}","{'a': 2.406064368187799e-06, 'b': 7.411199931084411e-06, 'c': 8.397989404329564e-06, 'd': 0.9999817609786987}",0.9999817609786987,d,"- The context suggests that she has just taken a sip of the coffee, which implies that she has tasted it.
+- The statement ""This is what freshly made coffee tastes like"" indicates that she is comparing the taste of the coffee to the taste of freshly made coffee, suggesting that she finds it similar or identical.
+- The phrase ""This is what freshly made coffee tastes like"" does not suggest an experiment in health science, a taste of fresh mint, or a negative opinion about the coffee.",a
