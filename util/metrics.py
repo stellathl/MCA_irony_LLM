@@ -363,3 +363,75 @@ def save_rsa_metrics(df, metrics_path, model_key, dataset_name, prompt_type="rsa
         print(f"ERROR computing RSA metrics: {e}")
         import traceback
         traceback.print_exc()
+
+# =========================================================
+# STANDALONE ENTRY POINT
+#   Recomputes metrics from already-saved run CSVs, without
+#   touching the model, tokenizer, or generate_predictions.
+#   Run with:  python3 -m util.metrics   (from project root)
+# =========================================================
+ 
+if __name__ == "__main__":
+ 
+    OUTPUTS_DIR = "./outputs"
+ 
+    # ── Discover (model_key, dataset_name, prompt_type) combos ──
+    # by scanning outputs/{prompt_type}/{model_key}/{model_key}_{dataset_name}_run*.csv
+    pattern = os.path.join(OUTPUTS_DIR, "*", "*", "*_run*.csv")
+    run_files = glob.glob(pattern)
+ 
+    if not run_files:
+        print(f"No run CSVs found under {OUTPUTS_DIR}. Nothing to compute.")
+        exit()
+ 
+    combos = set()
+    for f in run_files:
+        parts = f.split(os.sep)
+        print(parts)
+        prompt_type = parts[-3]
+        model_key   = parts[-2]
+        fname       = os.path.basename(f)  # {model_key}_{dataset_name}_run{N}.csv
+ 
+        if not fname.startswith(model_key + "_"):
+            print(f"Skipping unrecognized filename pattern: {f}")
+            continue
+ 
+        stem = fname[len(model_key) + 1:]          # {dataset_name}_run{N}.csv
+        dataset_name = stem.rsplit("_run", 1)[0]    # {dataset_name}
+        combos.add((model_key, dataset_name, prompt_type))
+ 
+    print(f"Found {len(combos)} (model, dataset, prompt_type) combination(s):")
+    for c in sorted(combos):
+        print(f"  - {c}")
+ 
+    for model_key, dataset_name, prompt_type in sorted(combos):
+        print(f"\n{'='*60}")
+        print(f"Computing metrics: model={model_key} dataset={dataset_name} prompt_type={prompt_type}")
+        print(f"{'='*60}")
+ 
+        combined_results = load_from_run_csvs(OUTPUTS_DIR, model_key, dataset_name, prompt_type)
+ 
+        if combined_results is None or combined_results.empty:
+            print("Falling back to combined per-model CSV...")
+            combined_results = load_from_combined_csv(OUTPUTS_DIR, model_key, dataset_name, prompt_type)
+ 
+        if combined_results is None or combined_results.empty:
+            print(f"No data found for {model_key}/{dataset_name}/{prompt_type} — skipping.")
+            continue
+ 
+        metrics_path = os.path.join(
+            OUTPUTS_DIR, "metrics",
+            f"{model_key}_{dataset_name}_{prompt_type}_metrics.txt"
+        )
+        save_metrics(combined_results, metrics_path, model_key, dataset_name, prompt_type)
+ 
+        if prompt_type.lower() == "rsa":
+            combined_rsa_metrics_path = os.path.join(
+                OUTPUTS_DIR, "metrics",
+                f"{model_key}_{dataset_name}_{prompt_type}_combined_rsa_stage_metrics.txt"
+            )
+            save_rsa_metrics(combined_results, combined_rsa_metrics_path, model_key, dataset_name, prompt_type)
+ 
+    print(f"\n✓ Done. All metrics written under: {os.path.join(OUTPUTS_DIR, 'metrics')}")
+
+
