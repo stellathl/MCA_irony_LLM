@@ -1,0 +1,101 @@
+Model      : OLMo-2-7B
+Dataset    : Condition1B_context_richness_stimuli
+Prompt Type: rsa
+==================================================
+
+############################################################
+### STAGE: L0 (Literal Listener)
+############################################################
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 144     0.368      0.389   0.367 0.326
+ non-ironic 144     0.653      0.687   0.662 0.641
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 72     0.375      0.384   0.370 0.338
+    ambiguous  non-ironic 72     0.667      0.719   0.683 0.656
+  unambiguous      ironic 72     0.361      0.396   0.373 0.312
+  unambiguous  non-ironic 72     0.639      0.659   0.641 0.626
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     a               38       27         11      71.1%       13.2%
+     b               89       50         39      56.2%       30.9%
+     c               35       21         14      60.0%       12.2%
+     d              126       49         77      38.9%       43.8%
+
+Selection Distribution:
+  Option a:  38 selections ( 13.2%)
+  Option b:  89 selections ( 30.9%)
+  Option c:  35 selections ( 12.2%)
+  Option d: 126 selections ( 43.8%)
+
+
+############################################################
+### STAGE: S1 (Informative Speaker)
+############################################################
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 144     0.368      0.371   0.368 0.336
+ non-ironic 144     0.688      0.690   0.696 0.678
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 72     0.375      0.369   0.373 0.346
+    ambiguous  non-ironic 72     0.694      0.696   0.707 0.685
+  unambiguous      ironic 72     0.361      0.392   0.372 0.325
+  unambiguous  non-ironic 72     0.681      0.685   0.685 0.671
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     a               44       29         15      65.9%       15.3%
+     b               82       48         34      58.5%       28.5%
+     c               51       27         24      52.9%       17.7%
+     d              111       48         63      43.2%       38.5%
+
+Selection Distribution:
+  Option a:  44 selections ( 15.3%)
+  Option b:  82 selections ( 28.5%)
+  Option c:  51 selections ( 17.7%)
+  Option d: 111 selections ( 38.5%)
+
+
+############################################################
+### STAGE: L1 (Pragmatic Listener)
+############################################################
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 144     0.382      0.382   0.384 0.357
+ non-ironic 144     0.688      0.691   0.698 0.679
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 72     0.389      0.384   0.389 0.364
+    ambiguous  non-ironic 72     0.694      0.700   0.711 0.688
+  unambiguous      ironic 72     0.375      0.392   0.387 0.353
+  unambiguous  non-ironic 72     0.681      0.685   0.685 0.671
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     a               45       29         16      64.4%       15.6%
+     b               79       46         33      58.2%       27.4%
+     c               59       31         28      52.5%       20.5%
+     d              105       48         57      45.7%       36.5%
+
+Selection Distribution:
+  Option a:  45 selections ( 15.6%)
+  Option b:  79 selections ( 27.4%)
+  Option c:  59 selections ( 20.5%)
+  Option d: 105 selections ( 36.5%)
+
+
+############################################################
+### STAGE: Final Answer
+############################################################
+
+No valid predictions for this stage.
+

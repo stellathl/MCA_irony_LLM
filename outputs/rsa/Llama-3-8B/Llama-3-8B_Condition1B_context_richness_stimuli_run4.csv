@@ -1,4 +1,4 @@
-Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,option_logits_raw,confidence_dist,confidence_top_prob,rsa_l0,rsa_s1,rsa_l1,rsa_final,rsa_raw_text,chosen_option,reasoning,chosen_original_option
+Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,option_logits_raw,confidence_dist,confidence_top_prob,rsa_l0,rsa_s1,rsa_l1,rsa_final,rsa_raw_text,chosen_option,chosen_original_option
 C1_01_UA_NI,C1_01,255,1,unambiguous,non-ironic,a,The cat was easy to lift up.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -40,7 +40,7 @@ Final Answer: a","['a', 'd', 'c', 'b']",4,UA_NI,"{'a': 19.875, 'b': 11.125, 'c':
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_02_A_I,C1_02,51,1,ambiguous,ironic,c,The dog was very light to lift.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -71,18 +71,12 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
-
 2. S1: b
-
 3. L1: b
-
-Final Answer: b","['d', 'a', 'b', 'c']",4,A_I,"{'a': 11.6875, 'b': 20.25, 'c': 11.6875, 'd': 10.6875}","{'a': 0.00019105437968391925, 'b': 0.9995476603507996, 'c': 0.00019105437968391925, 'd': 7.028497930150479e-05}",0.9995476603507996,b,b,b,b,"1. L0: b
-
+Final Answer: b","['d', 'a', 'b', 'c']",4,A_I,"{'a': 11.375, 'b': 20.625, 'c': 11.9375, 'd': 10.875}","{'a': 9.608061373000965e-05, 'b': 0.9996770620346069, 'c': 0.0001686267351033166, 'd': 5.8275836636312306e-05}",0.9996770620346069,b,b,b,b,"1. L0: b
 2. S1: b
-
 3. L1: b
-
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_03_A_NI,C1_03,230,1,ambiguous,non-ironic,c,Their friend was very easy to lift.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -112,19 +106,19 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. L0: b
+  Answer with a letter from a–d.","1. L0: c
 
 2. S1: c
 
 3. L1: c
 
-Final Answer: c","['b', 'c', 'a', 'd']",4,A_NI,"{'a': 10.875, 'b': 12.1875, 'c': 20.25, 'd': 10.9375}","{'a': 8.477667870465666e-05, 'b': 0.00031498356838710606, 'c': 0.9995100498199463, 'd': 9.02442989172414e-05}",0.9995100498199463,b,c,c,c,"1. L0: b
+Final Answer: c","['b', 'c', 'a', 'd']",4,A_NI,"{'a': 10.6875, 'b': 11.3125, 'c': 20.25, 'd': 10.625}","{'a': 7.029796688584611e-05, 'b': 0.0001313338871113956, 'c': 0.9997323155403137, 'd': 6.603882502531633e-05}",0.9997323155403137,c,c,c,c,"1. L0: c
 
 2. S1: c
 
 3. L1: c
 
-Final Answer: c",c,,a
+Final Answer: c",c,a
 C1_04_UA_I,C1_04,78,1,unambiguous,ironic,a,Holding my nephew took nothing of my strength.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -166,7 +160,7 @@ Final Answer: c","['b', 'a', 'c', 'd']",4,UA_I,"{'a': 11.8125, 'b': 12.75, 'c': 
 
 3. L1: c
 
-Final Answer: c",c,,c
+Final Answer: c",c,c
 C1_05_UA_NI,C1_05,77,1,unambiguous,non-ironic,a,The cake tasted really good.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -208,7 +202,7 @@ Final Answer: b","['a', 'b', 'c', 'd']",4,UA_NI,"{'a': 11.625, 'b': 19.5, 'c': 1
 
 3. L1: b
 
-Final Answer: b",b,,b
+Final Answer: b",b,b
 C1_06_A_I,C1_06,188,1,ambiguous,ironic,a,The medicine tasted absolutely awful.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -250,7 +244,7 @@ Final Answer: b","['b', 'a', 'd', 'c']",4,A_I,"{'a': 12.125, 'b': 20.0, 'c': 11.
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_07_A_NI,C1_07,239,1,ambiguous,non-ironic,a,The smoothie was thoroughly enjoyable.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -292,7 +286,7 @@ Final Answer: d","['a', 'c', 'd', 'b']",4,A_NI,"{'a': 10.375, 'b': 10.0, 'c': 9.
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_08_UA_I,C1_08,259,1,unambiguous,ironic,d,They could barely force themselves to swallow the burger.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -334,7 +328,7 @@ Final Answer: d","['d', 'c', 'a', 'b']",4,UA_I,"{'a': 10.625, 'b': 11.25, 'c': 1
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_09_UA_NI,C1_09,109,1,unambiguous,non-ironic,a,The babysitter was taking good care of the kids.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -376,7 +370,7 @@ Final Answer: b","['a', 'b', 'c', 'd']",4,UA_NI,"{'a': 9.9375, 'b': 19.875, 'c':
 
 3. L1: b
 
-Final Answer: b",b,,b
+Final Answer: b",b,b
 C1_10_A_I,C1_10,186,1,ambiguous,ironic,b,The police officer did not make them feel safe at all.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -418,7 +412,7 @@ Final Answer: d","['d', 'b', 'c', 'a']",4,A_I,"{'a': 10.6875, 'b': 10.1875, 'c':
 
 3. L1: d
 
-Final Answer: d",d,,a
+Final Answer: d",d,a
 C1_11_A_NI,C1_11,244,1,ambiguous,non-ironic,a,Seeing the pilot put her completely at ease.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -448,19 +442,13 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. L0: c
-
-2. S1: c
-
+  Answer with a letter from a–d.","1. L0: b
+2. S1: b
 3. L1: c
-
-Final Answer: c","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 11.0, 'b': 12.0625, 'c': 20.75, 'd': 11.875}","{'a': 5.8273286413168535e-05, 'b': 0.0001686193427303806, 'c': 0.9996333122253418, 'd': 0.00013979035429656506}",0.9996333122253418,c,c,c,c,"1. L0: c
-
-2. S1: c
-
+Final Answer: c","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 11.375, 'b': 15.125, 'c': 21.125, 'd': 13.375}","{'a': 5.812217204947956e-05, 'b': 0.00247141788713634, 'c': 0.9970410466194153, 'd': 0.0004294679965823889}",0.9970410466194153,b,b,c,c,"1. L0: b
+2. S1: b
 3. L1: c
-
-Final Answer: c",c,,b
+Final Answer: c",c,b
 C1_12_UA_I,C1_12,207,1,unambiguous,ironic,a,His father's face was full of fear.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -502,7 +490,7 @@ Final Answer: d","['b', 'c', 'd', 'a']",4,UA_I,"{'a': 11.0625, 'b': 10.625, 'c':
 
 3. L1: d
 
-Final Answer: d",d,,a
+Final Answer: d",d,a
 C1_13_UA_NI,C1_13,48,1,unambiguous,non-ironic,a,"To him, his girlfriend looked well-rested and full of energy.",Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -544,7 +532,7 @@ Final Answer: c","['a', 'd', 'b', 'c']",4,UA_NI,"{'a': 10.5, 'b': 10.9375, 'c': 
 
 3. L1: c
 
-Final Answer: c",c,,b
+Final Answer: c",c,b
 C1_14_A_I,C1_14,248,1,ambiguous,ironic,d,Her colleague seemed very tired today.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -586,7 +574,7 @@ Final Answer: b","['d', 'a', 'c', 'b']",4,A_I,"{'a': 11.25, 'b': 19.5, 'c': 10.9
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_15_A_NI,C1_15,256,1,ambiguous,non-ironic,a,They felt very well-rested after the sleepover.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -628,7 +616,7 @@ Final Answer: d","['a', 'd', 'c', 'b']",4,A_NI,"{'a': 10.375, 'b': 9.6875, 'c': 
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_16_UA_I,C1_16,14,1,unambiguous,ironic,d,Deep down I felt completely unprepared for the exam.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -670,7 +658,7 @@ Final Answer: d","['a', 'c', 'd', 'b']",4,UA_I,"{'a': 13.8125, 'b': 10.9375, 'c'
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_17_UA_NI,C1_17,118,1,unambiguous,non-ironic,d,Her idea was innovative.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -712,7 +700,7 @@ Final Answer: d","['b', 'c', 'd', 'a']",4,UA_NI,"{'a': 10.125, 'b': 9.4375, 'c':
 
 3. L1: d
 
-Final Answer: d",d,,a
+Final Answer: d",d,a
 C1_18_A_I,C1_18,272,1,ambiguous,ironic,b,"In his view, it was a stale approach he had seen many times before.",Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -754,7 +742,7 @@ Final Answer: a","['a', 'b', 'c', 'd']",4,A_I,"{'a': 20.0, 'b': 10.5625, 'c': 10
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_19_A_NI,C1_19,32,1,ambiguous,non-ironic,a,She found the tradition beautifully enduring and meaningful.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -796,7 +784,7 @@ Final Answer: a","['a', 'd', 'b', 'c']",4,A_NI,"{'a': 19.875, 'b': 10.9375, 'c':
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_20_UA_I,C1_20,125,1,unambiguous,ironic,d,She was disappointed with the smell of her car.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -838,7 +826,7 @@ Final Answer: c","['d', 'c', 'a', 'b']",4,UA_I,"{'a': 10.5, 'b': 10.875, 'c': 20
 
 3. L1: c
 
-Final Answer: c",c,,a
+Final Answer: c",c,a
 C1_21_UA_NI,C1_21,221,1,unambiguous,non-ironic,c,The birthday party was a great success.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -880,7 +868,7 @@ Final Answer: a","['b', 'd', 'a', 'c']",4,UA_NI,"{'a': 20.125, 'b': 10.8125, 'c'
 
 3. L1: a
 
-Final Answer: a",a,,b
+Final Answer: a",a,b
 C1_22_A_I,C1_22,146,1,ambiguous,ironic,d,"The wedding had been a dull, disappointing event from start to finish.",Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -912,17 +900,17 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 
-2. S1: a
+2. S1: d
 
-3. L1: d
+3. L1: a
 
-Final Answer: a","['a', 'c', 'd', 'b']",4,A_I,"{'a': 18.125, 'b': 12.6875, 'c': 11.875, 'd': 16.5}","{'a': 0.8311222195625305, 'b': 0.003615668974816799, 'c': 0.0016044432995840907, 'd': 0.16365766525268555}",0.8311222195625305,a,a,d,a,"1. L0: a
+Final Answer: a","['a', 'c', 'd', 'b']",4,A_I,"{'a': 19.625, 'b': 12.0625, 'c': 11.5, 'd': 12.5625}","{'a': 0.9983305335044861, 'b': 0.0005187072674743831, 'c': 0.00029555047512985766, 'd': 0.0008552037179470062}",0.9983305335044861,a,d,a,a,"1. L0: a
 
-2. S1: a
+2. S1: d
 
-3. L1: d
+3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_23_A_NI,C1_23,45,1,ambiguous,non-ironic,b,They had found the film dull from start to finish.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -964,7 +952,7 @@ Final Answer: b","['d', 'a', 'b', 'c']",4,A_NI,"{'a': 11.75, 'b': 19.875, 'c': 1
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_24_UA_I,C1_24,169,1,unambiguous,ironic,b,The message brought negative news.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1006,7 +994,7 @@ Final Answer: d","['c', 'b', 'd', 'a']",4,UA_I,"{'a': 10.1875, 'b': 10.25, 'c': 
 
 3. L1: d
 
-Final Answer: d",d,,a
+Final Answer: d",d,a
 C1_25_UA_NI,C1_25,92,1,unambiguous,non-ironic,b,Her exam answers were impressively smart.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1048,7 +1036,7 @@ Final Answer: c","['c', 'a', 'b', 'd']",4,UA_NI,"{'a': 11.25, 'b': 12.3125, 'c':
 
 3. L1: c
 
-Final Answer: c",c,,b
+Final Answer: c",c,b
 C1_26_A_I,C1_26,225,1,ambiguous,ironic,d,"As far as they were concerned, it was a poor suggestion.",Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1090,7 +1078,7 @@ Final Answer: d","['c', 'd', 'a', 'b']",4,A_I,"{'a': 11.375, 'b': 10.375, 'c': 9
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_27_A_NI,C1_27,30,1,ambiguous,non-ironic,d,His argument was strong and well presented.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1132,7 +1120,7 @@ Final Answer: a","['b', 'c', 'd', 'a']",4,A_NI,"{'a': 19.75, 'b': 12.5625, 'c': 
 
 3. L1: a
 
-Final Answer: a",a,,b
+Final Answer: a",a,b
 C1_28_UA_I,C1_28,47,1,unambiguous,ironic,d,She believed that his business plan would fail.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1174,7 +1162,7 @@ Final Answer: a","['a', 'd', 'c', 'b']",4,UA_I,"{'a': 20.25, 'b': 10.875, 'c': 9
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_29_UA_NI,C1_29,261,1,unambiguous,non-ironic,a,The restaurant visit was genuinely outstanding.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1216,7 +1204,7 @@ Final Answer: a","['a', 'b', 'd', 'c']",4,UA_NI,"{'a': 19.875, 'b': 10.4375, 'c'
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_30_A_I,C1_30,139,1,ambiguous,ironic,d,There had been very little worth eating at the buffet.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1258,7 +1246,7 @@ Final Answer: d","['d', 'a', 'c', 'b']",4,A_I,"{'a': 10.5, 'b': 10.3125, 'c': 10
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_31_A_NI,C1_31,260,1,ambiguous,non-ironic,b,The picnic was nourishing and genuinely enjoyable.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1300,7 +1288,7 @@ Final Answer: b","['d', 'a', 'b', 'c']",4,A_NI,"{'a': 11.0625, 'b': 19.625, 'c':
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_32_UA_I,C1_32,228,1,unambiguous,ironic,a,The waiter had forgotten to fill his plate and he did not eat anything.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1342,7 +1330,7 @@ Final Answer: c","['b', 'd', 'a', 'c']",4,UA_I,"{'a': 10.6875, 'b': 10.875, 'c':
 
 3. L1: c
 
-Final Answer: c",c,,a
+Final Answer: c",c,a
 C1_33_UA_NI,C1_33,24,1,unambiguous,non-ironic,d,The library was a calm and quiet environment.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1384,7 +1372,7 @@ Final Answer: d","['c', 'd', 'b', 'a']",4,UA_NI,"{'a': 10.875, 'b': 10.5625, 'c'
 
 3. L1: d
 
-Final Answer: d",d,,a
+Final Answer: d",d,a
 C1_34_A_I,C1_34,25,1,ambiguous,ironic,d,The concert was pretty loud.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1426,7 +1414,7 @@ Final Answer: d","['a', 'd', 'c', 'b']",4,A_I,"{'a': 10.3125, 'b': 10.25, 'c': 9
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_35_A_NI,C1_35,31,1,ambiguous,non-ironic,a,The movie was too quiet to hear.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1468,7 +1456,7 @@ Final Answer: a","['a', 'b', 'c', 'd']",4,A_NI,"{'a': 19.625, 'b': 11.375, 'c': 
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_36_UA_I,C1_36,29,1,unambiguous,ironic,d,He would expected to hear louder music from his neighbours' party.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1510,7 +1498,7 @@ Final Answer: d","['d', 'a', 'c', 'b']",4,UA_I,"{'a': 10.375, 'b': 10.875, 'c': 
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_37_UA_NI,C1_37,53,1,unambiguous,non-ironic,a,The questions required thorough preparation to answer.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1552,7 +1540,7 @@ Final Answer: a","['a', 'd', 'c', 'b']",4,UA_NI,"{'a': 19.75, 'b': 11.0625, 'c':
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_38_A_I,C1_38,172,1,ambiguous,ironic,a,Booking the appointment was frustrating and difficult.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1594,7 +1582,7 @@ Final Answer: c","['b', 'd', 'a', 'c']",4,A_I,"{'a': 10.0625, 'b': 10.625, 'c': 
 
 3. L1: c
 
-Final Answer: c",c,,a
+Final Answer: c",c,a
 C1_39_A_NI,C1_39,233,1,ambiguous,non-ironic,a,Completing the task was a genuine sign of intelligence.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1636,7 +1624,7 @@ Final Answer: a","['a', 'b', 'c', 'd']",4,A_NI,"{'a': 20.25, 'b': 9.875, 'c': 9.
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_40_UA_I,C1_40,144,1,unambiguous,ironic,d,Making the payment was complicated and painful.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1678,7 +1666,7 @@ Final Answer: d","['a', 'd', 'c', 'b']",4,UA_I,"{'a': 9.5625, 'b': 9.4375, 'c': 
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_41_UA_NI,C1_41,147,1,unambiguous,non-ironic,c,Her kitchen was tidy.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1720,7 +1708,7 @@ Final Answer: c","['c', 'b', 'a', 'd']",4,UA_NI,"{'a': 11.625, 'b': 11.4375, 'c'
 
 3. L1: c
 
-Final Answer: c",c,,a
+Final Answer: c",c,a
 C1_42_A_I,C1_42,55,1,ambiguous,ironic,a,The room was left in a terrible state for far too long.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1762,7 +1750,7 @@ Final Answer: a","['b', 'c', 'a', 'd']",4,A_I,"{'a': 19.875, 'b': 11.6875, 'c': 
 
 3. L1: a
 
-Final Answer: a",a,,b
+Final Answer: a",a,b
 C1_43_A_NI,C1_43,67,1,ambiguous,non-ironic,b,The street was genuinely pleasant.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1804,7 +1792,7 @@ Final Answer: b","['d', 'a', 'c', 'b']",4,A_NI,"{'a': 12.75, 'b': 19.75, 'c': 11
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_44_UA_I,C1_44,83,1,unambiguous,ironic,c,The floor was very dirty.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1846,7 +1834,7 @@ Final Answer: a","['a', 'd', 'b', 'c']",4,UA_I,"{'a': 19.75, 'b': 10.6875, 'c': 
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_45_UA_NI,C1_45,40,1,unambiguous,non-ironic,c,The movie was funny and great.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1888,7 +1876,7 @@ Final Answer: d","['c', 'd', 'a', 'b']",4,UA_NI,"{'a': 10.8125, 'b': 10.8125, 'c
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_46_A_I,C1_46,159,1,ambiguous,ironic,a,The musical was purely for laughs.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1930,7 +1918,7 @@ Final Answer: b","['b', 'a', 'd', 'c']",4,A_I,"{'a': 12.625, 'b': 19.5, 'c': 12.
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_47_A_NI,C1_47,3,1,ambiguous,non-ironic,a,The situation was genuinely amusing.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1972,7 +1960,7 @@ Final Answer: d","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 14.1875, 'b': 12.0625, 'c'
 
 3. L1: d
 
-Final Answer: d",d,,d
+Final Answer: d",d,d
 C1_48_UA_I,C1_48,208,1,unambiguous,ironic,c,The talk contained no humour.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2014,7 +2002,7 @@ Final Answer: c","['d', 'c', 'b', 'a']",4,UA_I,"{'a': 12.6875, 'b': 13.4375, 'c'
 
 3. L1: c
 
-Final Answer: c",c,,b
+Final Answer: c",c,b
 C1_49_UA_NI,C1_49,229,1,unambiguous,non-ironic,a,The airport experience was enjoyable.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2056,7 +2044,7 @@ Final Answer: d","['a', 'c', 'd', 'b']",4,UA_NI,"{'a': 11.1875, 'b': 10.375, 'c'
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_50_A_I,C1_50,254,1,ambiguous,ironic,d,The exam results were deeply disappointing.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2098,7 +2086,7 @@ Final Answer: d","['c', 'd', 'a', 'b']",4,A_I,"{'a': 10.25, 'b': 9.8125, 'c': 9.
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_51_A_NI,C1_51,129,1,ambiguous,non-ironic,b,They found the play dull.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2140,7 +2128,7 @@ Final Answer: b","['b', 'a', 'd', 'c']",4,A_NI,"{'a': 10.75, 'b': 20.125, 'c': 1
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_52_UA_I,C1_52,114,1,unambiguous,ironic,b,She found the whole meal disappointing.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2182,7 +2170,7 @@ Final Answer: b","['d', 'b', 'a', 'c']",4,UA_I,"{'a': 11.0625, 'b': 19.75, 'c': 
 
 3. L1: b
 
-Final Answer: b",b,,b
+Final Answer: b",b,b
 C1_53_UA_NI,C1_53,140,1,unambiguous,non-ironic,a,The ground was moist and muddy after the rain.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2224,7 +2212,7 @@ Final Answer: d","['a', 'c', 'd', 'b']",4,UA_NI,"{'a': 10.625, 'b': 10.1875, 'c'
 
 3. L1: d
 
-Final Answer: d",d,,b
+Final Answer: d",d,b
 C1_54_A_I,C1_54,123,1,ambiguous,ironic,a,The garden was just watered and needed to dry out.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2266,7 +2254,7 @@ Final Answer: a","['b', 'c', 'a', 'd']",4,A_I,"{'a': 20.25, 'b': 10.9375, 'c': 1
 
 3. L1: a
 
-Final Answer: a",a,,b
+Final Answer: a",a,b
 C1_55_A_NI,C1_55,100,1,ambiguous,non-ironic,a,The plants had been getting plenty of moisture to grow.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2308,7 +2296,7 @@ Final Answer: c","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 10.3125, 'b': 10.625, 'c':
 
 3. L1: c
 
-Final Answer: c",c,,b
+Final Answer: c",c,b
 C1_56_UA_I,C1_56,158,1,unambiguous,ironic,a,Her hair was completely dry.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2350,7 +2338,7 @@ Final Answer: d","['b', 'd', 'c', 'a']",4,UA_I,"{'a': 11.4375, 'b': 10.9375, 'c'
 
 3. L1: d
 
-Final Answer: d",d,,a
+Final Answer: d",d,a
 C1_57_UA_NI,C1_57,89,1,unambiguous,non-ironic,c,I admired the outfit.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2392,7 +2380,7 @@ Final Answer: a","['b', 'c', 'a', 'd']",4,UA_NI,"{'a': 20.5, 'b': 11.625, 'c': 1
 
 3. L1: a
 
-Final Answer: a",a,,b
+Final Answer: a",a,b
 C1_58_A_I,C1_58,105,1,ambiguous,ironic,c,She thought the car was ugly.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2434,7 +2422,7 @@ Final Answer: c","['a', 'c', 'b', 'd']",4,A_I,"{'a': 10.8125, 'b': 11.0, 'c': 20
 
 3. L1: c
 
-Final Answer: c",c,,b
+Final Answer: c",c,b
 C1_59_A_NI,C1_59,76,1,ambiguous,non-ironic,b,The painting was genuinely ugly.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2476,7 +2464,7 @@ Final Answer: b","['b', 'a', 'd', 'c']",4,A_NI,"{'a': 10.625, 'b': 19.75, 'c': 1
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_60_UA_I,C1_60,212,1,unambiguous,ironic,a,They thought the bird was not beautiful.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2518,7 +2506,7 @@ Final Answer: b","['b', 'a', 'c', 'd']",4,UA_I,"{'a': 13.0625, 'b': 19.75, 'c': 
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_61_UA_NI,C1_61,86,1,unambiguous,non-ironic,c,The kettle was a real bargain.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2560,7 +2548,7 @@ Final Answer: c","['d', 'b', 'a', 'c']",4,UA_NI,"{'a': 10.875, 'b': 11.125, 'c':
 
 3. L1: c
 
-Final Answer: c",c,,a
+Final Answer: c",c,a
 C1_62_A_I,C1_62,165,1,ambiguous,ironic,a,The vase was not pricy.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2602,7 +2590,7 @@ Final Answer: c","['b', 'c', 'a', 'd']",4,A_I,"{'a': 11.375, 'b': 11.6875, 'c': 
 
 3. L1: c
 
-Final Answer: c",c,,a
+Final Answer: c",c,a
 C1_63_A_NI,C1_63,195,1,ambiguous,non-ironic,b,The perfume was pricy.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2644,7 +2632,7 @@ Final Answer: a","['b', 'a', 'c', 'd']",4,A_NI,"{'a': 19.75, 'b': 12.0625, 'c': 
 
 3. L1: a
 
-Final Answer: a",a,,b
+Final Answer: a",a,b
 C1_64_UA_I,C1_64,276,1,unambiguous,ironic,b,The bag was worth very little.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2686,7 +2674,7 @@ Final Answer: c","['c', 'b', 'a', 'd']",4,UA_I,"{'a': 11.0, 'b': 11.4375, 'c': 2
 
 3. L1: c
 
-Final Answer: c",c,,a
+Final Answer: c",c,a
 C1_65_UA_NI,C1_65,174,1,unambiguous,non-ironic,c,The house felt cramped and tiny.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2728,7 +2716,7 @@ Final Answer: c","['c', 'b', 'a', 'd']",4,UA_NI,"{'a': 10.25, 'b': 10.1875, 'c':
 
 3. L1: c
 
-Final Answer: c",c,,a
+Final Answer: c",c,a
 C1_66_A_I,C1_66,245,1,ambiguous,ironic,b,They thought the concert was small.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2772,7 +2760,7 @@ Final Answer: c","['d', 'b', 'a', 'c']",4,A_I,"{'a': 10.5625, 'b': 11.0625, 'c':
 
 3. L1: c
 
-Final Answer: c",c,,a
+Final Answer: c",c,a
 C1_67_A_NI,C1_67,231,1,ambiguous,non-ironic,d,She thought the spider was tiny.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2814,7 +2802,7 @@ Final Answer: d","['b', 'c', 'd', 'a']",4,A_NI,"{'a': 10.4375, 'b': 9.625, 'c': 
 
 3. L1: d
 
-Final Answer: d",d,,a
+Final Answer: d",d,a
 C1_68_UA_I,C1_68,236,1,unambiguous,ironic,b,I thought the dog was small.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2856,7 +2844,7 @@ Final Answer: d","['c', 'b', 'd', 'a']",4,UA_I,"{'a': 11.25, 'b': 12.0625, 'c': 
 
 3. L1: d
 
-Final Answer: d",d,,a
+Final Answer: d",d,a
 C1_69_UA_NI,C1_69,200,1,unambiguous,non-ironic,a,The pool was super cold.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2898,7 +2886,7 @@ Final Answer: a","['a', 'd', 'b', 'c']",4,UA_NI,"{'a': 19.875, 'b': 10.6875, 'c'
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_70_A_I,C1_70,277,1,ambiguous,ironic,a,The weather conditions were awful.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2940,7 +2928,7 @@ Final Answer: b","['b', 'a', 'd', 'c']",4,A_I,"{'a': 10.25, 'b': 19.375, 'c': 10
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a
 C1_71_A_NI,C1_71,57,1,ambiguous,non-ironic,a,The room was freezing cold.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2982,7 +2970,7 @@ Final Answer: a","['a', 'd', 'c', 'b']",4,A_NI,"{'a': 19.875, 'b': 10.9375, 'c':
 
 3. L1: a
 
-Final Answer: a",a,,a
+Final Answer: a",a,a
 C1_72_UA_I,C1_72,179,1,unambiguous,ironic,a,Her coffee did not taste good.,Llama-3-8B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -3024,4 +3012,4 @@ Final Answer: b","['b', 'a', 'd', 'c']",4,UA_I,"{'a': 12.0, 'b': 19.75, 'c': 11.
 
 3. L1: b
 
-Final Answer: b",b,,a
+Final Answer: b",b,a

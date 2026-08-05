@@ -1,4 +1,4 @@
-Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,option_logits_raw,confidence_dist,confidence_top_prob,rsa_l0,rsa_s1,rsa_l1,rsa_final,rsa_raw_text,chosen_option,reasoning,chosen_original_option
+Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,option_logits_raw,confidence_dist,confidence_top_prob,rsa_l0,rsa_s1,rsa_l1,rsa_final,rsa_raw_text,chosen_option,chosen_original_option
 C1_01_UA_NI,C1_01,255,1,unambiguous,non-ironic,a,The cat was easy to lift up.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -46,7 +46,7 @@ Final Answer: a. The cat was easy to lift up.","['a', 'd', 'c', 'b']",4,UA_NI,"{
 3. Pragmatic Listener (L1):
    a. The cat was easy to lift up. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is the literal interpretation.)
 
-Final Answer: a. The cat was easy to lift up.",a,,a
+Final Answer: a. The cat was easy to lift up.",a,a
 C1_02_A_I,C1_02,51,1,ambiguous,ironic,c,The dog was very light to lift.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -80,17 +80,17 @@ Final Answer:
    b. The dog was really heavy to lift
 
 2. Informative Speaker (S1):
-   Given the situations described, an informative speaker would choose the utterance that accurately reflects the action described in the story, which is that the dog was heavy to lift. So, the speaker would say: b. The dog was really heavy to lift.
+   b. The dog was really heavy to lift
 
 3. Pragmatic Listener (L1):
-   A pragmatic listener would understand that the speaker is commenting on the weight of the dog, given the context of the story. So, the listener would interpret the utterance as: b. The dog was really heavy to lift","['d', 'a', 'b', 'c']",4,A_I,"{'a': 9.5, 'b': 22.625, 'c': 8.25, 'd': 8.125}","{'a': 1.9947276541643078e-06, 'b': 0.9999969005584717, 'c': 5.714990152227983e-07, 'd': 5.043460760134622e-07}",0.9999969005584717,b,,a,,"1. Literal Listener (L0):
+   b. The dog was really heavy to lift (as the speaker picked up the dog, suggesting it was heavy)","['d', 'a', 'b', 'c']",4,A_I,"{'a': 10.3125, 'b': 23.125, 'c': 8.3125, 'd': 7.6875}","{'a': 2.726468665059656e-06, 'b': 0.9999966621398926, 'c': 3.689874290557782e-07, 'd': 1.9750473256863188e-07}",0.9999966621398926,b,b,b,,"1. Literal Listener (L0):
    b. The dog was really heavy to lift
 
 2. Informative Speaker (S1):
-   Given the situations described, an informative speaker would choose the utterance that accurately reflects the action described in the story, which is that the dog was heavy to lift. So, the speaker would say: b. The dog was really heavy to lift.
+   b. The dog was really heavy to lift
 
 3. Pragmatic Listener (L1):
-   A pragmatic listener would understand that the speaker is commenting on the weight of the dog, given the context of the story. So, the listener would interpret the utterance as: b. The dog was really heavy to lift",,,
+   b. The dog was really heavy to lift (as the speaker picked up the dog, suggesting it was heavy)",,
 C1_03_A_NI,C1_03,230,1,ambiguous,non-ironic,c,Their friend was very easy to lift.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -124,21 +124,21 @@ Final Answer:
    c. Their friend was very easy to lift.
 
 2. Informative Speaker (S1):
-   c. Their friend was very easy to lift. (This is the only option that directly relates to the action of lifting the friend.)
+   c. Their friend was very easy to lift. (This is the most accurate description of the situation, as the utterance ""Light as a feather"" implies that the friend was light and easy to lift.)
 
 3. Pragmatic Listener (L1):
    c. Their friend was very easy to lift. (Given that the speaker is informative, they would choose the utterance that best describes the situation, which is that the friend was easy to lift.)
 
-Final Answer: c. Their friend was very easy to lift.","['b', 'c', 'a', 'd']",4,A_NI,"{'a': 9.25, 'b': 6.1875, 'c': 15.5625, 'd': 6.5625}","{'a': 0.0018098349682986736, 'b': 8.464710845146328e-05, 'c': 0.997982382774353, 'd': 0.00012316080392338336}",0.997982382774353,c,c,c,c,"1. Literal Listener (L0):
+Final Answer: c. Their friend was very easy","['b', 'c', 'a', 'd']",4,A_NI,"{'a': 8.625, 'b': 6.03125, 'c': 15.4375, 'd': 4.90625}","{'a': 0.0010986113920807838, 'b': 8.210938540287316e-05, 'c': 0.9987925291061401, 'd': 2.665701504156459e-05}",0.9987925291061401,c,c,c,c,"1. Literal Listener (L0):
    c. Their friend was very easy to lift.
 
 2. Informative Speaker (S1):
-   c. Their friend was very easy to lift. (This is the only option that directly relates to the action of lifting the friend.)
+   c. Their friend was very easy to lift. (This is the most accurate description of the situation, as the utterance ""Light as a feather"" implies that the friend was light and easy to lift.)
 
 3. Pragmatic Listener (L1):
    c. Their friend was very easy to lift. (Given that the speaker is informative, they would choose the utterance that best describes the situation, which is that the friend was easy to lift.)
 
-Final Answer: c. Their friend was very easy to lift.",c,,a
+Final Answer: c. Their friend was very easy",c,a
 C1_04_UA_I,C1_04,78,1,unambiguous,ironic,a,Holding my nephew took nothing of my strength.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -172,17 +172,17 @@ Final Answer:
    b. Holding my nephew took all my strength.
 
 2. Informative Speaker (S1):
-   b. Holding my nephew took all my strength.
+   b. Holding my nephew took all my strength. (This is the only option that directly relates to the act of holding the nephew, which is the action implied by the context.)
 
 3. Pragmatic Listener (L1):
-   b. Holding my nephew took all my strength. (Since the speaker is informative, they would choose the utterance that best fits the situation, which is that holding the nephew took all the speaker's strength.)","['b', 'a', 'c', 'd']",4,UA_I,"{'a': 10.125, 'b': 22.125, 'c': 8.9375, 'd': 10.0}","{'a': 6.144129656604491e-06, 'b': 0.9999865293502808, 'c': 1.8738536482487689e-06, 'd': 5.422175036073895e-06}",0.9999865293502808,b,b,b,,"1. Literal Listener (L0):
+   b. Holding my nephew took all my strength. (As an informative speaker would choose the most appropriate utterance for the situation, they would choose the option that directly relates to the act of holding the nephew, which is the action implied by the context","['b', 'a', 'c', 'd']",4,UA_I,"{'a': 11.375, 'b': 21.625, 'c': 9.3125, 'd': 10.5625}","{'a': 3.535553332767449e-05, 'b': 0.9999443292617798, 'c': 4.494951554079307e-06, 'd': 1.5688923667767085e-05}",0.9999443292617798,b,b,b,,"1. Literal Listener (L0):
    b. Holding my nephew took all my strength.
 
 2. Informative Speaker (S1):
-   b. Holding my nephew took all my strength.
+   b. Holding my nephew took all my strength. (This is the only option that directly relates to the act of holding the nephew, which is the action implied by the context.)
 
 3. Pragmatic Listener (L1):
-   b. Holding my nephew took all my strength. (Since the speaker is informative, they would choose the utterance that best fits the situation, which is that holding the nephew took all the speaker's strength.)",,,
+   b. Holding my nephew took all my strength. (As an informative speaker would choose the most appropriate utterance for the situation, they would choose the option that directly relates to the act of holding the nephew, which is the action implied by the context",,
 C1_05_UA_NI,C1_05,77,1,unambiguous,non-ironic,a,The cake tasted really good.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -216,19 +216,23 @@ Final Answer:
    b. The cake tasted really bad.
 
 2. Informative Speaker (S1):
-   a. The cake tasted really good. (This would be the most surprising and incorrect statement given the context, making it the most informative.)
+   a. The cake tasted really good. (This would be the most unlikely utterance given the situation described.)
+   b. The cake tasted really bad. (This is the most likely utterance given the situation described.)
+   c. The soup smelled absolutely delicious (This is not related to the situation described.)
+   d. The cake had three candles on top. (This is not related to the situation described.)
 
 3. Pragmatic Listener (L1):
-   c. The speaker is being sarcastic or insincere, so they would likely say something that is not true given the context, such as:
-   a. The cake tasted really good. (This would be the most surprising and incorrect statement given the context, making it the most informative.)","['a', 'b', 'c', 'd']",4,UA_NI,"{'a': 18.875, 'b': 10.8125, 'c': 12.6875, 'd': 7.9375}","{'a': 0.997617781162262, 'b': 0.0003143872309010476, 'c': 0.002050062408670783, 'd': 1.7736514564603567e-05}",0.997617781162262,b,a,c,,"1. Literal Listener (L0):
+   a. The cake tasted really good.","['a', 'b', 'c', 'd']",4,UA_NI,"{'a': 19.75, 'b': 10.1875, 'c': 7.59375, 'd': 6.75}","{'a': 0.9999221563339233, 'b': 7.031131826806813e-05, 'c': 5.255014002614189e-06, 'd': 2.260153451061342e-06}",0.9999221563339233,b,a,a,,"1. Literal Listener (L0):
    b. The cake tasted really bad.
 
 2. Informative Speaker (S1):
-   a. The cake tasted really good. (This would be the most surprising and incorrect statement given the context, making it the most informative.)
+   a. The cake tasted really good. (This would be the most unlikely utterance given the situation described.)
+   b. The cake tasted really bad. (This is the most likely utterance given the situation described.)
+   c. The soup smelled absolutely delicious (This is not related to the situation described.)
+   d. The cake had three candles on top. (This is not related to the situation described.)
 
 3. Pragmatic Listener (L1):
-   c. The speaker is being sarcastic or insincere, so they would likely say something that is not true given the context, such as:
-   a. The cake tasted really good. (This would be the most surprising and incorrect statement given the context, making it the most informative.)",,,
+   a. The cake tasted really good.",,
 C1_06_A_I,C1_06,188,1,ambiguous,ironic,a,The medicine tasted absolutely awful.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -259,20 +263,24 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0):
-   The medicine tasted absolutely awful. (a)
+   a. The medicine tasted absolutely awful.
 
 2. Informative Speaker (S1):
-   The cake was tastier than expected. (d)
+   d. The cake was tastier than expected. (This is the least likely option as it doesn't relate to the medicine.)
 
 3. Pragmatic Listener (L1):
-   The medicine tasted absolutely awful. (a)","['b', 'a', 'd', 'c']",4,A_I,"{'a': 20.75, 'b': 6.71875, 'c': 6.65625, 'd': 7.0625}","{'a': 0.9999972581863403, 'b': 8.059430456341943e-07, 'c': 7.57113411964383e-07, 'd': 1.1365618775016628e-06}",0.9999972581863403,,,,,"1. Literal Listener (L0):
-   The medicine tasted absolutely awful. (a)
+   b. The medicine tasted surprisingly pleasant. (This is the most appropriate utterance for the situation described, as the speaker found the medicine unpleasant but didn't say it was awful, so a positive statement would be unexpected.)
+
+Final Answer: b. The medicine tasted surprisingly pleasant.","['b', 'a', 'd', 'c']",4,A_I,"{'a': 8.5, 'b': 15.1875, 'c': 5.78125, 'd': 7.0625}","{'a': 0.0012443730374798179, 'b': 0.9983779191970825, 'c': 8.207530481740832e-05, 'd': 0.0002955645031761378}",0.9983779191970825,a,d,b,b,"1. Literal Listener (L0):
+   a. The medicine tasted absolutely awful.
 
 2. Informative Speaker (S1):
-   The cake was tastier than expected. (d)
+   d. The cake was tastier than expected. (This is the least likely option as it doesn't relate to the medicine.)
 
 3. Pragmatic Listener (L1):
-   The medicine tasted absolutely awful. (a)",,,
+   b. The medicine tasted surprisingly pleasant. (This is the most appropriate utterance for the situation described, as the speaker found the medicine unpleasant but didn't say it was awful, so a positive statement would be unexpected.)
+
+Final Answer: b. The medicine tasted surprisingly pleasant.",b,a
 C1_07_A_NI,C1_07,239,1,ambiguous,non-ironic,a,The smoothie was thoroughly enjoyable.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -306,17 +314,15 @@ Final Answer:
    d. The smoothie was thoroughly nasty.
 
 2. Informative Speaker (S1):
-   Given the situations described in the answer options, the speaker would not choose ""She gave the dog a treat"" (b) or ""She was looking for a new smoothie recipe"" (c) as the smoothie was already consumed. The speaker would not choose ""The smoothie was thoroughly enjoyable"" (a) as the speaker found it unpleasant. So, the informative speaker would choose ""The smoothie was thoroughly nasty"" (d).
+   Given the situations described in the answer options, the speaker would not choose ""She gave the dog a treat"" (b) or ""She was looking for a new smoothie recipe"" (c) because neither of these options are related to the smoothie the speaker just tasted. The speaker would not choose ""The smoothie was thoroughly enjoyable"" (a) because the speaker found it unpleasant. Therefore, the informative speaker would choose ""The smoothie was thoroughly nasty"" (d).
 
-3. Pragmatic Listener (L1):
-   Knowing that the speaker is inform","['a', 'c', 'd', 'b']",4,A_NI,"{'a': 10.125, 'b': 9.4375, 'c': 9.8125, 'd': 22.125}","{'a': 6.1441282923624385e-06, 'b': 3.089461642957758e-06, 'c': 4.495139819482574e-06, 'd': 0.9999862909317017}",0.9999862909317017,d,,,,"1. Literal Listener (L0):
+3. Pragmatic Listener (L1):","['a', 'c', 'd', 'b']",4,A_NI,"{'a': 9.5625, 'b': 8.3125, 'c': 9.4375, 'd': 19.5}","{'a': 4.8322908696718514e-05, 'b': 1.3844745808455627e-05, 'c': 4.26448204962071e-05, 'd': 0.9998952150344849}",0.9998952150344849,d,,,,"1. Literal Listener (L0):
    d. The smoothie was thoroughly nasty.
 
 2. Informative Speaker (S1):
-   Given the situations described in the answer options, the speaker would not choose ""She gave the dog a treat"" (b) or ""She was looking for a new smoothie recipe"" (c) as the smoothie was already consumed. The speaker would not choose ""The smoothie was thoroughly enjoyable"" (a) as the speaker found it unpleasant. So, the informative speaker would choose ""The smoothie was thoroughly nasty"" (d).
+   Given the situations described in the answer options, the speaker would not choose ""She gave the dog a treat"" (b) or ""She was looking for a new smoothie recipe"" (c) because neither of these options are related to the smoothie the speaker just tasted. The speaker would not choose ""The smoothie was thoroughly enjoyable"" (a) because the speaker found it unpleasant. Therefore, the informative speaker would choose ""The smoothie was thoroughly nasty"" (d).
 
-3. Pragmatic Listener (L1):
-   Knowing that the speaker is inform",,,
+3. Pragmatic Listener (L1):",,
 C1_08_UA_I,C1_08,259,1,unambiguous,ironic,d,They could barely force themselves to swallow the burger.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -350,17 +356,17 @@ Final Answer:
    d. They could barely force themselves to swallow the burger.
 
 2. Informative Speaker (S1):
-   a. They liked the burger more than the pizza. (This would be the least likely choice, as the passage does not mention any comparison with pizza.)
+   a. They liked the burger more than the pizza. (This is the least likely option as it is not mentioned that they compared the burger to anything else in the passage.)
    b. The burger was the most expensive item on the menu. (This is not mentioned in the passage.)
    c. They liked every single bite of the burger. (This is not mentioned in the passage.)
-   d. They could barely force themselves to swallow the burger. (This is the most likely choice, as it is the only option","['d', 'c', 'a', 'b']",4,UA_I,"{'a': 15.0, 'b': 11.5, 'c': 13.6875, 'd': 19.625}","{'a': 0.009680342860519886, 'b': 0.0002923210267908871, 'c': 0.0026054291520267725, 'd': 0.9874218702316284}",0.9874218702316284,d,a,,,"1. Literal Listener (L0):
+   d. They could barely force themselves to swallow the burger. (This is the most likely option as it","['d', 'c', 'a', 'b']",4,UA_I,"{'a': 11.625, 'b': 10.5, 'c': 12.5, 'd': 20.0}","{'a': 0.00023036208585835993, 'b': 7.478761835955083e-05, 'c': 0.0005526099121198058, 'd': 0.9991421699523926}",0.9991421699523926,d,a,,,"1. Literal Listener (L0):
    d. They could barely force themselves to swallow the burger.
 
 2. Informative Speaker (S1):
-   a. They liked the burger more than the pizza. (This would be the least likely choice, as the passage does not mention any comparison with pizza.)
+   a. They liked the burger more than the pizza. (This is the least likely option as it is not mentioned that they compared the burger to anything else in the passage.)
    b. The burger was the most expensive item on the menu. (This is not mentioned in the passage.)
    c. They liked every single bite of the burger. (This is not mentioned in the passage.)
-   d. They could barely force themselves to swallow the burger. (This is the most likely choice, as it is the only option",,,
+   d. They could barely force themselves to swallow the burger. (This is the most likely option as it",,
 C1_09_UA_NI,C1_09,109,1,unambiguous,non-ironic,a,The babysitter was taking good care of the kids.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -404,7 +410,7 @@ Final Answer:
    The babysitter was not taking good care of the kids.
 
 3. Pragmatic Listener (L1):
-   The babysitter was not taking good care of the kids.",,,
+   The babysitter was not taking good care of the kids.",,
 C1_10_A_I,C1_10,186,1,ambiguous,ironic,b,The police officer did not make them feel safe at all.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -438,17 +444,21 @@ Final Answer:
    d. The police officer made them feel very safe.
 
 2. Informative Speaker (S1):
-   d. The police officer made them feel very safe. (This is the only option that matches the utterance.)
+   d. The police officer made them feel very safe. (This is the only option that matches the utterance and the situation described in the story.)
 
 3. Pragmatic Listener (L1):
-   d. The police officer made them feel very safe. (Given that the speaker is informative, they would choose the option that accurately reflects the situation described in the story.)","['d', 'b', 'c', 'a']",4,A_I,"{'a': 9.6875, 'b': 8.875, 'c': 9.3125, 'd': 23.625}","{'a': 8.851559982758772e-07, 'b': 3.927856084828818e-07, 'c': 6.083582775318064e-07, 'd': 0.9999980926513672}",0.9999980926513672,d,d,d,,"1. Literal Listener (L0):
+   d. The police officer made them feel very safe. (Given that the speaker is informative, they would choose the option that accurately reflects the situation and the speaker's intention to provide information.)
+
+Final Answer: d. The police officer made them feel very safe.","['d', 'b', 'c', 'a']",4,A_I,"{'a': 9.375, 'b': 6.34375, 'c': 6.5, 'd': 15.1875}","{'a': 0.0029801027849316597, 'b': 0.00014380569336935878, 'c': 0.00016812588728498667, 'd': 0.9967079162597656}",0.9967079162597656,d,d,d,d,"1. Literal Listener (L0):
    d. The police officer made them feel very safe.
 
 2. Informative Speaker (S1):
-   d. The police officer made them feel very safe. (This is the only option that matches the utterance.)
+   d. The police officer made them feel very safe. (This is the only option that matches the utterance and the situation described in the story.)
 
 3. Pragmatic Listener (L1):
-   d. The police officer made them feel very safe. (Given that the speaker is informative, they would choose the option that accurately reflects the situation described in the story.)",,,
+   d. The police officer made them feel very safe. (Given that the speaker is informative, they would choose the option that accurately reflects the situation and the speaker's intention to provide information.)
+
+Final Answer: d. The police officer made them feel very safe.",d,a
 C1_11_A_NI,C1_11,244,1,ambiguous,non-ironic,a,Seeing the pilot put her completely at ease.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -482,17 +492,21 @@ Final Answer:
    d. She felt disturbed or frightened by the situation.
 
 2. Informative Speaker (S1):
-   d. She felt disturbed or frightened by the situation. (The speaker is providing an emotional response to the situation, and this is the only option that indicates a negative emotional reaction.)
+   d. She felt disturbed or frightened by the situation. (The speaker is informative and chooses the utterance that best describes the speaker's emotional state in response to seeing the scared pilot.)
 
 3. Pragmatic Listener (L1):
-   d. She felt disturbed or frightened by the situation. (Given that the speaker is informative, they would choose the most appropriate utterance to convey the situation, and this option indicates a negative emotional reaction, which is likely the speaker's response to seeing a scared pilot.)","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 10.8125, 'b': 9.0, 'c': 11.0, 'd': 22.75}","{'a': 6.5403787630202714e-06, 'b': 1.067687435352127e-06, 'c': 7.889202606747858e-06, 'd': 0.9999845027923584}",0.9999845027923584,d,d,d,,"1. Literal Listener (L0):
+   d. She felt disturbed or frightened by the situation. (The speaker is informative and chooses the utterance that best fits the situation described and the speaker's emotional response.)
+
+Final Answer: d. She felt disturbed or frightened by the situation","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 10.875, 'b': 7.03125, 'c': 7.3125, 'd': 15.5}","{'a': 0.009703786112368107, 'b': 0.0002077886601909995, 'c': 0.0002752752334345132, 'd': 0.9898131489753723}",0.9898131489753723,d,d,d,d,"1. Literal Listener (L0):
    d. She felt disturbed or frightened by the situation.
 
 2. Informative Speaker (S1):
-   d. She felt disturbed or frightened by the situation. (The speaker is providing an emotional response to the situation, and this is the only option that indicates a negative emotional reaction.)
+   d. She felt disturbed or frightened by the situation. (The speaker is informative and chooses the utterance that best describes the speaker's emotional state in response to seeing the scared pilot.)
 
 3. Pragmatic Listener (L1):
-   d. She felt disturbed or frightened by the situation. (Given that the speaker is informative, they would choose the most appropriate utterance to convey the situation, and this option indicates a negative emotional reaction, which is likely the speaker's response to seeing a scared pilot.)",,,
+   d. She felt disturbed or frightened by the situation. (The speaker is informative and chooses the utterance that best fits the situation described and the speaker's emotional response.)
+
+Final Answer: d. She felt disturbed or frightened by the situation",d,d
 C1_12_UA_I,C1_12,207,1,unambiguous,ironic,a,His father's face was full of fear.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -524,15 +538,17 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0):
    The speaker is comparing his father to a lion, suggesting that his father is as brave as a lion.
-   Answer: a - This is not a literal interpretation, but it is the option that best fits the metaphorical comparison in the utterance.
+   Answer: a - This is not a literal interpretation, but it contradicts the idea of the father being petrified (scared), so it's not the correct answer. The other options do not relate to the utterance.
 
 2. Informative Speaker (S1):
-   An informative speaker would choose an utterance that accurately reflects the situation, but in a way that is clear and understandable to a listener. In this case, the speaker would not choose options b or c, as they do not relate to the situation. Option d, ""His father showed no fear at all,"" would not be the most appropriate","['b', 'c', 'd', 'a']",4,UA_I,"{'a': 15.875, 'b': 11.0, 'c': 11.875, 'd': 16.625}","{'a': 0.31817230582237244, 'b': 0.0024292757734656334, 'c': 0.005827529355883598, 'd': 0.6735708117485046}",0.6735708117485046,,a,,,"1. Literal Listener (L0):
+   An informative speaker would choose an utterance that accurately reflects the comparison between the father and a lion, indicating bravery.
+   Answer: a - The father's face being full of fear contradicts the idea of being brave, so this is","['b', 'c', 'd', 'a']",4,UA_I,"{'a': 17.0, 'b': 14.8125, 'c': 12.5, 'd': 13.125}","{'a': 0.8740798234939575, 'b': 0.09806904196739197, 'c': 0.009710149839520454, 'd': 0.018140947446227074}",0.8740798234939575,,a,,,"1. Literal Listener (L0):
    The speaker is comparing his father to a lion, suggesting that his father is as brave as a lion.
-   Answer: a - This is not a literal interpretation, but it is the option that best fits the metaphorical comparison in the utterance.
+   Answer: a - This is not a literal interpretation, but it contradicts the idea of the father being petrified (scared), so it's not the correct answer. The other options do not relate to the utterance.
 
 2. Informative Speaker (S1):
-   An informative speaker would choose an utterance that accurately reflects the situation, but in a way that is clear and understandable to a listener. In this case, the speaker would not choose options b or c, as they do not relate to the situation. Option d, ""His father showed no fear at all,"" would not be the most appropriate",,,
+   An informative speaker would choose an utterance that accurately reflects the comparison between the father and a lion, indicating bravery.
+   Answer: a - The father's face being full of fear contradicts the idea of being brave, so this is",,
 C1_13_UA_NI,C1_13,48,1,unambiguous,non-ironic,a,"To him, his girlfriend looked well-rested and full of energy.",Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -576,7 +592,7 @@ Final Answer:
    c. His girlfriend clearly looked worn out, not refreshed at all.
 
 3. Pragmatic Listener (L1):
-   c. His girlfriend clearly looked worn out, not refreshed at all.",,,
+   c. His girlfriend clearly looked worn out, not refreshed at all.",,
 C1_14_A_I,C1_14,248,1,ambiguous,ironic,d,Her colleague seemed very tired today.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -610,21 +626,17 @@ Final Answer:
    b. Her colleague seemed very energetic today.
 
 2. Informative Speaker (S1):
-   b. Her colleague seemed very energetic today. (Since the speaker saw her colleague who appeared tired, the most inappropriate utterance would be ""You seem so full of energy today."")
+   b. Her colleague seemed very energetic today. (Since the speaker saw her colleague who was tired, it would be inappropriate to say that she filled up the car with energy or that her colleague seemed very tired today. The only remaining option is that her colleague seemed very energetic today.)
 
 3. Pragmatic Listener (L1):
-   d. Her colleague seemed very tired today. (Given that the speaker saw her colleague who was tired, the most appropriate utterance would be to acknowledge the tiredness rather than comment on energy.)
-
-Final Answer: d. Her colleague seemed very tired","['d', 'a', 'c', 'b']",4,A_I,"{'a': 9.125, 'b': 8.4375, 'c': 6.5625, 'd': 14.5}","{'a': 0.004597282502800226, 'b': 0.0023116585798561573, 'c': 0.0003545043582562357, 'd': 0.9927365779876709}",0.9927365779876709,b,b,d,d,"1. Literal Listener (L0):
+   b. Her colleague seemed very energetic today. (Given that the speaker is informative and chooses the most appropriate utterance for the situation,","['d', 'a', 'c', 'b']",4,A_I,"{'a': 10.0625, 'b': 21.0, 'c': 8.8125, 'd': 8.4375}","{'a': 1.7778400433599018e-05, 'b': 0.9999736547470093, 'c': 5.09359688294353e-06, 'd': 3.5007742553716525e-06}",0.9999736547470093,b,b,b,,"1. Literal Listener (L0):
    b. Her colleague seemed very energetic today.
 
 2. Informative Speaker (S1):
-   b. Her colleague seemed very energetic today. (Since the speaker saw her colleague who appeared tired, the most inappropriate utterance would be ""You seem so full of energy today."")
+   b. Her colleague seemed very energetic today. (Since the speaker saw her colleague who was tired, it would be inappropriate to say that she filled up the car with energy or that her colleague seemed very tired today. The only remaining option is that her colleague seemed very energetic today.)
 
 3. Pragmatic Listener (L1):
-   d. Her colleague seemed very tired today. (Given that the speaker saw her colleague who was tired, the most appropriate utterance would be to acknowledge the tiredness rather than comment on energy.)
-
-Final Answer: d. Her colleague seemed very tired",d,,b
+   b. Her colleague seemed very energetic today. (Given that the speaker is informative and chooses the most appropriate utterance for the situation,",,
 C1_15_A_NI,C1_15,256,1,ambiguous,non-ironic,a,They felt very well-rested after the sleepover.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -668,7 +680,7 @@ Final Answer:
    d. They felt really exhausted after the sleepover.
 
 3. Pragmatic Listener (L1):
-   d. They felt really exhausted after the sleepover.",,,
+   d. They felt really exhausted after the sleepover.",,
 C1_16_UA_I,C1_16,14,1,unambiguous,ironic,d,Deep down I felt completely unprepared for the exam.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -698,25 +710,15 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. Literal Listener (L0):
-   a. I felt fully prepared and ready for the exam.
+  Answer with a letter from a–d.","1. L0: a. I felt fully prepared and ready for the exam.
+2. S1: d. This utterance would be the least appropriate for an informative speaker, as it contradicts the speaker's stated feeling of exhaustion before the exam.
+3. L1: d. A pragmatic listener would understand that the speaker is likely not feeling fully prepared, despite the contradictory statement, given the context of the speaker's exhaustion before the exam.
 
-2. Informative Speaker (S1):
-   d. Deep down I felt completely unprepared for the exam. (This would be the most unexpected and ironic response given the speaker's exhaustion before the exam.)
+Final Answer: d. Deep down I felt completely unprepared for the exam.","['a', 'c', 'd', 'b']",4,UA_I,"{'a': 9.5625, 'b': 5.40625, 'c': 5.9375, 'd': 14.625}","{'a': 0.006288228556513786, 'b': 9.85126243904233e-05, 'c': 0.0001675756211625412, 'd': 0.9934456944465637}",0.9934456944465637,a,d,d,d,"1. L0: a. I felt fully prepared and ready for the exam.
+2. S1: d. This utterance would be the least appropriate for an informative speaker, as it contradicts the speaker's stated feeling of exhaustion before the exam.
+3. L1: d. A pragmatic listener would understand that the speaker is likely not feeling fully prepared, despite the contradictory statement, given the context of the speaker's exhaustion before the exam.
 
-3. Pragmatic Listener (L1):
-   d. Deep down I felt completely unprepared for the exam. (Given the speaker's exhaustion before the exam, it would be unlikely that they genuinely felt ready.)
-
-Final Answer: d. Deep down I felt completely unprepared for the exam.","['a', 'c', 'd', 'b']",4,UA_I,"{'a': 10.1875, 'b': 6.1875, 'c': 6.59375, 'd': 14.5}","{'a': 0.01321481540799141, 'b': 0.00024203780048992485, 'c': 0.0003633417945820838, 'd': 0.986179769039154}",0.986179769039154,a,d,d,d,"1. Literal Listener (L0):
-   a. I felt fully prepared and ready for the exam.
-
-2. Informative Speaker (S1):
-   d. Deep down I felt completely unprepared for the exam. (This would be the most unexpected and ironic response given the speaker's exhaustion before the exam.)
-
-3. Pragmatic Listener (L1):
-   d. Deep down I felt completely unprepared for the exam. (Given the speaker's exhaustion before the exam, it would be unlikely that they genuinely felt ready.)
-
-Final Answer: d. Deep down I felt completely unprepared for the exam.",d,,b
+Final Answer: d. Deep down I felt completely unprepared for the exam.",d,b
 C1_17_UA_NI,C1_17,118,1,unambiguous,non-ironic,d,Her idea was innovative.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -747,14 +749,14 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: d. Her idea was innovative.
-2. S1: d. Her idea was innovative. (Since the speaker had a novel idea, it's most likely that she meant her idea was innovative.)
+2. S1: d. Her idea was innovative. (Since the speaker had a novel idea, it is most likely that she meant her idea was innovative.)
 3. L1: d. Her idea was innovative. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is that her idea was innovative.)
 
-Final Answer: d. Her idea was innovative.","['b', 'c', 'd', 'a']",4,UA_NI,"{'a': 9.6875, 'b': 6.53125, 'c': 7.28125, 'd': 15.875}","{'a': 0.002050185576081276, 'b': 8.73074313858524e-05, 'c': 0.0001848298270488158, 'd': 0.997677743434906}",0.997677743434906,d,d,d,d,"1. L0: d. Her idea was innovative.
-2. S1: d. Her idea was innovative. (Since the speaker had a novel idea, it's most likely that she meant her idea was innovative.)
+Final Answer: d. Her idea was innovative.","['b', 'c', 'd', 'a']",4,UA_NI,"{'a': 9.5625, 'b': 6.6875, 'c': 7.1875, 'd': 15.8125}","{'a': 0.001926179975271225, 'b': 0.00010866763477679342, 'c': 0.00017916265642270446, 'd': 0.9977859258651733}",0.9977859258651733,d,d,d,d,"1. L0: d. Her idea was innovative.
+2. S1: d. Her idea was innovative. (Since the speaker had a novel idea, it is most likely that she meant her idea was innovative.)
 3. L1: d. Her idea was innovative. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is that her idea was innovative.)
 
-Final Answer: d. Her idea was innovative.",d,,a
+Final Answer: d. Her idea was innovative.",d,a
 C1_18_A_I,C1_18,272,1,ambiguous,ironic,b,"In his view, it was a stale approach he had seen many times before.",Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -784,15 +786,15 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. Literal Listener (L0): a. He found the approach genuinely new and creative.
-2. Informative Speaker (S1): a. He found the approach genuinely new and creative. (Since the speaker is praising the approach as refreshingly innovative, it implies that he found it new and creative.)
-3. Pragmatic Listener (L1): a. He found the approach genuinely new and creative. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is to express that they found the approach new and creative.)
+  Answer with a letter from a–d.","1. L0: a. He found the approach genuinely new and creative.
+2. S1: a. He found the approach genuinely new and creative. (Since the speaker is informative, they would choose the option that accurately reflects their positive opinion about the new approach.)
+3. L1: a. He found the approach genuinely new and creative. (A pragmatic listener would understand that the speaker is expressing a positive opinion about the new approach, given the informative nature of the speaker.)
 
-Final Answer: a. He found the approach genuinely new and creative.","['a', 'b', 'c', 'd']",4,A_I,"{'a': 16.5, 'b': 5.6875, 'c': 5.3125, 'd': 5.71875}","{'a': 0.9999452829360962, 'b': 2.014499477809295e-05, 'c': 1.3845438843418378e-05, 'd': 2.0784465959877707e-05}",0.9999452829360962,a,a,a,a,"1. Literal Listener (L0): a. He found the approach genuinely new and creative.
-2. Informative Speaker (S1): a. He found the approach genuinely new and creative. (Since the speaker is praising the approach as refreshingly innovative, it implies that he found it new and creative.)
-3. Pragmatic Listener (L1): a. He found the approach genuinely new and creative. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is to express that they found the approach new and creative.)
+Final Answer: a. He found the approach genuinely new and creative.","['a', 'b', 'c', 'd']",4,A_I,"{'a': 16.125, 'b': 5.40625, 'c': 5.25, 'd': 5.65625}","{'a': 0.9999305009841919, 'b': 2.2124620954855345e-05, 'c': 1.892419095383957e-05, 'd': 2.8408576326910406e-05}",0.9999305009841919,a,a,a,a,"1. L0: a. He found the approach genuinely new and creative.
+2. S1: a. He found the approach genuinely new and creative. (Since the speaker is informative, they would choose the option that accurately reflects their positive opinion about the new approach.)
+3. L1: a. He found the approach genuinely new and creative. (A pragmatic listener would understand that the speaker is expressing a positive opinion about the new approach, given the informative nature of the speaker.)
 
-Final Answer: a. He found the approach genuinely new and creative.",a,,a
+Final Answer: a. He found the approach genuinely new and creative.",a,a
 C1_19_A_NI,C1_19,32,1,ambiguous,non-ironic,a,She found the tradition beautifully enduring and meaningful.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -826,7 +828,7 @@ Final Answer:
 2. S1: a
 3. L1: a","['a', 'd', 'b', 'c']",4,A_NI,"{'a': 21.5, 'b': 6.1875, 'c': 6.5, 'd': 7.625}","{'a': 0.9999984502792358, 'b': 2.238025729184301e-07, 'c': 3.0590183541789884e-07, 'd': 9.422440143680433e-07}",0.9999984502792358,a,a,a,,"1. L0: a
 2. S1: a
-3. L1: a",,,
+3. L1: a",,
 C1_20_UA_I,C1_20,125,1,unambiguous,ironic,d,She was disappointed with the smell of her car.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -874,7 +876,7 @@ Final Answer: c. She liked the smell of her car.","['d', 'c', 'a', 'b']",4,UA_I,
 3. Pragmatic Listener (L1):
    c. She liked the smell of her car. (Given that the speaker is informative, they would choose the most appropriate utterance to convey their positive feelings about the smell of their new car.)
 
-Final Answer: c. She liked the smell of her car.",c,,a
+Final Answer: c. She liked the smell of her car.",c,a
 C1_21_UA_NI,C1_21,221,1,unambiguous,non-ironic,c,The birthday party was a great success.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -904,11 +906,21 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. Literal Listener (L0): d. She had trouble remembering things.
-2. Informative Speaker (S1): c. The birthday party was a great success.
-3. Pragmatic Listener (L1): a. The birthday party was a disappointment.","['b', 'd', 'a', 'c']",4,UA_NI,"{'a': 21.875, 'b': 9.375, 'c': 11.6875, 'd': 10.8125}","{'a': 0.9999428987503052, 'b': 3.726440354512306e-06, 'c': 3.763571294257417e-05, 'd': 1.568890002090484e-05}",0.9999428987503052,d,c,a,,"1. Literal Listener (L0): d. She had trouble remembering things.
-2. Informative Speaker (S1): c. The birthday party was a great success.
-3. Pragmatic Listener (L1): a. The birthday party was a disappointment.",,,
+  Answer with a letter from a–d.","1. Literal Listener (L0):
+   d. She had trouble remembering things.
+
+2. Informative Speaker (S1):
+   c. The birthday party was a great success.
+
+3. Pragmatic Listener (L1):
+   a. The birthday party was a disappointment.","['b', 'd', 'a', 'c']",4,UA_NI,"{'a': 21.125, 'b': 9.5625, 'c': 10.625, 'd': 10.9375}","{'a': 0.9999252557754517, 'b': 9.515631063550245e-06, 'c': 2.7534390028449707e-05, 'd': 3.763505083043128e-05}",0.9999252557754517,d,c,a,,"1. Literal Listener (L0):
+   d. She had trouble remembering things.
+
+2. Informative Speaker (S1):
+   c. The birthday party was a great success.
+
+3. Pragmatic Listener (L1):
+   a. The birthday party was a disappointment.",,
 C1_22_A_I,C1_22,146,1,ambiguous,ironic,d,"The wedding had been a dull, disappointing event from start to finish.",Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -942,17 +954,21 @@ Final Answer:
    a. The wedding was a beautiful and enchanting occasion.
 
 2. Informative Speaker (S1):
-   d. The wedding had been a dull, disappointing event from start to finish. (This would be the most surprising and least likely interpretation given the context of the story.)
+   d. The wedding had been a dull, disappointing event from start to finish. (This would be the least appropriate utterance given the situation described, as it contradicts the speaker's feelings of sadness.)
 
 3. Pragmatic Listener (L1):
-   a. The wedding was a beautiful and enchanting occasion. (The speaker is saying something that is not true, which would be surprising and inappropriate given the context of the story. Therefore, the listener would likely interpret the utterance as sarcastic or insincere, meaning","['a', 'c', 'd', 'b']",4,A_I,"{'a': 21.625, 'b': 9.0, 'c': 8.1875, 'd': 12.3125}","{'a': 0.999904990196228, 'b': 3.2884474876482273e-06, 'c': 1.4592396837542765e-06, 'd': 9.027995838550851e-05}",0.999904990196228,a,d,a,,"1. Literal Listener (L0):
+   a. The wedding was a beautiful and enchanting occasion. (The speaker is feeling sad, but might be trying to express a positive sentiment about the event to others, even if they didn't feel that way personally.)
+
+Final Answer","['a', 'c', 'd', 'b']",4,A_I,"{'a': 21.625, 'b': 6.65625, 'c': 6.46875, 'd': 8.125}","{'a': 0.9999979734420776, 'b': 3.156120556013775e-07, 'c': 2.616515928366425e-07, 'd': 1.370956397295231e-06}",0.9999979734420776,a,d,a,,"1. Literal Listener (L0):
    a. The wedding was a beautiful and enchanting occasion.
 
 2. Informative Speaker (S1):
-   d. The wedding had been a dull, disappointing event from start to finish. (This would be the most surprising and least likely interpretation given the context of the story.)
+   d. The wedding had been a dull, disappointing event from start to finish. (This would be the least appropriate utterance given the situation described, as it contradicts the speaker's feelings of sadness.)
 
 3. Pragmatic Listener (L1):
-   a. The wedding was a beautiful and enchanting occasion. (The speaker is saying something that is not true, which would be surprising and inappropriate given the context of the story. Therefore, the listener would likely interpret the utterance as sarcastic or insincere, meaning",,,
+   a. The wedding was a beautiful and enchanting occasion. (The speaker is feeling sad, but might be trying to express a positive sentiment about the event to others, even if they didn't feel that way personally.)
+
+Final Answer",,
 C1_23_A_NI,C1_23,45,1,ambiguous,non-ironic,b,They had found the film dull from start to finish.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -986,17 +1002,21 @@ Final Answer:
    b. They had found the film dull from start to finish.
 
 2. Informative Speaker (S1):
-   b. They had found the film dull from start to finish.
+   b. They had found the film dull from start to finish. (Since the speaker is leaving the cinema feeling sad, it is most likely that they did not enjoy the film.)
 
 3. Pragmatic Listener (L1):
-   b. They had found the film dull from start to finish.","['d', 'a', 'b', 'c']",4,A_NI,"{'a': 10.4375, 'b': 22.375, 'c': 8.25, 'd': 7.46875}","{'a': 6.540430149470922e-06, 'b': 0.9999923706054688, 'c': 7.338159662140242e-07, 'd': 3.359654101586784e-07}",0.9999923706054688,b,b,b,,"1. Literal Listener (L0):
+   b. They had found the film dull from start to finish. (Given that the speaker is being informative, they would choose the most appropriate utterance for the situation described.)
+
+Final Answer: b. They had found the film dull from start to finish.","['d', 'a', 'b', 'c']",4,A_NI,"{'a': 9.6875, 'b': 15.875, 'c': 6.96875, 'd': 7.6875}","{'a': 0.0020498973317444324, 'b': 0.9975374937057495, 'c': 0.00013520539505407214, 'd': 0.00027742344536818564}",0.9975374937057495,b,b,b,b,"1. Literal Listener (L0):
    b. They had found the film dull from start to finish.
 
 2. Informative Speaker (S1):
-   b. They had found the film dull from start to finish.
+   b. They had found the film dull from start to finish. (Since the speaker is leaving the cinema feeling sad, it is most likely that they did not enjoy the film.)
 
 3. Pragmatic Listener (L1):
-   b. They had found the film dull from start to finish.",,,
+   b. They had found the film dull from start to finish. (Given that the speaker is being informative, they would choose the most appropriate utterance for the situation described.)
+
+Final Answer: b. They had found the film dull from start to finish.",b,a
 C1_24_UA_I,C1_24,169,1,unambiguous,ironic,b,The message brought negative news.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1027,10 +1047,14 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: d. The message brought good news.
-2. S1: d. The message brought good news. (An informative speaker would choose the option that is most likely to be true, given the situation described.)
-3. L1: b. The message brought negative news. (A pragmatic listener would consider the speaker's misery and infer that the message must have brought bad news, even though the utterance is not consistent with the speaker's emotional state.)","['c', 'b', 'd', 'a']",4,UA_I,"{'a': 9.0625, 'b': 21.875, 'c': 9.5625, 'd': 15.4375}","{'a': 2.7221014988754177e-06, 'b': 0.9983949065208435, 'c': 4.48798664365313e-06, 'd': 0.0015978338196873665}",0.9983949065208435,d,d,b,,"1. L0: d. The message brought good news.
-2. S1: d. The message brought good news. (An informative speaker would choose the option that is most likely to be true, given the situation described.)
-3. L1: b. The message brought negative news. (A pragmatic listener would consider the speaker's misery and infer that the message must have brought bad news, even though the utterance is not consistent with the speaker's emotional state.)",,,
+2. S1: d. The message brought good news (since the speaker is miserable, it is unlikely that she would say ""These are amazing news"" if the message brought negative news).
+3. L1: d. The message brought good news (given that the speaker is miserable, it is more appropriate for her to say ""These are amazing news"" if the message brought good news, rather than if it brought negative news or if it was news to her or if she wanted to send a message).
+
+Final Answer: d. The message brought good news.","['c', 'b', 'd', 'a']",4,UA_I,"{'a': 9.5, 'b': 6.34375, 'c': 6.125, 'd': 15.375}","{'a': 0.00280032423324883, 'b': 0.00011925219587283209, 'c': 9.582182974554598e-05, 'd': 0.9969845414161682}",0.9969845414161682,d,d,d,d,"1. L0: d. The message brought good news.
+2. S1: d. The message brought good news (since the speaker is miserable, it is unlikely that she would say ""These are amazing news"" if the message brought negative news).
+3. L1: d. The message brought good news (given that the speaker is miserable, it is more appropriate for her to say ""These are amazing news"" if the message brought good news, rather than if it brought negative news or if it was news to her or if she wanted to send a message).
+
+Final Answer: d. The message brought good news.",d,a
 C1_25_UA_NI,C1_25,92,1,unambiguous,non-ironic,b,Her exam answers were impressively smart.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1061,12 +1085,14 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: b. Her exam answers were impressively smart.
-2. S1: c. Her exam answers were embarrassingly poor. (This would be the most surprising and opposite of what one would expect a person to say after receiving poor exam answers.)
-3. L1: c. Her exam answers were embarrassingly poor. (The speaker is informative and chooses the most appropriate utterance for the situation described.)
-Final Answer: c. Her exam answers were embarrassingly poor.","['c', 'a', 'b', 'd']",4,UA_NI,"{'a': 8.375, 'b': 7.625, 'c': 16.5, 'd': 6.84375}","{'a': 0.0002958968107122928, 'b': 0.00013977177150081843, 'c': 0.9995003938674927, 'd': 6.399217818398029e-05}",0.9995003938674927,b,c,c,c,"1. L0: b. Her exam answers were impressively smart.
-2. S1: c. Her exam answers were embarrassingly poor. (This would be the most surprising and opposite of what one would expect a person to say after receiving poor exam answers.)
-3. L1: c. Her exam answers were embarrassingly poor. (The speaker is informative and chooses the most appropriate utterance for the situation described.)
-Final Answer: c. Her exam answers were embarrassingly poor.",c,,b
+2. S1: c. Her exam answers were embarrassingly poor. (This would be the most unexpected and ironic response, given the content of the passage.)
+3. L1: c. Her exam answers were embarrassingly poor. (The speaker is being sarcastic, implying that her answers were not smart at all, despite the statement ""What a genius."")
+
+Final Answer: c. Her exam answers were embarrassingly poor.","['c', 'a', 'b', 'd']",4,UA_NI,"{'a': 8.4375, 'b': 7.0, 'c': 15.1875, 'd': 6.53125}","{'a': 0.0011689822422340512, 'b': 0.000277657643891871, 'c': 0.9983795881271362, 'd': 0.0001737537095323205}",0.9983795881271362,b,c,c,c,"1. L0: b. Her exam answers were impressively smart.
+2. S1: c. Her exam answers were embarrassingly poor. (This would be the most unexpected and ironic response, given the content of the passage.)
+3. L1: c. Her exam answers were embarrassingly poor. (The speaker is being sarcastic, implying that her answers were not smart at all, despite the statement ""What a genius."")
+
+Final Answer: c. Her exam answers were embarrassingly poor.",c,b
 C1_26_A_I,C1_26,225,1,ambiguous,ironic,d,"As far as they were concerned, it was a poor suggestion.",Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1110,7 +1136,7 @@ Final Answer:
    d. As far as they were concerned, it was a poor suggestion.
 
 3. Pragmatic Listener (L1):
-   d. As far as they were concerned, it was a poor suggestion.",,,
+   d. As far as they were concerned, it was a poor suggestion.",,
 C1_27_A_NI,C1_27,30,1,ambiguous,non-ironic,d,His argument was strong and well presented.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1144,17 +1170,17 @@ Final Answer:
    a. She is complimenting him on his skill in persuasive speaking, despite the weakness of his argument.
 
 2. Informative Speaker (S1):
-   a. Given the situation described, an informative speaker would choose an utterance that acknowledges the weakness of his argument but still compliments him on his skill in persuasive speaking, so the speaker would say ""a"".
+   a. Given the context of the story, an informative speaker would choose an utterance that acknowledges the weakness of the argument, while still implying a skill in persuasive speaking. The other options do not fit the context.
 
 3. Pragmatic Listener (L1):
-   a. A pragmatic listener, knowing that the speaker is informative, would interpret the utterance as a compliment on his skill in persuasive speaking, despite the weakness of his","['b', 'c', 'd', 'a']",4,A_NI,"{'a': 21.125, 'b': 6.90625, 'c': 7.46875, 'd': 7.71875}","{'a': 0.999996542930603, 'b': 6.681497666249925e-07, 'c': 1.1726393722710782e-06, 'd': 1.5056987194839166e-06}",0.999996542930603,a,a,a,,"1. Literal Listener (L0):
+   a. A pragmatic listener, knowing that the speaker is informative, would interpret the utterance as a compliment on his skill in persuasive speaking, despite the weakness","['b', 'c', 'd', 'a']",4,A_NI,"{'a': 22.0, 'b': 7.15625, 'c': 7.9375, 'd': 7.8125}","{'a': 0.9999980926513672, 'b': 3.576353719836334e-07, 'c': 7.811474915797589e-07, 'd': 6.893602062518767e-07}",0.9999980926513672,a,a,a,,"1. Literal Listener (L0):
    a. She is complimenting him on his skill in persuasive speaking, despite the weakness of his argument.
 
 2. Informative Speaker (S1):
-   a. Given the situation described, an informative speaker would choose an utterance that acknowledges the weakness of his argument but still compliments him on his skill in persuasive speaking, so the speaker would say ""a"".
+   a. Given the context of the story, an informative speaker would choose an utterance that acknowledges the weakness of the argument, while still implying a skill in persuasive speaking. The other options do not fit the context.
 
 3. Pragmatic Listener (L1):
-   a. A pragmatic listener, knowing that the speaker is informative, would interpret the utterance as a compliment on his skill in persuasive speaking, despite the weakness of his",,,
+   a. A pragmatic listener, knowing that the speaker is informative, would interpret the utterance as a compliment on his skill in persuasive speaking, despite the weakness",,
 C1_28_UA_I,C1_28,47,1,unambiguous,ironic,d,She believed that his business plan would fail.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1185,24 +1211,26 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0):
-   a. She believed that his business plan would be successful.
+   She believes that his business plan will make them lots of money.
+   Answer: a
 
 2. Informative Speaker (S1):
-   a. She believed that his business plan would be successful. (This is the most appropriate utterance given the situations described in the answer options.)
+   An informative speaker would choose the utterance that reflects the positive outcome of the business plan, given the context that the business plan was brilliant.
+   Answer: a
 
 3. Pragmatic Listener (L1):
-   a. She believed that his business plan would be successful. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation.)
-
-Final Answer: a. She believed that his business plan would be successful.","['a', 'd', 'c', 'b']",4,UA_I,"{'a': 16.875, 'b': 6.0, 'c': 6.28125, 'd': 6.3125}","{'a': 0.9999301433563232, 'b': 1.8924183677881956e-05, 'c': 2.5070470655919053e-05, 'd': 2.5866293071885593e-05}",0.9999301433563232,a,a,a,a,"1. Literal Listener (L0):
-   a. She believed that his business plan would be successful.
+   A pragmatic listener would understand that the speaker is expressing optimism about the business plan's potential for financial success, given the context and the informative nature of the speaker.
+   Answer: a","['a', 'd', 'c', 'b']",4,UA_I,"{'a': 22.125, 'b': 6.1875, 'c': 6.8125, 'd': 6.375}","{'a': 0.9999995231628418, 'b': 1.197930146190629e-07, 'c': 2.2380280029210553e-07, 'd': 1.444979460529794e-07}",0.9999995231628418,,a,a,,"1. Literal Listener (L0):
+   She believes that his business plan will make them lots of money.
+   Answer: a
 
 2. Informative Speaker (S1):
-   a. She believed that his business plan would be successful. (This is the most appropriate utterance given the situations described in the answer options.)
+   An informative speaker would choose the utterance that reflects the positive outcome of the business plan, given the context that the business plan was brilliant.
+   Answer: a
 
 3. Pragmatic Listener (L1):
-   a. She believed that his business plan would be successful. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation.)
-
-Final Answer: a. She believed that his business plan would be successful.",a,,a
+   A pragmatic listener would understand that the speaker is expressing optimism about the business plan's potential for financial success, given the context and the informative nature of the speaker.
+   Answer: a",,
 C1_29_UA_NI,C1_29,261,1,unambiguous,non-ironic,a,The restaurant visit was genuinely outstanding.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1246,7 +1274,7 @@ Final Answer:
    a. The restaurant visit was genuinely outstanding.
 
 3. Pragmatic Listener (L1):
-   a. The restaurant visit was genuinely outstanding. (Since the speaker is starving after the restaurant visit, it is likely that the visit was good enough to satisfy his hunger, making it a positive experience.)",,,
+   a. The restaurant visit was genuinely outstanding. (Since the speaker is starving after the restaurant visit, it is likely that the visit was good enough to satisfy his hunger, making it a positive experience.)",,
 C1_30_A_I,C1_30,139,1,ambiguous,ironic,d,There had been very little worth eating at the buffet.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1283,18 +1311,14 @@ Final Answer:
    b. The buffet was a rich.
 
 3. Pragmatic Listener (L1):
-   b. The buffet was a rich. (The speaker is likely to choose a statement that is positive, even if the food was not satisfying, to express appreciation for the sensory experience of the buffet.)
-
-Final Answer: b. The buffet was a rich.","['d', 'a', 'c', 'b']",4,A_I,"{'a': 9.1875, 'b': 15.0, 'c': 6.03125, 'd': 7.6875}","{'a': 0.0029786736704409122, 'b': 0.9962299466133118, 'c': 0.0001268472260562703, 'd': 0.0006646319525316358}",0.9962299466133118,d,b,b,b,"1. Literal Listener (L0):
+   b. The buffet was a rich. (Even though the speaker left feeling hungry, they might still acknowledge the variety or presentation of food as a ""feast for the senses."")","['d', 'a', 'c', 'b']",4,A_I,"{'a': 9.5, 'b': 22.25, 'c': 9.5, 'd': 12.4375}","{'a': 2.9021450700383866e-06, 'b': 0.9999395608901978, 'c': 2.9021450700383866e-06, 'd': 5.4759457270847633e-05}",0.9999395608901978,d,b,b,,"1. Literal Listener (L0):
    d. There had been very little worth eating at the buffet.
 
 2. Informative Speaker (S1):
    b. The buffet was a rich.
 
 3. Pragmatic Listener (L1):
-   b. The buffet was a rich. (The speaker is likely to choose a statement that is positive, even if the food was not satisfying, to express appreciation for the sensory experience of the buffet.)
-
-Final Answer: b. The buffet was a rich.",b,,a
+   b. The buffet was a rich. (Even though the speaker left feeling hungry, they might still acknowledge the variety or presentation of food as a ""feast for the senses."")",,
 C1_31_A_NI,C1_31,260,1,ambiguous,non-ironic,b,The picnic was nourishing and genuinely enjoyable.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1331,14 +1355,14 @@ Final Answer:
    b. The picnic was nourishing and genuinely enjoyable.
 
 3. Pragmatic Listener (L1):
-   b. The picnic was nourishing and genuinely enjoyable. (Even though the picnic left them hungry, the phrase ""Food for the soul"" is often used metaphorically to mean something that nourishes the mind or spirit, which fits the situation where the picnic was enjoyable.)","['d', 'a', 'b', 'c']",4,A_NI,"{'a': 10.25, 'b': 22.375, 'c': 12.8125, 'd': 10.9375}","{'a': 5.421779405878624e-06, 'b': 0.9999135732650757, 'c': 7.031071436358616e-05, 'd': 1.0782496246974915e-05}",0.9999135732650757,c,b,b,,"1. Literal Listener (L0):
+   b. The picnic was nourishing and genuinely enjoyable. (Even though the picnic left them hungry, the phrase ""Food for the soul"" is often used metaphorically to mean something that nourishes the spirit or mind, which fits the situation where the picnic was enjoyable.)","['d', 'a', 'b', 'c']",4,A_NI,"{'a': 10.1875, 'b': 22.25, 'c': 12.75, 'd': 10.875}","{'a': 5.771422365796752e-06, 'b': 0.9999079704284668, 'c': 7.484493835363537e-05, 'd': 1.1477843145257793e-05}",0.9999079704284668,c,b,b,,"1. Literal Listener (L0):
    c. There was barely anything to eat; they left unsatisfied.
 
 2. Informative Speaker (S1):
    b. The picnic was nourishing and genuinely enjoyable.
 
 3. Pragmatic Listener (L1):
-   b. The picnic was nourishing and genuinely enjoyable. (Even though the picnic left them hungry, the phrase ""Food for the soul"" is often used metaphorically to mean something that nourishes the mind or spirit, which fits the situation where the picnic was enjoyable.)",,,
+   b. The picnic was nourishing and genuinely enjoyable. (Even though the picnic left them hungry, the phrase ""Food for the soul"" is often used metaphorically to mean something that nourishes the spirit or mind, which fits the situation where the picnic was enjoyable.)",,
 C1_32_UA_I,C1_32,228,1,unambiguous,ironic,a,The waiter had forgotten to fill his plate and he did not eat anything.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1368,21 +1392,23 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. L0: The speaker is expressing that he is full and cannot eat more.
-   Answer: c
+  Answer with a letter from a–d.","1. Literal Listener (L0):
+   c. His plate had been full with food and he ate it all up.
 
-2. S1: An informative speaker would choose the option that best explains why the speaker is full, which is that his plate had been full with food and he ate it all up.
-   Answer: c
+2. Informative Speaker (S1):
+   c. His plate had been full with food and he ate it all up. (This is the most likely utterance if the speaker is informing someone that he has already eaten all the food on his plate.)
 
-3. L1: A pragmatic listener would understand that the speaker is full because he ate all the food on his plate, not because he prefers to eat alone or because he bought a special plate or because the waiter forgot to fill his plate.
-   Answer: c","['b', 'd', 'a', 'c']",4,UA_I,"{'a': 8.8125, 'b': 7.25, 'c': 23.375, 'd': 9.0625}","{'a': 4.7379020884363854e-07, 'b': 9.931182631817137e-08, 'c': 0.9999988079071045, 'd': 6.083586754357384e-07}",0.9999988079071045,,a,a,,"1. L0: The speaker is expressing that he is full and cannot eat more.
-   Answer: c
+3. Pragmatic Listener (L1):
+   c. His plate had been full with food and he ate it all up. (This is the most appropriate utterance for the situation described, as it indicates that the speaker has finished eating and is not hungry for more food.)
 
-2. S1: An informative speaker would choose the option that best explains why the speaker is full, which is that his plate had been full with food and he ate it all up.
-   Answer: c
+","['b', 'd', 'a', 'c']",4,UA_I,"{'a': 9.6875, 'b': 8.375, 'c': 22.125, 'd': 8.9375}","{'a': 3.966974418290192e-06, 'b': 1.0676966439859825e-06, 'c': 0.999993085861206, 'd': 1.8738659264272428e-06}",0.999993085861206,c,c,c,,"1. Literal Listener (L0):
+   c. His plate had been full with food and he ate it all up.
 
-3. L1: A pragmatic listener would understand that the speaker is full because he ate all the food on his plate, not because he prefers to eat alone or because he bought a special plate or because the waiter forgot to fill his plate.
-   Answer: c",,,
+2. Informative Speaker (S1):
+   c. His plate had been full with food and he ate it all up. (This is the most likely utterance if the speaker is informing someone that he has already eaten all the food on his plate.)
+
+3. Pragmatic Listener (L1):
+   c. His plate had been full with food and he ate it all up. (This is the most appropriate utterance for the situation described, as it indicates that the speaker has finished eating and is not hungry for more food.)",,
 C1_33_UA_NI,C1_33,24,1,unambiguous,non-ironic,d,The library was a calm and quiet environment.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1420,7 +1446,7 @@ Final Answer: d. The library was a calm and quiet environment.","['c', 'd', 'b',
 2. S1: d. The library was a calm and quiet environment (since the speaker is in the library and it is inaudible, which suggests a quiet environment).
 3. L1: d. The library was a calm and quiet environment (since the speaker is in the library and it is inaudible, which suggests a quiet environment, and the speaker is likely to choose an utterance that reflects the current situation).
 
-Final Answer: d. The library was a calm and quiet environment.",d,,a
+Final Answer: d. The library was a calm and quiet environment.",d,a
 C1_34_A_I,C1_34,25,1,ambiguous,ironic,d,The concert was pretty loud.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1457,14 +1483,14 @@ Final Answer:
    d. The concert was pretty loud.
 
 3. Pragmatic Listener (L1):
-   d. The concert was pretty loud. (Since the speaker is saying they've almost gone deaf, it implies the concert was loud, as that's the most likely cause for such a statement.)","['a', 'd', 'c', 'b']",4,A_I,"{'a': 11.0625, 'b': 9.125, 'c': 9.5, 'd': 23.5}","{'a': 3.966980330005754e-06, 'b': 5.714977078241645e-07, 'c': 8.315242894241237e-07, 'd': 0.9999946355819702}",0.9999946355819702,d,d,d,,"1. Literal Listener (L0):
+   d. The concert was pretty loud. (Since the speaker is saying they've almost gone deaf, it implies the concert was loud, as that's the only situation in the options where someone might say they've almost gone deaf.)","['a', 'd', 'c', 'b']",4,A_I,"{'a': 10.9375, 'b': 9.25, 'c': 9.8125, 'd': 23.5}","{'a': 3.5008481518161716e-06, 'b': 6.475918326032115e-07, 'c': 1.1365590353307198e-06, 'd': 0.9999947547912598}",0.9999947547912598,d,d,d,,"1. Literal Listener (L0):
    d. The concert was pretty loud.
 
 2. Informative Speaker (S1):
    d. The concert was pretty loud.
 
 3. Pragmatic Listener (L1):
-   d. The concert was pretty loud. (Since the speaker is saying they've almost gone deaf, it implies the concert was loud, as that's the most likely cause for such a statement.)",,,
+   d. The concert was pretty loud. (Since the speaker is saying they've almost gone deaf, it implies the concert was loud, as that's the only situation in the options where someone might say they've almost gone deaf.)",,
 C1_35_A_NI,C1_35,31,1,ambiguous,non-ironic,a,The movie was too quiet to hear.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1498,21 +1524,17 @@ Final Answer:
    a. The movie was too quiet to hear.
 
 2. Informative Speaker (S1):
-   b. The movie was very loud. (This is the least likely interpretation of the utterance, but it is the opposite of the literal interpretation, which makes it the most informative choice.)
+   b. The movie was very loud. (This is the least likely interpretation of the utterance, but it is the opposite of the literal interpretation, which would make it the most informative choice.)
 
 3. Pragmatic Listener (L1):
-   b. The movie was very loud. (The speaker is watching a movie in the theater and finds it quiet, which is an unusual situation for a movie theater. Therefore, the most likely interpretation is that the movie was too loud, making it difficult to hear.)
-
-Final Answer:","['a', 'b', 'c', 'd']",4,A_NI,"{'a': 11.5625, 'b': 22.75, 'c': 11.6875, 'd': 11.1875}","{'a': 1.38456553031574e-05, 'b': 0.9999608993530273, 'c': 1.5689183783251792e-05, 'd': 9.515970305074006e-06}",0.9999608993530273,a,b,b,,"1. Literal Listener (L0):
+   b. The movie was very loud. (Given that the speaker is informative, they would choose the utterance that provides the most useful information about the situation, which is that the movie was too loud to hear, but since the speaker is being informative, they would likely","['a', 'b', 'c', 'd']",4,A_NI,"{'a': 12.75, 'b': 21.5, 'c': 11.875, 'd': 11.8125}","{'a': 0.0001584159181220457, 'b': 0.9997134804725647, 'c': 6.60375808365643e-05, 'd': 6.20365608483553e-05}",0.9997134804725647,a,b,b,,"1. Literal Listener (L0):
    a. The movie was too quiet to hear.
 
 2. Informative Speaker (S1):
-   b. The movie was very loud. (This is the least likely interpretation of the utterance, but it is the opposite of the literal interpretation, which makes it the most informative choice.)
+   b. The movie was very loud. (This is the least likely interpretation of the utterance, but it is the opposite of the literal interpretation, which would make it the most informative choice.)
 
 3. Pragmatic Listener (L1):
-   b. The movie was very loud. (The speaker is watching a movie in the theater and finds it quiet, which is an unusual situation for a movie theater. Therefore, the most likely interpretation is that the movie was too loud, making it difficult to hear.)
-
-Final Answer:",,,
+   b. The movie was very loud. (Given that the speaker is informative, they would choose the utterance that provides the most useful information about the situation, which is that the movie was too loud to hear, but since the speaker is being informative, they would likely",,
 C1_36_UA_I,C1_36,29,1,unambiguous,ironic,d,He would expected to hear louder music from his neighbours' party.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1549,18 +1571,14 @@ Final Answer:
    b. He thinks that his neighbours' are having a great party with music. (Since the music is inaudible, the speaker is making an assumption based on other signs of a party.)
 
 3. Pragmatic Listener (L1):
-   b. He thinks that his neighbours' are having a great party with music. (The speaker is being informative and chooses the most likely interpretation given the situation.)
-
-Final Answer: b. He thinks that his neighbours' are","['d', 'a', 'c', 'b']",4,UA_I,"{'a': 11.5625, 'b': 13.5625, 'c': 6.5625, 'd': 4.4375}","{'a': 0.11909583956003189, 'b': 0.8800058364868164, 'c': 0.0008024614653550088, 'd': 9.58403543336317e-05}",0.8800058364868164,b,b,b,b,"1. Literal Listener (L0):
+   b. He thinks that his neighbours' are having a great party with music. (The speaker is being informative and chooses the most appropriate utterance for the situation, given that the music is inaudible but other signs of a party","['d', 'a', 'c', 'b']",4,UA_I,"{'a': 11.0, 'b': 22.0, 'c': 8.1875, 'd': 7.40625}","{'a': 1.670139863563236e-05, 'b': 0.9999818801879883, 'c': 1.0029968962044222e-06, 'd': 4.5920543811917014e-07}",0.9999818801879883,b,b,b,,"1. Literal Listener (L0):
    b. He thinks that his neighbours' are having a great party with music.
 
 2. Informative Speaker (S1):
    b. He thinks that his neighbours' are having a great party with music. (Since the music is inaudible, the speaker is making an assumption based on other signs of a party.)
 
 3. Pragmatic Listener (L1):
-   b. He thinks that his neighbours' are having a great party with music. (The speaker is being informative and chooses the most likely interpretation given the situation.)
-
-Final Answer: b. He thinks that his neighbours' are",b,,a
+   b. He thinks that his neighbours' are having a great party with music. (The speaker is being informative and chooses the most appropriate utterance for the situation, given that the music is inaudible but other signs of a party",,
 C1_37_UA_NI,C1_37,53,1,unambiguous,non-ironic,a,The questions required thorough preparation to answer.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1604,7 +1622,7 @@ Final Answer:
    a. The questions required thorough preparation to answer.
 
 3. Pragmatic Listener (L1):
-   a. The questions required thorough preparation to answer.",,,
+   a. The questions required thorough preparation to answer.",,
 C1_38_A_I,C1_38,172,1,ambiguous,ironic,a,Booking the appointment was frustrating and difficult.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1638,21 +1656,19 @@ Final Answer:
    a. Booking the appointment was frustrating and difficult.
 
 2. Informative Speaker (S1):
-   c. Booking the appointment was straightforward and effortless. (This would be the least likely utterance given the situation described.)
+   c. Booking the appointment was straightforward and effortless. (This is the least likely option given the description of the appointment booking system being difficult.)
 
 3. Pragmatic Listener (L1):
-   a. Booking the appointment was frustrating and difficult. (The speaker is likely to choose an utterance that contradicts the difficulty of the situation, so they would say something like ""That was about as easy as it gets"" to indicate that the booking process was more difficult than they expected.)
+   a. Booking the appointment was frustrating and difficult. (The speaker is likely to choose an utterance that contradicts the difficulty of the situation, so they would say something like ""That was about as easy as it gets"" to indicate that the booking process was easier than expected, despite the initial difficulty.)
 
-Final Answer: a. Booking","['b', 'd', 'a', 'c']",4,A_I,"{'a': 17.125, 'b': 6.71875, 'c': 4.90625, 'd': 4.125}","{'a': 0.999962568283081, 'b': 3.0241741114878096e-05, 'c': 4.936828645440983e-06, 'd': 2.26024485527887e-06}",0.999962568283081,a,c,a,a,"1. Literal Listener (L0):
+","['b', 'd', 'a', 'c']",4,A_I,"{'a': 21.375, 'b': 6.9375, 'c': 8.375, 'd': 6.9375}","{'a': 0.999996542930603, 'b': 5.368734150579257e-07, 'c': 2.26032170758117e-06, 'd': 5.368734150579257e-07}",0.999996542930603,a,c,a,,"1. Literal Listener (L0):
    a. Booking the appointment was frustrating and difficult.
 
 2. Informative Speaker (S1):
-   c. Booking the appointment was straightforward and effortless. (This would be the least likely utterance given the situation described.)
+   c. Booking the appointment was straightforward and effortless. (This is the least likely option given the description of the appointment booking system being difficult.)
 
 3. Pragmatic Listener (L1):
-   a. Booking the appointment was frustrating and difficult. (The speaker is likely to choose an utterance that contradicts the difficulty of the situation, so they would say something like ""That was about as easy as it gets"" to indicate that the booking process was more difficult than they expected.)
-
-Final Answer: a. Booking",a,,b
+   a. Booking the appointment was frustrating and difficult. (The speaker is likely to choose an utterance that contradicts the difficulty of the situation, so they would say something like ""That was about as easy as it gets"" to indicate that the booking process was easier than expected, despite the initial difficulty.)",,
 C1_39_A_NI,C1_39,233,1,ambiguous,non-ironic,a,Completing the task was a genuine sign of intelligence.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1696,7 +1712,7 @@ Final Answer:
    a. Completing the task was a genuine sign of intelligence.
 
 3. Pragmatic Listener (L1):
-   a. Completing the task was a genuine sign of intelligence. (Since the speaker is informative, they would choose the utterance that best reflects the situation described in the passage.)",,,
+   a. Completing the task was a genuine sign of intelligence. (Since the speaker is informative, they would choose the utterance that best reflects the situation described in the passage.)",,
 C1_40_UA_I,C1_40,144,1,unambiguous,ironic,d,Making the payment was complicated and painful.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1740,7 +1756,7 @@ Final Answer:
    d. Making the payment was complicated and painful.
 
 3. Pragmatic Listener (L1):
-   d. Making the payment was complicated and painful.",,,
+   d. Making the payment was complicated and painful.",,
 C1_41_UA_NI,C1_41,147,1,unambiguous,non-ironic,c,Her kitchen was tidy.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1774,17 +1790,21 @@ Final Answer:
    c. Her kitchen was tidy.
 
 2. Informative Speaker (S1):
-   c. Her kitchen was tidy.
+   c. Her kitchen was tidy. (This is the most accurate interpretation of the speaker's statement, given the situation described.)
 
 3. Pragmatic Listener (L1):
-   c. Her kitchen was tidy.","['c', 'b', 'a', 'd']",4,UA_NI,"{'a': 8.4375, 'b': 8.3125, 'c': 23.25, 'd': 8.0625}","{'a': 3.6898831012877054e-07, 'b': 3.2563102081439865e-07, 'c': 0.9999990463256836, 'd': 2.5360168365295976e-07}",0.9999990463256836,c,c,c,,"1. Literal Listener (L0):
+   c. Her kitchen was tidy. (The speaker is stating a fact about themselves, and the situation described implies that the kitchen is indeed tidy.)
+
+Final Answer: c. Her kitchen was tidy.","['c', 'b', 'a', 'd']",4,UA_NI,"{'a': 9.375, 'b': 5.75, 'c': 15.1875, 'd': 5.5625}","{'a': 0.002980599645525217, 'b': 7.943029049783945e-05, 'c': 0.9968740940093994, 'd': 6.585002120118588e-05}",0.9968740940093994,c,c,c,c,"1. Literal Listener (L0):
    c. Her kitchen was tidy.
 
 2. Informative Speaker (S1):
-   c. Her kitchen was tidy.
+   c. Her kitchen was tidy. (This is the most accurate interpretation of the speaker's statement, given the situation described.)
 
 3. Pragmatic Listener (L1):
-   c. Her kitchen was tidy.",,,
+   c. Her kitchen was tidy. (The speaker is stating a fact about themselves, and the situation described implies that the kitchen is indeed tidy.)
+
+Final Answer: c. Her kitchen was tidy.",c,a
 C1_42_A_I,C1_42,55,1,ambiguous,ironic,a,The room was left in a terrible state for far too long.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1828,7 +1848,7 @@ Final Answer:
    c. The room was tidied up well before it got too messy.
 
 3. Pragmatic Listener (L1):
-   c. The room was tidied up well before it got too messy.",,,
+   c. The room was tidied up well before it got too messy.",,
 C1_43_A_NI,C1_43,67,1,ambiguous,non-ironic,b,The street was genuinely pleasant.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1862,21 +1882,21 @@ Final Answer:
    b. The street was genuinely pleasant.
 
 2. Informative Speaker (S1):
-   b. The street was genuinely pleasant. (Since the street is described as clean, the most appropriate utterance would be one that reflects the positive aspect of the clean street.)
+   b. The street was genuinely pleasant. (Since the street is described as clean in the context, the most appropriate utterance would be one that reflects the positive aspect of the clean street.)
 
 3. Pragmatic Listener (L1):
    b. The street was genuinely pleasant. (Given that the speaker is informative, they would choose the utterance that best reflects the positive aspect of the clean street, as it is the most appropriate for the situation.)
 
-Final Answer: b. The street was genuinely pleasant.","['d', 'a', 'c', 'b']",4,A_NI,"{'a': 9.6875, 'b': 15.5, 'c': 6.15625, 'd': 6.78125}","{'a': 0.0029802874196320772, 'b': 0.9967696666717529, 'c': 8.72279706527479e-05, 'd': 0.00016296328976750374}",0.9967696666717529,b,b,b,b,"1. Literal Listener (L0):
+Final Answer: b. The street was genuinely pleasant.","['d', 'a', 'c', 'b']",4,A_NI,"{'a': 9.5625, 'b': 15.5625, 'c': 6.03125, 'd': 6.71875}","{'a': 0.002472088672220707, 'b': 0.9973117113113403, 'c': 7.235384691739455e-05, 'd': 0.000143892815685831}",0.9973117113113403,b,b,b,b,"1. Literal Listener (L0):
    b. The street was genuinely pleasant.
 
 2. Informative Speaker (S1):
-   b. The street was genuinely pleasant. (Since the street is described as clean, the most appropriate utterance would be one that reflects the positive aspect of the clean street.)
+   b. The street was genuinely pleasant. (Since the street is described as clean in the context, the most appropriate utterance would be one that reflects the positive aspect of the clean street.)
 
 3. Pragmatic Listener (L1):
    b. The street was genuinely pleasant. (Given that the speaker is informative, they would choose the utterance that best reflects the positive aspect of the clean street, as it is the most appropriate for the situation.)
 
-Final Answer: b. The street was genuinely pleasant.",b,,a
+Final Answer: b. The street was genuinely pleasant.",b,a
 C1_44_UA_I,C1_44,83,1,unambiguous,ironic,c,The floor was very dirty.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1914,7 +1934,7 @@ Final Answer: a. The floor was very clean.","['a', 'd', 'b', 'c']",4,UA_I,"{'a':
 2. S1: a. The floor was very clean. (Since the floor was pristine, it was very clean.)
 3. L1: a. The floor was very clean. (Given that the speaker is informative, they would choose the utterance that accurately reflects the cleanliness of the floor.)
 
-Final Answer: a. The floor was very clean.",a,,a
+Final Answer: a. The floor was very clean.",a,a
 C1_45_UA_NI,C1_45,40,1,unambiguous,non-ironic,c,The movie was funny and great.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1951,14 +1971,14 @@ Final Answer:
    c. The movie was funny and great.
 
 3. Pragmatic Listener (L1):
-   c. The movie was funny and great. (Since the speaker is informative, they would choose an utterance that contradicts the literal interpretation, indicating that the movie was not as grim as it seemed.)","['c', 'd', 'a', 'b']",4,UA_NI,"{'a': 10.5, 'b': 9.8125, 'c': 23.25, 'd': 11.6875}","{'a': 2.9022799026279245e-06, 'b': 1.4593580317523447e-06, 'c': 0.9999860525131226, 'd': 9.516209502180573e-06}",0.9999860525131226,d,c,c,,"1. Literal Listener (L0):
+   c. The movie was funny and great. (Since the speaker is informative, they would choose the option that contradicts the literal interpretation, indicating that the movie was not as grim as it seemed.)","['c', 'd', 'a', 'b']",4,UA_NI,"{'a': 10.4375, 'b': 9.8125, 'c': 23.5, 'd': 11.625}","{'a': 2.1233613551885355e-06, 'b': 1.1365534646756714e-06, 'c': 0.9999898672103882, 'd': 6.962234238017118e-06}",0.9999898672103882,d,c,c,,"1. Literal Listener (L0):
    d. The movie wasn't amusing.
 
 2. Informative Speaker (S1):
    c. The movie was funny and great.
 
 3. Pragmatic Listener (L1):
-   c. The movie was funny and great. (Since the speaker is informative, they would choose an utterance that contradicts the literal interpretation, indicating that the movie was not as grim as it seemed.)",,,
+   c. The movie was funny and great. (Since the speaker is informative, they would choose the option that contradicts the literal interpretation, indicating that the movie was not as grim as it seemed.)",,
 C1_46_A_I,C1_46,159,1,ambiguous,ironic,a,The musical was purely for laughs.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1992,21 +2012,19 @@ Final Answer:
    d. The joke cracked everyone up.
 
 2. Informative Speaker (S1):
-   a. The musical was purely for laughs. (Since the musical was serious, the utterance ""That cracked me up"" would be unexpected and humorous, implying the musical was not serious as expected.)
-
-3. Pragmatic Listener (L1):
-   a. The musical was purely for laughs. (The speaker is informative and chooses the most appropriate utterance for the situation, given that the musical was serious but the speaker found it humorous.)
-
-Final Answer: a. The musical was purely for laughs","['b', 'a', 'd', 'c']",4,A_I,"{'a': 15.0625, 'b': 5.3125, 'c': 4.5625, 'd': 6.65625}","{'a': 0.9996907711029053, 'b': 5.8276636991649866e-05, 'c': 2.7527934435056522e-05, 'd': 0.00022339717543218285}",0.9996907711029053,d,a,a,a,"1. Literal Listener (L0):
+   a. The musical was purely for laughs. (This is the most unlikely option as the musical was serious, not a comedy.)
+   b. The musical left her deeply moved. (This is also unlikely as she said ""That cracked me up,"" which suggests laughter, not deep emotion.)
+   c. She answered some questions about the musical. (This is not suggested by the utterance.)
+   d. The joke cracked everyone up. (This is not the case as the story does not mention a joke.)
+   So, the informative","['b', 'a', 'd', 'c']",4,A_I,"{'a': 14.5625, 'b': 7.53125, 'c': 13.875, 'd': 11.5}","{'a': 0.6449590921401978, 'b': 0.0005700318142771721, 'c': 0.32430580258369446, 'd': 0.030165139585733414}",0.6449590921401978,d,a,,,"1. Literal Listener (L0):
    d. The joke cracked everyone up.
 
 2. Informative Speaker (S1):
-   a. The musical was purely for laughs. (Since the musical was serious, the utterance ""That cracked me up"" would be unexpected and humorous, implying the musical was not serious as expected.)
-
-3. Pragmatic Listener (L1):
-   a. The musical was purely for laughs. (The speaker is informative and chooses the most appropriate utterance for the situation, given that the musical was serious but the speaker found it humorous.)
-
-Final Answer: a. The musical was purely for laughs",a,,b
+   a. The musical was purely for laughs. (This is the most unlikely option as the musical was serious, not a comedy.)
+   b. The musical left her deeply moved. (This is also unlikely as she said ""That cracked me up,"" which suggests laughter, not deep emotion.)
+   c. She answered some questions about the musical. (This is not suggested by the utterance.)
+   d. The joke cracked everyone up. (This is not the case as the story does not mention a joke.)
+   So, the informative",,
 C1_47_A_NI,C1_47,3,1,ambiguous,non-ironic,a,The situation was genuinely amusing.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2050,7 +2068,7 @@ Final Answer:
    c. The situation was far too serious.
 
 3. Pragmatic Listener (L1):
-   d. She tried to make the best of the situation.",,,
+   d. She tried to make the best of the situation.",,
 C1_48_UA_I,C1_48,208,1,unambiguous,ironic,c,The talk contained no humour.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2087,14 +2105,14 @@ Final Answer:
    c. The talk contained no humour.
 
 3. Pragmatic Listener (L1):
-   c. The talk contained no humour. (Since the talk was grim, it is unlikely that the speaker would say ""Wow, so many jokes in one talk"" if the talk was actually full of jokes.)","['d', 'c', 'b', 'a']",4,UA_I,"{'a': 9.5, 'b': 8.5625, 'c': 23.125, 'd': 8.3125}","{'a': 1.209864649354131e-06, 'b': 4.737898109397065e-07, 'c': 0.9999979734420776, 'd': 3.689879122248385e-07}",0.9999979734420776,c,c,c,,"1. Literal Listener (L0):
+   c. The talk contained no humour. (Since the talk was grim, it's unlikely that the speaker would say ""Wow, so many jokes in one talk"" if the talk was actually full of jokes.)","['d', 'c', 'b', 'a']",4,UA_I,"{'a': 9.5, 'b': 8.5625, 'c': 23.375, 'd': 8.1875}","{'a': 9.422440143680433e-07, 'b': 3.689880827550951e-07, 'c': 0.9999984502792358, 'd': 2.536015415444126e-07}",0.9999984502792358,c,c,c,,"1. Literal Listener (L0):
    c. The talk contained no humour.
 
 2. Informative Speaker (S1):
    c. The talk contained no humour.
 
 3. Pragmatic Listener (L1):
-   c. The talk contained no humour. (Since the talk was grim, it is unlikely that the speaker would say ""Wow, so many jokes in one talk"" if the talk was actually full of jokes.)",,,
+   c. The talk contained no humour. (Since the talk was grim, it's unlikely that the speaker would say ""Wow, so many jokes in one talk"" if the talk was actually full of jokes.)",,
 C1_49_UA_NI,C1_49,229,1,unambiguous,non-ironic,a,The airport experience was enjoyable.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2138,7 +2156,7 @@ Final Answer:
    d. The airport experience was thoroughly unpleasant.
 
 3. Pragmatic Listener (L1):
-   d. The airport experience was thoroughly unpleasant.",,,
+   d. The airport experience was thoroughly unpleasant.",,
 C1_50_A_I,C1_50,254,1,ambiguous,ironic,d,The exam results were deeply disappointing.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2182,7 +2200,7 @@ Final Answer:
    d. The exam results were deeply disappointing.
 
 3. Pragmatic Listener (L1):
-   d. The exam results were deeply disappointing.",,,
+   d. The exam results were deeply disappointing.",,
 C1_51_A_NI,C1_51,129,1,ambiguous,non-ironic,b,They found the play dull.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2226,7 +2244,7 @@ Final Answer:
    b. They found the play dull.
 
 3. Pragmatic Listener (L1):
-   b. They found the play dull.",,,
+   b. They found the play dull.",,
 C1_52_UA_I,C1_52,114,1,unambiguous,ironic,b,She found the whole meal disappointing.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2260,17 +2278,17 @@ Final Answer:
    c. The meal was a genuinely enjoyable experience.
 
 2. Informative Speaker (S1):
-   Given the context of a terrible meal, the most inappropriate utterance would be ""That was a great restaurant visit."" So, the informative speaker would choose an utterance that is the opposite of the actual experience, which is c.
+   Given the context of a terrible meal, the most inappropriate utterance would be ""That was a great restaurant visit."" Therefore, the informative speaker would choose the utterance that is least likely to be said in this situation, which is c.
 
 3. Pragmatic Listener (L1):
-   Knowing that the speaker is informative and the meal was terrible, a pragmatic listener would understand that the speaker is being sarcastic or ironic, and would interpret the utterance as a way of expressing dissatisfaction","['d', 'b', 'a', 'c']",4,UA_I,"{'a': 11.625, 'b': 17.125, 'c': 18.625, 'd': 13.8125}","{'a': 0.000740062037948519, 'b': 0.1810872107744217, 'c': 0.8115765452384949, 'd': 0.006596100516617298}",0.8115765452384949,c,,,,"1. Literal Listener (L0):
+   Knowing that the speaker is informative and the meal was terrible, the listener would understand that the speaker is being sarcastic or ironic, and the most appropriate utterance for the situation would be c. However, since","['d', 'b', 'a', 'c']",4,UA_I,"{'a': 10.4375, 'b': 9.875, 'c': 17.75, 'd': 9.0}","{'a': 0.0006663436652161181, 'b': 0.00037967119715176523, 'c': 0.998795747756958, 'd': 0.0001582704862812534}",0.998795747756958,c,,,,"1. Literal Listener (L0):
    c. The meal was a genuinely enjoyable experience.
 
 2. Informative Speaker (S1):
-   Given the context of a terrible meal, the most inappropriate utterance would be ""That was a great restaurant visit."" So, the informative speaker would choose an utterance that is the opposite of the actual experience, which is c.
+   Given the context of a terrible meal, the most inappropriate utterance would be ""That was a great restaurant visit."" Therefore, the informative speaker would choose the utterance that is least likely to be said in this situation, which is c.
 
 3. Pragmatic Listener (L1):
-   Knowing that the speaker is informative and the meal was terrible, a pragmatic listener would understand that the speaker is being sarcastic or ironic, and would interpret the utterance as a way of expressing dissatisfaction",,,
+   Knowing that the speaker is informative and the meal was terrible, the listener would understand that the speaker is being sarcastic or ironic, and the most appropriate utterance for the situation would be c. However, since",,
 C1_53_UA_NI,C1_53,140,1,unambiguous,non-ironic,a,The ground was moist and muddy after the rain.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2300,15 +2318,15 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. L0: The ground was dried out.
-2. S1: The ground was dried out. (Since the weather changed and the ground became parched, it is most likely dried out.)
-3. L1: The ground was dried out. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation described, which is that the ground is dried out.)
+  Answer with a letter from a–d.","1. Literal Listener (L0): d. The ground was dried out.
+2. Informative Speaker (S1): d. The ground was dried out. (Since this is the only option that matches the literal interpretation of the utterance ""Perfect conditions for a picnic.."" and the condition for a picnic is usually dry ground.)
+3. Pragmatic Listener (L1): d. The ground was dried out. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation described, which is the ground being dried out, as this is the condition that makes it perfect for a picnic.)
 
-Final Answer: d","['a', 'c', 'd', 'b']",4,UA_NI,"{'a': 8.9375, 'b': 6.21875, 'c': 7.46875, 'd': 17.375}","{'a': 0.000216530155739747, 'b': 1.4281711628427729e-05, 'c': 4.98480731039308e-05, 'd': 0.9997193217277527}",0.9997193217277527,,,,d,"1. L0: The ground was dried out.
-2. S1: The ground was dried out. (Since the weather changed and the ground became parched, it is most likely dried out.)
-3. L1: The ground was dried out. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation described, which is that the ground is dried out.)
+Final Answer: d. The","['a', 'c', 'd', 'b']",4,UA_NI,"{'a': 8.625, 'b': 8.5, 'c': 6.9375, 'd': 16.75}","{'a': 0.0002958636323455721, 'b': 0.0002610987576190382, 'c': 5.4729272960685194e-05, 'd': 0.9993883371353149}",0.9993883371353149,d,d,d,d,"1. Literal Listener (L0): d. The ground was dried out.
+2. Informative Speaker (S1): d. The ground was dried out. (Since this is the only option that matches the literal interpretation of the utterance ""Perfect conditions for a picnic.."" and the condition for a picnic is usually dry ground.)
+3. Pragmatic Listener (L1): d. The ground was dried out. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation described, which is the ground being dried out, as this is the condition that makes it perfect for a picnic.)
 
-Final Answer: d",d,,b
+Final Answer: d. The",d,b
 C1_54_A_I,C1_54,123,1,ambiguous,ironic,a,The garden was just watered and needed to dry out.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2339,26 +2357,26 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0):
-   They are stating that they have provided enough water for the garden for the day.
+   They are stating that they have watered the garden enough for the day.
    Answer: a
 
 2. Informative Speaker (S1):
-   An informative speaker would choose the utterance that indicates the action of watering the garden, as that is the only action related to water in the given options.
+   An informative speaker would choose the option that best describes the situation where the garden was watered, which is option a.
    Answer: a
 
 3. Pragmatic Listener (L1):
-   A pragmatic listener, knowing that the speaker is informative, would also interpret the utterance as indicating the action of watering the garden, as that is the most relevant action given the dry garden context.
-   Answer: a","['b', 'c', 'a', 'd']",4,A_I,"{'a': 22.125, 'b': 6.625, 'c': 7.75, 'd': 8.6875}","{'a': 0.9999977350234985, 'b': 1.8553870972937148e-07, 'c': 5.714994699701492e-07, 'd': 1.459375084778003e-06}",0.9999977350234985,,a,a,,"1. Literal Listener (L0):
-   They are stating that they have provided enough water for the garden for the day.
+   A pragmatic listener would understand that the speaker is stating they have watered the garden enough for the day, given that the garden was dry in the morning.
+   Answer: a","['b', 'c', 'a', 'd']",4,A_I,"{'a': 22.25, 'b': 6.25, 'c': 7.34375, 'd': 7.75}","{'a': 0.9999990463256836, 'b': 1.1253506926323098e-07, 'c': 3.359676554737234e-07, 'd': 5.043472128818394e-07}",0.9999990463256836,,a,a,,"1. Literal Listener (L0):
+   They are stating that they have watered the garden enough for the day.
    Answer: a
 
 2. Informative Speaker (S1):
-   An informative speaker would choose the utterance that indicates the action of watering the garden, as that is the only action related to water in the given options.
+   An informative speaker would choose the option that best describes the situation where the garden was watered, which is option a.
    Answer: a
 
 3. Pragmatic Listener (L1):
-   A pragmatic listener, knowing that the speaker is informative, would also interpret the utterance as indicating the action of watering the garden, as that is the most relevant action given the dry garden context.
-   Answer: a",,,
+   A pragmatic listener would understand that the speaker is stating they have watered the garden enough for the day, given that the garden was dry in the morning.
+   Answer: a",,
 C1_55_A_NI,C1_55,100,1,ambiguous,non-ironic,a,The plants had been getting plenty of moisture to grow.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2388,11 +2406,13 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. L0: c. The plants had been wilting due to lack of water.
-2. S1: c. The plants had been wilting due to lack of water. (This is the most literal and accurate interpretation of the utterance given the context.)
-3. L1: c. The plants had been wilting due to lack of water. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation described.)","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 8.3125, 'b': 8.6875, 'c': 24.5, 'd': 9.625}","{'a': 9.329487937748127e-08, 'b': 1.3574324952969619e-07, 'c': 0.9999994039535522, 'd': 3.4663256087696936e-07}",0.9999994039535522,c,c,c,,"1. L0: c. The plants had been wilting due to lack of water.
-2. S1: c. The plants had been wilting due to lack of water. (This is the most literal and accurate interpretation of the utterance given the context.)
-3. L1: c. The plants had been wilting due to lack of water. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation described.)",,,
+  Answer with a letter from a–d.","1. Literal Listener (L0): c. The plants had been wilting due to lack of water.
+2. Informative Speaker (S1): c. The plants had been wilting due to lack of water. (This is the most literal interpretation of the utterance given the context.)
+3. Pragmatic Listener (L1): c. The plants had been wilting due to lack of water. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation described.)
+Final Answer: c. The plants had been wilting due to lack of water.","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 9.0625, 'b': 7.3125, 'c': 18.0, 'd': 7.84375}","{'a': 0.00013134369510225952, 'b': 2.2824109692010097e-05, 'c': 0.9998069405555725, 'd': 3.882512100972235e-05}",0.9998069405555725,c,c,c,c,"1. Literal Listener (L0): c. The plants had been wilting due to lack of water.
+2. Informative Speaker (S1): c. The plants had been wilting due to lack of water. (This is the most literal interpretation of the utterance given the context.)
+3. Pragmatic Listener (L1): c. The plants had been wilting due to lack of water. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation described.)
+Final Answer: c. The plants had been wilting due to lack of water.",c,b
 C1_56_UA_I,C1_56,158,1,unambiguous,ironic,a,Her hair was completely dry.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2424,13 +2444,13 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: d. Her hair was soaking wet.
 2. S1: d. Her hair was soaking wet. (This is the only option that makes sense with the utterance ""She saw her parched hair."")
-3. L1: d. Her hair was soaking wet. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is that the speaker saw her hair was soaking wet, not dry, short, or dry and then surprised by rain.)
+3. L1: d. Her hair was soaking wet. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is that the speaker saw her hair was soaking wet, not dry or cut short.)
 
-Final Answer: d. Her hair was soaking wet.","['b', 'd', 'c', 'a']",4,UA_I,"{'a': 9.625, 'b': 6.1875, 'c': 6.6875, 'd': 14.9375}","{'a': 0.004903357941657305, 'b': 0.00015761818212922662, 'c': 0.0002598684513941407, 'd': 0.9946792125701904}",0.9946792125701904,d,d,d,d,"1. L0: d. Her hair was soaking wet.
+Final Answer: d. Her hair was soaking wet.","['b', 'd', 'c', 'a']",4,UA_I,"{'a': 9.5625, 'b': 6.25, 'c': 6.78125, 'd': 15.25}","{'a': 0.003375491127371788, 'b': 0.0001229522458743304, 'c': 0.00020914882770739496, 'd': 0.9962924122810364}",0.9962924122810364,d,d,d,d,"1. L0: d. Her hair was soaking wet.
 2. S1: d. Her hair was soaking wet. (This is the only option that makes sense with the utterance ""She saw her parched hair."")
-3. L1: d. Her hair was soaking wet. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is that the speaker saw her hair was soaking wet, not dry, short, or dry and then surprised by rain.)
+3. L1: d. Her hair was soaking wet. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is that the speaker saw her hair was soaking wet, not dry or cut short.)
 
-Final Answer: d. Her hair was soaking wet.",d,,a
+Final Answer: d. Her hair was soaking wet.",d,a
 C1_57_UA_NI,C1_57,89,1,unambiguous,non-ironic,c,I admired the outfit.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2461,7 +2481,7 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. Literal Listener (L0):
-   I say: """"I really didn't try at all today.""""
+   I say: ""I really didn't try at all today.""
    Answer: d. The speaker did not put effort into their appearance.
 
 2. Informative Speaker (S1):
@@ -2469,8 +2489,8 @@ Final Answer:
    Answer: d. The speaker did not put effort into their appearance.
 
 3. Pragmatic Listener (L1):
-   How would a listener interpret this utterance, knowing that the speaker is informative and chooses the most appropriate utterance for the situation","['b', 'c', 'a', 'd']",4,UA_NI,"{'a': 11.5, 'b': 10.0, 'c': 10.75, 'd': 19.625}","{'a': 0.00029589617042802274, 'b': 6.602336361538619e-05, 'c': 0.00013977146591059864, 'd': 0.9994982481002808}",0.9994982481002808,,,,,"1. Literal Listener (L0):
-   I say: """"I really didn't try at all today.""""
+   How would a listener interpret this utterance, knowing that the speaker is informative and chooses the most appropriate utterance for the situation described","['b', 'c', 'a', 'd']",4,UA_NI,"{'a': 11.75, 'b': 9.875, 'c': 10.5, 'd': 19.75}","{'a': 0.0003353006613906473, 'b': 5.1420025556581095e-05, 'c': 9.606524690752849e-05, 'd': 0.9995172023773193}",0.9995172023773193,,,,,"1. Literal Listener (L0):
+   I say: ""I really didn't try at all today.""
    Answer: d. The speaker did not put effort into their appearance.
 
 2. Informative Speaker (S1):
@@ -2478,7 +2498,7 @@ Final Answer:
    Answer: d. The speaker did not put effort into their appearance.
 
 3. Pragmatic Listener (L1):
-   How would a listener interpret this utterance, knowing that the speaker is informative and chooses the most appropriate utterance for the situation",,,
+   How would a listener interpret this utterance, knowing that the speaker is informative and chooses the most appropriate utterance for the situation described",,
 C1_58_A_I,C1_58,105,1,ambiguous,ironic,c,She thought the car was ugly.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2512,17 +2532,21 @@ Final Answer:
    a. She admired the car.
 
 2. Informative Speaker (S1):
-   d. She had booked a car. (This option is incorrect because it doesn't match the situation described in the passage.)
-   a. She admired the car. (This option is the most likely choice for an informative speaker, as it is the only one that fits the literal interpretation of the utterance and the context provided.)
+   d. She had booked a car. (This option is incorrect because it does not match the situation described in the passage.)
+   a. She admired the car. (This option is the most appropriate for the situation described in the passage.)
    b. She thought the painting was beautiful. (This option is incorrect because there is no mention of a painting in the passage.)
-   c. She thought the car was ugly. (This option is","['a', 'c', 'b', 'd']",4,A_I,"{'a': 19.625, 'b': 10.4375, 'c': 11.3125, 'd': 13.5625}","{'a': 0.997330904006958, 'b': 0.00010203725105384365, 'c': 0.0002447746228426695, 'd': 0.002322356915101409}",0.997330904006958,a,d,,,"1. Literal Listener (L0):
+   c. She thought the car was ugly. (This option is incorrect because the speaker is saying something positive about the car.)
+
+3. Pragmatic List","['a', 'c', 'b', 'd']",4,A_I,"{'a': 21.0, 'b': 8.5625, 'c': 9.375, 'd': 9.625}","{'a': 0.9999756813049316, 'b': 3.9669052966928575e-06, 'c': 8.939558938436676e-06, 'd': 1.147862076322781e-05}",0.9999756813049316,a,d,,,"1. Literal Listener (L0):
    a. She admired the car.
 
 2. Informative Speaker (S1):
-   d. She had booked a car. (This option is incorrect because it doesn't match the situation described in the passage.)
-   a. She admired the car. (This option is the most likely choice for an informative speaker, as it is the only one that fits the literal interpretation of the utterance and the context provided.)
+   d. She had booked a car. (This option is incorrect because it does not match the situation described in the passage.)
+   a. She admired the car. (This option is the most appropriate for the situation described in the passage.)
    b. She thought the painting was beautiful. (This option is incorrect because there is no mention of a painting in the passage.)
-   c. She thought the car was ugly. (This option is",,,
+   c. She thought the car was ugly. (This option is incorrect because the speaker is saying something positive about the car.)
+
+3. Pragmatic List",,
 C1_59_A_NI,C1_59,76,1,ambiguous,non-ironic,b,The painting was genuinely ugly.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2554,13 +2578,13 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b. The painting was genuinely ugly.
 2. S1: b. The painting was genuinely ugly. (Since an informative speaker would choose the utterance that accurately reflects the situation described in the passage.)
-3. L1: b. The painting was genuinely ugly. (Since a pragmatic listener would understand that the speaker is being informative and would choose the utterance that accurately reflects the situation described in the passage.)
+3. L1: b. The painting was genuinely ugly. (Since a pragmatic listener would understand that the speaker is being informative and would choose the utterance that accurately reflects the situation described in the passage, even if the speaker's tone or other contextual clues might suggest a different interpretation.)
 
-Final Answer: b. The painting was genuinely ugly.","['b', 'a', 'd', 'c']",4,A_NI,"{'a': 9.625, 'b': 16.375, 'c': 5.71875, 'd': 6.3125}","{'a': 0.0011694328859448433, 'b': 0.9987643957138062, 'c': 2.352407136640977e-05, 'd': 4.259659181116149e-05}",0.9987643957138062,b,b,b,b,"1. L0: b. The painting was genuinely ugly.
+Final Answer: b. The painting was genuinely ugly.","['b', 'a', 'd', 'c']",4,A_NI,"{'a': 9.625, 'b': 16.25, 'c': 5.53125, 'd': 6.25}","{'a': 0.001324933022260666, 'b': 0.9986075758934021, 'c': 2.2095349777373485e-05, 'd': 4.533671381068416e-05}",0.9986075758934021,b,b,b,b,"1. L0: b. The painting was genuinely ugly.
 2. S1: b. The painting was genuinely ugly. (Since an informative speaker would choose the utterance that accurately reflects the situation described in the passage.)
-3. L1: b. The painting was genuinely ugly. (Since a pragmatic listener would understand that the speaker is being informative and would choose the utterance that accurately reflects the situation described in the passage.)
+3. L1: b. The painting was genuinely ugly. (Since a pragmatic listener would understand that the speaker is being informative and would choose the utterance that accurately reflects the situation described in the passage, even if the speaker's tone or other contextual clues might suggest a different interpretation.)
 
-Final Answer: b. The painting was genuinely ugly.",b,,a
+Final Answer: b. The painting was genuinely ugly.",b,a
 C1_60_UA_I,C1_60,212,1,unambiguous,ironic,a,They thought the bird was not beautiful.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2590,15 +2614,23 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. L0: They thought the bird was not beautiful.
-2. S1: b. They thought the bird was beautiful. (This is the most unlikely option in the given context, but an informative speaker might choose it to correct the misconception that the bird was hideous.)
-3. L1: b. They thought the bird was beautiful. (The speaker is informative and would choose an utterance that corrects the misconception about the bird's appearance.)
+  Answer with a letter from a–d.","1. Literal Listener (L0):
+   They thought the bird was not beautiful. (a)
 
-Final Answer: b. They thought the bird was beautiful.","['b', 'a', 'c', 'd']",4,UA_I,"{'a': 9.5, 'b': 14.75, 'c': 5.90625, 'd': 7.0}","{'a': 0.005217141937464476, 'b': 0.9942112565040588, 'c': 0.00014344547525979578, 'd': 0.00042824906995519996}",0.9942112565040588,,b,b,b,"1. L0: They thought the bird was not beautiful.
-2. S1: b. They thought the bird was beautiful. (This is the most unlikely option in the given context, but an informative speaker might choose it to correct the misconception that the bird was hideous.)
-3. L1: b. They thought the bird was beautiful. (The speaker is informative and would choose an utterance that corrects the misconception about the bird's appearance.)
+2. Informative Speaker (S1):
+   They thought the bird was beautiful. (b)
 
-Final Answer: b. They thought the bird was beautiful.",b,,a
+3. Pragmatic Listener (L1):
+   They thought the bird was not beautiful. (a)
+   The speaker is being informative and chooses the utterance that contradicts the literal interpretation, suggesting that the speaker found the bird unattractive or unusual, rather than beautiful.","['b', 'a', 'c', 'd']",4,UA_I,"{'a': 19.5, 'b': 11.0625, 'c': 8.375, 'd': 8.8125}","{'a': 0.9997459053993225, 'b': 0.00021653591829817742, 'c': 1.4735453987668734e-05, 'd': 2.282271634612698e-05}",0.9997459053993225,,,,,"1. Literal Listener (L0):
+   They thought the bird was not beautiful. (a)
+
+2. Informative Speaker (S1):
+   They thought the bird was beautiful. (b)
+
+3. Pragmatic Listener (L1):
+   They thought the bird was not beautiful. (a)
+   The speaker is being informative and chooses the utterance that contradicts the literal interpretation, suggesting that the speaker found the bird unattractive or unusual, rather than beautiful.",,
 C1_61_UA_NI,C1_61,86,1,unambiguous,non-ironic,c,The kettle was a real bargain.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2642,7 +2674,7 @@ Final Answer:
    c. The kettle was a real bargain.
 
 3. Pragmatic Listener (L1):
-   c. The kettle was a real bargain.",,,
+   c. The kettle was a real bargain.",,
 C1_62_A_I,C1_62,165,1,ambiguous,ironic,a,The vase was not pricy.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2679,14 +2711,18 @@ Final Answer:
    c. The vase was worth a lot of money. (This is the only option that matches the utterance with the situation described in the story.)
 
 3. Pragmatic Listener (L1):
-   c. The vase was worth a lot of money. (Even though the vase was cheap, the speaker might be exaggerating to express disappointment or frustration about breaking it.)","['b', 'c', 'a', 'd']",4,A_I,"{'a': 8.8125, 'b': 8.75, 'c': 23.5, 'd': 8.5}","{'a': 4.1811838968897064e-07, 'b': 3.927858926999761e-07, 'c': 0.9999988079071045, 'd': 3.0590194910473656e-07}",0.9999988079071045,c,c,c,,"1. Literal Listener (L0):
+   c. The vase was worth a lot of money. (Even though the vase was cheap, the speaker might be sarcastically implying that it was valuable, given the broken state.)
+
+Final Answer: c. The vase was worth a lot of money.","['b', 'c', 'a', 'd']",4,A_I,"{'a': 9.375, 'b': 6.21875, 'c': 15.1875, 'd': 6.125}","{'a': 0.002980309771373868, 'b': 0.0001269168860744685, 'c': 0.9967771172523499, 'd': 0.00011555914534255862}",0.9967771172523499,c,c,c,c,"1. Literal Listener (L0):
    c. The vase was worth a lot of money.
 
 2. Informative Speaker (S1):
    c. The vase was worth a lot of money. (This is the only option that matches the utterance with the situation described in the story.)
 
 3. Pragmatic Listener (L1):
-   c. The vase was worth a lot of money. (Even though the vase was cheap, the speaker might be exaggerating to express disappointment or frustration about breaking it.)",,,
+   c. The vase was worth a lot of money. (Even though the vase was cheap, the speaker might be sarcastically implying that it was valuable, given the broken state.)
+
+Final Answer: c. The vase was worth a lot of money.",c,a
 C1_63_A_NI,C1_63,195,1,ambiguous,non-ironic,b,The perfume was pricy.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2720,21 +2756,17 @@ Final Answer:
    a. The perfume was not pricy.
 
 2. Informative Speaker (S1):
-   a. The perfume was not pricy. (Since the story mentions that she was wearing cheap perfume, the most appropriate utterance would be one that reflects this.)
+   a. The perfume was not pricy. (Since the story mentions that she was wearing cheap perfume, an informative speaker would likely say something that reflects the cheapness of the perfume.)
 
 3. Pragmatic Listener (L1):
-   a. The perfume was not pricy. (Given that the speaker is informative and the situation described in the story is that she was wearing cheap perfume, the speaker would likely choose an utterance that reflects the cheapness of the perfume.)
-
-Final Answer: a. The","['b', 'a', 'c', 'd']",4,A_NI,"{'a': 17.75, 'b': 7.78125, 'c': 6.59375, 'd': 6.25}","{'a': 0.9999287128448486, 'b': 4.683774022851139e-05, 'c': 1.428470295650186e-05, 'd': 1.0129371730727144e-05}",0.9999287128448486,a,a,a,a,"1. Literal Listener (L0):
+   a. The perfume was not pricy. (Given that the speaker is informative and the situation described in the story implies that the perfume is cheap, a pragmatic listener would understand that the speaker is commenting on the cheapness of the perfume","['b', 'a', 'c', 'd']",4,A_NI,"{'a': 21.75, 'b': 6.65625, 'c': 7.75, 'd': 7.46875}","{'a': 0.9999983310699463, 'b': 2.785267838589789e-07, 'c': 8.315273589687422e-07, 'd': 6.276698059082264e-07}",0.9999983310699463,a,a,a,,"1. Literal Listener (L0):
    a. The perfume was not pricy.
 
 2. Informative Speaker (S1):
-   a. The perfume was not pricy. (Since the story mentions that she was wearing cheap perfume, the most appropriate utterance would be one that reflects this.)
+   a. The perfume was not pricy. (Since the story mentions that she was wearing cheap perfume, an informative speaker would likely say something that reflects the cheapness of the perfume.)
 
 3. Pragmatic Listener (L1):
-   a. The perfume was not pricy. (Given that the speaker is informative and the situation described in the story is that she was wearing cheap perfume, the speaker would likely choose an utterance that reflects the cheapness of the perfume.)
-
-Final Answer: a. The",a,,b
+   a. The perfume was not pricy. (Given that the speaker is informative and the situation described in the story implies that the perfume is cheap, a pragmatic listener would understand that the speaker is commenting on the cheapness of the perfume",,
 C1_64_UA_I,C1_64,276,1,unambiguous,ironic,b,The bag was worth very little.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2765,14 +2797,14 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: c. The bag was worth a lot.
-2. S1: c. The bag was worth a lot. (Since the speaker is commenting on the quality of the bag, which is often associated with designer pieces being expensive.)
-3. L1: c. The bag was worth a lot. (A pragmatic listener would understand that the speaker is commenting on the quality of the bag, and since designer pieces are often expensive, the listener would infer that the bag is valuable.)
+2. S1: c. The bag was worth a lot. (Since the speaker is commenting on the bag as a designer piece, it implies that the bag is valuable.)
+3. L1: c. The bag was worth a lot. (A pragmatic listener would understand that the speaker is commenting on the quality and value of the bag, not its physical resemblance to a designer bag or the speaker's personal preference for designer items.)
 
-Final Answer: c. The bag was worth a lot.","['c', 'b', 'a', 'd']",4,UA_I,"{'a': 9.25, 'b': 5.96875, 'c': 15.1875, 'd': 5.78125}","{'a': 0.002631197916343808, 'b': 9.888371278066188e-05, 'c': 0.9971879124641418, 'd': 8.197747229132801e-05}",0.9971879124641418,c,c,c,c,"1. L0: c. The bag was worth a lot.
-2. S1: c. The bag was worth a lot. (Since the speaker is commenting on the quality of the bag, which is often associated with designer pieces being expensive.)
-3. L1: c. The bag was worth a lot. (A pragmatic listener would understand that the speaker is commenting on the quality of the bag, and since designer pieces are often expensive, the listener would infer that the bag is valuable.)
+Final Answer: c. The bag was worth a lot.","['c', 'b', 'a', 'd']",4,UA_I,"{'a': 9.3125, 'b': 5.8125, 'c': 15.6875, 'd': 5.9375}","{'a': 0.0017005361150950193, 'b': 5.1351740694371983e-05, 'c': 0.9981898665428162, 'd': 5.818914360133931e-05}",0.9981898665428162,c,c,c,c,"1. L0: c. The bag was worth a lot.
+2. S1: c. The bag was worth a lot. (Since the speaker is commenting on the bag as a designer piece, it implies that the bag is valuable.)
+3. L1: c. The bag was worth a lot. (A pragmatic listener would understand that the speaker is commenting on the quality and value of the bag, not its physical resemblance to a designer bag or the speaker's personal preference for designer items.)
 
-Final Answer: c. The bag was worth a lot.",c,,a
+Final Answer: c. The bag was worth a lot.",c,a
 C1_65_UA_NI,C1_65,174,1,unambiguous,non-ironic,c,The house felt cramped and tiny.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2816,7 +2848,7 @@ Final Answer:
    c. The house felt cramped and tiny.
 
 3. Pragmatic Listener (L1):
-   c. The house felt cramped and tiny.",,,
+   c. The house felt cramped and tiny.",,
 C1_66_A_I,C1_66,245,1,ambiguous,ironic,b,They thought the concert was small.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2848,25 +2880,15 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. Literal Listener (L0):
-   c. They thought the concert was huge.
+  Answer with a letter from a–d.","1. L0: c. They thought the concert was huge.
+2. S1: c. They thought the concert was huge (since the speaker is at a concert and says ""What a massive event,"" it is most likely they are commenting on the size of the event).
+3. L1: c. They thought the concert was huge (given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is commenting on the size of the concert).
 
-2. Informative Speaker (S1):
-   c. They thought the concert was huge. (This is the most literal interpretation of the utterance, given the context of attending a concert.)
+Final Answer: c. They thought the concert was huge.","['d', 'b', 'a', 'c']",4,A_I,"{'a': 9.5, 'b': 6.4375, 'c': 15.25, 'd': 6.3125}","{'a': 0.0031717969104647636, 'b': 0.00014834690955467522, 'c': 0.9965489506721497, 'd': 0.0001309156941715628}",0.9965489506721497,c,c,c,c,"1. L0: c. They thought the concert was huge.
+2. S1: c. They thought the concert was huge (since the speaker is at a concert and says ""What a massive event,"" it is most likely they are commenting on the size of the event).
+3. L1: c. They thought the concert was huge (given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is commenting on the size of the concert).
 
-3. Pragmatic Listener (L1):
-   c. They thought the concert was huge. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is the most literal interpretation.)
-
-Final Answer: c. They thought the concert was huge.","['d', 'b', 'a', 'c']",4,A_I,"{'a': 9.6875, 'b': 6.65625, 'c': 15.25, 'd': 6.46875}","{'a': 0.0038231934886425734, 'b': 0.00018448926857672632, 'c': 0.9958394765853882, 'd': 0.00015294697368517518}",0.9958394765853882,c,c,c,c,"1. Literal Listener (L0):
-   c. They thought the concert was huge.
-
-2. Informative Speaker (S1):
-   c. They thought the concert was huge. (This is the most literal interpretation of the utterance, given the context of attending a concert.)
-
-3. Pragmatic Listener (L1):
-   c. They thought the concert was huge. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is the most literal interpretation.)
-
-Final Answer: c. They thought the concert was huge.",c,,a
+Final Answer: c. They thought the concert was huge.",c,a
 C1_67_A_NI,C1_67,231,1,ambiguous,non-ironic,d,She thought the spider was tiny.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2900,21 +2922,21 @@ Final Answer:
    d. She thought the spider was tiny.
 
 2. Informative Speaker (S1):
-   d. She thought the spider was tiny.
+   d. She thought the spider was tiny. (This is the most literal interpretation of the utterance.)
 
 3. Pragmatic Listener (L1):
-   d. She thought the spider was tiny. (This interpretation is most appropriate given that the speaker is informative and the situation described is spotting a small spider.)
+   d. She thought the spider was tiny. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is the most literal interpretation.)
 
-Final Answer: d. She thought the spider was tiny.","['b', 'c', 'd', 'a']",4,A_NI,"{'a': 10.0625, 'b': 6.34375, 'c': 6.5625, 'd': 15.25}","{'a': 0.0055532450787723064, 'b': 0.00013474549632519484, 'c': 0.00016769347712397575, 'd': 0.9941443800926208}",0.9941443800926208,d,d,d,d,"1. Literal Listener (L0):
+Final Answer: d. She thought the spider was tiny.","['b', 'c', 'd', 'a']",4,A_NI,"{'a': 10.0, 'b': 6.1875, 'c': 6.75, 'd': 15.0}","{'a': 0.006690125912427902, 'b': 0.00014780412311665714, 'c': 0.0002594043326098472, 'd': 0.9929026961326599}",0.9929026961326599,d,d,d,d,"1. Literal Listener (L0):
    d. She thought the spider was tiny.
 
 2. Informative Speaker (S1):
-   d. She thought the spider was tiny.
+   d. She thought the spider was tiny. (This is the most literal interpretation of the utterance.)
 
 3. Pragmatic Listener (L1):
-   d. She thought the spider was tiny. (This interpretation is most appropriate given that the speaker is informative and the situation described is spotting a small spider.)
+   d. She thought the spider was tiny. (Given that the speaker is informative, they would choose the most appropriate utterance for the situation, which is the most literal interpretation.)
 
-Final Answer: d. She thought the spider was tiny.",d,,a
+Final Answer: d. She thought the spider was tiny.",d,a
 C1_68_UA_I,C1_68,236,1,unambiguous,ironic,b,I thought the dog was small.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2962,7 +2984,7 @@ Final Answer: d. I thought the dog was huge.","['c', 'b', 'd', 'a']",4,UA_I,"{'a
 3. Pragmatic Listener (L1):
    d. I thought the dog was huge. (Given that the speaker is informative, they would choose the most literal and appropriate utterance for the situation.)
 
-Final Answer: d. I thought the dog was huge.",d,,a
+Final Answer: d. I thought the dog was huge.",d,a
 C1_69_UA_NI,C1_69,200,1,unambiguous,non-ironic,a,The pool was super cold.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -3006,7 +3028,7 @@ Final Answer:
    a. The pool was super cold.
 
 3. Pragmatic Listener (L1):
-   a. The pool was super cold. (Since the speaker jumped into the pool, it is reasonable to assume that the pool was cold, and the speaker is warning others about the cold temperature.)",,,
+   a. The pool was super cold. (Since the speaker jumped into the pool, it is reasonable to assume that the pool was cold, and the speaker is warning others about the cold temperature.)",,
 C1_70_A_I,C1_70,277,1,ambiguous,ironic,a,The weather conditions were awful.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -3043,14 +3065,14 @@ Final Answer:
    b. The weather conditions were perfect.
 
 3. Pragmatic Listener (L1):
-   b. The weather conditions were perfect.","['b', 'a', 'd', 'c']",4,A_I,"{'a': 8.9375, 'b': 22.75, 'c': 8.4375, 'd': 7.6875}","{'a': 1.0030132671090541e-06, 'b': 0.9999982118606567, 'c': 6.083583343752252e-07, 'd': 2.873681239634607e-07}",0.9999982118606567,b,b,b,,"1. Literal Listener (L0):
+   b. The weather conditions were perfect. (Since the speaker went to the beach, it is reasonable to assume that they would be happy with good weather, making option b the most appropriate utterance.)","['b', 'a', 'd', 'c']",4,A_I,"{'a': 8.5625, 'b': 22.375, 'c': 8.0, 'd': 7.5625}","{'a': 1.0030131534222164e-06, 'b': 0.9999980926513672, 'c': 5.714996973438247e-07, 'd': 3.6898794064654794e-07}",0.9999980926513672,b,b,b,,"1. Literal Listener (L0):
    b. The weather conditions were perfect.
 
 2. Informative Speaker (S1):
    b. The weather conditions were perfect.
 
 3. Pragmatic Listener (L1):
-   b. The weather conditions were perfect.",,,
+   b. The weather conditions were perfect. (Since the speaker went to the beach, it is reasonable to assume that they would be happy with good weather, making option b the most appropriate utterance.)",,
 C1_71_A_NI,C1_71,57,1,ambiguous,non-ironic,a,The room was freezing cold.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -3084,17 +3106,17 @@ Final Answer:
    a. The room was freezing cold.
 
 2. Informative Speaker (S1):
-   a. The speaker would choose the utterance that accurately describes the room temperature, which is ""a. The room was freezing cold.""
+   a. The speaker would choose the utterance that accurately describes the room's temperature, which is ""a. The room was freezing cold.""
 
 3. Pragmatic Listener (L1):
-   a. Given that the speaker is informative and chooses the most appropriate utterance for the situation, the listener would interpret the utterance as ""a. The room was freezing cold.""","['a', 'd', 'c', 'b']",4,A_NI,"{'a': 21.875, 'b': 6.625, 'c': 6.5, 'd': 7.03125}","{'a': 0.9999991655349731, 'b': 2.382367654263362e-07, 'c': 2.1024321483764652e-07, 'd': 3.5763574146585597e-07}",0.9999991655349731,a,a,a,,"1. Literal Listener (L0):
+   a. A pragmatic listener would understand that the speaker is commenting on the room's temperature, so they would interpret the utterance as ""a. The room was freezing cold.""","['a', 'd', 'c', 'b']",4,A_NI,"{'a': 22.0, 'b': 6.75, 'c': 6.46875, 'd': 7.0}","{'a': 0.9999991655349731, 'b': 2.382367654263362e-07, 'c': 1.7983053623993328e-07, 'd': 3.059020627915743e-07}",0.9999991655349731,a,a,a,,"1. Literal Listener (L0):
    a. The room was freezing cold.
 
 2. Informative Speaker (S1):
-   a. The speaker would choose the utterance that accurately describes the room temperature, which is ""a. The room was freezing cold.""
+   a. The speaker would choose the utterance that accurately describes the room's temperature, which is ""a. The room was freezing cold.""
 
 3. Pragmatic Listener (L1):
-   a. Given that the speaker is informative and chooses the most appropriate utterance for the situation, the listener would interpret the utterance as ""a. The room was freezing cold.""",,,
+   a. A pragmatic listener would understand that the speaker is commenting on the room's temperature, so they would interpret the utterance as ""a. The room was freezing cold.""",,
 C1_72_UA_I,C1_72,179,1,unambiguous,ironic,a,Her coffee did not taste good.,Mistral-7B-Instruct,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -3131,15 +3153,15 @@ Final Answer:
    b. Her coffee was delicious. (This is the most positive and straightforward interpretation of the situation described.)
 
 3. Pragmatic Listener (L1):
-   b. Her coffee was delicious. (Given that the speaker is informative, they would likely choose the most appropriate utterance to express their positive experience with the coffee.)
+   b. Her coffee was delicious. (Given that the speaker is informative, they would choose the most appropriate utterance to convey that the coffee tasted good.)
 
-Final Answer: b. Her coffee was delicious.","['b', 'a', 'd', 'c']",4,UA_I,"{'a': 9.0625, 'b': 15.125, 'c': 6.5, 'd': 7.03125}","{'a': 0.0023220391012728214, 'b': 0.9971944093704224, 'c': 0.0001790564419934526, 'd': 0.0003045852645300329}",0.9971944093704224,b,b,b,b,"1. Literal Listener (L0):
+Final Answer: b. Her coffee was delicious.","['b', 'a', 'd', 'c']",4,UA_I,"{'a': 9.0625, 'b': 15.0, 'c': 6.375, 'd': 6.8125}","{'a': 0.0026304733473807573, 'b': 0.9969133138656616, 'c': 0.00017900597595144063, 'd': 0.0002772498410195112}",0.9969133138656616,b,b,b,b,"1. Literal Listener (L0):
    b. Her coffee was delicious.
 
 2. Informative Speaker (S1):
    b. Her coffee was delicious. (This is the most positive and straightforward interpretation of the situation described.)
 
 3. Pragmatic Listener (L1):
-   b. Her coffee was delicious. (Given that the speaker is informative, they would likely choose the most appropriate utterance to express their positive experience with the coffee.)
+   b. Her coffee was delicious. (Given that the speaker is informative, they would choose the most appropriate utterance to convey that the coffee tasted good.)
 
-Final Answer: b. Her coffee was delicious.",b,,a
+Final Answer: b. Her coffee was delicious.",b,a

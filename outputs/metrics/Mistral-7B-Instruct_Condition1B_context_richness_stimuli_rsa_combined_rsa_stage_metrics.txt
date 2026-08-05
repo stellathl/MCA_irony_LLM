@@ -1,0 +1,125 @@
+Model      : Mistral-7B-Instruct
+Dataset    : Condition1B_context_richness_stimuli
+Prompt Type: rsa
+==================================================
+
+############################################################
+### STAGE: L0 (Literal Listener)
+############################################################
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 129     0.310      0.305   0.314 0.302
+ non-ironic 127     0.748      0.747   0.751 0.742
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 65     0.292      0.274   0.286 0.272
+    ambiguous  non-ironic 66     0.727      0.732   0.742 0.724
+  unambiguous      ironic 64     0.328      0.330   0.346 0.326
+  unambiguous  non-ironic 61     0.770      0.765   0.767 0.762
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     a               53       29         24      54.7%       20.7%
+     b               59       37         22      62.7%       23.0%
+     c               64       34         30      53.1%       25.0%
+     d               80       35         45      43.8%       31.2%
+
+Selection Distribution:
+  Option a:  53 selections ( 20.7%)
+  Option b:  59 selections ( 23.0%)
+  Option c:  64 selections ( 25.0%)
+  Option d:  80 selections ( 31.2%)
+
+
+############################################################
+### STAGE: S1 (Informative Speaker)
+############################################################
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 137     0.277      0.272   0.280 0.269
+ non-ironic 132     0.720      0.721   0.724 0.716
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 70     0.257      0.247   0.253 0.243
+    ambiguous  non-ironic 65     0.708      0.712   0.723 0.701
+  unambiguous      ironic 67     0.299      0.309   0.310 0.298
+  unambiguous  non-ironic 67     0.731      0.740   0.739 0.726
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     a               56       28         28      50.0%       20.8%
+     b               63       37         26      58.7%       23.4%
+     c               69       33         36      47.8%       25.7%
+     d               81       35         46      43.2%       30.1%
+
+Selection Distribution:
+  Option a:  56 selections ( 20.8%)
+  Option b:  63 selections ( 23.4%)
+  Option c:  69 selections ( 25.7%)
+  Option d:  81 selections ( 30.1%)
+
+
+############################################################
+### STAGE: L1 (Pragmatic Listener)
+############################################################
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 131     0.298      0.296   0.300 0.294
+ non-ironic 133     0.699      0.703   0.702 0.698
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 67     0.284      0.275   0.277 0.273
+    ambiguous  non-ironic 66     0.697      0.694   0.707 0.695
+  unambiguous      ironic 64     0.312      0.321   0.320 0.313
+  unambiguous  non-ironic 67     0.701      0.724   0.712 0.700
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     a               61       29         32      47.5%       23.1%
+     b               67       38         29      56.7%       25.4%
+     c               64       32         32      50.0%       24.2%
+     d               72       33         39      45.8%       27.3%
+
+Selection Distribution:
+  Option a:  61 selections ( 23.1%)
+  Option b:  67 selections ( 25.4%)
+  Option c:  64 selections ( 24.2%)
+  Option d:  72 selections ( 27.3%)
+
+
+############################################################
+### STAGE: Final Answer
+############################################################
+
+--- Irony ---
+irony_label  n  accuracy  precision  recall    f1
+     ironic 53     0.189      0.159   0.203 0.168
+ non-ironic 56     0.768      0.780   0.782 0.765
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 31     0.161      0.153   0.163 0.141
+    ambiguous  non-ironic 28     0.786      0.792   0.788 0.781
+  unambiguous      ironic 22     0.227      0.177   0.271 0.209
+  unambiguous  non-ironic 28     0.750      0.776   0.787 0.751
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     a               16        8          8      50.0%       14.7%
+     b               26       16         10      61.5%       23.9%
+     c               32       15         17      46.9%       29.4%
+     d               35       14         21      40.0%       32.1%
+
+Selection Distribution:
+  Option a:  16 selections ( 14.7%)
+  Option b:  26 selections ( 23.9%)
+  Option c:  32 selections ( 29.4%)
+  Option d:  35 selections ( 32.1%)
+
+
