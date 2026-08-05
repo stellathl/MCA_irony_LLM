@@ -152,7 +152,12 @@ def load_model(model_name):
 
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "right"
+    print("gpu?cpu?",next(model.parameters()).device)
+    print("cuda available:", torch.cuda.is_available())
 
+    print("device count:", torch.cuda.device_count())
+    if torch.cuda.is_available():
+        print("device name:", torch.cuda.get_device_name(0))    
     return model, tokenizer
 
 
