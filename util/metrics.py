@@ -4,7 +4,7 @@ import glob
 import pandas as pd
 from sklearn.metrics import precision_recall_fscore_support
 
-from shuffle_options import combine_results, letter_to_pos
+from util.shuffle_options import combine_results, letter_to_pos
 
 def compute_classification_metrics(
     df,
