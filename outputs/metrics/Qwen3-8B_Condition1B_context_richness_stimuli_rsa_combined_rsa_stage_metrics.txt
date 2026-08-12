@@ -8,21 +8,22 @@ Prompt Type: rsa
 ############################################################
 
 --- Irony ---
-irony_label  n  accuracy  precision  recall  f1
-     ironic  1       0.0        0.0     0.0 0.0
- non-ironic  2       0.0        0.0     0.0 0.0
+irony_label  n  accuracy  precision  recall    f1
+     ironic  3     0.667        0.5   0.667 0.556
 
 --- Context × Irony ---
-context_level irony_label  n  accuracy  precision  recall  f1
-  unambiguous      ironic  1       0.0        0.0     0.0 0.0
-  unambiguous  non-ironic  2       0.0        0.0     0.0 0.0
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic  2       0.5      0.333   0.333 0.333
+  unambiguous      ironic  1       1.0      0.000   0.000 0.000
 
 --- Option Distribution ---
 Option  Selection Count  Correct  Incorrect Accuracy % Selection %
-     a                3        0          3       0.0%      100.0%
+     a                2        1          1      50.0%       66.7%
+     d                1        1          0     100.0%       33.3%
 
 Selection Distribution:
-  Option a:   3 selections (100.0%)
+  Option a:   2 selections ( 66.7%)
+  Option d:   1 selections ( 33.3%)
 
 
 ############################################################
