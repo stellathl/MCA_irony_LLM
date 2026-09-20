@@ -3,8 +3,8 @@ MODELS = {
     "Mistral-7B-Instruct": "mistralai/Mistral-7B-Instruct-v0.3",
     "OLMo-2-7B":           "allenai/OLMo-2-1124-7B-Instruct",
    "Qwen3-8B":            "Qwen/Qwen3-8B",
-    "Gpt2-1.5B":            "openai-community/gpt2-xl",
-    "Llama-3-8B":          "meta-llama/Llama-3.1-8B-Instruct"
+    "Llama-3-8B":          "meta-llama/Llama-3.1-8B-Instruct",
+    "Qwen3.8-27B": "Qwen/Qwen3.8-27B-FP8"
 }
 
 # MODELS = {
@@ -25,8 +25,8 @@ SEEDS = {
     "Mistral-7B-Instruct": SHARED_SEEDS,
     "OLMo-2-7B"          : SHARED_SEEDS,
     "Qwen3-8B"           : SHARED_SEEDS,
-    "Gpt2-1.5B"      : SHARED_SEEDS,
     "Llama-3-8B"         : SHARED_SEEDS,
+    "Qwen3.8-27B": SHARED_SEEDS
 }
 
 # ─────────────────────────────────────────────────────────
@@ -38,6 +38,6 @@ MAX_CONTEXT = {
     "Mistral-7B-Instruct":  32_768,
     "OLMo-2-7B":           131_072,
     "Qwen3-8B":            131_072,
-    "Gpt2-1.5B":            1_024,
     "Llama-3-8B":          131_072,
+    "Qwen3.8-27B":         131_072 
 }
