@@ -192,11 +192,18 @@ def generate_predictions(
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": prompt} 
                 ]
-                formatted_prompt = tokenizer.apply_chat_template(
-                    messages,
-                    tokenize=False,
-                    add_generation_prompt=True
-                )
+
+                if tokenizer.chat_template is not None:
+                    formatted_prompt = tokenizer.apply_chat_template(
+                        messages,
+                        tokenize=False,
+                        add_generation_prompt=True,
+                        
+                    )
+                else:
+                    # GPT doesn't accept chat_template format, we need to manually just inser this
+                    formatted_prompt = f"{SYSTEM_PROMPT}\n\n{prompt}"
+
                 result = pipe(
                     formatted_prompt,
                     max_new_tokens=MAX_NEW_TOKENS,
@@ -259,10 +266,14 @@ def generate_predictions(
 
     # ── Parse responses ───────────────────────────────────
     if prompt_type.lower() == "rsa":
-        parsed = df["output"].apply(parse_response_rsa)
-        # parsed is a Series of dicts: {"l0":..., "s1":..., "l1":..., "final":..., "raw_text":...}
-        df["chosen_option"] = [p["final"] for p in parsed]   # use the Final Answer as the chosen option
-        df["reasoning"]     = [p["raw_text"] for p in parsed]  # keep full raw text as "reasoning"
+        try:
+            df = add_rsa_columns(df, output_col="output")
+            # RSA's "final" stage is the analogue of chosen_option/reasoning downstream
+            df["chosen_option"] = df["rsa_final"]
+            df["reasoning"] = [p["raw_text"] for p in parsed]  # keep full raw text as "reasoning" # RSA has no single reasoning field; l0/s1/l1/final are separate
+        except Exception as e:
+            print(f"ERROR on record #{i}: {e}")
+        
     else:
         parsed = df.apply(lambda row: parse_response(row['output'], row['prompt_type']), axis=1)
         # parsed is a Series of tuples: (chosen_letter, reasoning_text)
@@ -415,7 +426,6 @@ if __name__ == "__main__":
                             )
 
                             if result_df is not None and not result_df.empty:
-                                result_df = add_rsa_columns(result_df, output_col="output") 
                                 result_df.to_csv(output_path, index=False)
                                 print(f"✓ Results saved to: {output_path}")
                                 all_results.append(result_df)
