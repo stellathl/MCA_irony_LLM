@@ -31,7 +31,7 @@ OUTPUTS_DIR = "./outputs"
 os.makedirs(OUTPUTS_DIR, exist_ok=True)
 
 MAX_NEW_TOKENS = 150
-TEMPERATURE = 0.1
+TEMPERATURE = 0.0
 
 CONDITION_MAP = {
     "Condition1B_context_richness_stimuli": "condition",
@@ -203,12 +203,16 @@ def generate_predictions(
                 else:
                     # GPT doesn't accept chat_template format, we need to manually just inser this
                     formatted_prompt = f"{SYSTEM_PROMPT}\n\n{prompt}"
+                if TEMPERATURE == 0.0:
+                    DO_SAMPLE=False
+                else:
+                    DO_SAMPLE=True
 
                 result = pipe(
                     formatted_prompt,
                     max_new_tokens=MAX_NEW_TOKENS,
                     temperature=TEMPERATURE,
-                    do_sample=True
+                    do_sample=DO_SAMPLE
                 )
                 generated_text = result[0]["generated_text"][len(formatted_prompt):]
 
