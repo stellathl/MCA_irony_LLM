@@ -1,4 +1,4 @@
-Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,chosen_option,reasoning,chosen_original_option
+Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,option_logits_raw,confidence_dist,confidence_top_prob,chosen_option,reasoning,chosen_original_option,rsa_l0,rsa_s1,rsa_l1,rsa_final,rsa_raw_text
 C1_01_UA_NI,C1_01,255,1,unambiguous,non-ironic,a,The cat was easy to lift up.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -30,9 +30,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['a', 'd', 'c', 'b']",4,UA_NI,a,"1. L0: a
+3. L1: a","['a', 'd', 'c', 'b']",4,UA_NI,"{'a': 41.25, 'b': 23.25, 'c': 21.5, 'd': 22.5}","{'a': 1.0, 'b': 1.5229979055675358e-08, 'c': 2.64657362691878e-09, 'd': 7.194132845000922e-09}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_02_A_I,C1_02,51,1,ambiguous,ironic,c,The dog was very light to lift.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -63,14 +65,12 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
-
 2. S1: b
-
-3. L1: b","['d', 'a', 'b', 'c']",4,A_I,b,"1. L0: b
-
+3. L1: b","['d', 'a', 'b', 'c']",4,A_I,"{'a': 24.125, 'b': 46.5, 'c': 24.75, 'd': 26.875}","{'a': 1.917171560394948e-10, 'b': 1.0, 'c': 3.581747953784742e-10, 'd': 2.998960857425459e-09}",1.0,,"1. L0: b
 2. S1: b
-
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_03_A_NI,C1_03,230,1,ambiguous,non-ironic,c,Their friend was very easy to lift.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -102,9 +102,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['b', 'c', 'a', 'd']",4,A_NI,c,"1. L0: c
+3. L1: c","['b', 'c', 'a', 'd']",4,A_NI,"{'a': 23.25, 'b': 22.0, 'c': 42.25, 'd': 25.875}","{'a': 5.602795560832874e-09, 'b': 1.605227839540646e-09, 'c': 0.9999998807907104, 'd': 7.734421103577915e-08}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_04_UA_I,C1_04,78,1,unambiguous,ironic,a,Holding my nephew took nothing of my strength.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -136,9 +138,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: b
-3. L1: b","['b', 'a', 'c', 'd']",4,UA_I,b,"1. L0: a
+3. L1: b","['b', 'a', 'c', 'd']",4,UA_I,"{'a': 24.25, 'b': 44.75, 'c': 23.625, 'd': 24.75}","{'a': 1.2501528701136522e-09, 'b': 1.0, 'c': 6.691586174056852e-10, 'd': 2.06115369216775e-09}",1.0,,"1. L0: a
 2. S1: b
-3. L1: b",a
+3. L1: b",,a,b,b,,"1. L0: a
+2. S1: b
+3. L1: b"
 C1_05_UA_NI,C1_05,77,1,unambiguous,non-ironic,a,The cake tasted really good.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -168,11 +172,13 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. L0: a
-2. S1: a
-3. L1: a","['a', 'b', 'c', 'd']",4,UA_NI,a,"1. L0: a
-2. S1: a
-3. L1: a",a
+  Answer with a letter from a–d.","1. L0: b
+2. S1: b
+3. L1: b","['a', 'b', 'c', 'd']",4,UA_NI,"{'a': 23.5, 'b': 44.0, 'c': 24.25, 'd': 25.375}","{'a': 1.2501528701136522e-09, 'b': 1.0, 'c': 2.64657362691878e-09, 'd': 8.152020392060422e-09}",1.0,,"1. L0: b
+2. S1: b
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_06_A_I,C1_06,188,1,ambiguous,ironic,a,The medicine tasted absolutely awful.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -204,9 +210,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: b
-3. L1: b","['b', 'a', 'd', 'c']",4,A_I,b,"1. L0: b
+3. L1: b","['b', 'a', 'd', 'c']",4,A_I,"{'a': 23.625, 'b': 46.0, 'c': 24.875, 'd': 26.375}","{'a': 1.917171560394948e-10, 'b': 1.0, 'c': 6.691586174056852e-10, 'd': 2.998960857425459e-09}",1.0,,"1. L0: b
 2. S1: b
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_07_A_NI,C1_07,239,1,ambiguous,non-ironic,a,The smoothie was thoroughly enjoyable.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -238,9 +246,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['a', 'c', 'd', 'b']",4,A_NI,a,"1. L0: a
+3. L1: a","['a', 'c', 'd', 'b']",4,A_NI,"{'a': 41.0, 'b': 23.0, 'c': 21.625, 'd': 22.375}","{'a': 1.0, 'b': 1.5229979055675358e-08, 'c': 3.850741947530878e-09, 'd': 8.152020392060422e-09}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_08_UA_I,C1_08,259,1,unambiguous,ironic,d,They could barely force themselves to swallow the burger.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -272,9 +282,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['d', 'c', 'a', 'b']",4,UA_I,c,"1. L0: c
+3. L1: c","['d', 'c', 'a', 'b']",4,UA_I,"{'a': 23.625, 'b': 21.875, 'c': 40.25, 'd': 25.25}","{'a': 6.023571330615596e-08, 'b': 1.0467395838986704e-08, 'c': 0.9999995231628418, 'd': 3.05902176478412e-07}",0.9999995231628418,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_09_UA_NI,C1_09,109,1,unambiguous,non-ironic,a,The babysitter was taking good care of the kids.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -306,9 +318,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: b
-3. L1: b","['a', 'b', 'c', 'd']",4,UA_NI,b,"1. L0: b
+3. L1: b","['a', 'b', 'c', 'd']",4,UA_NI,"{'a': 23.5, 'b': 47.75, 'c': 25.25, 'd': 26.625}","{'a': 2.940077695190446e-11, 'b': 1.0, 'c': 1.6918980105806725e-10, 'd': 6.691586174056852e-10}",1.0,,"1. L0: b
 2. S1: b
-3. L1: b",b
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_10_A_I,C1_10,186,1,ambiguous,ironic,b,The police officer did not make them feel safe at all.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -339,14 +353,12 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: d
-
 2. S1: d
-
-3. L1: d","['d', 'b', 'c', 'a']",4,A_I,d,"1. L0: d
-
+3. L1: d","['d', 'b', 'c', 'a']",4,A_I,"{'a': 22.5, 'b': 19.75, 'c': 21.375, 'd': 40.5}","{'a': 1.5229979055675358e-08, 'b': 9.736200734522527e-10, 'c': 4.94445062670934e-09, 'd': 1.0}",1.0,,"1. L0: d
 2. S1: d
-
-3. L1: d",a
+3. L1: d",,d,d,d,,"1. L0: d
+2. S1: d
+3. L1: d"
 C1_11_A_NI,C1_11,244,1,ambiguous,non-ironic,a,Seeing the pilot put her completely at ease.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -378,9 +390,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['a', 'c', 'b', 'd']",4,A_NI,c,"1. L0: c
+3. L1: c","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 22.25, 'b': 22.625, 'c': 43.25, 'd': 28.75}","{'a': 7.582556249552397e-10, 'b': 1.103255486967214e-09, 'c': 0.9999995231628418, 'd': 5.043474402555148e-07}",0.9999995231628418,,"1. L0: c
 2. S1: c
-3. L1: c",b
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_12_UA_I,C1_12,207,1,unambiguous,ironic,a,His father's face was full of fear.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -412,9 +426,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['b', 'c', 'd', 'a']",4,UA_I,a,"1. L0: a
+3. L1: a","['b', 'c', 'd', 'a']",4,UA_I,"{'a': 40.0, 'b': 22.75, 'c': 21.375, 'd': 22.25}","{'a': 1.0, 'b': 3.224186784223093e-08, 'c': 8.152020392060422e-09, 'd': 1.9555681518568235e-08}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",b
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_13_UA_NI,C1_13,48,1,unambiguous,non-ironic,a,"To him, his girlfriend looked well-rested and full of energy.",Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -446,9 +462,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['a', 'd', 'b', 'c']",4,UA_NI,c,"1. L0: c
+3. L1: c","['a', 'd', 'b', 'c']",4,UA_NI,"{'a': 21.625, 'b': 21.25, 'c': 41.75, 'd': 25.875}","{'a': 1.818961425925636e-09, 'b': 1.2501527590913497e-09, 'c': 0.9999998807907104, 'd': 1.2751904421293148e-07}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",b
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_14_A_I,C1_14,248,1,ambiguous,ironic,d,Her colleague seemed very tired today.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -479,14 +497,12 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: d
-
 2. S1: d
-
-3. L1: b","['d', 'a', 'c', 'b']",4,A_I,b,"1. L0: d
-
+3. L1: b","['d', 'a', 'c', 'b']",4,A_I,"{'a': 22.25, 'b': 41.25, 'c': 22.625, 'd': 28.25}","{'a': 5.602783570424208e-09, 'b': 0.9999977350234985, 'c': 8.152001740313608e-09, 'd': 2.2603242086915998e-06}",0.9999977350234985,,"1. L0: d
 2. S1: d
-
-3. L1: b",a
+3. L1: b",,d,d,b,,"1. L0: d
+2. S1: d
+3. L1: b"
 C1_15_A_NI,C1_15,256,1,ambiguous,non-ironic,a,They felt very well-rested after the sleepover.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -520,11 +536,15 @@ Final Answer:
 
 2. S1: d
 
-3. L1: d","['a', 'd', 'c', 'b']",4,A_NI,d,"1. L0: d
+3. L1: d","['a', 'd', 'c', 'b']",4,A_NI,"{'a': 21.25, 'b': 18.625, 'c': 20.125, 'd': 37.25}","{'a': 1.1253516163378663e-07, 'b': 8.152019503882002e-09, 'c': 3.653481783771895e-08, 'd': 0.9999998807907104}",0.9999998807907104,,"1. L0: d
 
 2. S1: d
 
-3. L1: d",b
+3. L1: d",,d,d,d,,"1. L0: d
+
+2. S1: d
+
+3. L1: d"
 C1_16_UA_I,C1_16,14,1,unambiguous,ironic,d,Deep down I felt completely unprepared for the exam.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -558,11 +578,15 @@ Final Answer:
 
 2. Informative Speaker (S1): a
 
-3. Pragmatic Listener (L1): a","['a', 'c', 'd', 'b']",4,UA_I,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a","['a', 'c', 'd', 'b']",4,UA_I,"{'a': 45.5, 'b': 26.25, 'c': 23.875, 'd': 25.125}","{'a': 1.0, 'b': 4.363462036138799e-09, 'c': 4.05865202557365e-10, 'd': 1.4166088302403068e-09}",1.0,,"1. Literal Listener (L0): a
 
 2. Informative Speaker (S1): a
 
-3. Pragmatic Listener (L1): a",a
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+
+2. Informative Speaker (S1): a
+
+3. Pragmatic Listener (L1): a"
 C1_17_UA_NI,C1_17,118,1,unambiguous,non-ironic,d,Her idea was innovative.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -594,9 +618,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: d
-3. L1: d","['b', 'c', 'd', 'a']",4,UA_NI,d,"1. L0: a
+3. L1: d","['b', 'c', 'd', 'a']",4,UA_NI,"{'a': 23.75, 'b': 20.875, 'c': 22.875, 'd': 40.75}","{'a': 4.139937459513021e-08, 'b': 2.335593052293916e-09, 'c': 1.7257828943684217e-08, 'd': 1.0}",1.0,,"1. L0: a
 2. S1: d
-3. L1: d",a
+3. L1: d",,a,d,d,,"1. L0: a
+2. S1: d
+3. L1: d"
 C1_18_A_I,C1_18,272,1,ambiguous,ironic,b,"In his view, it was a stale approach he had seen many times before.",Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -628,9 +654,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['a', 'b', 'c', 'd']",4,A_I,a,"1. L0: a
+3. L1: a","['a', 'b', 'c', 'd']",4,A_I,"{'a': 43.5, 'b': 24.375, 'c': 22.75, 'd': 24.25}","{'a': 1.0, 'b': 4.94445062670934e-09, 'c': 9.736200734522527e-10, 'd': 4.363462036138799e-09}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_19_A_NI,C1_19,32,1,ambiguous,non-ironic,a,She found the tradition beautifully enduring and meaningful.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -662,9 +690,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['a', 'd', 'b', 'c']",4,A_NI,a,"1. L0: a
+3. L1: a","['a', 'd', 'b', 'c']",4,A_NI,"{'a': 39.5, 'b': 21.875, 'c': 20.625, 'd': 21.75}","{'a': 1.0, 'b': 2.2159490242756874e-08, 'c': 6.348800152267131e-09, 'd': 1.9555681518568235e-08}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_20_UA_I,C1_20,125,1,unambiguous,ironic,d,She was disappointed with the smell of her car.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -696,9 +726,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['d', 'c', 'a', 'b']",4,UA_I,c,"1. L0: c
+3. L1: c","['d', 'c', 'a', 'b']",4,UA_I,"{'a': 22.125, 'b': 21.375, 'c': 41.25, 'd': 25.375}","{'a': 4.94445018262013e-09, 'b': 2.335592830249311e-09, 'c': 0.9999998807907104, 'd': 1.2751904421293148e-07}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_21_UA_NI,C1_21,221,1,unambiguous,non-ironic,c,The birthday party was a great success.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -728,11 +760,13 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. L0: a
+  Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['b', 'd', 'a', 'c']",4,UA_NI,c,"1. L0: a
+3. L1: c","['b', 'd', 'a', 'c']",4,UA_NI,"{'a': 23.125, 'b': 21.625, 'c': 41.75, 'd': 25.625}","{'a': 8.152019503882002e-09, 'b': 1.818961425925636e-09, 'c': 0.9999998807907104, 'd': 9.931193289958173e-08}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_22_A_I,C1_22,146,1,ambiguous,ironic,d,"The wedding had been a dull, disappointing event from start to finish.",Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -764,9 +798,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['a', 'c', 'd', 'b']",4,A_I,a,"1. L0: a
+3. L1: a","['a', 'c', 'd', 'b']",4,A_I,"{'a': 43.5, 'b': 24.25, 'c': 23.125, 'd': 24.0}","{'a': 1.0, 'b': 4.363462036138799e-09, 'c': 1.4166088302403068e-09, 'd': 3.3982678893096363e-09}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_23_A_NI,C1_23,45,1,ambiguous,non-ironic,b,They had found the film dull from start to finish.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -798,9 +834,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: b
-3. L1: b","['d', 'a', 'b', 'c']",4,A_NI,b,"1. L0: b
+3. L1: b","['d', 'a', 'b', 'c']",4,A_NI,"{'a': 24.375, 'b': 48.0, 'c': 25.75, 'd': 27.875}","{'a': 5.4927885156930145e-11, 'b': 1.0, 'c': 2.1724400056655213e-10, 'd': 1.8189616479702408e-09}",1.0,,"1. L0: b
 2. S1: b
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_24_UA_I,C1_24,169,1,unambiguous,ironic,b,The message brought negative news.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -834,11 +872,15 @@ Final Answer:
 
 2. S1: d
 
-3. L1: d","['c', 'b', 'd', 'a']",4,UA_I,d,"1. L0: a
+3. L1: d","['c', 'b', 'd', 'a']",4,UA_I,"{'a': 23.5, 'b': 20.0, 'c': 21.125, 'd': 39.0}","{'a': 1.8553909342244879e-07, 'b': 5.602795116743664e-09, 'c': 1.7257825390970538e-08, 'd': 0.9999997615814209}",0.9999997615814209,,"1. L0: a
 
 2. S1: d
 
-3. L1: d",a
+3. L1: d",,a,d,d,,"1. L0: a
+
+2. S1: d
+
+3. L1: d"
 C1_25_UA_NI,C1_25,92,1,unambiguous,non-ironic,b,Her exam answers were impressively smart.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -870,9 +912,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['c', 'a', 'b', 'd']",4,UA_NI,c,"1. L0: c
+3. L1: c","['c', 'a', 'b', 'd']",4,UA_NI,"{'a': 21.75, 'b': 22.125, 'c': 42.75, 'd': 27.375}","{'a': 7.582558469998446e-10, 'b': 1.1032558200341214e-09, 'c': 0.9999997615814209, 'd': 2.1024332852448424e-07}",0.9999997615814209,,"1. L0: c
 2. S1: c
-3. L1: c",b
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_26_A_I,C1_26,225,1,ambiguous,ironic,d,"As far as they were concerned, it was a poor suggestion.",Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -902,11 +946,28 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. L0: a
-2. S1: d
-3. L1: d","['c', 'd', 'a', 'b']",4,A_I,d,"1. L0: a
-2. S1: d
-3. L1: d",b
+  Answer with a letter from a–d.","1. Literal Listener (L0):
+   a
+
+2. Informative Speaker (S1):
+   d
+
+3. Pragmatic Listener (L1):
+   d","['c', 'd', 'a', 'b']",4,A_I,"{'a': 23.625, 'b': 21.875, 'c': 22.25, 'd': 40.25}","{'a': 6.023573462243803e-08, 'b': 1.0467400279878802e-08, 'c': 1.522997727931852e-08, 'd': 0.9999998807907104}",0.9999998807907104,,"1. Literal Listener (L0):
+   a
+
+2. Informative Speaker (S1):
+   d
+
+3. Pragmatic Listener (L1):
+   d",,a,d,d,,"1. Literal Listener (L0):
+   a
+
+2. Informative Speaker (S1):
+   d
+
+3. Pragmatic Listener (L1):
+   d"
 C1_27_A_NI,C1_27,30,1,ambiguous,non-ironic,d,His argument was strong and well presented.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -936,15 +997,19 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. Literal Listener (L0): a
+  Answer with a letter from a–d.","1. L0: a
 
-2. Informative Speaker (S1): a
+2. S1: a
 
-3. Pragmatic Listener (L1): a","['b', 'c', 'd', 'a']",4,A_NI,a,"1. Literal Listener (L0): a
+3. L1: a","['b', 'c', 'd', 'a']",4,A_NI,"{'a': 40.0, 'b': 23.375, 'c': 22.25, 'd': 23.875}","{'a': 0.9999998807907104, 'b': 6.023573462243803e-08, 'c': 1.9555679742211396e-08, 'd': 9.931193289958173e-08}",0.9999998807907104,,"1. L0: a
 
-2. Informative Speaker (S1): a
+2. S1: a
 
-3. Pragmatic Listener (L1): a",b
+3. L1: a",,a,a,a,,"1. L0: a
+
+2. S1: a
+
+3. L1: a"
 C1_28_UA_I,C1_28,47,1,unambiguous,ironic,d,She believed that his business plan would fail.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -978,11 +1043,15 @@ Final Answer:
 
 2. S1: a
 
-3. L1: a","['a', 'd', 'c', 'b']",4,UA_I,a,"1. L0: a
+3. L1: a","['a', 'd', 'c', 'b']",4,UA_I,"{'a': 42.5, 'b': 24.25, 'c': 22.75, 'd': 23.875}","{'a': 1.0, 'b': 1.1861120086109622e-08, 'c': 2.64657362691878e-09, 'd': 8.152020392060422e-09}",1.0,,"1. L0: a
 
 2. S1: a
 
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+
+2. S1: a
+
+3. L1: a"
 C1_29_UA_NI,C1_29,261,1,unambiguous,non-ironic,a,The restaurant visit was genuinely outstanding.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1014,9 +1083,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['a', 'b', 'd', 'c']",4,UA_NI,a,"1. L0: a
+3. L1: a","['a', 'b', 'd', 'c']",4,UA_NI,"{'a': 41.25, 'b': 23.125, 'c': 21.75, 'd': 22.375}","{'a': 1.0, 'b': 1.3440409674103648e-08, 'c': 3.3982678893096363e-09, 'd': 6.348800152267131e-09}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_30_A_I,C1_30,139,1,ambiguous,ironic,d,There had been very little worth eating at the buffet.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1048,9 +1119,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: b
-3. L1: b","['d', 'a', 'c', 'b']",4,A_I,b,"1. L0: b
+3. L1: b","['d', 'a', 'c', 'b']",4,A_I,"{'a': 22.0, 'b': 44.0, 'c': 23.625, 'd': 25.25}","{'a': 2.789468100949932e-10, 'b': 1.0, 'c': 1.4166088302403068e-09, 'd': 7.194132845000922e-09}",1.0,,"1. L0: b
 2. S1: b
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_31_A_NI,C1_31,260,1,ambiguous,non-ironic,b,The picnic was nourishing and genuinely enjoyable.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1082,9 +1155,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: b
-3. L1: b","['d', 'a', 'b', 'c']",4,A_NI,b,"1. L0: b
+3. L1: b","['d', 'a', 'b', 'c']",4,A_NI,"{'a': 23.375, 'b': 46.25, 'c': 24.75, 'd': 26.5}","{'a': 1.1628233098637253e-10, 'b': 1.0, 'c': 4.5990553032559944e-10, 'd': 2.64657362691878e-09}",1.0,,"1. L0: b
 2. S1: b
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_32_UA_I,C1_32,228,1,unambiguous,ironic,a,The waiter had forgotten to fill his plate and he did not eat anything.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1116,17 +1191,19 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['b', 'd', 'a', 'c']",4,UA_I,c,"1. L0: c
+3. L1: c","['b', 'd', 'a', 'c']",4,UA_I,"{'a': 22.0, 'b': 21.25, 'c': 42.0, 'd': 26.0}","{'a': 2.061153470123145e-09, 'b': 9.736199624299502e-10, 'c': 0.9999998807907104, 'd': 1.1253516163378663e-07}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_33_UA_NI,C1_33,24,1,unambiguous,non-ironic,d,The library was a calm and quiet environment.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
 
-Context: She walked into the library and it was inaudible.
+Context: They met a scared police officer.
 
 Target utterance:
-She says: """"Perfect place to concentrate.""""
+They said: """"We felt so safe around you""""
 
 a. She asked her colleague for a place to concentrate.
 b. She looked for a new book in the library.
@@ -1150,17 +1227,19 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: d","['c', 'd', 'b', 'a']",4,UA_NI,d,"1. L0: c
+3. L1: d","['c', 'd', 'b', 'a']",4,UA_NI,"{'a': 21.25, 'b': 19.5, 'c': 24.875, 'd': 38.5}","{'a': 3.2241828762380464e-08, 'b': 5.602789787673146e-09, 'c': 1.2098656725356705e-06, 'd': 0.9999988079071045}",0.9999988079071045,,"1. L0: c
 2. S1: c
-3. L1: d",a
+3. L1: d",,c,c,d,,"1. L0: c
+2. S1: c
+3. L1: d"
 C1_34_A_I,C1_34,25,1,ambiguous,ironic,d,The concert was pretty loud.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
 
-Context: We came back from a concert which was quiet.
+Context: After the restaurant visit he was starving.
 
 Target utterance:
-I say: """"I've almost gone deaf.""""
+He says: """"Best dinner ever.""""
 
 a. The concert was surprisingly quiet.
 b. I was looking forward to the next concert.
@@ -1184,9 +1263,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['a', 'd', 'c', 'b']",4,A_I,a,"1. L0: a
+3. L1: a","['a', 'd', 'c', 'b']",4,A_I,"{'a': 40.25, 'b': 22.625, 'c': 21.125, 'd': 21.875}","{'a': 1.0, 'b': 2.2159490242756874e-08, 'c': 4.94445062670934e-09, 'd': 1.0467401168057222e-08}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_35_A_NI,C1_35,31,1,ambiguous,non-ironic,a,The movie was too quiet to hear.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1220,11 +1301,15 @@ Final Answer:
 
 2. Informative Speaker (S1): a
 
-3. Pragmatic Listener (L1): a","['a', 'b', 'c', 'd']",4,A_NI,a,"1. Literal Listener (L0): a
+3. Pragmatic Listener (L1): a","['a', 'b', 'c', 'd']",4,A_NI,"{'a': 43.25, 'b': 25.25, 'c': 23.0, 'd': 24.375}","{'a': 1.0, 'b': 1.5229979055675358e-08, 'c': 1.605228061585251e-09, 'd': 6.348800152267131e-09}",1.0,,"1. Literal Listener (L0): a
 
 2. Informative Speaker (S1): a
 
-3. Pragmatic Listener (L1): a",a
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+
+2. Informative Speaker (S1): a
+
+3. Pragmatic Listener (L1): a"
 C1_36_UA_I,C1_36,29,1,unambiguous,ironic,d,He would expected to hear louder music from his neighbours' party.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1255,14 +1340,12 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
-
 2. S1: b
-
-3. L1: b","['d', 'a', 'c', 'b']",4,UA_I,b,"1. L0: b
-
+3. L1: b","['d', 'a', 'c', 'b']",4,UA_I,"{'a': 23.75, 'b': 47.5, 'c': 25.25, 'd': 28.0}","{'a': 4.8473686869998645e-11, 'b': 1.0, 'c': 2.1724400056655213e-10, 'd': 3.3982678893096363e-09}",1.0,,"1. L0: b
 2. S1: b
-
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_37_UA_NI,C1_37,53,1,unambiguous,non-ironic,a,The questions required thorough preparation to answer.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1293,10 +1376,18 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
+
 2. S1: a
-3. L1: a","['a', 'd', 'c', 'b']",4,UA_NI,a,"1. L0: a
+
+3. L1: a","['a', 'd', 'c', 'b']",4,UA_NI,"{'a': 40.75, 'b': 23.25, 'c': 21.875, 'd': 22.75}","{'a': 1.0, 'b': 2.510999053129126e-08, 'c': 6.348800152267131e-09, 'd': 1.5229979055675358e-08}",1.0,,"1. L0: a
+
 2. S1: a
-3. L1: a",a
+
+3. L1: a",,a,a,a,,"1. L0: a
+
+2. S1: a
+
+3. L1: a"
 C1_38_A_I,C1_38,172,1,ambiguous,ironic,a,Booking the appointment was frustrating and difficult.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1326,15 +1417,19 @@ Answer the following questions in order:
    Answer with a letter from a–d.
 
 Final Answer:
-  Answer with a letter from a–d.","1. L0: a
+  Answer with a letter from a–d.","1. Literal Listener (L0): a
 
-2. S1: a
+2. Informative Speaker (S1): a
 
-3. L1: a","['b', 'd', 'a', 'c']",4,A_I,a,"1. L0: a
+3. Pragmatic Listener (L1): a","['b', 'd', 'a', 'c']",4,A_I,"{'a': 43.0, 'b': 26.0, 'c': 23.75, 'd': 25.25}","{'a': 0.9999998807907104, 'b': 4.139937104241653e-08, 'c': 4.363461592049589e-09, 'd': 1.9555679742211396e-08}",0.9999998807907104,,"1. Literal Listener (L0): a
 
-2. S1: a
+2. Informative Speaker (S1): a
 
-3. L1: a",b
+3. Pragmatic Listener (L1): a",,a,a,a,,"1. Literal Listener (L0): a
+
+2. Informative Speaker (S1): a
+
+3. Pragmatic Listener (L1): a"
 C1_39_A_NI,C1_39,233,1,ambiguous,non-ironic,a,Completing the task was a genuine sign of intelligence.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1366,9 +1461,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['a', 'b', 'c', 'd']",4,A_NI,a,"1. L0: a
+3. L1: a","['a', 'b', 'c', 'd']",4,A_NI,"{'a': 41.0, 'b': 23.25, 'c': 21.75, 'd': 22.875}","{'a': 1.0, 'b': 1.9555681518568235e-08, 'c': 4.363462036138799e-09, 'd': 1.3440409674103648e-08}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_40_UA_I,C1_40,144,1,unambiguous,ironic,d,Making the payment was complicated and painful.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1400,9 +1497,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: d","['a', 'd', 'c', 'b']",4,UA_I,d,"1. L0: a
+3. L1: d","['a', 'd', 'c', 'b']",4,UA_I,"{'a': 24.625, 'b': 21.0, 'c': 21.0, 'd': 38.0}","{'a': 1.5534977819697815e-06, 'b': 4.139931064628399e-08, 'c': 4.139931064628399e-08, 'd': 0.9999984502792358}",0.9999984502792358,,"1. L0: a
 2. S1: a
-3. L1: d",b
+3. L1: d",,a,a,d,,"1. L0: a
+2. S1: a
+3. L1: d"
 C1_41_UA_NI,C1_41,147,1,unambiguous,non-ironic,c,Her kitchen was tidy.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1434,9 +1533,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['c', 'b', 'a', 'd']",4,UA_NI,c,"1. L0: c
+3. L1: c","['c', 'b', 'a', 'd']",4,UA_NI,"{'a': 22.25, 'b': 21.375, 'c': 42.25, 'd': 25.75}","{'a': 2.061153470123145e-09, 'b': 8.592165312570899e-10, 'c': 0.9999998807907104, 'd': 6.825602838489431e-08}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_42_A_I,C1_42,55,1,ambiguous,ironic,a,The room was left in a terrible state for far too long.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1468,9 +1569,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['b', 'c', 'a', 'd']",4,A_I,a,"1. L0: a
+3. L1: a","['b', 'c', 'a', 'd']",4,A_I,"{'a': 40.5, 'b': 23.5, 'c': 22.125, 'd': 23.75}","{'a': 0.9999998807907104, 'b': 4.139937104241653e-08, 'c': 1.0467400279878802e-08, 'd': 5.315784434856141e-08}",0.9999998807907104,,"1. L0: a
 2. S1: a
-3. L1: a",b
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_43_A_NI,C1_43,67,1,ambiguous,non-ironic,b,The street was genuinely pleasant.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1504,11 +1607,15 @@ Final Answer:
 
 2. S1: b
 
-3. L1: b","['d', 'a', 'c', 'b']",4,A_NI,b,"1. L0: b
+3. L1: b","['d', 'a', 'c', 'b']",4,A_NI,"{'a': 22.625, 'b': 44.25, 'c': 23.875, 'd': 25.25}","{'a': 4.05865202557365e-10, 'b': 1.0, 'c': 1.4166088302403068e-09, 'd': 5.602796449011294e-09}",1.0,,"1. L0: b
 
 2. S1: b
 
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+
+2. S1: b
+
+3. L1: b"
 C1_44_UA_I,C1_44,83,1,unambiguous,ironic,c,The floor was very dirty.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1540,9 +1647,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['a', 'd', 'b', 'c']",4,UA_I,a,"1. L0: a
+3. L1: a","['a', 'd', 'b', 'c']",4,UA_I,"{'a': 44.0, 'b': 24.5, 'c': 22.875, 'd': 23.5}","{'a': 1.0, 'b': 3.3982678893096363e-09, 'c': 6.691586174056852e-10, 'd': 1.2501528701136522e-09}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_45_UA_NI,C1_45,40,1,unambiguous,non-ironic,c,The movie was funny and great.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1576,11 +1685,15 @@ Final Answer:
 
 2. S1: c
 
-3. L1: c","['c', 'd', 'a', 'b']",4,UA_NI,c,"1. L0: a
+3. L1: c","['c', 'd', 'a', 'b']",4,UA_NI,"{'a': 20.875, 'b': 19.5, 'c': 36.25, 'd': 21.5}","{'a': 2.1024322904850123e-07, 'b': 5.31578123741383e-08, 'c': 0.9999992847442627, 'd': 3.927860632302327e-07}",0.9999992847442627,,"1. L0: a
 
 2. S1: c
 
-3. L1: c",a
+3. L1: c",,a,c,c,,"1. L0: a
+
+2. S1: c
+
+3. L1: c"
 C1_46_A_I,C1_46,159,1,ambiguous,ironic,a,The musical was purely for laughs.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1614,11 +1727,15 @@ Final Answer:
 
 2. S1: b
 
-3. L1: b","['b', 'a', 'd', 'c']",4,A_I,b,"1. L0: b
+3. L1: b","['b', 'a', 'd', 'c']",4,A_I,"{'a': 23.5, 'b': 44.5, 'c': 24.5, 'd': 26.125}","{'a': 7.582560135332983e-10, 'b': 1.0, 'c': 2.06115369216775e-09, 'd': 1.0467401168057222e-08}",1.0,,"1. L0: b
 
 2. S1: b
 
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+
+2. S1: b
+
+3. L1: b"
 C1_47_A_NI,C1_47,3,1,ambiguous,non-ironic,a,The situation was genuinely amusing.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1653,11 +1770,15 @@ Final Answer:
 2. S1: a
 
 3. L1: a
-","['a', 'c', 'b', 'd']",4,A_NI,a,"1. L0: a
+","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 43.75, 'b': 25.625, 'c': 23.75, 'd': 25.25}","{'a': 1.0, 'b': 1.3440409674103648e-08, 'c': 2.06115369216775e-09, 'd': 9.23744991609965e-09}",1.0,,"1. L0: a
 
 2. S1: a
 
-3. L1: a",a
+3. L1: a",,a,a,a,,"1. L0: a
+
+2. S1: a
+
+3. L1: a"
 C1_48_UA_I,C1_48,208,1,unambiguous,ironic,c,The talk contained no humour.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1689,9 +1810,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: d
 2. S1: d
-3. L1: d","['d', 'c', 'b', 'a']",4,UA_I,d,"1. L0: d
+3. L1: d","['d', 'c', 'b', 'a']",4,UA_I,"{'a': 22.5, 'b': 19.625, 'c': 21.75, 'd': 40.0}","{'a': 2.510999053129126e-08, 'b': 1.4166088302403068e-09, 'c': 1.1861120086109622e-08, 'd': 1.0}",1.0,,"1. L0: d
 2. S1: d
-3. L1: d",a
+3. L1: d",,d,d,d,,"1. L0: d
+2. S1: d
+3. L1: d"
 C1_49_UA_NI,C1_49,229,1,unambiguous,non-ironic,a,The airport experience was enjoyable.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1725,11 +1848,15 @@ Final Answer:
 
 2. S1: d
 
-3. L1: d","['a', 'c', 'd', 'b']",4,UA_NI,d,"1. L0: d
+3. L1: d","['a', 'c', 'd', 'b']",4,UA_NI,"{'a': 21.75, 'b': 19.25, 'c': 21.0, 'd': 38.0}","{'a': 8.764247638737288e-08, 'b': 7.194131956822503e-09, 'c': 4.139937104241653e-08, 'd': 0.9999998807907104}",0.9999998807907104,,"1. L0: d
 
 2. S1: d
 
-3. L1: d",b
+3. L1: d",,d,d,d,,"1. L0: d
+
+2. S1: d
+
+3. L1: d"
 C1_50_A_I,C1_50,254,1,ambiguous,ironic,d,The exam results were deeply disappointing.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1761,9 +1888,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: d
 2. S1: d
-3. L1: d","['c', 'd', 'a', 'b']",4,A_I,d,"1. L0: d
+3. L1: d","['c', 'd', 'a', 'b']",4,A_I,"{'a': 21.125, 'b': 19.5, 'c': 21.5, 'd': 38.25}","{'a': 3.653481783771895e-08, 'b': 7.194131956822503e-09, 'c': 5.315784434856141e-08, 'd': 0.9999998807907104}",0.9999998807907104,,"1. L0: d
 2. S1: d
-3. L1: d",b
+3. L1: d",,d,d,d,,"1. L0: d
+2. S1: d
+3. L1: d"
 C1_51_A_NI,C1_51,129,1,ambiguous,non-ironic,b,They found the play dull.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1795,9 +1924,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: b
-3. L1: b","['b', 'a', 'd', 'c']",4,A_NI,b,"1. L0: b
+3. L1: b","['b', 'a', 'd', 'c']",4,A_NI,"{'a': 23.875, 'b': 46.5, 'c': 25.375, 'd': 27.0}","{'a': 1.493094675675266e-10, 'b': 1.0, 'c': 6.691586174056852e-10, 'd': 3.3982678893096363e-09}",1.0,,"1. L0: b
 2. S1: b
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_52_UA_I,C1_52,114,1,unambiguous,ironic,b,She found the whole meal disappointing.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1829,9 +1960,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: b
-3. L1: b","['d', 'b', 'a', 'c']",4,UA_I,b,"1. L0: b
+3. L1: b","['d', 'b', 'a', 'c']",4,UA_I,"{'a': 23.0, 'b': 44.25, 'c': 24.75, 'd': 27.5}","{'a': 5.905304023556823e-10, 'b': 1.0, 'c': 3.3982678893096363e-09, 'd': 5.315785145398877e-08}",1.0,,"1. L0: b
 2. S1: b
-3. L1: b",b
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_53_UA_NI,C1_53,140,1,unambiguous,non-ironic,a,The ground was moist and muddy after the rain.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1863,9 +1996,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: d
 2. S1: d
-3. L1: d","['a', 'c', 'd', 'b']",4,UA_NI,d,"1. L0: d
+3. L1: d","['a', 'c', 'd', 'b']",4,UA_NI,"{'a': 22.875, 'b': 20.75, 'c': 21.25, 'd': 41.25}","{'a': 1.0467401168057222e-08, 'b': 1.2501528701136522e-09, 'c': 2.06115369216775e-09, 'd': 1.0}",1.0,,"1. L0: d
 2. S1: d
-3. L1: d",b
+3. L1: d",,d,d,d,,"1. L0: d
+2. S1: d
+3. L1: d"
 C1_54_A_I,C1_54,123,1,ambiguous,ironic,a,The garden was just watered and needed to dry out.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1897,9 +2032,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: c
-3. L1: c","['b', 'c', 'a', 'd']",4,A_I,c,"1. L0: a
+3. L1: c","['b', 'c', 'a', 'd']",4,A_I,"{'a': 21.5, 'b': 20.375, 'c': 38.0, 'd': 22.625}","{'a': 6.825601417403959e-08, 'b': 2.2159483137329516e-08, 'c': 0.9999996423721313, 'd': 2.1024331431362953e-07}",0.9999996423721313,,"1. L0: a
 2. S1: c
-3. L1: c",a
+3. L1: c",,a,c,c,,"1. L0: a
+2. S1: c
+3. L1: c"
 C1_55_A_NI,C1_55,100,1,ambiguous,non-ironic,a,The plants had been getting plenty of moisture to grow.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1931,9 +2068,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['a', 'c', 'b', 'd']",4,A_NI,c,"1. L0: c
+3. L1: c","['a', 'c', 'b', 'd']",4,A_NI,"{'a': 22.25, 'b': 22.25, 'c': 43.25, 'd': 27.0}","{'a': 7.582559025109958e-10, 'b': 7.582559025109958e-10, 'c': 0.9999998807907104, 'd': 8.764247638737288e-08}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",b
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_56_UA_I,C1_56,158,1,unambiguous,ironic,a,Her hair was completely dry.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1965,9 +2104,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: d
 2. S1: d
-3. L1: a","['b', 'd', 'c', 'a']",4,UA_I,a,"1. L0: d
+3. L1: a","['b', 'd', 'c', 'a']",4,UA_I,"{'a': 41.0, 'b': 25.375, 'c': 24.5, 'd': 40.25}","{'a': 0.6791785955429077, 'b': 1.11207157260651e-07, 'c': 4.635803918517922e-08, 'd': 0.32082125544548035}",0.6791785955429077,,"1. L0: d
 2. S1: d
-3. L1: a",b
+3. L1: a",,d,d,a,,"1. L0: d
+2. S1: d
+3. L1: a"
 C1_57_UA_NI,C1_57,89,1,unambiguous,non-ironic,c,I admired the outfit.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -1999,9 +2140,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['b', 'c', 'a', 'd']",4,UA_NI,a,"1. L0: a
+3. L1: a","['b', 'c', 'a', 'd']",4,UA_NI,"{'a': 39.75, 'b': 23.0, 'c': 21.5, 'd': 22.375}","{'a': 0.9999998807907104, 'b': 5.315784434856141e-08, 'c': 1.1861118309752783e-08, 'd': 2.8453344569356886e-08}",0.9999998807907104,,"1. L0: a
 2. S1: a
-3. L1: a",b
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_58_A_I,C1_58,105,1,ambiguous,ironic,c,She thought the car was ugly.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2033,9 +2176,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: a","['a', 'c', 'b', 'd']",4,A_I,a,"1. L0: c
+3. L1: a","['a', 'c', 'b', 'd']",4,A_I,"{'a': 34.5, 'b': 24.875, 'c': 42.0, 'd': 26.375}","{'a': 0.0005527784815058112, 'b': 3.651461355502761e-08, 'c': 0.9994469285011292, 'd': 1.636471722576971e-07}",0.9994469285011292,,"1. L0: c
 2. S1: c
-3. L1: a",a
+3. L1: a",,c,c,a,,"1. L0: c
+2. S1: c
+3. L1: a"
 C1_59_A_NI,C1_59,76,1,ambiguous,non-ironic,b,The painting was genuinely ugly.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2067,9 +2212,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: b
-3. L1: b","['b', 'a', 'd', 'c']",4,A_NI,b,"1. L0: b
+3. L1: b","['b', 'a', 'd', 'c']",4,A_NI,"{'a': 23.5, 'b': 47.5, 'c': 25.5, 'd': 27.0}","{'a': 3.775134371775124e-11, 'b': 1.0, 'c': 2.789468100949932e-10, 'd': 1.2501528701136522e-09}",1.0,,"1. L0: b
 2. S1: b
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_60_UA_I,C1_60,212,1,unambiguous,ironic,a,They thought the bird was not beautiful.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2101,9 +2248,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['b', 'a', 'c', 'd']",4,UA_I,a,"1. L0: a
+3. L1: a","['b', 'a', 'c', 'd']",4,UA_I,"{'a': 40.5, 'b': 23.125, 'c': 21.625, 'd': 22.75}","{'a': 1.0, 'b': 2.8453348122070565e-08, 'c': 6.348800152267131e-09, 'd': 1.9555681518568235e-08}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",b
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_61_UA_NI,C1_61,86,1,unambiguous,non-ironic,c,The kettle was a real bargain.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2135,9 +2284,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['d', 'b', 'a', 'c']",4,UA_NI,c,"1. L0: c
+3. L1: c","['d', 'b', 'a', 'c']",4,UA_NI,"{'a': 22.0, 'b': 21.25, 'c': 41.5, 'd': 25.0}","{'a': 3.3982674452204265e-09, 'b': 1.605227839540646e-09, 'c': 0.9999998807907104, 'd': 6.825602838489431e-08}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_62_A_I,C1_62,165,1,ambiguous,ironic,a,The vase was not pricy.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2169,9 +2320,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['b', 'c', 'a', 'd']",4,A_I,c,"1. L0: c
+3. L1: c","['b', 'c', 'a', 'd']",4,A_I,"{'a': 23.125, 'b': 21.75, 'c': 43.0, 'd': 27.125}","{'a': 2.335592830249311e-09, 'b': 5.905303468445311e-10, 'c': 0.9999998807907104, 'd': 1.2751904421293148e-07}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_63_A_NI,C1_63,195,1,ambiguous,non-ironic,b,The perfume was pricy.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2203,9 +2356,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['b', 'a', 'c', 'd']",4,A_NI,a,"1. L0: a
+3. L1: a","['b', 'a', 'c', 'd']",4,A_NI,"{'a': 43.5, 'b': 24.125, 'c': 22.375, 'd': 23.5}","{'a': 1.0, 'b': 3.850741947530878e-09, 'c': 6.691586174056852e-10, 'd': 2.06115369216775e-09}",1.0,,"1. L0: a
 2. S1: a
-3. L1: a",b
+3. L1: a",,a,a,a,,"1. L0: a
+2. S1: a
+3. L1: a"
 C1_64_UA_I,C1_64,276,1,unambiguous,ironic,b,The bag was worth very little.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2237,9 +2392,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['c', 'b', 'a', 'd']",4,UA_I,c,"1. L0: c
+3. L1: c","['c', 'b', 'a', 'd']",4,UA_I,"{'a': 22.875, 'b': 22.0, 'c': 43.25, 'd': 26.375}","{'a': 1.4166088302403068e-09, 'b': 5.905304023556823e-10, 'c': 1.0, 'd': 4.691164079417831e-08}",1.0,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_65_UA_NI,C1_65,174,1,unambiguous,non-ironic,c,The house felt cramped and tiny.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2271,9 +2428,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['c', 'b', 'a', 'd']",4,UA_NI,c,"1. L0: c
+3. L1: c","['c', 'b', 'a', 'd']",4,UA_NI,"{'a': 21.5, 'b': 22.125, 'c': 42.25, 'd': 26.0}","{'a': 9.736199624299502e-10, 'b': 1.818961425925636e-09, 'c': 0.9999998807907104, 'd': 8.764247638737288e-08}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_66_A_I,C1_66,245,1,ambiguous,ironic,b,They thought the concert was small.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2307,9 +2466,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: c
 2. S1: c
-3. L1: c","['d', 'b', 'a', 'c']",4,A_I,c,"1. L0: c
+3. L1: c","['d', 'b', 'a', 'c']",4,A_I,"{'a': 23.125, 'b': 21.75, 'c': 43.5, 'd': 26.875}","{'a': 1.4166086081957019e-09, 'b': 3.5817473986732296e-10, 'c': 0.9999998807907104, 'd': 6.023573462243803e-08}",0.9999998807907104,,"1. L0: c
 2. S1: c
-3. L1: c",a
+3. L1: c",,c,c,c,,"1. L0: c
+2. S1: c
+3. L1: c"
 C1_67_A_NI,C1_67,231,1,ambiguous,non-ironic,d,She thought the spider was tiny.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2341,9 +2502,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: d
 2. S1: d
-3. L1: d","['b', 'c', 'd', 'a']",4,A_NI,d,"1. L0: d
+3. L1: d","['b', 'c', 'd', 'a']",4,A_NI,"{'a': 21.625, 'b': 19.625, 'c': 20.875, 'd': 38.75}","{'a': 3.6534821390432626e-08, 'b': 4.94445062670934e-09, 'c': 1.7257828943684217e-08, 'd': 1.0}",1.0,,"1. L0: d
 2. S1: d
-3. L1: d",a
+3. L1: d",,d,d,d,,"1. L0: d
+2. S1: d
+3. L1: d"
 C1_68_UA_I,C1_68,236,1,unambiguous,ironic,b,I thought the dog was small.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2375,9 +2538,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: d
-3. L1: d","['c', 'b', 'd', 'a']",4,UA_I,d,"1. L0: b
+3. L1: d","['c', 'b', 'd', 'a']",4,UA_I,"{'a': 21.875, 'b': 22.0, 'c': 21.625, 'd': 40.75}","{'a': 6.348800152267131e-09, 'b': 7.194132845000922e-09, 'c': 4.94445062670934e-09, 'd': 1.0}",1.0,,"1. L0: b
 2. S1: d
-3. L1: d",a
+3. L1: d",,b,d,d,,"1. L0: b
+2. S1: d
+3. L1: d"
 C1_69_UA_NI,C1_69,200,1,unambiguous,non-ironic,a,The pool was super cold.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2409,9 +2574,16 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
 2. S1: a
-3. L1: a","['a', 'd', 'b', 'c']",4,UA_NI,a,"1. L0: a
+
+3. L1: a","['a', 'd', 'b', 'c']",4,UA_NI,"{'a': 39.25, 'b': 22.5, 'c': 20.875, 'd': 21.875}","{'a': 0.9999998807907104, 'b': 5.315784434856141e-08, 'c': 1.0467400279878802e-08, 'd': 2.8453344569356886e-08}",0.9999998807907104,,"1. L0: a
+
 2. S1: a
-3. L1: a",a
+
+3. L1: a",,a,a,a,,"1. L0: a
+
+2. S1: a
+
+3. L1: a"
 C1_70_A_I,C1_70,277,1,ambiguous,ironic,a,The weather conditions were awful.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2443,9 +2615,11 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: b
-3. L1: b","['b', 'a', 'd', 'c']",4,A_I,b,"1. L0: b
+3. L1: b","['b', 'a', 'd', 'c']",4,A_I,"{'a': 23.625, 'b': 46.0, 'c': 24.625, 'd': 26.25}","{'a': 1.917171560394948e-10, 'b': 1.0, 'c': 5.211412412720051e-10, 'd': 2.64657362691878e-09}",1.0,,"1. L0: b
 2. S1: b
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
 C1_71_A_NI,C1_71,57,1,ambiguous,non-ironic,a,The room was freezing cold.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2476,10 +2650,18 @@ Answer the following questions in order:
 
 Final Answer:
   Answer with a letter from a–d.","1. L0: a
+
 2. S1: a
-3. L1: a","['a', 'd', 'c', 'b']",4,A_NI,a,"1. L0: a
+
+3. L1: a","['a', 'd', 'c', 'b']",4,A_NI,"{'a': 42.75, 'b': 24.0, 'c': 22.0, 'd': 23.0}","{'a': 1.0, 'b': 7.194132845000922e-09, 'c': 9.736200734522527e-10, 'd': 2.64657362691878e-09}",1.0,,"1. L0: a
+
 2. S1: a
-3. L1: a",a
+
+3. L1: a",,a,a,a,,"1. L0: a
+
+2. S1: a
+
+3. L1: a"
 C1_72_UA_I,C1_72,179,1,unambiguous,ironic,a,Her coffee did not taste good.,Gemma-3-4B,Condition1B_context_richness_stimuli,rsa,"You will read short stories that describe everyday situations and end with a person saying something.
 
 For each story, there are 4 possible interpretations (a,b,c,d).
@@ -2511,6 +2693,8 @@ Answer the following questions in order:
 Final Answer:
   Answer with a letter from a–d.","1. L0: b
 2. S1: b
-3. L1: b","['b', 'a', 'd', 'c']",4,UA_I,b,"1. L0: b
+3. L1: b","['b', 'a', 'd', 'c']",4,UA_I,"{'a': 24.625, 'b': 46.5, 'c': 25.25, 'd': 26.625}","{'a': 3.16088155649652e-10, 'b': 1.0, 'c': 5.905304023556823e-10, 'd': 2.335593052293916e-09}",1.0,,"1. L0: b
 2. S1: b
-3. L1: b",a
+3. L1: b",,b,b,b,,"1. L0: b
+2. S1: b
+3. L1: b"
