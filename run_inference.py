@@ -194,11 +194,14 @@ def generate_predictions(
                 ]
 
                 if tokenizer.chat_template is not None:
+                    is_qwen3 = "qwen3" in model_name.lower()
+                    template_kwargs = {"enable_thinking": False} if is_qwen3 else {}
+
                     formatted_prompt = tokenizer.apply_chat_template(
                         messages,
                         tokenize=False,
                         add_generation_prompt=True,
-                        
+                        **template_kwargs
                     )
                 else:
                     # GPT doesn't accept chat_template format, we need to manually just inser this
