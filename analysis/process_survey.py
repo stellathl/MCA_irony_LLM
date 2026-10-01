@@ -5,19 +5,19 @@ Turns one LimeSurvey export + its stimulus CSV into one row per trial.
 Usage:
   python process_survey.py --export results_list1.csv --stimuli stimuli_list1.csv --list 1 --out trials_list1.csv
 """
+
 import argparse
 import ast
 import re
-
 import pandas as pd
 
 CATEGORIES = {"a": "literal", "b": "ironic", "c": "topic_echo", "d": "keyword"}
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--export", required=True)
-parser.add_argument("--stimuli", required=True)
-parser.add_argument("--list", type=int, required=True)
-parser.add_argument("--out", required=True)
+parser.add_argument("--export", required = True)
+parser.add_argument("--stimuli", required = True)
+parser.add_argument("--list", type=int, required = True)
+parser.add_argument("--out", required = True)
 args = parser.parse_args()
 
 ex = pd.read_csv(args.export)
@@ -32,14 +32,14 @@ assert len(q_cols) == len(conf_cols) == len(codes) == 72, "column count mismatch
 
 
 def code_to_item_id(code):
-    # 'C101ANI' -> 'C1_01_A_NI'
+    #for example: turns 'C101ANI' -> 'C1_01_A_NI'
     m = re.match(r"C(\d)(\d\d)(A|UA)(I|NI)$", code)
     return f"C{m[1]}_{m[2]}_{m[3]}_{m[4]}"
 
 
 rows = []
 for _, p in ex.iterrows():
-    if p.iloc[7] != "I agree.":  # consent column
+    if p.iloc[7] != "I agree.":  #consent column
         continue
     for q, conf, code in zip(q_cols, conf_cols, codes):
         answer = p[q]
@@ -47,7 +47,7 @@ for _, p in ex.iterrows():
             continue
         item_id = code_to_item_id(code)
         s = st.loc[item_id]
-        shown_pos = answer.strip()[0]  # letter the participant saw
+        shown_pos = answer.strip()[0]  #letter the participant saw
         mapping = ast.literal_eval(s["original_option_mapping"])
         category = CATEGORIES[mapping["abcd".index(shown_pos)]]
         irony = "ironic" if s["irony_label"] == "ironic" else "non_ironic"
@@ -65,6 +65,6 @@ for _, p in ex.iterrows():
         })
 
 trials = pd.DataFrame(rows)
-trials.to_csv(args.out, index=False)
+trials.to_csv(args.out, index = False)
 print(f"{len(trials)} trials from {trials['participant'].nunique()} participants "
       f"({trials.groupby('participant')['completed'].first().sum()} completed)")
