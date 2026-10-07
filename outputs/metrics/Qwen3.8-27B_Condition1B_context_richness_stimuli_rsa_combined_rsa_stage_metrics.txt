@@ -1,0 +1,95 @@
+Model      : Qwen3.8-27B
+Dataset    : Condition1B_context_richness_stimuli
+Prompt Type: rsa
+==================================================
+
+############################################################
+### STAGE: L0 (Literal Listener)
+############################################################
+
+--- Irony ---
+irony_label  n  accuracy  precision  recall  f1
+ non-ironic  1       1.0        0.0     0.0 0.0
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall  f1
+  unambiguous  non-ironic  1       1.0        0.0     0.0 0.0
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     b                1        1          0     100.0%      100.0%
+
+Selection Distribution:
+  Option b:   1 selections (100.0%)
+
+
+############################################################
+### STAGE: S1 (Informative Speaker)
+############################################################
+
+--- Irony ---
+irony_label  n  accuracy  precision  recall  f1
+ non-ironic  1       1.0        0.0     0.0 0.0
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall  f1
+  unambiguous  non-ironic  1       1.0        0.0     0.0 0.0
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     b                1        1          0     100.0%      100.0%
+
+Selection Distribution:
+  Option b:   1 selections (100.0%)
+
+
+############################################################
+### STAGE: L1 (Pragmatic Listener)
+############################################################
+
+--- Irony ---
+irony_label  n  accuracy  precision  recall  f1
+ non-ironic  1       0.0        0.0     0.0 0.0
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall  f1
+  unambiguous  non-ironic  1       0.0        0.0     0.0 0.0
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     d                1        0          1       0.0%      100.0%
+
+Selection Distribution:
+  Option d:   1 selections (100.0%)
+
+
+############################################################
+### STAGE: Final Answer
+############################################################
+
+--- Irony ---
+irony_label  n  accuracy  precision  recall    f1
+     ironic 33     0.455      0.487   0.310 0.298
+ non-ironic 41     0.341      0.444   0.368 0.301
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 12     0.417      0.225   0.283 0.233
+    ambiguous  non-ironic 17     0.412      0.571   0.448 0.367
+  unambiguous      ironic 21     0.476      0.368   0.308 0.280
+  unambiguous  non-ironic 24     0.292      0.318   0.298 0.228
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     a               65       23         42      35.4%       87.8%
+     b                4        2          2      50.0%        5.4%
+     c                4        4          0     100.0%        5.4%
+     d                1        0          1       0.0%        1.4%
+
+Selection Distribution:
+  Option a:  65 selections ( 87.8%)
+  Option b:   4 selections (  5.4%)
+  Option c:   4 selections (  5.4%)
+  Option d:   1 selections (  1.4%)
+
+
