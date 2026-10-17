@@ -31,7 +31,7 @@ OUTPUTS_DIR = "./outputs"
 os.makedirs(OUTPUTS_DIR, exist_ok=True)
 
 MAX_NEW_TOKENS = 150
-TEMPERATURE = 0.1
+TEMPERATURE = 0.5
 
 CONDITION_MAP = {
     "Condition1B_context_richness_stimuli": "condition",

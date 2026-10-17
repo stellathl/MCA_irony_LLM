@@ -1,0 +1,2574 @@
+Requirement already satisfied: pandas in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from -r requirements.txt (line 1)) (3.0.4)
+Requirement already satisfied: numpy in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from -r requirements.txt (line 2)) (2.4.6)
+Requirement already satisfied: scikit-learn in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from -r requirements.txt (line 3)) (1.9.0)
+Requirement already satisfied: torch==2.4.1 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from -r requirements.txt (line 4)) (2.4.1)
+Requirement already satisfied: transformers in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from -r requirements.txt (line 5)) (5.12.1)
+Requirement already satisfied: filelock in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (3.29.4)
+Requirement already satisfied: typing-extensions>=4.8.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (4.15.0)
+Requirement already satisfied: sympy in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (1.14.0)
+Requirement already satisfied: networkx in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (3.6.1)
+Requirement already satisfied: jinja2 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (3.1.6)
+Requirement already satisfied: fsspec in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (2026.6.0)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.1.105 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (12.1.105)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.1.105 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (12.1.105)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.1.105 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (12.1.105)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.1.3.1 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (12.1.3.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.0.2.54 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (11.0.2.54)
+Requirement already satisfied: nvidia-curand-cu12==10.3.2.106 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (10.3.2.106)
+Requirement already satisfied: nvidia-cusolver-cu12==11.4.5.107 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (11.4.5.107)
+Requirement already satisfied: nvidia-cusparse-cu12==12.1.0.106 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (12.1.0.106)
+Requirement already satisfied: nvidia-nccl-cu12==2.20.5 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (2.20.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.1.105 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (12.1.105)
+Requirement already satisfied: triton==3.0.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from torch==2.4.1->-r requirements.txt (line 4)) (3.0.0)
+Requirement already satisfied: nvidia-nvjitlink-cu12 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from nvidia-cusolver-cu12==11.4.5.107->torch==2.4.1->-r requirements.txt (line 4)) (12.9.86)
+Requirement already satisfied: python-dateutil>=2.8.2 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from pandas->-r requirements.txt (line 1)) (2.9.0.post0)
+Requirement already satisfied: scipy>=1.10.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from scikit-learn->-r requirements.txt (line 3)) (1.17.1)
+Requirement already satisfied: joblib>=1.4.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from scikit-learn->-r requirements.txt (line 3)) (1.5.3)
+Requirement already satisfied: narwhals>=2.0.1 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from scikit-learn->-r requirements.txt (line 3)) (2.22.1)
+Requirement already satisfied: threadpoolctl>=3.5.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from scikit-learn->-r requirements.txt (line 3)) (3.6.0)
+Requirement already satisfied: huggingface-hub<2.0,>=1.5.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from transformers->-r requirements.txt (line 5)) (1.21.0)
+Requirement already satisfied: packaging>=20.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from transformers->-r requirements.txt (line 5)) (26.2)
+Requirement already satisfied: pyyaml>=5.1 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from transformers->-r requirements.txt (line 5)) (6.0.3)
+Requirement already satisfied: regex>=2025.10.22 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from transformers->-r requirements.txt (line 5)) (2026.6.28)
+Requirement already satisfied: tokenizers<=0.23.0,>=0.22.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from transformers->-r requirements.txt (line 5)) (0.22.2)
+Requirement already satisfied: typer in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from transformers->-r requirements.txt (line 5)) (0.25.1)
+Requirement already satisfied: safetensors>=0.4.3 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from transformers->-r requirements.txt (line 5)) (0.8.0)
+Requirement already satisfied: tqdm>=4.60 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from transformers->-r requirements.txt (line 5)) (4.68.3)
+Requirement already satisfied: click>=8.4.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers->-r requirements.txt (line 5)) (8.4.2)
+Requirement already satisfied: hf-xet<2.0.0,>=1.5.1 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers->-r requirements.txt (line 5)) (1.5.1)
+Requirement already satisfied: httpx<1,>=0.23.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from huggingface-hub<2.0,>=1.5.0->transformers->-r requirements.txt (line 5)) (0.28.1)
+Requirement already satisfied: six>=1.5 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 1)) (1.17.0)
+Requirement already satisfied: shellingham>=1.3.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from typer->transformers->-r requirements.txt (line 5)) (1.5.4)
+Requirement already satisfied: rich>=13.8.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from typer->transformers->-r requirements.txt (line 5)) (15.0.0)
+Requirement already satisfied: annotated-doc>=0.0.2 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from typer->transformers->-r requirements.txt (line 5)) (0.0.4)
+Requirement already satisfied: MarkupSafe>=2.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from jinja2->torch==2.4.1->-r requirements.txt (line 4)) (3.0.3)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from sympy->torch==2.4.1->-r requirements.txt (line 4)) (1.3.0)
+Requirement already satisfied: anyio in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers->-r requirements.txt (line 5)) (4.14.1)
+Requirement already satisfied: certifi in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers->-r requirements.txt (line 5)) (2026.6.17)
+Requirement already satisfied: httpcore==1.* in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers->-r requirements.txt (line 5)) (1.0.9)
+Requirement already satisfied: idna in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers->-r requirements.txt (line 5)) (3.18)
+Requirement already satisfied: h11>=0.16 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface-hub<2.0,>=1.5.0->transformers->-r requirements.txt (line 5)) (0.16.0)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from rich>=13.8.0->typer->transformers->-r requirements.txt (line 5)) (4.2.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from rich>=13.8.0->typer->transformers->-r requirements.txt (line 5)) (2.20.0)
+Requirement already satisfied: mdurl~=0.1 in /user/asuka.kuwahara/u27871/envs/irony/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer->transformers->-r requirements.txt (line 5)) (0.1.2)
+Starting inference pipeline...
+Found datasets: ['Condition1B_context_richness_stimuli.csv']
+
+============================================================
+Loading model: Gemma-3-4B (google/gemma-3-4b-it)
+============================================================
+Loading weights:   0%|          | 0/883 [00:00<?, ?it/s]Loading weights:   0%|          | 1/883 [00:02<32:05,  2.18s/it]Loading weights:   1%|          | 11/883 [00:02<02:14,  6.48it/s]Loading weights:   2%|▏         | 16/883 [00:02<01:29,  9.67it/s]Loading weights:   3%|▎         | 23/883 [00:02<00:57, 14.87it/s]Loading weights:   3%|▎         | 29/883 [00:02<00:51, 16.43it/s]Loading weights:   4%|▎         | 33/883 [00:03<00:49, 17.01it/s]Loading weights:   5%|▍         | 43/883 [00:03<00:31, 26.58it/s]Loading weights:   6%|▌         | 55/883 [00:03<00:21, 38.07it/s]Loading weights:   7%|▋         | 61/883 [00:03<00:20, 40.11it/s]Loading weights:   8%|▊         | 68/883 [00:03<00:17, 45.70it/s]Loading weights:   8%|▊         | 74/883 [00:03<00:18, 43.27it/s]Loading weights:   9%|▉         | 82/883 [00:03<00:17, 46.92it/s]Loading weights:  10%|▉         | 88/883 [00:04<00:16, 49.29it/s]Loading weights:  11%|█         | 94/883 [00:04<00:18, 42.35it/s]Loading weights:  11%|█         | 99/883 [00:04<00:29, 26.66it/s]Loading weights:  12%|█▏        | 107/883 [00:04<00:23, 33.72it/s]Loading weights:  13%|█▎        | 112/883 [00:04<00:21, 35.64it/s]Loading weights:  14%|█▎        | 120/883 [00:04<00:17, 43.39it/s]Loading weights:  14%|█▍        | 126/883 [00:05<00:16, 45.21it/s]Loading weights:  15%|█▌        | 133/883 [00:05<00:14, 50.38it/s]Loading weights:  16%|█▌        | 139/883 [00:05<00:14, 50.09it/s]Loading weights:  17%|█▋        | 146/883 [00:05<00:15, 46.12it/s]Loading weights:  18%|█▊        | 157/883 [00:05<00:11, 60.73it/s]Loading weights:  19%|█▊        | 164/883 [00:05<00:14, 50.99it/s]Loading weights:  19%|█▉        | 171/883 [00:05<00:14, 47.93it/s]Loading weights:  20%|██        | 177/883 [00:06<00:15, 44.75it/s]Loading weights:  21%|██        | 185/883 [00:06<00:13, 51.29it/s]Loading weights:  22%|██▏       | 191/883 [00:06<00:13, 51.00it/s]Loading weights:  22%|██▏       | 197/883 [00:06<00:13, 51.06it/s]Loading weights:  23%|██▎       | 203/883 [00:06<00:13, 49.27it/s]Loading weights:  24%|██▍       | 212/883 [00:06<00:12, 51.62it/s]Loading weights:  25%|██▌       | 222/883 [00:06<00:10, 62.59it/s]Loading weights:  26%|██▌       | 229/883 [00:07<00:12, 52.32it/s]Loading weights:  27%|██▋       | 237/883 [00:07<00:11, 58.12it/s]Loading weights:  28%|██▊       | 244/883 [00:07<00:12, 49.83it/s]Loading weights:  28%|██▊       | 251/883 [00:07<00:12, 50.70it/s]Loading weights:  29%|██▉       | 258/883 [00:07<00:11, 53.37it/s]Loading weights:  30%|██▉       | 264/883 [00:07<00:12, 50.00it/s]Loading weights:  31%|███       | 273/883 [00:07<00:10, 58.67it/s]Loading weights:  32%|███▏      | 280/883 [00:08<00:12, 49.87it/s]Loading weights:  33%|███▎      | 289/883 [00:08<00:10, 56.87it/s]Loading weights:  34%|███▎      | 296/883 [00:08<00:10, 54.47it/s]Loading weights:  34%|███▍      | 303/883 [00:08<00:11, 51.07it/s]Loading weights:  35%|███▌      | 312/883 [00:08<00:09, 58.46it/s]Loading weights:  36%|███▌      | 319/883 [00:08<00:11, 48.91it/s]Loading weights:  37%|███▋      | 328/883 [00:08<00:09, 56.42it/s]Loading weights:  38%|███▊      | 335/883 [00:09<00:10, 54.72it/s]Loading weights:  39%|███▊      | 342/883 [00:09<00:10, 51.47it/s]Loading weights:  39%|███▉      | 348/883 [00:09<00:10, 53.21it/s]Loading weights:  40%|████      | 355/883 [00:09<00:10, 50.40it/s]Loading weights:  41%|████      | 362/883 [00:09<00:09, 53.64it/s]Loading weights:  42%|████▏     | 368/883 [00:09<00:10, 50.57it/s]Loading weights:  43%|████▎     | 377/883 [00:09<00:08, 59.61it/s]Loading weights:  43%|████▎     | 384/883 [00:09<00:10, 48.86it/s]Loading weights:  45%|████▍     | 393/883 [00:10<00:08, 57.95it/s]Loading weights:  45%|████▌     | 400/883 [00:10<00:08, 54.69it/s]Loading weights:  46%|████▌     | 406/883 [00:10<00:09, 52.60it/s]Loading weights:  47%|████▋     | 412/883 [00:10<00:09, 51.50it/s]Loading weights:  48%|████▊     | 421/883 [00:10<00:08, 56.63it/s]Loading weights:  49%|████▉     | 433/883 [00:10<00:06, 67.73it/s]Loading weights:  51%|█████     | 449/883 [00:10<00:05, 84.29it/s]Loading weights:  53%|█████▎    | 465/883 [00:10<00:04, 99.06it/s]Loading weights:  55%|█████▍    | 485/883 [00:11<00:03, 112.68it/s]Loading weights:  57%|█████▋    | 503/883 [00:11<00:03, 126.05it/s]Loading weights:  59%|█████▊    | 517/883 [00:11<00:02, 126.62it/s]Loading weights:  62%|██████▏   | 551/883 [00:11<00:01, 166.96it/s]Loading weights:  66%|██████▌   | 582/883 [00:11<00:01, 193.16it/s]Loading weights:  70%|██████▉   | 615/883 [00:11<00:01, 219.99it/s]Loading weights:  74%|███████▎  | 650/883 [00:11<00:00, 252.61it/s]Loading weights:  77%|███████▋  | 679/883 [00:11<00:00, 241.58it/s]Loading weights:  81%|████████  | 711/883 [00:12<00:00, 261.34it/s]Loading weights:  85%|████████▍ | 749/883 [00:12<00:00, 293.07it/s]Loading weights:  88%|████████▊ | 780/883 [00:12<00:00, 286.71it/s]Loading weights:  92%|█████████▏| 810/883 [00:12<00:00, 287.68it/s]Loading weights:  95%|█████████▌| 840/883 [00:12<00:00, 280.95it/s]Loading weights: 100%|█████████▉| 881/883 [00:12<00:00, 312.95it/s]Loading weights: 100%|██████████| 883/883 [00:12<00:00, 70.11it/s] 
+[transformers] Passing `generation_config` together with generation-related arguments=({'do_sample', 'max_new_tokens', 'temperature'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+gpu?cpu? cuda:0
+cuda available: True
+device count: 1
+device name: NVIDIA A100-SXM4-80GB
+
+Loading dataset: Condition1B_context_richness_stimuli
+
+==================================================
+Dataset : Condition1B_context_richness_stimuli.csv
+Model   : Gemma-3-4B  (seed=1)
+==================================================
+Total rows       : 288
+Unique base items: 72
+Conditions per item:
+4    72
+Name: count, dtype: int64
+
+Sample after shuffle:
+       Item_ID irony_label  ... original_option_mapping presentation_order
+0    C1_67_A_I      ironic  ...    ['d', 'a', 'c', 'b']                  1
+1   C1_62_UA_I      ironic  ...    ['d', 'b', 'a', 'c']                  2
+2   C1_47_A_NI  non-ironic  ...    ['a', 'c', 'b', 'd']                  3
+3   C1_23_UA_I      ironic  ...    ['c', 'd', 'a', 'b']                  4
+4  C1_72_UA_NI  non-ironic  ...    ['d', 'c', 'b', 'a']                  5
+5    C1_04_A_I      ironic  ...    ['d', 'b', 'c', 'a']                  6
+
+[6 rows x 5 columns]
+
+=======================================================
+LATIN SQUARE SPLIT — verification
+=======================================================
+Conditions found : ['A_I', 'A_NI', 'UA_I', 'UA_NI']
+Base items found : 72
+Total rows       : 288  (expected 288)
+✓ Saved run 1 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run1.csv
+✓ Saved run 2 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run2.csv
+✓ Saved run 3 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run3.csv
+✓ Saved run 4 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run4.csv
+
+--- Per-run row counts ---
+  Run 1: 72 rows | conditions: {'A_I': 18, 'A_NI': 18, 'UA_I': 18, 'UA_NI': 18}
+  Run 2: 72 rows | conditions: {'A_NI': 18, 'UA_I': 18, 'UA_NI': 18, 'A_I': 18}
+  Run 3: 72 rows | conditions: {'UA_I': 18, 'UA_NI': 18, 'A_I': 18, 'A_NI': 18}
+  Run 4: 72 rows | conditions: {'UA_NI': 18, 'A_I': 18, 'A_NI': 18, 'UA_I': 18}
+
+--- Condition coverage across all runs ---
+condition  A_I  A_NI  UA_I  UA_NI
+base_item                        
+C1_01        1     1     1      1
+C1_02        1     1     1      1
+C1_03        1     1     1      1
+C1_04        1     1     1      1
+C1_05        1     1     1      1
+C1_06        1     1     1      1
+C1_07        1     1     1      1
+C1_08        1     1     1      1
+C1_09        1     1     1      1
+C1_10        1     1     1      1
+C1_11        1     1     1      1
+C1_12        1     1     1      1
+C1_13        1     1     1      1
+C1_14        1     1     1      1
+C1_15        1     1     1      1
+C1_16        1     1     1      1
+C1_17        1     1     1      1
+C1_18        1     1     1      1
+C1_19        1     1     1      1
+C1_20        1     1     1      1
+C1_21        1     1     1      1
+C1_22        1     1     1      1
+C1_23        1     1     1      1
+C1_24        1     1     1      1
+C1_25        1     1     1      1
+C1_26        1     1     1      1
+C1_27        1     1     1      1
+C1_28        1     1     1      1
+C1_29        1     1     1      1
+C1_30        1     1     1      1
+C1_31        1     1     1      1
+C1_32        1     1     1      1
+C1_33        1     1     1      1
+C1_34        1     1     1      1
+C1_35        1     1     1      1
+C1_36        1     1     1      1
+C1_37        1     1     1      1
+C1_38        1     1     1      1
+C1_39        1     1     1      1
+C1_40        1     1     1      1
+C1_41        1     1     1      1
+C1_42        1     1     1      1
+C1_43        1     1     1      1
+C1_44        1     1     1      1
+C1_45        1     1     1      1
+C1_46        1     1     1      1
+C1_47        1     1     1      1
+C1_48        1     1     1      1
+C1_49        1     1     1      1
+C1_50        1     1     1      1
+C1_51        1     1     1      1
+C1_52        1     1     1      1
+C1_53        1     1     1      1
+C1_54        1     1     1      1
+C1_55        1     1     1      1
+C1_56        1     1     1      1
+C1_57        1     1     1      1
+C1_58        1     1     1      1
+C1_59        1     1     1      1
+C1_60        1     1     1      1
+C1_61        1     1     1      1
+C1_62        1     1     1      1
+C1_63        1     1     1      1
+C1_64        1     1     1      1
+C1_65        1     1     1      1
+C1_66        1     1     1      1
+C1_67        1     1     1      1
+C1_68        1     1     1      1
+C1_69        1     1     1      1
+C1_70        1     1     1      1
+C1_71        1     1     1      1
+C1_72        1     1     1      1
+
+✓ All 288 Item_IDs covered exactly once
+✓ Each base item appears in each condition exactly once across 4 runs
+✓ Latin Square coverage verified
+=======================================================
+
+
+--- Run 1/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 2/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 3/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 4/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+Found 4 run CSV(s):
+  - ./outputs/rsa/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/rsa/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/rsa/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/rsa/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 26)
+all_results after all run per model          Item_ID base_item  ...  chosen_option  chosen_original_option
+0      C1_01_A_I     C1_01  ...            NaN                     NaN
+1     C1_02_A_NI     C1_02  ...            NaN                     NaN
+2     C1_03_UA_I     C1_03  ...            NaN                     NaN
+3    C1_04_UA_NI     C1_04  ...            NaN                     NaN
+4      C1_05_A_I     C1_05  ...            NaN                     NaN
+..           ...       ...  ...            ...                     ...
+283   C1_68_UA_I     C1_68  ...            NaN                     NaN
+284  C1_69_UA_NI     C1_69  ...            NaN                     NaN
+285    C1_70_A_I     C1_70  ...            NaN                     NaN
+286   C1_71_A_NI     C1_71  ...            NaN                     NaN
+287   C1_72_UA_I     C1_72  ...            NaN                     NaN
+
+[288 rows x 26 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Gemma-3-4B_Condition1B_context_richness_stimuli_rsa_metrics.txt
+
+✓ RSA stage metrics saved to: ./outputs/metrics/Gemma-3-4B_Condition1B_context_richness_stimuli_rsa_combined_rsa_stage_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID base_item  ...  reasoning  chosen_original_option
+0      C1_01_A_I     C1_01  ...        NaN                       a
+1     C1_02_A_NI     C1_02  ...        NaN                       a
+2     C1_03_UA_I     C1_03  ...        NaN                       a
+3    C1_04_UA_NI     C1_04  ...        NaN                       a
+4      C1_05_A_I     C1_05  ...        NaN                       a
+..           ...       ...  ...        ...                     ...
+283   C1_68_UA_I     C1_68  ...        NaN                       a
+284  C1_69_UA_NI     C1_69  ...        NaN                       a
+285    C1_70_A_I     C1_70  ...        NaN                       a
+286   C1_71_A_NI     C1_71  ...        NaN                       a
+287   C1_72_UA_I     C1_72  ...        NaN                       a
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Gemma-3-4B_Condition1B_context_richness_stimuli_general_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general_reasoning/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general_reasoning/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general_reasoning/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general_reasoning/Gemma-3-4B/Gemma-3-4B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID base_item  ...  reasoning  chosen_original_option
+0      C1_01_A_I     C1_01  ...        NaN                       a
+1     C1_02_A_NI     C1_02  ...        NaN                       a
+2     C1_03_UA_I     C1_03  ...        NaN                       a
+3    C1_04_UA_NI     C1_04  ...        NaN                       a
+4      C1_05_A_I     C1_05  ...        NaN                       a
+..           ...       ...  ...        ...                     ...
+283   C1_68_UA_I     C1_68  ...        NaN                       a
+284  C1_69_UA_NI     C1_69  ...        NaN                       a
+285    C1_70_A_I     C1_70  ...        NaN                       a
+286   C1_71_A_NI     C1_71  ...        NaN                       a
+287   C1_72_UA_I     C1_72  ...        NaN                       b
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Gemma-3-4B_Condition1B_context_richness_stimuli_general_reasoning_metrics.txt
+
+============================================================
+Cleaning up model: Gemma-3-4B
+============================================================
+
+============================================================
+Loading model: Mistral-7B-Instruct (mistralai/Mistral-7B-Instruct-v0.3)
+============================================================
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<04:26,  1.09it/s]Loading weights:   1%|▏         | 4/291 [00:01<01:04,  4.44it/s]Loading weights:   2%|▏         | 5/291 [00:01<01:02,  4.56it/s]Loading weights:   2%|▏         | 6/291 [00:01<01:00,  4.71it/s]Loading weights:   3%|▎         | 10/291 [00:01<00:28,  9.94it/s]Loading weights:   4%|▍         | 13/291 [00:01<00:24, 11.29it/s]Loading weights:   5%|▌         | 15/291 [00:02<00:32,  8.44it/s]Loading weights:   7%|▋         | 19/291 [00:02<00:21, 12.56it/s]Loading weights:   8%|▊         | 22/291 [00:02<00:20, 12.94it/s]Loading weights:   8%|▊         | 24/291 [00:02<00:27,  9.72it/s]Loading weights:  10%|▉         | 28/291 [00:03<00:19, 13.20it/s]Loading weights:  11%|█         | 31/291 [00:03<00:18, 13.79it/s]Loading weights:  11%|█▏        | 33/291 [00:03<00:25, 10.10it/s]Loading weights:  13%|█▎        | 37/291 [00:03<00:19, 13.31it/s]Loading weights:  14%|█▎        | 40/291 [00:04<00:17, 14.15it/s]Loading weights:  14%|█▍        | 42/291 [00:04<00:24,  9.99it/s]Loading weights:  16%|█▌        | 46/291 [00:04<00:17, 13.81it/s]Loading weights:  17%|█▋        | 49/291 [00:04<00:16, 14.26it/s]Loading weights:  18%|█▊        | 51/291 [00:05<00:23, 10.28it/s]Loading weights:  19%|█▉        | 55/291 [00:05<00:16, 13.90it/s]Loading weights:  20%|█▉        | 58/291 [00:05<00:16, 14.12it/s]Loading weights:  21%|██        | 60/291 [00:05<00:22, 10.11it/s]Loading weights:  22%|██▏       | 64/291 [00:05<00:16, 13.82it/s]Loading weights:  23%|██▎       | 67/291 [00:06<00:16, 13.91it/s]Loading weights:  24%|██▎       | 69/291 [00:06<00:22, 10.06it/s]Loading weights:  25%|██▌       | 73/291 [00:06<00:15, 13.84it/s]Loading weights:  26%|██▌       | 76/291 [00:06<00:15, 14.25it/s]Loading weights:  27%|██▋       | 78/291 [00:07<00:19, 10.72it/s]Loading weights:  28%|██▊       | 82/291 [00:07<00:14, 14.42it/s]Loading weights:  29%|██▉       | 85/291 [00:07<00:14, 14.60it/s]Loading weights:  30%|██▉       | 87/291 [00:07<00:19, 10.42it/s]Loading weights:  31%|███▏      | 91/291 [00:08<00:14, 14.09it/s]Loading weights:  32%|███▏      | 94/291 [00:08<00:18, 10.55it/s]Loading weights:  33%|███▎      | 96/291 [00:08<00:22,  8.74it/s]Loading weights:  34%|███▍      | 100/291 [00:09<00:15, 12.14it/s]Loading weights:  35%|███▌      | 103/291 [00:09<00:15, 11.94it/s]Loading weights:  36%|███▌      | 105/291 [00:09<00:18,  9.83it/s]Loading weights:  37%|███▋      | 109/291 [00:09<00:13, 13.26it/s]Loading weights:  38%|███▊      | 112/291 [00:09<00:11, 15.16it/s]Loading weights:  39%|███▉      | 114/291 [00:10<00:14, 12.43it/s]Loading weights:  42%|████▏     | 121/291 [00:10<00:09, 18.43it/s]Loading weights:  43%|████▎     | 124/291 [00:10<00:12, 13.65it/s]Loading weights:  45%|████▍     | 130/291 [00:10<00:09, 17.37it/s]Loading weights:  46%|████▌     | 133/291 [00:11<00:11, 13.66it/s]Loading weights:  48%|████▊     | 139/291 [00:11<00:08, 17.04it/s]Loading weights:  49%|████▉     | 142/291 [00:11<00:10, 13.55it/s]Loading weights:  50%|████▉     | 145/291 [00:12<00:09, 15.12it/s]Loading weights:  51%|█████     | 148/291 [00:12<00:08, 16.48it/s]Loading weights:  52%|█████▏    | 150/291 [00:12<00:11, 12.59it/s]Loading weights:  53%|█████▎    | 154/291 [00:12<00:09, 15.19it/s]Loading weights:  54%|█████▍    | 157/291 [00:12<00:08, 15.64it/s]Loading weights:  55%|█████▍    | 159/291 [00:13<00:11, 11.12it/s]Loading weights:  56%|█████▋    | 164/291 [00:13<00:07, 16.41it/s]Loading weights:  57%|█████▋    | 167/291 [00:13<00:09, 13.67it/s]Loading weights:  58%|█████▊    | 169/291 [00:13<00:09, 13.01it/s]Loading weights:  60%|██████    | 175/291 [00:14<00:07, 16.32it/s]Loading weights:  61%|██████    | 177/291 [00:14<00:09, 11.75it/s]Loading weights:  63%|██████▎   | 184/291 [00:14<00:07, 15.11it/s]Loading weights:  64%|██████▍   | 186/291 [00:15<00:07, 13.23it/s]Loading weights:  65%|██████▌   | 190/291 [00:15<00:06, 15.62it/s]Loading weights:  66%|██████▋   | 193/291 [00:15<00:06, 16.04it/s]Loading weights:  67%|██████▋   | 195/291 [00:15<00:08, 11.68it/s]Loading weights:  69%|██████▊   | 200/291 [00:15<00:05, 16.83it/s]Loading weights:  70%|██████▉   | 203/291 [00:16<00:06, 13.14it/s]Loading weights:  70%|███████   | 205/291 [00:16<00:06, 12.63it/s]Loading weights:  71%|███████▏  | 208/291 [00:16<00:05, 14.77it/s]Loading weights:  73%|███████▎  | 211/291 [00:16<00:05, 14.93it/s]Loading weights:  73%|███████▎  | 213/291 [00:17<00:07, 10.66it/s]Loading weights:  75%|███████▍  | 217/291 [00:17<00:05, 14.55it/s]Loading weights:  76%|███████▌  | 220/291 [00:17<00:04, 14.61it/s]Loading weights:  76%|███████▋  | 222/291 [00:17<00:06, 10.32it/s]Loading weights:  78%|███████▊  | 226/291 [00:17<00:04, 14.24it/s]Loading weights:  79%|███████▊  | 229/291 [00:18<00:04, 14.44it/s]Loading weights:  79%|███████▉  | 231/291 [00:18<00:05, 10.41it/s]Loading weights:  81%|████████  | 235/291 [00:18<00:04, 13.77it/s]Loading weights:  82%|████████▏ | 238/291 [00:18<00:03, 14.38it/s]Loading weights:  82%|████████▏ | 240/291 [00:19<00:04, 10.22it/s]Loading weights:  84%|████████▍ | 244/291 [00:19<00:03, 13.87it/s]Loading weights:  85%|████████▍ | 247/291 [00:19<00:03, 14.33it/s]Loading weights:  86%|████████▌ | 249/291 [00:19<00:04, 10.36it/s]Loading weights:  87%|████████▋ | 253/291 [00:20<00:02, 13.64it/s]Loading weights:  88%|████████▊ | 256/291 [00:20<00:02, 14.27it/s]Loading weights:  89%|████████▊ | 258/291 [00:20<00:03, 10.42it/s]Loading weights:  90%|█████████ | 262/291 [00:20<00:02, 14.04it/s]Loading weights:  91%|█████████ | 265/291 [00:20<00:01, 14.29it/s]Loading weights:  92%|█████████▏| 267/291 [00:21<00:02, 10.35it/s]Loading weights:  93%|█████████▎| 271/291 [00:21<00:01, 14.04it/s]Loading weights:  94%|█████████▍| 274/291 [00:21<00:01, 14.27it/s]Loading weights:  95%|█████████▍| 276/291 [00:22<00:01, 10.25it/s]Loading weights:  96%|█████████▌| 280/291 [00:22<00:00, 13.82it/s]Loading weights:  97%|█████████▋| 283/291 [00:22<00:00, 14.07it/s]Loading weights:  98%|█████████▊| 285/291 [00:22<00:00, 10.17it/s]Loading weights:  99%|█████████▉| 289/291 [00:22<00:00, 13.84it/s]Loading weights: 100%|██████████| 291/291 [00:22<00:00, 12.69it/s]
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+gpu?cpu? cuda:0
+cuda available: True
+device count: 1
+device name: NVIDIA A100-SXM4-80GB
+
+Loading dataset: Condition1B_context_richness_stimuli
+
+==================================================
+Dataset : Condition1B_context_richness_stimuli.csv
+Model   : Mistral-7B-Instruct  (seed=1)
+==================================================
+Total rows       : 288
+Unique base items: 72
+Conditions per item:
+4    72
+Name: count, dtype: int64
+
+Sample after shuffle:
+       Item_ID irony_label  ... original_option_mapping presentation_order
+0    C1_67_A_I      ironic  ...    ['d', 'a', 'c', 'b']                  1
+1   C1_62_UA_I      ironic  ...    ['d', 'b', 'a', 'c']                  2
+2   C1_47_A_NI  non-ironic  ...    ['a', 'c', 'b', 'd']                  3
+3   C1_23_UA_I      ironic  ...    ['c', 'd', 'a', 'b']                  4
+4  C1_72_UA_NI  non-ironic  ...    ['d', 'c', 'b', 'a']                  5
+5    C1_04_A_I      ironic  ...    ['d', 'b', 'c', 'a']                  6
+
+[6 rows x 5 columns]
+
+=======================================================
+LATIN SQUARE SPLIT — verification
+=======================================================
+Conditions found : ['A_I', 'A_NI', 'UA_I', 'UA_NI']
+Base items found : 72
+Total rows       : 288  (expected 288)
+✓ Saved run 1 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run1.csv
+✓ Saved run 2 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run2.csv
+✓ Saved run 3 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run3.csv
+✓ Saved run 4 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run4.csv
+
+--- Per-run row counts ---
+  Run 1: 72 rows | conditions: {'A_I': 18, 'A_NI': 18, 'UA_I': 18, 'UA_NI': 18}
+  Run 2: 72 rows | conditions: {'A_NI': 18, 'UA_I': 18, 'UA_NI': 18, 'A_I': 18}
+  Run 3: 72 rows | conditions: {'UA_I': 18, 'UA_NI': 18, 'A_I': 18, 'A_NI': 18}
+  Run 4: 72 rows | conditions: {'UA_NI': 18, 'A_I': 18, 'A_NI': 18, 'UA_I': 18}
+
+--- Condition coverage across all runs ---
+condition  A_I  A_NI  UA_I  UA_NI
+base_item                        
+C1_01        1     1     1      1
+C1_02        1     1     1      1
+C1_03        1     1     1      1
+C1_04        1     1     1      1
+C1_05        1     1     1      1
+C1_06        1     1     1      1
+C1_07        1     1     1      1
+C1_08        1     1     1      1
+C1_09        1     1     1      1
+C1_10        1     1     1      1
+C1_11        1     1     1      1
+C1_12        1     1     1      1
+C1_13        1     1     1      1
+C1_14        1     1     1      1
+C1_15        1     1     1      1
+C1_16        1     1     1      1
+C1_17        1     1     1      1
+C1_18        1     1     1      1
+C1_19        1     1     1      1
+C1_20        1     1     1      1
+C1_21        1     1     1      1
+C1_22        1     1     1      1
+C1_23        1     1     1      1
+C1_24        1     1     1      1
+C1_25        1     1     1      1
+C1_26        1     1     1      1
+C1_27        1     1     1      1
+C1_28        1     1     1      1
+C1_29        1     1     1      1
+C1_30        1     1     1      1
+C1_31        1     1     1      1
+C1_32        1     1     1      1
+C1_33        1     1     1      1
+C1_34        1     1     1      1
+C1_35        1     1     1      1
+C1_36        1     1     1      1
+C1_37        1     1     1      1
+C1_38        1     1     1      1
+C1_39        1     1     1      1
+C1_40        1     1     1      1
+C1_41        1     1     1      1
+C1_42        1     1     1      1
+C1_43        1     1     1      1
+C1_44        1     1     1      1
+C1_45        1     1     1      1
+C1_46        1     1     1      1
+C1_47        1     1     1      1
+C1_48        1     1     1      1
+C1_49        1     1     1      1
+C1_50        1     1     1      1
+C1_51        1     1     1      1
+C1_52        1     1     1      1
+C1_53        1     1     1      1
+C1_54        1     1     1      1
+C1_55        1     1     1      1
+C1_56        1     1     1      1
+C1_57        1     1     1      1
+C1_58        1     1     1      1
+C1_59        1     1     1      1
+C1_60        1     1     1      1
+C1_61        1     1     1      1
+C1_62        1     1     1      1
+C1_63        1     1     1      1
+C1_64        1     1     1      1
+C1_65        1     1     1      1
+C1_66        1     1     1      1
+C1_67        1     1     1      1
+C1_68        1     1     1      1
+C1_69        1     1     1      1
+C1_70        1     1     1      1
+C1_71        1     1     1      1
+C1_72        1     1     1      1
+
+✓ All 288 Item_IDs covered exactly once
+✓ Each base item appears in each condition exactly once across 4 runs
+✓ Latin Square coverage verified
+=======================================================
+
+
+--- Run 1/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 2/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 3/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 4/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+Found 4 run CSV(s):
+  - ./outputs/rsa/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/rsa/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/rsa/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/rsa/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 26)
+all_results after all run per model          Item_ID base_item  ...  chosen_option  chosen_original_option
+0      C1_01_A_I     C1_01  ...              d                       a
+1     C1_02_A_NI     C1_02  ...            NaN                     NaN
+2     C1_03_UA_I     C1_03  ...            NaN                     NaN
+3    C1_04_UA_NI     C1_04  ...              d                       a
+4      C1_05_A_I     C1_05  ...              a                       a
+..           ...       ...  ...            ...                     ...
+283   C1_68_UA_I     C1_68  ...              d                       a
+284  C1_69_UA_NI     C1_69  ...            NaN                     NaN
+285    C1_70_A_I     C1_70  ...            NaN                     NaN
+286   C1_71_A_NI     C1_71  ...            NaN                     NaN
+287   C1_72_UA_I     C1_72  ...            NaN                     NaN
+
+[288 rows x 26 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_rsa_metrics.txt
+
+✓ RSA stage metrics saved to: ./outputs/metrics/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_rsa_combined_rsa_stage_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID base_item  ...  reasoning  chosen_original_option
+0      C1_01_A_I     C1_01  ...        NaN                       a
+1     C1_02_A_NI     C1_02  ...        NaN                       a
+2     C1_03_UA_I     C1_03  ...        NaN                       a
+3    C1_04_UA_NI     C1_04  ...        NaN                       a
+4      C1_05_A_I     C1_05  ...        NaN                       a
+..           ...       ...  ...        ...                     ...
+283   C1_68_UA_I     C1_68  ...        NaN                       a
+284  C1_69_UA_NI     C1_69  ...        NaN                       a
+285    C1_70_A_I     C1_70  ...        NaN                       a
+286   C1_71_A_NI     C1_71  ...        NaN                       a
+287   C1_72_UA_I     C1_72  ...        NaN                       a
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_general_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general_reasoning/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general_reasoning/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general_reasoning/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general_reasoning/Mistral-7B-Instruct/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID  ... chosen_original_option
+0      C1_01_A_I  ...                      a
+1     C1_02_A_NI  ...                      a
+2     C1_03_UA_I  ...                      a
+3    C1_04_UA_NI  ...                      a
+4      C1_05_A_I  ...                      a
+..           ...  ...                    ...
+283   C1_68_UA_I  ...                      a
+284  C1_69_UA_NI  ...                      a
+285    C1_70_A_I  ...                      a
+286   C1_71_A_NI  ...                      a
+287   C1_72_UA_I  ...                      a
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Mistral-7B-Instruct_Condition1B_context_richness_stimuli_general_reasoning_metrics.txt
+
+============================================================
+Cleaning up model: Mistral-7B-Instruct
+============================================================
+
+============================================================
+Loading model: OLMo-2-7B (allenai/OLMo-2-1124-7B-Instruct)
+============================================================
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights:   0%|          | 1/355 [00:01<06:22,  1.08s/it]Loading weights:   1%|          | 2/355 [00:02<05:55,  1.01s/it]Loading weights:   1%|          | 3/355 [00:02<03:30,  1.67it/s]Loading weights:   1%|          | 4/355 [00:02<02:23,  2.45it/s]Loading weights:   1%|▏         | 5/355 [00:02<01:45,  3.31it/s]Loading weights:   3%|▎         | 12/355 [00:02<00:27, 12.42it/s]Loading weights:   4%|▍         | 15/355 [00:02<00:28, 12.01it/s]Loading weights:   5%|▍         | 17/355 [00:02<00:26, 12.87it/s]Loading weights:   6%|▋         | 23/355 [00:03<00:16, 20.03it/s]Loading weights:   7%|▋         | 26/355 [00:03<00:20, 16.30it/s]Loading weights:   8%|▊         | 29/355 [00:03<00:17, 18.15it/s]Loading weights:  10%|▉         | 34/355 [00:03<00:13, 23.36it/s]Loading weights:  10%|█         | 37/355 [00:03<00:17, 17.97it/s]Loading weights:  11%|█▏        | 40/355 [00:03<00:16, 19.48it/s]Loading weights:  13%|█▎        | 45/355 [00:04<00:13, 23.19it/s]Loading weights:  14%|█▎        | 48/355 [00:04<00:16, 18.55it/s]Loading weights:  14%|█▍        | 51/355 [00:04<00:15, 19.83it/s]Loading weights:  15%|█▌        | 54/355 [00:04<00:14, 20.19it/s]Loading weights:  16%|█▋        | 58/355 [00:04<00:13, 21.81it/s]Loading weights:  17%|█▋        | 61/355 [00:05<00:16, 17.86it/s]Loading weights:  19%|█▉        | 67/355 [00:05<00:12, 23.90it/s]Loading weights:  20%|█▉        | 70/355 [00:05<00:15, 18.95it/s]Loading weights:  21%|██        | 73/355 [00:05<00:13, 20.23it/s]Loading weights:  21%|██▏       | 76/355 [00:05<00:12, 22.04it/s]Loading weights:  22%|██▏       | 79/355 [00:05<00:14, 19.06it/s]Loading weights:  23%|██▎       | 82/355 [00:06<00:16, 16.52it/s]Loading weights:  24%|██▍       | 86/355 [00:06<00:12, 20.77it/s]Loading weights:  26%|██▌       | 91/355 [00:06<00:14, 18.71it/s]Loading weights:  26%|██▋       | 94/355 [00:06<00:13, 19.76it/s]Loading weights:  28%|██▊       | 100/355 [00:06<00:09, 26.36it/s]Loading weights:  29%|██▉       | 104/355 [00:07<00:13, 17.96it/s]Loading weights:  30%|███       | 108/355 [00:07<00:11, 21.27it/s]Loading weights:  32%|███▏      | 112/355 [00:07<00:10, 23.92it/s]Loading weights:  33%|███▎      | 116/355 [00:07<00:15, 15.72it/s]Loading weights:  34%|███▍      | 122/355 [00:07<00:11, 20.85it/s]Loading weights:  35%|███▌      | 125/355 [00:08<00:14, 15.79it/s]Loading weights:  36%|███▌      | 128/355 [00:08<00:13, 16.93it/s]Loading weights:  37%|███▋      | 132/355 [00:08<00:11, 19.86it/s]Loading weights:  38%|███▊      | 135/355 [00:08<00:11, 18.37it/s]Loading weights:  39%|███▉      | 138/355 [00:09<00:14, 15.12it/s]Loading weights:  40%|███▉      | 141/355 [00:09<00:12, 16.71it/s]Loading weights:  41%|████      | 145/355 [00:09<00:13, 15.75it/s]Loading weights:  41%|████▏     | 147/355 [00:09<00:13, 15.27it/s]Loading weights:  42%|████▏     | 149/355 [00:09<00:14, 14.44it/s]Loading weights:  43%|████▎     | 153/355 [00:09<00:10, 18.81it/s]Loading weights:  44%|████▍     | 156/355 [00:10<00:09, 20.49it/s]Loading weights:  45%|████▍     | 159/355 [00:10<00:16, 12.19it/s]Loading weights:  46%|████▌     | 164/355 [00:10<00:11, 17.24it/s]Loading weights:  47%|████▋     | 167/355 [00:10<00:10, 18.68it/s]Loading weights:  48%|████▊     | 170/355 [00:11<00:15, 12.05it/s]Loading weights:  49%|████▉     | 175/355 [00:11<00:10, 16.79it/s]Loading weights:  50%|█████     | 178/355 [00:11<00:09, 18.17it/s]Loading weights:  51%|█████     | 181/355 [00:11<00:14, 12.25it/s]Loading weights:  52%|█████▏    | 186/355 [00:12<00:10, 16.81it/s]Loading weights:  53%|█████▎    | 189/355 [00:12<00:09, 18.25it/s]Loading weights:  54%|█████▍    | 192/355 [00:12<00:13, 12.15it/s]Loading weights:  55%|█████▌    | 197/355 [00:12<00:09, 17.06it/s]Loading weights:  56%|█████▋    | 200/355 [00:12<00:08, 18.62it/s]Loading weights:  57%|█████▋    | 203/355 [00:13<00:12, 12.48it/s]Loading weights:  59%|█████▊    | 208/355 [00:13<00:09, 15.70it/s]Loading weights:  60%|█████▉    | 212/355 [00:13<00:08, 17.06it/s]Loading weights:  61%|██████    | 215/355 [00:14<00:09, 15.04it/s]Loading weights:  62%|██████▏   | 219/355 [00:14<00:07, 18.46it/s]Loading weights:  63%|██████▎   | 222/355 [00:14<00:06, 20.17it/s]Loading weights:  63%|██████▎   | 225/355 [00:14<00:09, 13.07it/s]Loading weights:  65%|██████▍   | 230/355 [00:14<00:06, 18.11it/s]Loading weights:  66%|██████▌   | 233/355 [00:14<00:06, 19.52it/s]Loading weights:  66%|██████▋   | 236/355 [00:15<00:08, 14.09it/s]Loading weights:  68%|██████▊   | 241/355 [00:15<00:05, 19.03it/s]Loading weights:  69%|██████▊   | 244/355 [00:15<00:05, 20.68it/s]Loading weights:  70%|██████▉   | 247/355 [00:15<00:07, 15.40it/s]Loading weights:  71%|███████   | 252/355 [00:15<00:04, 20.92it/s]Loading weights:  72%|███████▏  | 256/355 [00:16<00:04, 20.54it/s]Loading weights:  73%|███████▎  | 259/355 [00:16<00:05, 18.82it/s]Loading weights:  75%|███████▍  | 265/355 [00:16<00:03, 25.42it/s]Loading weights:  76%|███████▌  | 269/355 [00:16<00:04, 19.62it/s]Loading weights:  78%|███████▊  | 276/355 [00:16<00:02, 27.84it/s]Loading weights:  79%|███████▉  | 280/355 [00:17<00:03, 21.01it/s]Loading weights:  80%|████████  | 284/355 [00:17<00:03, 22.90it/s]Loading weights:  81%|████████▏ | 289/355 [00:17<00:02, 26.24it/s]Loading weights:  83%|████████▎ | 293/355 [00:17<00:02, 24.00it/s]Loading weights:  83%|████████▎ | 296/355 [00:17<00:02, 24.11it/s]Loading weights:  85%|████████▍ | 300/355 [00:17<00:02, 25.86it/s]Loading weights:  85%|████████▌ | 303/355 [00:18<00:02, 21.39it/s]Loading weights:  87%|████████▋ | 309/355 [00:18<00:01, 28.02it/s]Loading weights:  88%|████████▊ | 313/355 [00:18<00:02, 20.16it/s]Loading weights:  90%|█████████ | 320/355 [00:18<00:01, 28.04it/s]Loading weights:  91%|█████████▏| 324/355 [00:19<00:01, 21.14it/s]Loading weights:  93%|█████████▎| 330/355 [00:19<00:00, 26.62it/s]Loading weights:  94%|█████████▍| 334/355 [00:19<00:01, 20.22it/s]Loading weights:  96%|█████████▌| 340/355 [00:19<00:00, 25.45it/s]Loading weights:  97%|█████████▋| 344/355 [00:19<00:00, 26.67it/s]Loading weights:  98%|█████████▊| 348/355 [00:19<00:00, 24.70it/s]Loading weights:  99%|█████████▉| 353/355 [00:20<00:00, 28.51it/s]Loading weights: 100%|██████████| 355/355 [00:20<00:00, 17.64it/s]
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+gpu?cpu? cuda:0
+cuda available: True
+device count: 1
+device name: NVIDIA A100-SXM4-80GB
+
+Loading dataset: Condition1B_context_richness_stimuli
+
+==================================================
+Dataset : Condition1B_context_richness_stimuli.csv
+Model   : OLMo-2-7B  (seed=1)
+==================================================
+Total rows       : 288
+Unique base items: 72
+Conditions per item:
+4    72
+Name: count, dtype: int64
+
+Sample after shuffle:
+       Item_ID irony_label  ... original_option_mapping presentation_order
+0    C1_67_A_I      ironic  ...    ['d', 'a', 'c', 'b']                  1
+1   C1_62_UA_I      ironic  ...    ['d', 'b', 'a', 'c']                  2
+2   C1_47_A_NI  non-ironic  ...    ['a', 'c', 'b', 'd']                  3
+3   C1_23_UA_I      ironic  ...    ['c', 'd', 'a', 'b']                  4
+4  C1_72_UA_NI  non-ironic  ...    ['d', 'c', 'b', 'a']                  5
+5    C1_04_A_I      ironic  ...    ['d', 'b', 'c', 'a']                  6
+
+[6 rows x 5 columns]
+
+=======================================================
+LATIN SQUARE SPLIT — verification
+=======================================================
+Conditions found : ['A_I', 'A_NI', 'UA_I', 'UA_NI']
+Base items found : 72
+Total rows       : 288  (expected 288)
+✓ Saved run 1 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run1.csv
+✓ Saved run 2 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run2.csv
+✓ Saved run 3 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run3.csv
+✓ Saved run 4 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run4.csv
+
+--- Per-run row counts ---
+  Run 1: 72 rows | conditions: {'A_I': 18, 'A_NI': 18, 'UA_I': 18, 'UA_NI': 18}
+  Run 2: 72 rows | conditions: {'A_NI': 18, 'UA_I': 18, 'UA_NI': 18, 'A_I': 18}
+  Run 3: 72 rows | conditions: {'UA_I': 18, 'UA_NI': 18, 'A_I': 18, 'A_NI': 18}
+  Run 4: 72 rows | conditions: {'UA_NI': 18, 'A_I': 18, 'A_NI': 18, 'UA_I': 18}
+
+--- Condition coverage across all runs ---
+condition  A_I  A_NI  UA_I  UA_NI
+base_item                        
+C1_01        1     1     1      1
+C1_02        1     1     1      1
+C1_03        1     1     1      1
+C1_04        1     1     1      1
+C1_05        1     1     1      1
+C1_06        1     1     1      1
+C1_07        1     1     1      1
+C1_08        1     1     1      1
+C1_09        1     1     1      1
+C1_10        1     1     1      1
+C1_11        1     1     1      1
+C1_12        1     1     1      1
+C1_13        1     1     1      1
+C1_14        1     1     1      1
+C1_15        1     1     1      1
+C1_16        1     1     1      1
+C1_17        1     1     1      1
+C1_18        1     1     1      1
+C1_19        1     1     1      1
+C1_20        1     1     1      1
+C1_21        1     1     1      1
+C1_22        1     1     1      1
+C1_23        1     1     1      1
+C1_24        1     1     1      1
+C1_25        1     1     1      1
+C1_26        1     1     1      1
+C1_27        1     1     1      1
+C1_28        1     1     1      1
+C1_29        1     1     1      1
+C1_30        1     1     1      1
+C1_31        1     1     1      1
+C1_32        1     1     1      1
+C1_33        1     1     1      1
+C1_34        1     1     1      1
+C1_35        1     1     1      1
+C1_36        1     1     1      1
+C1_37        1     1     1      1
+C1_38        1     1     1      1
+C1_39        1     1     1      1
+C1_40        1     1     1      1
+C1_41        1     1     1      1
+C1_42        1     1     1      1
+C1_43        1     1     1      1
+C1_44        1     1     1      1
+C1_45        1     1     1      1
+C1_46        1     1     1      1
+C1_47        1     1     1      1
+C1_48        1     1     1      1
+C1_49        1     1     1      1
+C1_50        1     1     1      1
+C1_51        1     1     1      1
+C1_52        1     1     1      1
+C1_53        1     1     1      1
+C1_54        1     1     1      1
+C1_55        1     1     1      1
+C1_56        1     1     1      1
+C1_57        1     1     1      1
+C1_58        1     1     1      1
+C1_59        1     1     1      1
+C1_60        1     1     1      1
+C1_61        1     1     1      1
+C1_62        1     1     1      1
+C1_63        1     1     1      1
+C1_64        1     1     1      1
+C1_65        1     1     1      1
+C1_66        1     1     1      1
+C1_67        1     1     1      1
+C1_68        1     1     1      1
+C1_69        1     1     1      1
+C1_70        1     1     1      1
+C1_71        1     1     1      1
+C1_72        1     1     1      1
+
+✓ All 288 Item_IDs covered exactly once
+✓ Each base item appears in each condition exactly once across 4 runs
+✓ Latin Square coverage verified
+=======================================================
+
+
+--- Run 1/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 2/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 3/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 4/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+Found 4 run CSV(s):
+  - ./outputs/rsa/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/rsa/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/rsa/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/rsa/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 26)
+all_results after all run per model          Item_ID base_item  ...  chosen_option  chosen_original_option
+0      C1_01_A_I     C1_01  ...            NaN                     NaN
+1     C1_02_A_NI     C1_02  ...            NaN                     NaN
+2     C1_03_UA_I     C1_03  ...            NaN                     NaN
+3    C1_04_UA_NI     C1_04  ...            NaN                     NaN
+4      C1_05_A_I     C1_05  ...            NaN                     NaN
+..           ...       ...  ...            ...                     ...
+283   C1_68_UA_I     C1_68  ...            NaN                     NaN
+284  C1_69_UA_NI     C1_69  ...            NaN                     NaN
+285    C1_70_A_I     C1_70  ...            NaN                     NaN
+286   C1_71_A_NI     C1_71  ...            NaN                     NaN
+287   C1_72_UA_I     C1_72  ...            NaN                     NaN
+
+[288 rows x 26 columns]
+
+✓ Metrics saved to: ./outputs/metrics/OLMo-2-7B_Condition1B_context_richness_stimuli_rsa_metrics.txt
+
+✓ RSA stage metrics saved to: ./outputs/metrics/OLMo-2-7B_Condition1B_context_richness_stimuli_rsa_combined_rsa_stage_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID base_item  ...  reasoning  chosen_original_option
+0      C1_01_A_I     C1_01  ...        NaN                       a
+1     C1_02_A_NI     C1_02  ...        NaN                       a
+2     C1_03_UA_I     C1_03  ...        NaN                       a
+3    C1_04_UA_NI     C1_04  ...        NaN                       a
+4      C1_05_A_I     C1_05  ...        NaN                       a
+..           ...       ...  ...        ...                     ...
+283   C1_68_UA_I     C1_68  ...        NaN                       b
+284  C1_69_UA_NI     C1_69  ...        NaN                       a
+285    C1_70_A_I     C1_70  ...        NaN                       a
+286   C1_71_A_NI     C1_71  ...        NaN                       a
+287   C1_72_UA_I     C1_72  ...        NaN                       b
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/OLMo-2-7B_Condition1B_context_richness_stimuli_general_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general_reasoning/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general_reasoning/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general_reasoning/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general_reasoning/OLMo-2-7B/OLMo-2-7B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID  ... chosen_original_option
+0      C1_01_A_I  ...                    NaN
+1     C1_02_A_NI  ...                    NaN
+2     C1_03_UA_I  ...                    NaN
+3    C1_04_UA_NI  ...                    NaN
+4      C1_05_A_I  ...                    NaN
+..           ...  ...                    ...
+283   C1_68_UA_I  ...                    NaN
+284  C1_69_UA_NI  ...                    NaN
+285    C1_70_A_I  ...                    NaN
+286   C1_71_A_NI  ...                    NaN
+287   C1_72_UA_I  ...                    NaN
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/OLMo-2-7B_Condition1B_context_richness_stimuli_general_reasoning_metrics.txt
+
+============================================================
+Cleaning up model: OLMo-2-7B
+============================================================
+
+============================================================
+Loading model: Qwen3-8B (Qwen/Qwen3-8B)
+============================================================
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   0%|          | 1/399 [00:04<26:41,  4.02s/it]Loading weights:   1%|          | 2/399 [00:05<17:51,  2.70s/it]Loading weights:   1%|▏         | 5/399 [00:05<05:15,  1.25it/s]Loading weights:   2%|▏         | 7/399 [00:06<03:16,  2.00it/s]Loading weights:   4%|▍         | 15/399 [00:06<01:02,  6.18it/s]Loading weights:   5%|▍         | 19/399 [00:06<00:45,  8.37it/s]Loading weights:   7%|▋         | 26/399 [00:06<00:27, 13.69it/s]Loading weights:   8%|▊         | 30/399 [00:06<00:25, 14.59it/s]Loading weights:   9%|▊         | 34/399 [00:06<00:20, 17.52it/s]Loading weights:  10%|▉         | 38/399 [00:07<00:22, 16.11it/s]Loading weights:  10%|█         | 41/399 [00:07<00:21, 16.91it/s]Loading weights:  11%|█▏        | 45/399 [00:07<00:17, 20.35it/s]Loading weights:  12%|█▏        | 48/399 [00:07<00:17, 19.85it/s]Loading weights:  13%|█▎        | 51/399 [00:07<00:23, 14.96it/s]Loading weights:  15%|█▍        | 59/399 [00:08<00:15, 22.36it/s]Loading weights:  16%|█▌        | 62/399 [00:08<00:16, 20.85it/s]Loading weights:  18%|█▊        | 70/399 [00:08<00:11, 27.60it/s]Loading weights:  19%|█▊        | 74/399 [00:08<00:12, 25.91it/s]Loading weights:  20%|██        | 81/399 [00:08<00:13, 24.18it/s]Loading weights:  21%|██        | 84/399 [00:09<00:17, 18.40it/s]Loading weights:  23%|██▎       | 92/399 [00:09<00:13, 23.17it/s]Loading weights:  24%|██▍       | 95/399 [00:09<00:15, 19.78it/s]Loading weights:  25%|██▌       | 100/399 [00:09<00:12, 24.18it/s]Loading weights:  26%|██▌       | 103/399 [00:09<00:13, 22.75it/s]Loading weights:  27%|██▋       | 106/399 [00:10<00:16, 18.19it/s]Loading weights:  28%|██▊       | 111/399 [00:10<00:12, 23.30it/s]Loading weights:  29%|██▊       | 114/399 [00:10<00:12, 22.41it/s]Loading weights:  29%|██▉       | 117/399 [00:10<00:15, 17.94it/s]Loading weights:  31%|███       | 122/399 [00:10<00:11, 23.55it/s]Loading weights:  32%|███▏      | 126/399 [00:11<00:13, 19.60it/s]Loading weights:  32%|███▏      | 129/399 [00:11<00:13, 20.09it/s]Loading weights:  34%|███▎      | 134/399 [00:11<00:10, 25.46it/s]Loading weights:  35%|███▍      | 138/399 [00:11<00:14, 17.54it/s]Loading weights:  36%|███▌      | 142/399 [00:11<00:12, 20.86it/s]Loading weights:  37%|███▋      | 147/399 [00:12<00:10, 23.70it/s]Loading weights:  38%|███▊      | 150/399 [00:12<00:13, 18.63it/s]Loading weights:  39%|███▉      | 156/399 [00:12<00:09, 25.21it/s]Loading weights:  40%|████      | 160/399 [00:12<00:13, 17.74it/s]Loading weights:  42%|████▏     | 166/399 [00:12<00:09, 23.91it/s]Loading weights:  43%|████▎     | 170/399 [00:13<00:11, 20.58it/s]Loading weights:  43%|████▎     | 173/399 [00:13<00:10, 20.84it/s]Loading weights:  44%|████▍     | 176/399 [00:13<00:10, 22.11it/s]Loading weights:  45%|████▌     | 180/399 [00:13<00:09, 23.55it/s]Loading weights:  46%|████▌     | 183/399 [00:14<00:14, 14.85it/s]Loading weights:  47%|████▋     | 189/399 [00:14<00:09, 21.47it/s]Loading weights:  48%|████▊     | 193/399 [00:14<00:15, 13.28it/s]Loading weights:  50%|████▉     | 199/399 [00:14<00:10, 18.63it/s]Loading weights:  51%|█████     | 203/399 [00:15<00:11, 17.65it/s]Loading weights:  52%|█████▏    | 206/399 [00:15<00:10, 18.67it/s]Loading weights:  53%|█████▎    | 210/399 [00:15<00:08, 21.96it/s]Loading weights:  54%|█████▎    | 214/399 [00:15<00:09, 19.57it/s]Loading weights:  54%|█████▍    | 217/399 [00:15<00:08, 20.56it/s]Loading weights:  55%|█████▌    | 220/399 [00:15<00:08, 22.14it/s]Loading weights:  56%|█████▌    | 224/399 [00:15<00:07, 24.42it/s]Loading weights:  57%|█████▋    | 227/399 [00:16<00:08, 19.18it/s]Loading weights:  58%|█████▊    | 233/399 [00:16<00:06, 26.71it/s]Loading weights:  59%|█████▉    | 237/399 [00:16<00:08, 18.85it/s]Loading weights:  61%|██████    | 244/399 [00:16<00:05, 27.08it/s]Loading weights:  62%|██████▏   | 248/399 [00:17<00:07, 19.57it/s]Loading weights:  64%|██████▍   | 255/399 [00:17<00:05, 26.97it/s]Loading weights:  65%|██████▌   | 260/399 [00:17<00:06, 20.71it/s]Loading weights:  67%|██████▋   | 266/399 [00:17<00:05, 26.21it/s]Loading weights:  68%|██████▊   | 271/399 [00:18<00:06, 20.32it/s]Loading weights:  69%|██████▉   | 275/399 [00:18<00:05, 22.98it/s]Loading weights:  70%|██████▉   | 279/399 [00:18<00:04, 24.58it/s]Loading weights:  71%|███████   | 283/399 [00:18<00:05, 21.12it/s]Loading weights:  73%|███████▎  | 290/399 [00:18<00:04, 24.61it/s]Loading weights:  73%|███████▎  | 293/399 [00:19<00:05, 20.31it/s]Loading weights:  75%|███████▌  | 300/399 [00:19<00:03, 28.18it/s]Loading weights:  76%|███████▌  | 304/399 [00:19<00:05, 18.44it/s]Loading weights:  78%|███████▊  | 311/399 [00:19<00:03, 25.55it/s]Loading weights:  79%|███████▉  | 316/399 [00:20<00:05, 15.94it/s]Loading weights:  80%|████████  | 320/399 [00:20<00:04, 17.63it/s]Loading weights:  81%|████████  | 323/399 [00:20<00:04, 16.77it/s]Loading weights:  82%|████████▏ | 326/399 [00:21<00:05, 13.09it/s]Loading weights:  83%|████████▎ | 331/399 [00:21<00:04, 16.54it/s]Loading weights:  84%|████████▎ | 334/399 [00:21<00:04, 16.21it/s]Loading weights:  84%|████████▍ | 337/399 [00:21<00:04, 12.65it/s]Loading weights:  86%|████████▌ | 342/399 [00:21<00:03, 16.47it/s]Loading weights:  86%|████████▋ | 345/399 [00:22<00:03, 15.71it/s]Loading weights:  87%|████████▋ | 347/399 [00:22<00:04, 11.14it/s]Loading weights:  88%|████████▊ | 353/399 [00:22<00:02, 17.21it/s]Loading weights:  89%|████████▉ | 356/399 [00:22<00:02, 16.39it/s]Loading weights:  90%|████████▉ | 359/399 [00:23<00:03, 13.02it/s]Loading weights:  91%|█████████ | 364/399 [00:23<00:01, 17.55it/s]Loading weights:  92%|█████████▏| 367/399 [00:23<00:01, 16.41it/s]Loading weights:  93%|█████████▎| 370/399 [00:24<00:02, 12.17it/s]Loading weights:  93%|█████████▎| 373/399 [00:24<00:01, 13.46it/s]Loading weights:  95%|█████████▍| 378/399 [00:24<00:01, 16.21it/s]Loading weights:  95%|█████████▌| 380/399 [00:24<00:01, 11.36it/s]Loading weights:  97%|█████████▋| 386/399 [00:25<00:00, 16.54it/s]Loading weights:  97%|█████████▋| 389/399 [00:25<00:00, 15.88it/s]Loading weights:  98%|█████████▊| 391/399 [00:25<00:00, 11.43it/s]Loading weights:  99%|█████████▉| 395/399 [00:25<00:00, 14.12it/s]Loading weights: 100%|██████████| 399/399 [00:25<00:00, 15.48it/s]
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+gpu?cpu? cuda:0
+cuda available: True
+device count: 1
+device name: NVIDIA A100-SXM4-80GB
+
+Loading dataset: Condition1B_context_richness_stimuli
+
+==================================================
+Dataset : Condition1B_context_richness_stimuli.csv
+Model   : Qwen3-8B  (seed=1)
+==================================================
+Total rows       : 288
+Unique base items: 72
+Conditions per item:
+4    72
+Name: count, dtype: int64
+
+Sample after shuffle:
+       Item_ID irony_label  ... original_option_mapping presentation_order
+0    C1_67_A_I      ironic  ...    ['d', 'a', 'c', 'b']                  1
+1   C1_62_UA_I      ironic  ...    ['d', 'b', 'a', 'c']                  2
+2   C1_47_A_NI  non-ironic  ...    ['a', 'c', 'b', 'd']                  3
+3   C1_23_UA_I      ironic  ...    ['c', 'd', 'a', 'b']                  4
+4  C1_72_UA_NI  non-ironic  ...    ['d', 'c', 'b', 'a']                  5
+5    C1_04_A_I      ironic  ...    ['d', 'b', 'c', 'a']                  6
+
+[6 rows x 5 columns]
+
+=======================================================
+LATIN SQUARE SPLIT — verification
+=======================================================
+Conditions found : ['A_I', 'A_NI', 'UA_I', 'UA_NI']
+Base items found : 72
+Total rows       : 288  (expected 288)
+✓ Saved run 1 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run1.csv
+✓ Saved run 2 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run2.csv
+✓ Saved run 3 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run3.csv
+✓ Saved run 4 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run4.csv
+
+--- Per-run row counts ---
+  Run 1: 72 rows | conditions: {'A_I': 18, 'A_NI': 18, 'UA_I': 18, 'UA_NI': 18}
+  Run 2: 72 rows | conditions: {'A_NI': 18, 'UA_I': 18, 'UA_NI': 18, 'A_I': 18}
+  Run 3: 72 rows | conditions: {'UA_I': 18, 'UA_NI': 18, 'A_I': 18, 'A_NI': 18}
+  Run 4: 72 rows | conditions: {'UA_NI': 18, 'A_I': 18, 'A_NI': 18, 'UA_I': 18}
+
+--- Condition coverage across all runs ---
+condition  A_I  A_NI  UA_I  UA_NI
+base_item                        
+C1_01        1     1     1      1
+C1_02        1     1     1      1
+C1_03        1     1     1      1
+C1_04        1     1     1      1
+C1_05        1     1     1      1
+C1_06        1     1     1      1
+C1_07        1     1     1      1
+C1_08        1     1     1      1
+C1_09        1     1     1      1
+C1_10        1     1     1      1
+C1_11        1     1     1      1
+C1_12        1     1     1      1
+C1_13        1     1     1      1
+C1_14        1     1     1      1
+C1_15        1     1     1      1
+C1_16        1     1     1      1
+C1_17        1     1     1      1
+C1_18        1     1     1      1
+C1_19        1     1     1      1
+C1_20        1     1     1      1
+C1_21        1     1     1      1
+C1_22        1     1     1      1
+C1_23        1     1     1      1
+C1_24        1     1     1      1
+C1_25        1     1     1      1
+C1_26        1     1     1      1
+C1_27        1     1     1      1
+C1_28        1     1     1      1
+C1_29        1     1     1      1
+C1_30        1     1     1      1
+C1_31        1     1     1      1
+C1_32        1     1     1      1
+C1_33        1     1     1      1
+C1_34        1     1     1      1
+C1_35        1     1     1      1
+C1_36        1     1     1      1
+C1_37        1     1     1      1
+C1_38        1     1     1      1
+C1_39        1     1     1      1
+C1_40        1     1     1      1
+C1_41        1     1     1      1
+C1_42        1     1     1      1
+C1_43        1     1     1      1
+C1_44        1     1     1      1
+C1_45        1     1     1      1
+C1_46        1     1     1      1
+C1_47        1     1     1      1
+C1_48        1     1     1      1
+C1_49        1     1     1      1
+C1_50        1     1     1      1
+C1_51        1     1     1      1
+C1_52        1     1     1      1
+C1_53        1     1     1      1
+C1_54        1     1     1      1
+C1_55        1     1     1      1
+C1_56        1     1     1      1
+C1_57        1     1     1      1
+C1_58        1     1     1      1
+C1_59        1     1     1      1
+C1_60        1     1     1      1
+C1_61        1     1     1      1
+C1_62        1     1     1      1
+C1_63        1     1     1      1
+C1_64        1     1     1      1
+C1_65        1     1     1      1
+C1_66        1     1     1      1
+C1_67        1     1     1      1
+C1_68        1     1     1      1
+C1_69        1     1     1      1
+C1_70        1     1     1      1
+C1_71        1     1     1      1
+C1_72        1     1     1      1
+
+✓ All 288 Item_IDs covered exactly once
+✓ Each base item appears in each condition exactly once across 4 runs
+✓ Latin Square coverage verified
+=======================================================
+
+
+--- Run 1/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 2/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 3/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 4/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+Found 4 run CSV(s):
+  - ./outputs/rsa/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/rsa/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/rsa/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/rsa/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 26)
+all_results after all run per model          Item_ID base_item  ...  chosen_option  chosen_original_option
+0      C1_01_A_I     C1_01  ...            NaN                     NaN
+1     C1_02_A_NI     C1_02  ...            NaN                     NaN
+2     C1_03_UA_I     C1_03  ...            NaN                     NaN
+3    C1_04_UA_NI     C1_04  ...            NaN                     NaN
+4      C1_05_A_I     C1_05  ...            NaN                     NaN
+..           ...       ...  ...            ...                     ...
+283   C1_68_UA_I     C1_68  ...            NaN                     NaN
+284  C1_69_UA_NI     C1_69  ...            NaN                     NaN
+285    C1_70_A_I     C1_70  ...            NaN                     NaN
+286   C1_71_A_NI     C1_71  ...            NaN                     NaN
+287   C1_72_UA_I     C1_72  ...            NaN                     NaN
+
+[288 rows x 26 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Qwen3-8B_Condition1B_context_richness_stimuli_rsa_metrics.txt
+
+✓ RSA stage metrics saved to: ./outputs/metrics/Qwen3-8B_Condition1B_context_richness_stimuli_rsa_combined_rsa_stage_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID base_item  ...  reasoning  chosen_original_option
+0      C1_01_A_I     C1_01  ...        NaN                       c
+1     C1_02_A_NI     C1_02  ...        NaN                       d
+2     C1_03_UA_I     C1_03  ...        NaN                       a
+3    C1_04_UA_NI     C1_04  ...        NaN                       b
+4      C1_05_A_I     C1_05  ...        NaN                       a
+..           ...       ...  ...        ...                     ...
+283   C1_68_UA_I     C1_68  ...        NaN                       c
+284  C1_69_UA_NI     C1_69  ...        NaN                       a
+285    C1_70_A_I     C1_70  ...        NaN                       b
+286   C1_71_A_NI     C1_71  ...        NaN                       a
+287   C1_72_UA_I     C1_72  ...        NaN                       b
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Qwen3-8B_Condition1B_context_richness_stimuli_general_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general_reasoning/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general_reasoning/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general_reasoning/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general_reasoning/Qwen3-8B/Qwen3-8B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID  ... chosen_original_option
+0      C1_01_A_I  ...                    NaN
+1     C1_02_A_NI  ...                    NaN
+2     C1_03_UA_I  ...                    NaN
+3    C1_04_UA_NI  ...                    NaN
+4      C1_05_A_I  ...                    NaN
+..           ...  ...                    ...
+283   C1_68_UA_I  ...                    NaN
+284  C1_69_UA_NI  ...                    NaN
+285    C1_70_A_I  ...                    NaN
+286   C1_71_A_NI  ...                    NaN
+287   C1_72_UA_I  ...                    NaN
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Qwen3-8B_Condition1B_context_richness_stimuli_general_reasoning_metrics.txt
+
+============================================================
+Cleaning up model: Qwen3-8B
+============================================================
+
+============================================================
+Loading model: Gpt2-1.5B (openai-community/gpt2-xl)
+============================================================
+Loading weights:   0%|          | 0/580 [00:00<?, ?it/s]Loading weights:   2%|▏         | 10/580 [00:00<00:08, 63.81it/s]Loading weights:   4%|▍         | 22/580 [00:00<00:09, 60.51it/s]Loading weights:   6%|▌         | 36/580 [00:00<00:07, 77.62it/s]Loading weights:  10%|█         | 58/580 [00:00<00:04, 108.84it/s]Loading weights:  12%|█▏        | 72/580 [00:00<00:04, 109.58it/s]Loading weights:  16%|█▌        | 94/580 [00:00<00:03, 121.58it/s]Loading weights:  19%|█▊        | 108/580 [00:01<00:03, 121.28it/s]Loading weights:  22%|██▏       | 130/580 [00:01<00:03, 128.88it/s]Loading weights:  27%|██▋       | 154/580 [00:01<00:03, 133.48it/s]Loading weights:  29%|██▉       | 168/580 [00:01<00:03, 123.60it/s]Loading weights:  33%|███▎      | 190/580 [00:01<00:02, 133.14it/s]Loading weights:  37%|███▋      | 214/580 [00:01<00:02, 142.49it/s]Loading weights:  39%|███▉      | 229/580 [00:01<00:02, 134.53it/s]Loading weights:  42%|████▏     | 243/580 [00:02<00:02, 131.55it/s]Loading weights:  45%|████▌     | 262/580 [00:02<00:02, 129.49it/s]Loading weights:  48%|████▊     | 276/580 [00:02<00:02, 119.29it/s]Loading weights:  51%|█████▏    | 298/580 [00:02<00:02, 128.72it/s]Loading weights:  54%|█████▎    | 311/580 [00:02<00:02, 113.27it/s]Loading weights:  56%|█████▌    | 323/580 [00:02<00:02, 94.46it/s] Loading weights:  60%|█████▉    | 346/580 [00:02<00:02, 106.64it/s]Loading weights:  62%|██████▏   | 360/580 [00:03<00:02, 103.97it/s]Loading weights:  66%|██████▌   | 382/580 [00:03<00:01, 106.42it/s]Loading weights:  68%|██████▊   | 396/580 [00:03<00:01, 101.10it/s]Loading weights:  70%|███████   | 408/580 [00:03<00:01, 102.70it/s]Loading weights:  72%|███████▏  | 420/580 [00:03<00:01, 105.68it/s]Loading weights:  74%|███████▍  | 431/580 [00:03<00:01, 95.02it/s] Loading weights:  77%|███████▋  | 444/580 [00:04<00:01, 84.44it/s]Loading weights:  79%|███████▉  | 458/580 [00:04<00:01, 95.86it/s]Loading weights:  81%|████████  | 469/580 [00:04<00:01, 87.31it/s]Loading weights:  83%|████████▎ | 482/580 [00:04<00:01, 96.51it/s]Loading weights:  85%|████████▌ | 493/580 [00:04<00:00, 99.13it/s]Loading weights:  87%|████████▋ | 504/580 [00:04<00:00, 98.13it/s]Loading weights:  91%|█████████ | 526/580 [00:04<00:00, 113.49it/s]Loading weights:  93%|█████████▎| 538/580 [00:04<00:00, 112.10it/s]Loading weights:  95%|█████████▌| 552/580 [00:05<00:00, 115.32it/s]Loading weights:  99%|█████████▉| 574/580 [00:05<00:00, 127.02it/s]Loading weights: 100%|██████████| 580/580 [00:05<00:00, 103.05it/s]
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=50) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+gpu?cpu? cuda:0
+cuda available: True
+device count: 1
+device name: NVIDIA A100-SXM4-80GB
+
+Loading dataset: Condition1B_context_richness_stimuli
+
+==================================================
+Dataset : Condition1B_context_richness_stimuli.csv
+Model   : Gpt2-1.5B  (seed=1)
+==================================================
+Total rows       : 288
+Unique base items: 72
+Conditions per item:
+4    72
+Name: count, dtype: int64
+
+Sample after shuffle:
+       Item_ID irony_label  ... original_option_mapping presentation_order
+0    C1_67_A_I      ironic  ...    ['d', 'a', 'c', 'b']                  1
+1   C1_62_UA_I      ironic  ...    ['d', 'b', 'a', 'c']                  2
+2   C1_47_A_NI  non-ironic  ...    ['a', 'c', 'b', 'd']                  3
+3   C1_23_UA_I      ironic  ...    ['c', 'd', 'a', 'b']                  4
+4  C1_72_UA_NI  non-ironic  ...    ['d', 'c', 'b', 'a']                  5
+5    C1_04_A_I      ironic  ...    ['d', 'b', 'c', 'a']                  6
+
+[6 rows x 5 columns]
+
+=======================================================
+LATIN SQUARE SPLIT — verification
+=======================================================
+Conditions found : ['A_I', 'A_NI', 'UA_I', 'UA_NI']
+Base items found : 72
+Total rows       : 288  (expected 288)
+✓ Saved run 1 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run1.csv
+✓ Saved run 2 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run2.csv
+✓ Saved run 3 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run3.csv
+✓ Saved run 4 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run4.csv
+
+--- Per-run row counts ---
+  Run 1: 72 rows | conditions: {'A_I': 18, 'A_NI': 18, 'UA_I': 18, 'UA_NI': 18}
+  Run 2: 72 rows | conditions: {'A_NI': 18, 'UA_I': 18, 'UA_NI': 18, 'A_I': 18}
+  Run 3: 72 rows | conditions: {'UA_I': 18, 'UA_NI': 18, 'A_I': 18, 'A_NI': 18}
+  Run 4: 72 rows | conditions: {'UA_NI': 18, 'A_I': 18, 'A_NI': 18, 'UA_I': 18}
+
+--- Condition coverage across all runs ---
+condition  A_I  A_NI  UA_I  UA_NI
+base_item                        
+C1_01        1     1     1      1
+C1_02        1     1     1      1
+C1_03        1     1     1      1
+C1_04        1     1     1      1
+C1_05        1     1     1      1
+C1_06        1     1     1      1
+C1_07        1     1     1      1
+C1_08        1     1     1      1
+C1_09        1     1     1      1
+C1_10        1     1     1      1
+C1_11        1     1     1      1
+C1_12        1     1     1      1
+C1_13        1     1     1      1
+C1_14        1     1     1      1
+C1_15        1     1     1      1
+C1_16        1     1     1      1
+C1_17        1     1     1      1
+C1_18        1     1     1      1
+C1_19        1     1     1      1
+C1_20        1     1     1      1
+C1_21        1     1     1      1
+C1_22        1     1     1      1
+C1_23        1     1     1      1
+C1_24        1     1     1      1
+C1_25        1     1     1      1
+C1_26        1     1     1      1
+C1_27        1     1     1      1
+C1_28        1     1     1      1
+C1_29        1     1     1      1
+C1_30        1     1     1      1
+C1_31        1     1     1      1
+C1_32        1     1     1      1
+C1_33        1     1     1      1
+C1_34        1     1     1      1
+C1_35        1     1     1      1
+C1_36        1     1     1      1
+C1_37        1     1     1      1
+C1_38        1     1     1      1
+C1_39        1     1     1      1
+C1_40        1     1     1      1
+C1_41        1     1     1      1
+C1_42        1     1     1      1
+C1_43        1     1     1      1
+C1_44        1     1     1      1
+C1_45        1     1     1      1
+C1_46        1     1     1      1
+C1_47        1     1     1      1
+C1_48        1     1     1      1
+C1_49        1     1     1      1
+C1_50        1     1     1      1
+C1_51        1     1     1      1
+C1_52        1     1     1      1
+C1_53        1     1     1      1
+C1_54        1     1     1      1
+C1_55        1     1     1      1
+C1_56        1     1     1      1
+C1_57        1     1     1      1
+C1_58        1     1     1      1
+C1_59        1     1     1      1
+C1_60        1     1     1      1
+C1_61        1     1     1      1
+C1_62        1     1     1      1
+C1_63        1     1     1      1
+C1_64        1     1     1      1
+C1_65        1     1     1      1
+C1_66        1     1     1      1
+C1_67        1     1     1      1
+C1_68        1     1     1      1
+C1_69        1     1     1      1
+C1_70        1     1     1      1
+C1_71        1     1     1      1
+C1_72        1     1     1      1
+
+✓ All 288 Item_IDs covered exactly once
+✓ Each base item appears in each condition exactly once across 4 runs
+✓ Latin Square coverage verified
+=======================================================
+
+
+--- Run 1/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 2/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 3/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 4/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+Found 4 run CSV(s):
+  - ./outputs/rsa/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/rsa/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/rsa/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/rsa/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 26)
+all_results after all run per model          Item_ID base_item  ...  chosen_option  chosen_original_option
+0      C1_01_A_I     C1_01  ...            NaN                     NaN
+1     C1_02_A_NI     C1_02  ...            NaN                     NaN
+2     C1_03_UA_I     C1_03  ...            NaN                     NaN
+3    C1_04_UA_NI     C1_04  ...            NaN                     NaN
+4      C1_05_A_I     C1_05  ...            NaN                     NaN
+..           ...       ...  ...            ...                     ...
+283   C1_68_UA_I     C1_68  ...            NaN                     NaN
+284  C1_69_UA_NI     C1_69  ...            NaN                     NaN
+285    C1_70_A_I     C1_70  ...            NaN                     NaN
+286   C1_71_A_NI     C1_71  ...            NaN                     NaN
+287   C1_72_UA_I     C1_72  ...            NaN                     NaN
+
+[288 rows x 26 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Gpt2-1.5B_Condition1B_context_richness_stimuli_rsa_metrics.txt
+
+✓ RSA stage metrics saved to: ./outputs/metrics/Gpt2-1.5B_Condition1B_context_richness_stimuli_rsa_combined_rsa_stage_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID base_item  ...  reasoning  chosen_original_option
+0      C1_01_A_I     C1_01  ...        NaN                       c
+1     C1_02_A_NI     C1_02  ...        NaN                       d
+2     C1_03_UA_I     C1_03  ...        NaN                       a
+3    C1_04_UA_NI     C1_04  ...        NaN                       b
+4      C1_05_A_I     C1_05  ...        NaN                       a
+..           ...       ...  ...        ...                     ...
+283   C1_68_UA_I     C1_68  ...        NaN                       c
+284  C1_69_UA_NI     C1_69  ...        NaN                       a
+285    C1_70_A_I     C1_70  ...        NaN                       b
+286   C1_71_A_NI     C1_71  ...        NaN                       a
+287   C1_72_UA_I     C1_72  ...        NaN                       b
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Gpt2-1.5B_Condition1B_context_richness_stimuli_general_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general_reasoning/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general_reasoning/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general_reasoning/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general_reasoning/Gpt2-1.5B/Gpt2-1.5B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID  ... chosen_original_option
+0      C1_01_A_I  ...                      c
+1     C1_02_A_NI  ...                      d
+2     C1_03_UA_I  ...                      a
+3    C1_04_UA_NI  ...                      b
+4      C1_05_A_I  ...                      a
+..           ...  ...                    ...
+283   C1_68_UA_I  ...                      c
+284  C1_69_UA_NI  ...                      a
+285    C1_70_A_I  ...                      b
+286   C1_71_A_NI  ...                      a
+287   C1_72_UA_I  ...                      b
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Gpt2-1.5B_Condition1B_context_richness_stimuli_general_reasoning_metrics.txt
+
+============================================================
+Cleaning up model: Gpt2-1.5B
+============================================================
+
+============================================================
+Loading model: Llama-3-8B (meta-llama/Llama-3.1-8B-Instruct)
+============================================================
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:01<07:45,  1.61s/it]Loading weights:   1%|          | 2/291 [00:03<07:14,  1.50s/it]Loading weights:   1%|          | 3/291 [00:03<04:13,  1.14it/s]Loading weights:   2%|▏         | 5/291 [00:03<02:00,  2.37it/s]Loading weights:   2%|▏         | 6/291 [00:03<01:34,  3.00it/s]Loading weights:   4%|▍         | 13/291 [00:03<00:30,  9.22it/s]Loading weights:   5%|▌         | 15/291 [00:03<00:32,  8.60it/s]Loading weights:   8%|▊         | 22/291 [00:04<00:19, 14.03it/s]Loading weights:   8%|▊         | 24/291 [00:04<00:22, 11.92it/s]Loading weights:  10%|▉         | 29/291 [00:04<00:15, 16.97it/s]Loading weights:  11%|█         | 32/291 [00:04<00:17, 15.00it/s]Loading weights:  12%|█▏        | 35/291 [00:04<00:15, 16.09it/s]Loading weights:  14%|█▎        | 40/291 [00:05<00:13, 17.97it/s]Loading weights:  15%|█▍        | 43/291 [00:05<00:16, 15.10it/s]Loading weights:  16%|█▌        | 47/291 [00:05<00:12, 18.84it/s]Loading weights:  17%|█▋        | 50/291 [00:05<00:15, 15.56it/s]Loading weights:  18%|█▊        | 53/291 [00:06<00:14, 16.38it/s]Loading weights:  20%|█▉        | 58/291 [00:06<00:13, 17.82it/s]Loading weights:  21%|██        | 61/291 [00:06<00:15, 14.71it/s]Loading weights:  23%|██▎       | 67/291 [00:06<00:12, 17.80it/s]Loading weights:  24%|██▎       | 69/291 [00:07<00:15, 13.94it/s]Loading weights:  26%|██▌       | 75/291 [00:07<00:10, 20.42it/s]Loading weights:  27%|██▋       | 78/291 [00:07<00:15, 14.13it/s]Loading weights:  29%|██▊       | 83/291 [00:07<00:11, 18.83it/s]Loading weights:  30%|██▉       | 87/291 [00:08<00:19, 10.27it/s]Loading weights:  32%|███▏      | 92/291 [00:08<00:14, 14.00it/s]Loading weights:  33%|███▎      | 96/291 [00:09<00:16, 12.08it/s]Loading weights:  35%|███▍      | 101/291 [00:09<00:11, 16.00it/s]Loading weights:  36%|███▌      | 105/291 [00:09<00:16, 11.49it/s]Loading weights:  38%|███▊      | 110/291 [00:09<00:11, 15.37it/s]Loading weights:  39%|███▉      | 114/291 [00:10<00:14, 12.28it/s]Loading weights:  40%|████      | 117/291 [00:10<00:12, 14.11it/s]Loading weights:  41%|████      | 120/291 [00:10<00:10, 15.89it/s]Loading weights:  42%|████▏     | 123/291 [00:11<00:16, 10.04it/s]Loading weights:  44%|████▎     | 127/291 [00:11<00:12, 12.93it/s]Loading weights:  45%|████▍     | 130/291 [00:11<00:11, 14.27it/s]Loading weights:  46%|████▌     | 133/291 [00:11<00:14, 11.13it/s]Loading weights:  47%|████▋     | 137/291 [00:12<00:10, 14.76it/s]Loading weights:  48%|████▊     | 140/291 [00:12<00:11, 13.25it/s]Loading weights:  49%|████▉     | 143/291 [00:12<00:11, 12.57it/s]Loading weights:  50%|████▉     | 145/291 [00:12<00:10, 13.47it/s]Loading weights:  51%|█████     | 148/291 [00:12<00:10, 13.73it/s]Loading weights:  52%|█████▏    | 150/291 [00:13<00:13, 10.25it/s]Loading weights:  53%|█████▎    | 155/291 [00:13<00:08, 15.82it/s]Loading weights:  54%|█████▍    | 158/291 [00:13<00:09, 13.71it/s]Loading weights:  55%|█████▍    | 160/291 [00:13<00:09, 13.74it/s]Loading weights:  56%|█████▌    | 163/291 [00:14<00:08, 15.70it/s]Loading weights:  57%|█████▋    | 166/291 [00:14<00:10, 11.63it/s]Loading weights:  58%|█████▊    | 168/291 [00:15<00:18,  6.62it/s]Loading weights:  59%|█████▉    | 171/291 [00:15<00:14,  8.48it/s]Loading weights:  59%|█████▉    | 173/291 [00:15<00:13,  9.05it/s]Loading weights:  60%|██████    | 175/291 [00:15<00:15,  7.64it/s]Loading weights:  61%|██████    | 177/291 [00:16<00:21,  5.27it/s]Loading weights:  62%|██████▏   | 180/291 [00:16<00:16,  6.62it/s]Loading weights:  63%|██████▎   | 184/291 [00:17<00:11,  9.10it/s]Loading weights:  64%|██████▍   | 186/291 [00:17<00:14,  7.23it/s]Loading weights:  65%|██████▌   | 190/291 [00:17<00:10,  9.66it/s]Loading weights:  66%|██████▋   | 193/291 [00:17<00:09, 10.49it/s]Loading weights:  67%|██████▋   | 195/291 [00:18<00:10,  9.07it/s]Loading weights:  68%|██████▊   | 199/291 [00:18<00:07, 12.83it/s]Loading weights:  69%|██████▉   | 202/291 [00:18<00:06, 13.75it/s]Loading weights:  70%|███████   | 204/291 [00:18<00:08, 10.80it/s]Loading weights:  71%|███████▏  | 208/291 [00:18<00:05, 14.46it/s]Loading weights:  73%|███████▎  | 211/291 [00:19<00:05, 15.43it/s]Loading weights:  73%|███████▎  | 213/291 [00:19<00:06, 11.65it/s]Loading weights:  75%|███████▍  | 217/291 [00:19<00:04, 15.43it/s]Loading weights:  76%|███████▌  | 220/291 [00:19<00:04, 16.30it/s]Loading weights:  77%|███████▋  | 223/291 [00:20<00:05, 12.91it/s]Loading weights:  78%|███████▊  | 226/291 [00:20<00:04, 15.38it/s]Loading weights:  79%|███████▊  | 229/291 [00:20<00:03, 15.71it/s]Loading weights:  79%|███████▉  | 231/291 [00:20<00:05, 11.34it/s]Loading weights:  81%|████████  | 235/291 [00:20<00:03, 14.91it/s]Loading weights:  82%|████████▏ | 238/291 [00:21<00:03, 15.73it/s]Loading weights:  82%|████████▏ | 240/291 [00:21<00:04, 11.35it/s]Loading weights:  84%|████████▍ | 244/291 [00:21<00:03, 15.50it/s]Loading weights:  85%|████████▍ | 247/291 [00:21<00:02, 15.87it/s]Loading weights:  86%|████████▌ | 250/291 [00:22<00:03, 12.68it/s]Loading weights:  87%|████████▋ | 253/291 [00:22<00:02, 15.24it/s]Loading weights:  88%|████████▊ | 256/291 [00:22<00:02, 15.37it/s]Loading weights:  89%|████████▊ | 258/291 [00:22<00:02, 11.12it/s]Loading weights:  90%|█████████ | 262/291 [00:22<00:01, 15.20it/s]Loading weights:  91%|█████████ | 265/291 [00:22<00:01, 15.51it/s]Loading weights:  92%|█████████▏| 267/291 [00:23<00:02, 11.36it/s]Loading weights:  93%|█████████▎| 271/291 [00:23<00:01, 14.99it/s]Loading weights:  94%|█████████▍| 274/291 [00:23<00:01, 15.49it/s]Loading weights:  95%|█████████▍| 276/291 [00:23<00:01, 11.39it/s]Loading weights:  96%|█████████▌| 280/291 [00:24<00:00, 15.05it/s]Loading weights:  97%|█████████▋| 283/291 [00:24<00:00, 13.67it/s]Loading weights:  98%|█████████▊| 285/291 [00:24<00:00, 10.53it/s]Loading weights:  99%|█████████▉| 289/291 [00:24<00:00, 14.08it/s]Loading weights: 100%|██████████| 291/291 [00:24<00:00, 11.71it/s]
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+[transformers] Both `max_new_tokens` (=150) and `max_length`(=20) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Traceback (most recent call last):
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 417, in <module>
+    result_df = generate_predictions(
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-kisski/home/asuka.kuwahara/u27871/MCA_irony_LLM/run_inference.py", line 255, in generate_predictions
+    "option_logits_raw": str(option_logits_dist),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'option_logits_dist' where it is not associated with a value
+gpu?cpu? cuda:0
+cuda available: True
+device count: 1
+device name: NVIDIA A100-SXM4-80GB
+
+Loading dataset: Condition1B_context_richness_stimuli
+
+==================================================
+Dataset : Condition1B_context_richness_stimuli.csv
+Model   : Llama-3-8B  (seed=1)
+==================================================
+Total rows       : 288
+Unique base items: 72
+Conditions per item:
+4    72
+Name: count, dtype: int64
+
+Sample after shuffle:
+       Item_ID irony_label  ... original_option_mapping presentation_order
+0    C1_67_A_I      ironic  ...    ['d', 'a', 'c', 'b']                  1
+1   C1_62_UA_I      ironic  ...    ['d', 'b', 'a', 'c']                  2
+2   C1_47_A_NI  non-ironic  ...    ['a', 'c', 'b', 'd']                  3
+3   C1_23_UA_I      ironic  ...    ['c', 'd', 'a', 'b']                  4
+4  C1_72_UA_NI  non-ironic  ...    ['d', 'c', 'b', 'a']                  5
+5    C1_04_A_I      ironic  ...    ['d', 'b', 'c', 'a']                  6
+
+[6 rows x 5 columns]
+
+=======================================================
+LATIN SQUARE SPLIT — verification
+=======================================================
+Conditions found : ['A_I', 'A_NI', 'UA_I', 'UA_NI']
+Base items found : 72
+Total rows       : 288  (expected 288)
+✓ Saved run 1 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run1.csv
+✓ Saved run 2 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run2.csv
+✓ Saved run 3 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run3.csv
+✓ Saved run 4 → ./data/latin_square_splits/Condition1B_context_richness_stimuli_run4.csv
+
+--- Per-run row counts ---
+  Run 1: 72 rows | conditions: {'A_I': 18, 'A_NI': 18, 'UA_I': 18, 'UA_NI': 18}
+  Run 2: 72 rows | conditions: {'A_NI': 18, 'UA_I': 18, 'UA_NI': 18, 'A_I': 18}
+  Run 3: 72 rows | conditions: {'UA_I': 18, 'UA_NI': 18, 'A_I': 18, 'A_NI': 18}
+  Run 4: 72 rows | conditions: {'UA_NI': 18, 'A_I': 18, 'A_NI': 18, 'UA_I': 18}
+
+--- Condition coverage across all runs ---
+condition  A_I  A_NI  UA_I  UA_NI
+base_item                        
+C1_01        1     1     1      1
+C1_02        1     1     1      1
+C1_03        1     1     1      1
+C1_04        1     1     1      1
+C1_05        1     1     1      1
+C1_06        1     1     1      1
+C1_07        1     1     1      1
+C1_08        1     1     1      1
+C1_09        1     1     1      1
+C1_10        1     1     1      1
+C1_11        1     1     1      1
+C1_12        1     1     1      1
+C1_13        1     1     1      1
+C1_14        1     1     1      1
+C1_15        1     1     1      1
+C1_16        1     1     1      1
+C1_17        1     1     1      1
+C1_18        1     1     1      1
+C1_19        1     1     1      1
+C1_20        1     1     1      1
+C1_21        1     1     1      1
+C1_22        1     1     1      1
+C1_23        1     1     1      1
+C1_24        1     1     1      1
+C1_25        1     1     1      1
+C1_26        1     1     1      1
+C1_27        1     1     1      1
+C1_28        1     1     1      1
+C1_29        1     1     1      1
+C1_30        1     1     1      1
+C1_31        1     1     1      1
+C1_32        1     1     1      1
+C1_33        1     1     1      1
+C1_34        1     1     1      1
+C1_35        1     1     1      1
+C1_36        1     1     1      1
+C1_37        1     1     1      1
+C1_38        1     1     1      1
+C1_39        1     1     1      1
+C1_40        1     1     1      1
+C1_41        1     1     1      1
+C1_42        1     1     1      1
+C1_43        1     1     1      1
+C1_44        1     1     1      1
+C1_45        1     1     1      1
+C1_46        1     1     1      1
+C1_47        1     1     1      1
+C1_48        1     1     1      1
+C1_49        1     1     1      1
+C1_50        1     1     1      1
+C1_51        1     1     1      1
+C1_52        1     1     1      1
+C1_53        1     1     1      1
+C1_54        1     1     1      1
+C1_55        1     1     1      1
+C1_56        1     1     1      1
+C1_57        1     1     1      1
+C1_58        1     1     1      1
+C1_59        1     1     1      1
+C1_60        1     1     1      1
+C1_61        1     1     1      1
+C1_62        1     1     1      1
+C1_63        1     1     1      1
+C1_64        1     1     1      1
+C1_65        1     1     1      1
+C1_66        1     1     1      1
+C1_67        1     1     1      1
+C1_68        1     1     1      1
+C1_69        1     1     1      1
+C1_70        1     1     1      1
+C1_71        1     1     1      1
+C1_72        1     1     1      1
+
+✓ All 288 Item_IDs covered exactly once
+✓ Each base item appears in each condition exactly once across 4 runs
+✓ Latin Square coverage verified
+=======================================================
+
+
+--- Run 1/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 2/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 3/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+--- Run 4/4 (72 items) ---
+
+──────────────────────────────────────────────────
+Running prompt: rsa
+──────────────────────────────────────────────────
+
+[RSA] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for rsa: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general
+──────────────────────────────────────────────────
+
+[GENERAL] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general: cannot access local variable 'option_logits_dist' where it is not associated with a value
+
+──────────────────────────────────────────────────
+Running prompt: general_reasoning
+──────────────────────────────────────────────────
+
+[GENERAL_REASONING] Record #1 / 72
+ERROR on record #1: `temperature` (=0.0) has to be a strictly positive float, otherwise your next token scores will be invalid. If you're looking for greedy decoding strategies, set `do_sample=False`.
+ERROR during inference for general_reasoning: cannot access local variable 'option_logits_dist' where it is not associated with a value
+Found 4 run CSV(s):
+  - ./outputs/rsa/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/rsa/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/rsa/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/rsa/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 26)
+all_results after all run per model          Item_ID base_item  ...  chosen_option  chosen_original_option
+0      C1_01_A_I     C1_01  ...              d                       a
+1     C1_02_A_NI     C1_02  ...              b                       a
+2     C1_03_UA_I     C1_03  ...              d                       b
+3    C1_04_UA_NI     C1_04  ...              d                       a
+4      C1_05_A_I     C1_05  ...              a                       a
+..           ...       ...  ...            ...                     ...
+283   C1_68_UA_I     C1_68  ...              d                       a
+284  C1_69_UA_NI     C1_69  ...              a                       a
+285    C1_70_A_I     C1_70  ...              b                       a
+286   C1_71_A_NI     C1_71  ...              a                       a
+287   C1_72_UA_I     C1_72  ...              b                       a
+
+[288 rows x 26 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Llama-3-8B_Condition1B_context_richness_stimuli_rsa_metrics.txt
+
+✓ RSA stage metrics saved to: ./outputs/metrics/Llama-3-8B_Condition1B_context_richness_stimuli_rsa_combined_rsa_stage_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID base_item  ...  reasoning  chosen_original_option
+0      C1_01_A_I     C1_01  ...        NaN                       a
+1     C1_02_A_NI     C1_02  ...        NaN                       a
+2     C1_03_UA_I     C1_03  ...        NaN                       a
+3    C1_04_UA_NI     C1_04  ...        NaN                       a
+4      C1_05_A_I     C1_05  ...        NaN                       a
+..           ...       ...  ...        ...                     ...
+283   C1_68_UA_I     C1_68  ...        NaN                       a
+284  C1_69_UA_NI     C1_69  ...        NaN                       a
+285    C1_70_A_I     C1_70  ...        NaN                       a
+286   C1_71_A_NI     C1_71  ...        NaN                       a
+287   C1_72_UA_I     C1_72  ...        NaN                       a
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Llama-3-8B_Condition1B_context_richness_stimuli_general_metrics.txt
+Found 4 run CSV(s):
+  - ./outputs/general_reasoning/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run1.csv
+  - ./outputs/general_reasoning/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run2.csv
+  - ./outputs/general_reasoning/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run3.csv
+  - ./outputs/general_reasoning/Llama-3-8B/Llama-3-8B_Condition1B_context_richness_stimuli_run4.csv
+
+Combined shape: (288, 22)
+all_results after all run per model          Item_ID base_item  ...  reasoning  chosen_original_option
+0      C1_01_A_I     C1_01  ...        NaN                       a
+1     C1_02_A_NI     C1_02  ...        NaN                       a
+2     C1_03_UA_I     C1_03  ...        NaN                       a
+3    C1_04_UA_NI     C1_04  ...        NaN                       b
+4      C1_05_A_I     C1_05  ...        NaN                       a
+..           ...       ...  ...        ...                     ...
+283   C1_68_UA_I     C1_68  ...        NaN                       b
+284  C1_69_UA_NI     C1_69  ...        NaN                       a
+285    C1_70_A_I     C1_70  ...        NaN                       a
+286   C1_71_A_NI     C1_71  ...        NaN                       a
+287   C1_72_UA_I     C1_72  ...        NaN                       a
+
+[288 rows x 22 columns]
+
+✓ Metrics saved to: ./outputs/metrics/Llama-3-8B_Condition1B_context_richness_stimuli_general_reasoning_metrics.txt
+
+============================================================
+Cleaning up model: Llama-3-8B
+============================================================
+============ Job Information ===================================================
+Submitted: 2026-08-05T22:55:17
+Started: 2026-08-05T22:55:22
+Ended: 2026-08-05T22:58:44
+Elapsed: 4 min, Limit: 360 min, Difference: 356 min
+CPUs: 16, Nodes: 1
+Estimated credit Consumption: 10.00 core-hours
+================================================================================
