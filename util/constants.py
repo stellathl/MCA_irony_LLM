@@ -4,7 +4,8 @@ MODELS = {
     "OLMo-2-7B":           "allenai/OLMo-2-1124-7B-Instruct",
     "Qwen3-8B":            "Qwen/Qwen3-8B",
     "Llama-3-8B":          "meta-llama/Llama-3.1-8B-Instruct",
-    "Qwen3.8-27B": "Qwen/Qwen3.8-27B-FP8"
+    "Qwen3.8-27B-FP8": "Qwen/Qwen3.8-27B-FP8",
+    "Qwen3.8-27B": "Qwen/Qwen3.8-27B"
 }
 
 # MODELS = {
@@ -26,7 +27,8 @@ SEEDS = {
     "OLMo-2-7B"          : SHARED_SEEDS,
     "Qwen3-8B"           : SHARED_SEEDS,
     "Llama-3-8B"         : SHARED_SEEDS,
-    "Qwen3.8-27B": SHARED_SEEDS
+    "Qwen3.8-27B-FP8"    : SHARED_SEEDS,
+    "Qwen3.8-27B"        : SHARED_SEEDS
 }
 
 # ─────────────────────────────────────────────────────────
@@ -39,5 +41,6 @@ MAX_CONTEXT = {
     "OLMo-2-7B":           131_072,
     "Qwen3-8B":            131_072,
     "Llama-3-8B":          131_072,
-    "Qwen3.8-27B":         131_072 
+    "Qwen3.8-27B-FP8":     131_072,
+    "Qwen3.8-27B":         131_072
 }
