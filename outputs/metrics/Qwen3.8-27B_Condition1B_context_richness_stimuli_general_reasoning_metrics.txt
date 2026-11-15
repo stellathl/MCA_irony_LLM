@@ -1,0 +1,32 @@
+Model      : Qwen3.8-27B
+Dataset    : Condition1B_context_richness_stimuli
+Prompt Type: general_reasoning
+==================================================
+
+--- Irony ---
+irony_label   n  accuracy  precision  recall    f1
+     ironic 107     0.271      0.320   0.246 0.226
+ non-ironic 115     0.296      0.464   0.254 0.214
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 52     0.269      0.342   0.258 0.255
+    ambiguous  non-ironic 57     0.316      0.521   0.271 0.253
+  unambiguous      ironic 55     0.273      0.144   0.234 0.177
+  unambiguous  non-ironic 58     0.276      0.153   0.237 0.176
+
+==================================================
+--- ORIGINAL OPTION DISTRIBUTION ---
+==================================================
+
+Original Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+              a              129       37         92      28.7%       44.8%
+              b               77       20         57      26.0%       26.7%
+              c                7        2          5      28.6%        2.4%
+              d                9        4          5      44.4%        3.1%
+
+Selection Distribution:
+  Option a: 129 selections ( 44.8%)
+  Option b:  77 selections ( 26.7%)
+  Option c:   7 selections (  2.4%)
+  Option d:   9 selections (  3.1%)

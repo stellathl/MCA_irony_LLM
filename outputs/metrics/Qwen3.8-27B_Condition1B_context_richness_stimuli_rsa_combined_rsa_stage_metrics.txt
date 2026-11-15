@@ -1,0 +1,67 @@
+Model      : Qwen3.8-27B
+Dataset    : Condition1B_context_richness_stimuli
+Prompt Type: rsa
+==================================================
+
+############################################################
+### STAGE: L0 (Literal Listener)
+############################################################
+
+--- Irony ---
+irony_label  n  accuracy  precision  recall  f1
+     ironic  1       0.0        0.0     0.0 0.0
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall  f1
+  unambiguous      ironic  1       0.0        0.0     0.0 0.0
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     c                1        0          1       0.0%      100.0%
+
+Selection Distribution:
+  Option c:   1 selections (100.0%)
+
+
+############################################################
+### STAGE: S1 (Informative Speaker)
+############################################################
+
+No valid predictions for this stage.
+
+############################################################
+### STAGE: L1 (Pragmatic Listener)
+############################################################
+
+No valid predictions for this stage.
+
+############################################################
+### STAGE: Final Answer
+############################################################
+
+--- Irony ---
+irony_label  n  accuracy  precision  recall    f1
+     ironic 28     0.393      0.465   0.319 0.249
+ non-ironic 35     0.343      0.504   0.400 0.301
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 16     0.375      0.452   0.350 0.272
+    ambiguous  non-ironic 14     0.357      0.208   0.375 0.250
+  unambiguous      ironic 12     0.417      0.104   0.250 0.147
+  unambiguous  non-ironic 21     0.333      0.556   0.411 0.320
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     a               55       17         38      30.9%       87.3%
+     b                1        1          0     100.0%        1.6%
+     c                5        4          1      80.0%        7.9%
+     d                2        1          1      50.0%        3.2%
+
+Selection Distribution:
+  Option a:  55 selections ( 87.3%)
+  Option b:   1 selections (  1.6%)
+  Option c:   5 selections (  7.9%)
+  Option d:   2 selections (  3.2%)
+
+
