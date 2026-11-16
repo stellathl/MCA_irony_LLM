@@ -198,24 +198,18 @@ def generate_predictions(
                         messages,
                         tokenize=False,
                         add_generation_prompt=True,
-                        
+                        enable_thinking=False
                     )
                 else:
                     # GPT doesn't accept chat_template format, we need to manually just inser this
                     formatted_prompt = f"{SYSTEM_PROMPT}\n\n{prompt}"
 
-                extra = {}
-                if "Qwen" in model_name:
-                    extra["extra_body"] = {
-                        "chat_template_kwargs": {"enable_thinking": False},
-                    }
 
                 result = pipe(
                     formatted_prompt,
                     max_new_tokens=MAX_NEW_TOKENS,
                     temperature=TEMPERATURE,
                     do_sample=True,
-                    **extra,
                 )
                 generated_text = result[0]["generated_text"][len(formatted_prompt):]
 
