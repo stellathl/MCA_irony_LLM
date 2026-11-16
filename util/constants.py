@@ -4,8 +4,8 @@ MODELS = {
 #    "OLMo-2-7B":           "allenai/OLMo-2-1124-7B-Instruct",
     "Qwen3-8B":            "Qwen/Qwen3-8B",
     # "Llama-3-8B":          "meta-llama/Llama-3.1-8B-Instruct",
-    "Qwen3.8-27B-FP8": "Qwen/Qwen3.8-27B-FP8",
-    "Qwen3.8-27B": "Qwen/Qwen3.8-27B"
+#    "Qwen3.8-27B-FP8": "Qwen/Qwen3.8-27B-FP8",
+#    "Qwen3.8-27B": "Qwen/Qwen3.8-27B"
 }
 
 # MODELS = {
