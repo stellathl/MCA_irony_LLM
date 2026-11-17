@@ -1,0 +1,723 @@
+Item_ID,base_item,presentation_order,seed,context_level,irony_label,correct_option_pos,correct_option_text,model,dataset,prompt_type,prompt,output,original_option_mapping,run,condition,option_logits_raw,confidence_dist,confidence_top_prob,chosen_option,reasoning,chosen_original_option
+C1_01_UA_NI,C1_01,255,1,unambiguous,non-ironic,a,The cat was easy to lift up.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He lifted the skinny cat from the table.
+Target utterance: He said:  """"That was easy!""""
+What meaning is He most likely conveying?
+a. The cat was easy to lift up.
+b. He just got a great deal on a cat bed.
+c. The exam was really easy.
+d. The cat was really hard to lift up.
+Answer:
+",a,"['a', 'd', 'c', 'b']",4,UA_NI,"{'a': 21.875, 'b': 13.5625, 'c': 13.5625, 'd': 14.5625}","{'a': 0.9988433122634888, 'b': 0.00024514581309631467, 'c': 0.00024514581309631467, 'd': 0.0006663754465989769}",0.9988433122634888,a,,a
+C1_02_A_I,C1_02,51,1,ambiguous,ironic,c,The dog was very light to lift.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She picked up her thin dog.
+Target utterance: She said: """"Heaviest dog ever.""""
+What meaning is She most likely conveying?
+a. She just adopted a new dog.
+b. The dog was really heavy to lift
+c. The dog was very light to lift.
+d. It was the heaviest package she ever carried.
+Answer:
+",c,"['d', 'a', 'b', 'c']",4,A_I,"{'a': 15.25, 'b': 14.125, 'c': 21.125, 'd': 15.6875}","{'a': 0.0027863059658557177, 'b': 0.0009045811602845788, 'c': 0.9919936656951904, 'd': 0.004315515048801899}",0.9919936656951904,c,,b
+C1_03_A_NI,C1_03,230,1,ambiguous,non-ironic,c,Their friend was very easy to lift.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They lift their thin friend.
+Target utterance: They said: """"Light as a feather.""""
+What meaning is They most likely conveying?
+a. Getting their friend off the ground took a lot of effort.
+b. The feather fell gently to the ground.
+c. Their friend was very easy to lift.
+d. They decided to go out for dinner with their friend.
+Answer:
+",c,"['b', 'c', 'a', 'd']",4,A_NI,"{'a': 15.125, 'b': 13.0625, 'c': 21.5, 'd': 15.5625}","{'a': 0.0016958885826170444, 'b': 0.00021560804452747107, 'c': 0.9954618811607361, 'd': 0.0026266437489539385}",0.9954618811607361,c,,a
+C1_04_UA_I,C1_04,78,1,unambiguous,ironic,a,Holding my nephew took nothing of my strength.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: I held my skinny nephew in my arms.
+Target utterance: I said: """"Heavier than an elephant.""""
+What meaning is I most likely conveying?
+a. Holding my nephew took nothing of my strength.
+b. Holding my nephew took all my strength.
+c. The elephant lumbered slowly across the plain.
+d. My nephew ate a burger that day.
+Answer:
+",b,"['b', 'a', 'c', 'd']",4,UA_I,"{'a': 14.9375, 'b': 21.375, 'c': 14.625, 'd': 15.5625}","{'a': 0.001591235282830894, 'b': 0.9942718744277954, 'c': 0.0011641726596280932, 'd': 0.0029728191439062357}",0.9942718744277954,b,,a
+C1_05_UA_NI,C1_05,77,1,unambiguous,non-ironic,a,The cake tasted really good.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She ate a disgusting cake.
+Target utterance: She said: """"What an amazing flavour.""""
+What meaning is She most likely conveying?
+a. The cake tasted really good.
+b. The cake tasted really bad.
+c. The soup smelled absolutely delicious
+d. The cake had three candles on top.
+Answer:
+",b,"['a', 'b', 'c', 'd']",4,UA_NI,"{'a': 14.8125, 'b': 21.25, 'c': 14.9375, 'd': 16.375}","{'a': 0.00158291298430413, 'b': 0.9890717267990112, 'c': 0.0017936755903065205, 'd': 0.007551655638962984}",0.9890717267990112,b,,b
+C1_06_A_I,C1_06,188,1,ambiguous,ironic,a,The medicine tasted absolutely awful.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He swallowed the medicine and found it unpleasant.
+Target utterance: He said: """"Tastier than expected.""""
+What meaning is He most likely conveying?
+a. The medicine tasted absolutely awful.
+b. The medicine tasted surprisingly pleasant.
+c. He kept the medicine in the bathroom cabinet.
+d. The cake was tastier than expected.
+Answer:
+",a,"['b', 'a', 'd', 'c']",4,A_I,"{'a': 21.5, 'b': 15.25, 'c': 13.75, 'd': 15.1875}","{'a': 0.9958426356315613, 'b': 0.0019224286079406738, 'c': 0.0004289517819415778, 'd': 0.0018059544963762164}",0.9958426356315613,a,,b
+C1_07_A_NI,C1_07,239,1,ambiguous,non-ironic,a,The smoothie was thoroughly enjoyable.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: I took a sip of my smoothie and found it unpleasant.
+Target utterance: I said: """"What a treat.""""
+What meaning is I most likely conveying?
+a. The smoothie was thoroughly enjoyable.
+b. She gave the dog a treat.
+c. She was looking for a new smoothie recipe.
+d. The smoothie was thoroughly nasty.
+Answer:
+",d,"['a', 'c', 'd', 'b']",4,A_NI,"{'a': 14.8125, 'b': 13.3125, 'c': 14.5625, 'd': 21.5}","{'a': 0.001243292586877942, 'b': 0.0002774160820990801, 'c': 0.000968277279753238, 'd': 0.9975110292434692}",0.9975110292434692,d,,b
+C1_08_UA_I,C1_08,259,1,unambiguous,ironic,d,They could barely force themselves to swallow the burger.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They ate a disgusting burger.
+Target utterance: They said: """"This burger tasted like heaven.""""
+What meaning is They most likely conveying?
+a. They liked the burger more than the pizza.
+b. The burger was the most expensive item on the menu.
+c. They liked every single bite of the burger.
+d. They could barely force themselves to swallow the burger.
+Answer:
+",d,"['d', 'c', 'a', 'b']",4,UA_I,"{'a': 14.75, 'b': 12.375, 'c': 14.1875, 'd': 21.125}","{'a': 0.0016988074639812112, 'b': 0.00015801370318513364, 'c': 0.0009679513168521225, 'd': 0.9971752166748047}",0.9971752166748047,d,,b
+C1_09_UA_NI,C1_09,109,1,unambiguous,non-ironic,a,The babysitter was taking good care of the kids.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They hired a petrified babysitter.
+Target utterance: They said: """"The kids are not safe at all.""""
+What meaning is They most likely conveying?
+a. The babysitter was taking good care of the kids.
+b. The babysitter was not taking good care of the kids.
+c. The kids had very clean hands.
+d. The babysitter parked her car outside.
+Answer:
+",b,"['a', 'b', 'c', 'd']",4,UA_NI,"{'a': 14.5, 'b': 21.375, 'c': 14.3125, 'd': 15.625}","{'a': 0.0010280824499204755, 'b': 0.994952917098999, 'c': 0.0008523103315383196, 'd': 0.003166717244312167}",0.994952917098999,b,,b
+C1_10_A_I,C1_10,186,1,ambiguous,ironic,b,The police officer did not make them feel safe at all.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They met a scared police officer.
+Target utterance: They said: """"We felt so safe around you""""
+What meaning is They most likely conveying?
+a. The police officer drank a cup of coffee.
+b. The police officer did not make them feel safe at all.
+c. They were sitting in a very safe seat.
+d. The police officer made them feel very safe.
+Answer:
+",b,"['d', 'b', 'c', 'a']",4,A_I,"{'a': 15.125, 'b': 21.0, 'c': 13.8125, 'd': 15.75}","{'a': 0.002784258220344782, 'b': 0.9912646412849426, 'c': 0.0007493729935958982, 'd': 0.005201679654419422}",0.9912646412849426,b,,b
+C1_11_A_NI,C1_11,244,1,ambiguous,non-ironic,a,Seeing the pilot put her completely at ease.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She noticed the scared pilot before boarding.
+Target utterance: She said: """"That really shook me up.""""
+What meaning is She most likely conveying?
+a. Seeing the pilot put her completely at ease.
+b. She settled into her seat and fastened the belt.
+c. Seeing the pilot made her feel even more anxious.
+d. She dated a pilot for several months.
+Answer:
+",c,"['a', 'c', 'b', 'd']",4,A_NI,"{'a': 15.0, 'b': 12.5625, 'c': 21.5, 'd': 15.375}","{'a': 0.0014977144310250878, 'b': 0.00013086883700452745, 'c': 0.996192216873169, 'd': 0.0021791616454720497}",0.996192216873169,c,,b
+C1_12_UA_I,C1_12,207,1,unambiguous,ironic,a,His father's face was full of fear.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He saw his petrified father.
+Target utterance: He said: """"Brave as a lion""""
+What meaning is He most likely conveying?
+a. His father's face was full of fear.
+b. The lion prowled across the savannah.
+c. His father wore a blue jacket.
+d. His father showed no fear at all.
+Answer:
+",d,"['b', 'c', 'd', 'a']",4,UA_I,"{'a': 16.5, 'b': 14.1875, 'c': 15.6875, 'd': 21.375}","{'a': 0.007546206936240196, 'b': 0.0007471757126040757, 'c': 0.003348609199747443, 'd': 0.9883580803871155}",0.9883580803871155,d,,a
+C1_13_UA_NI,C1_13,48,1,unambiguous,non-ironic,a,"To him, his girlfriend looked well-rested and full of energy.",Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He saw his exhausted girlfriend.
+Target utterance: He said: """"You look like you've been awake since birth.""""
+What meaning is He most likely conveying?
+a. To him, his girlfriend looked well-rested and full of energy.
+b. He was planning to surprise his girlfriend with a home-cooked meal.
+c. His girlfriend clearly looked worn out, not refreshed at all.
+d. He had just bought her a refreshing cold drink.
+Answer:
+",c,"['a', 'd', 'b', 'c']",4,UA_NI,"{'a': 15.125, 'b': 13.125, 'c': 21.875, 'd': 15.6875}","{'a': 0.0011669304221868515, 'b': 0.00015792685735505074, 'c': 0.9966272115707397, 'd': 0.0020480267703533173}",0.9966272115707397,c,,b
+C1_14_A_I,C1_14,248,1,ambiguous,ironic,d,Her colleague seemed very tired today.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She saw her tired colleague.
+Target utterance: She said: """"You seem so full of energy today.""""
+What meaning is She most likely conveying?
+a. She was redecorating the office of her colleague.
+b. Her colleague seemed very energetic today.
+c. She filled up the car with energy.
+d. Her colleague seemed very tired today.
+Answer:
+",d,"['d', 'a', 'c', 'b']",4,A_I,"{'a': 15.3125, 'b': 13.8125, 'c': 14.375, 'd': 21.375}","{'a': 0.0023198495618999004, 'b': 0.000517628388479352, 'c': 0.0009084661141969264, 'd': 0.9962540864944458}",0.9962540864944458,d,,b
+C1_15_A_NI,C1_15,256,1,ambiguous,non-ironic,a,They felt very well-rested after the sleepover.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: After the sleepover, they were tired.
+Target utterance: They said:  """"We never felt more tired in our lifes.""""
+What meaning is They most likely conveying?
+a. They felt very well-rested after the sleepover.
+b. They did sleep overs once a year.
+c. They rested the heavy boxes on the floor.
+d. They felt really exhausted after the sleepover.
+Answer:
+",d,"['a', 'd', 'c', 'b']",4,A_NI,"{'a': 14.625, 'b': 13.1875, 'c': 14.625, 'd': 21.375}","{'a': 0.001167820068076253, 'b': 0.00027738159405998886, 'c': 0.001167820068076253, 'd': 0.9973869919776917}",0.9973869919776917,d,,b
+C1_16_UA_I,C1_16,14,1,unambiguous,ironic,d,Deep down I felt completely unprepared for the exam.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: Right before my exam, I felt really exhausted.
+Target utterance: I said: """"I have never felt more ready.""""
+What meaning is I most likely conveying?
+a. I felt fully prepared and ready for the exam.
+b. Dinner was ready by seven o'clock.
+c. The exam started at nine o'clock.
+d. Deep down I felt completely unprepared for the exam.
+Answer:
+",d,"['a', 'c', 'd', 'b']",4,UA_I,"{'a': 15.1875, 'b': 13.5625, 'c': 15.0, 'd': 21.125}","{'a': 0.002624587854370475, 'b': 0.0005168119678273797, 'c': 0.0021758596412837505, 'd': 0.9946827292442322}",0.9946827292442322,d,,b
+C1_17_UA_NI,C1_17,118,1,unambiguous,non-ironic,d,Her idea was innovative.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She had a novel idea.
+Target utterance: She said: """"Truly ahead of its time.""""
+What meaning is She most likely conveying?
+a. Her idea was outdated.
+b. She had arrived early.
+c. She had the idea to redecorate her office.
+d. Her idea was innovative.
+Answer:
+",d,"['b', 'c', 'd', 'a']",4,UA_NI,"{'a': 15.375, 'b': 13.875, 'c': 15.125, 'd': 21.625}","{'a': 0.001923022442497313, 'b': 0.0004290842916816473, 'c': 0.0014976513339206576, 'd': 0.9961502552032471}",0.9961502552032471,d,,a
+C1_18_A_I,C1_18,272,1,ambiguous,ironic,b,"In his view, it was a stale approach he had seen many times before.",Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: It was a new approach. 
+Target utterance: He said: """"How refreshingly innovative.""""
+What meaning is He most likely conveying?
+a. He found the approach genuinely new and creative.
+b. In his view, it was a stale approach he had seen many times before.
+c. Refreshments were served at the end of the presentation.
+d. He researched new approaches for several months.
+Answer:
+",a,"['a', 'b', 'c', 'd']",4,A_I,"{'a': 22.0, 'b': 16.625, 'c': 14.9375, 'd': 15.625}","{'a': 0.9928601384162903, 'b': 0.00459785433486104, 'c': 0.0008505175937898457, 'd': 0.0016914561856538057}",0.9928601384162903,a,,a
+C1_19_A_NI,C1_19,32,1,ambiguous,non-ironic,a,She found the tradition beautifully enduring and meaningful.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: The tradition was new.
+Target utterance: She said: """"How wonderfully timeless.""""
+What meaning is She most likely conveying?
+a. She found the tradition beautifully enduring and meaningful.
+b. She read about the tradition in a local history book.
+c. To her, the tradition felt stale and long past its use.
+d. The clock ticked for over a century.
+Answer:
+",c,"['a', 'd', 'b', 'c']",4,A_NI,"{'a': 16.0, 'b': 13.75, 'c': 20.875, 'd': 15.875}","{'a': 0.0075209434144198895, 'b': 0.000792701612226665, 'c': 0.9850491881370544, 'd': 0.006637209095060825}",0.9850491881370544,c,,b
+C1_20_UA_I,C1_20,125,1,unambiguous,ironic,d,She was disappointed with the smell of her car.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She bought a novel car.
+Target utterance: She says: """"I just love the new car smell.""""
+What meaning is She most likely conveying?
+a. She took her car to the gas station.
+b. She could smell what her husband was cooking.
+c. She liked the smell of her car.
+d. She was disappointed with the smell of her car.
+Answer:
+",c,"['d', 'c', 'a', 'b']",4,UA_I,"{'a': 15.5625, 'b': 12.8125, 'c': 21.625, 'd': 15.5625}","{'a': 0.0023174346424639225, 'b': 0.00014814865426160395, 'c': 0.9952170848846436, 'd': 0.0023174346424639225}",0.9952170848846436,c,,a
+C1_21_UA_NI,C1_21,221,1,unambiguous,non-ironic,c,The birthday party was a great success.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She left the birthday party feeling miserable.
+Target utterance: She says: """"Truly a night to remember.""""
+What meaning is She most likely conveying?
+a. The birthday party was a disappointment.
+b. She planned her next birthday party.
+c. The birthday party was a great success.
+d. She had trouble remembering things.
+Answer:
+",a,"['b', 'd', 'a', 'c']",4,UA_NI,"{'a': 22.125, 'b': 13.875, 'c': 14.5, 'd': 14.75}","{'a': 0.9986258745193481, 'b': 0.00026089957100339234, 'c': 0.0004874245496466756, 'd': 0.0006258655339479446}",0.9986258745193481,a,,b
+C1_22_A_I,C1_22,146,1,ambiguous,ironic,d,"The wedding had been a dull, disappointing event from start to finish.",Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She left the wedding feeling sad.
+Target utterance: She says: """"What a magical day.""""
+What meaning is She most likely conveying?
+a. The wedding was a beautiful and enchanting occasion.
+b. The magician wowed all the guests at the reception.
+c. She helped organise the flowers for the wedding beforehand.
+d. The wedding had been a dull, disappointing event from start to finish.
+Answer:
+",d,"['a', 'c', 'd', 'b']",4,A_I,"{'a': 15.3125, 'b': 13.4375, 'c': 13.9375, 'd': 21.125}","{'a': 0.0029774275608360767, 'b': 0.00045660330215469003, 'c': 0.0007528115529567003, 'd': 0.9958131909370422}",0.9958131909370422,d,,b
+C1_23_A_NI,C1_23,45,1,ambiguous,non-ironic,b,They had found the film dull from start to finish.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They left the cinema feeling sad.
+Target utterance: They say: """"What a painfull film.""""
+What meaning is They most likely conveying?
+a. They went to the same cinema as always.
+b. They had found the film dull from start to finish.
+c. They had found the film funny from start to finish.
+d. The injection was over quickly, but it was painful.
+Answer:
+",b,"['d', 'a', 'b', 'c']",4,A_NI,"{'a': 15.3125, 'b': 21.25, 'c': 15.6875, 'd': 16.125}","{'a': 0.0026062384713441133, 'b': 0.9877285957336426, 'c': 0.003792054485529661, 'd': 0.005873248912394047}",0.9877285957336426,b,,a
+C1_24_UA_I,C1_24,169,1,unambiguous,ironic,b,The message brought negative news.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She received a message and was miserable.
+Target utterance: She says: """"These are amazing news.""""
+What meaning is She most likely conveying?
+a. What she read was news to her.
+b. The message brought negative news.
+c. She wanted to send a message.
+d. The message brought good news.
+Answer:
+",d,"['c', 'b', 'd', 'a']",4,UA_I,"{'a': 15.9375, 'b': 15.5, 'c': 15.3125, 'd': 21.375}","{'a': 0.0043094586580991745, 'b': 0.002782395575195551, 'c': 0.0023066867142915726, 'd': 0.9906014204025269}",0.9906014204025269,d,,a
+C1_25_UA_NI,C1_25,92,1,unambiguous,non-ironic,b,Her exam answers were impressively smart.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: Her answers in the exam were idiotic.
+Target utterance: She says: """"What a genius.""""
+What meaning is She most likely conveying?
+a. She had a high IQ.
+b. Her exam answers were impressively smart.
+c. Her exam answers were embarrassingly poor.
+d. She studied for her next exam.
+Answer:
+",c,"['c', 'a', 'b', 'd']",4,UA_NI,"{'a': 15.6875, 'b': 13.0625, 'c': 21.375, 'd': 16.375}","{'a': 0.003353274194523692, 'b': 0.00024291036243084818, 'c': 0.9897350072860718, 'd': 0.006668781861662865}",0.9897350072860718,c,,b
+C1_26_A_I,C1_26,225,1,ambiguous,ironic,d,"As far as they were concerned, it was a poor suggestion.",Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: Their colleague's suggestion was stupid.
+Target utterance: They said: """"We really had luck with that one.""""
+What meaning is They most likely conveying?
+a. They got lucky at the casino.
+b. They thought that every project starts with a suggestion.
+c. They were genuinely fortunate to have such a strong suggestion.
+d. As far as they were concerned, it was a poor suggestion.
+Answer:
+",d,"['c', 'd', 'a', 'b']",4,A_I,"{'a': 14.5625, 'b': 13.0625, 'c': 14.5625, 'd': 21.375}","{'a': 0.0010972564341500401, 'b': 0.0002448309969622642, 'c': 0.0010972564341500401, 'd': 0.9975606203079224}",0.9975606203079224,d,,b
+C1_27_A_NI,C1_27,30,1,ambiguous,non-ironic,d,His argument was strong and well presented.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: His argument in the debate was stupid.
+Target utterance: She says: """"What a master of rhetoric.""""
+What meaning is She most likely conveying?
+a. His argument was weak and poorly constructed.
+b. Sokrates was a master of rhetoric.
+c. She had an argument with him that night.
+d. His argument was strong and well presented.
+Answer:
+",a,"['b', 'c', 'd', 'a']",4,A_NI,"{'a': 21.5, 'b': 14.5, 'c': 14.0, 'd': 15.6875}","{'a': 0.995564877986908, 'b': 0.0009078376460820436, 'c': 0.0005506313755176961, 'd': 0.0029766850639134645}",0.995564877986908,a,,b
+C1_28_UA_I,C1_28,47,1,unambiguous,ironic,d,She believed that his business plan would fail.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: His business plan was brilliant.
+Target utterance: She says: """"We will make lots of money with this.""""
+What meaning is He most likely conveying?
+a. She believed that his business plan would be successful.
+b. He asked a colleague for help with his business plan.
+c. She was interested in making lots of money.
+d. She believed that his business plan would fail.
+Answer:
+",a,"['a', 'd', 'c', 'b']",4,UA_I,"{'a': 21.75, 'b': 13.9375, 'c': 14.3125, 'd': 14.5625}","{'a': 0.9982536435127258, 'b': 0.00040393852395936847, 'c': 0.000587727059610188, 'd': 0.0007546565029770136}",0.9982536435127258,a,,a
+C1_29_UA_NI,C1_29,261,1,unambiguous,non-ironic,a,The restaurant visit was genuinely outstanding.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: After the restaurant visit he was starving.
+Target utterance: He says: """"Best dinner ever.""""
+What meaning is He most likely conveying?
+a. The restaurant visit was genuinely outstanding.
+b. The restaurant visit was a real disappointment.
+c. He looked forward to this restaurant visit for weeks.
+d. It was the best-reviewed dinner spot in the whole city.
+Answer:
+",b,"['a', 'b', 'd', 'c']",4,UA_NI,"{'a': 15.0, 'b': 21.125, 'c': 14.1875, 'd': 15.375}","{'a': 0.002173707587644458, 'b': 0.9936989545822144, 'c': 0.000964576902333647, 'd': 0.0031627260614186525}",0.9936989545822144,b,,b
+C1_30_A_I,C1_30,139,1,ambiguous,ironic,d,There had been very little worth eating at the buffet.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He left the buffet feeling hungry.
+Target utterance: He says: """"Truly a feast for the senses."" ""
+What meaning is He most likely conveying?
+a. Diners often have a buffet.
+b. The buffet was a rich.
+c. The feast was celebrated every year in their village.
+d. There had been very little worth eating at the buffet.
+Answer:
+",d,"['d', 'a', 'c', 'b']",4,A_I,"{'a': 15.0625, 'b': 13.375, 'c': 14.4375, 'd': 21.375}","{'a': 0.0018078539287671447, 'b': 0.0003344193391967565, 'c': 0.0009676744812168181, 'd': 0.9968900084495544}",0.9968900084495544,d,,b
+C1_31_A_NI,C1_31,260,1,ambiguous,non-ironic,b,The picnic was nourishing and genuinely enjoyable.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They left the picnic feeling hungry.
+Target utterance: They say: """"Food for the soul.""""
+What meaning is They most likely conveying?
+a. They spent the morning preparing sandwiches for the picnic.
+b. The picnic was nourishing and genuinely enjoyable.
+c. There was barely anything to eat; they left unsatisfied.
+d. She always kept her soul music collection in good order.
+Answer:
+",c,"['d', 'a', 'b', 'c']",4,A_NI,"{'a': 15.0625, 'b': 12.6875, 'c': 21.5, 'd': 15.25}","{'a': 0.0015945350751280785, 'b': 0.00014831486623734236, 'c': 0.9963337182998657, 'd': 0.0019233765779063106}",0.9963337182998657,c,,b
+C1_32_UA_I,C1_32,228,1,unambiguous,ironic,a,The waiter had forgotten to fill his plate and he did not eat anything.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He looked at the empty plate in front of him and was starving.
+Target utterance: He says: """"No way I could eat more."" ""
+What meaning is He most likely conveying?
+a. The waiter had forgotten to fill his plate and he did not eat anything.
+b. He went to a stylish pottery to buy a special plate.
+c. His plate had been full with food and he ate it all up.
+d. He prefers to eat his lunch alone.
+Answer:
+",c,"['b', 'd', 'a', 'c']",4,UA_I,"{'a': 14.625, 'b': 12.8125, 'c': 21.625, 'd': 15.9375}","{'a': 0.0009078432340174913, 'b': 0.00014820133219473064, 'c': 0.995570957660675, 'd': 0.003373046638444066}",0.995570957660675,c,,a
+C1_33_UA_NI,C1_33,24,1,unambiguous,non-ironic,d,The library was a calm and quiet environment.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She walked into the library and it was inaudible.
+Target utterance: She says: """"Perfect place to concentrate.""""
+What meaning is She most likely conveying?
+a. She asked her colleague for a place to concentrate.
+b. She looked for a new book in the library.
+c. The library was far too noisy to concentrate.
+d. The library was a calm and quiet environment.
+Answer:
+",d,"['c', 'd', 'b', 'a']",4,UA_NI,"{'a': 14.9375, 'b': 13.3125, 'c': 15.3125, 'd': 21.75}","{'a': 0.0010967404814437032, 'b': 0.0002159610012313351, 'c': 0.0015957478899508715, 'd': 0.99709153175354}",0.99709153175354,d,,a
+C1_34_A_I,C1_34,25,1,ambiguous,ironic,d,The concert was pretty loud.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: We came back from a concert which was quiet.
+Target utterance: I say: """"I've almost gone deaf.""""
+What meaning is She most likely conveying?
+a. The concert was surprisingly quiet.
+b. I was looking forward to the next concert.
+c. My grandfather is deaf.
+d. The concert was pretty loud.
+Answer:
+",a,"['a', 'd', 'c', 'b']",4,A_I,"{'a': 21.375, 'b': 14.8125, 'c': 13.9375, 'd': 16.75}","{'a': 0.9883329272270203, 'b': 0.001395872444845736, 'c': 0.0005818862118758261, 'd': 0.009689274244010448}",0.9883329272270203,a,,a
+C1_35_A_NI,C1_35,31,1,ambiguous,non-ironic,a,The movie was too quiet to hear.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context:  She watched a movie in the theater and found it quiet.
+Target utterance: She says: """"It was so difficult to hear.""""
+What meaning is She most likely conveying?
+a. The movie was too quiet to hear.
+b. The movie was very loud.
+c. She generally has difficulties with her hearing.
+d. Watching a movie in the theater is a real event.
+Answer:
+",a,"['a', 'b', 'c', 'd']",4,A_NI,"{'a': 21.875, 'b': 14.875, 'c': 14.3125, 'd': 14.9375}","{'a': 0.9976035952568054, 'b': 0.0009096967405639589, 'c': 0.0005183295579627156, 'd': 0.0009683671523816884}",0.9976035952568054,a,,a
+C1_36_UA_I,C1_36,29,1,unambiguous,ironic,d,He would expected to hear louder music from his neighbours' party.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: His neighbours' music was inaudible.
+Target utterance: He says: """"It seems like they are having a great party.""""
+What meaning is He most likely conveying?
+a. He likes talking about pop music.
+b. He thinks that his neighbours' are having a great party with music.
+c. He is still unsure which party to vote for in the upcoming elections.
+d. He would expected to hear louder music from his neighbours' party.
+Answer:
+",d,"['d', 'a', 'c', 'b']",4,UA_I,"{'a': 14.3125, 'b': 15.0625, 'c': 13.8125, 'd': 21.125}","{'a': 0.0010954529279842973, 'b': 0.0023190740030258894, 'c': 0.0006644258392043412, 'd': 0.9959210157394409}",0.9959210157394409,d,,b
+C1_37_UA_NI,C1_37,53,1,unambiguous,non-ironic,a,The questions required thorough preparation to answer.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She prepared impossible questions for the students.
+Target utterance: She says: """"I hope they're prepared for this.""""
+What meaning is She most likely conveying?
+a. The questions required thorough preparation to answer.
+b. She posted the question on the class forum.
+c. She had never felt so well prepared for a meeting.
+d. The questions were straightforward and required little effort.
+Answer:
+",a,"['a', 'd', 'c', 'b']",4,UA_NI,"{'a': 22.0, 'b': 14.0, 'c': 14.125, 'd': 15.0}","{'a': 0.9983751773834229, 'b': 0.0003349175676703453, 'c': 0.0003795113298110664, 'd': 0.0009104003547690809}",0.9983751773834229,a,,a
+C1_38_A_I,C1_38,172,1,ambiguous,ironic,a,Booking the appointment was frustrating and difficult.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He booked an appointment through a system which was difficult to use.
+Target utterance: He says:  """"That was about as easy as it gets.""""
+What meaning is He most likely conveying?
+a. Booking the appointment was frustrating and difficult.
+b. He decided to cancel the appointment.
+c. Booking the appointment was straightforward and effortless.
+d. He always found parallel parking easy as it gets.
+Answer:
+",a,"['b', 'd', 'a', 'c']",4,A_I,"{'a': 21.5, 'b': 14.75, 'c': 14.6875, 'd': 14.8125}","{'a': 0.9964950680732727, 'b': 0.0011667757062241435, 'c': 0.0010960843646898866, 'd': 0.0012420263374224305}",0.9964950680732727,a,,b
+C1_39_A_NI,C1_39,233,1,ambiguous,non-ironic,a,Completing the task was a genuine sign of intelligence.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They finished a difficult task for their maths lesson.
+Target utterance: They say: """"We must be very smart.""""
+What meaning is They most likely conveying?
+a. Completing the task was a genuine sign of intelligence.
+b. Anyone could have done the task, no special abilities required.
+c. They were always smart about managing their money.
+d. They were given another task after the math lesson.
+Answer:
+",a,"['a', 'b', 'c', 'd']",4,A_NI,"{'a': 21.5, 'b': 15.6875, 'c': 14.0625, 'd': 14.6875}","{'a': 0.9953432083129883, 'b': 0.0029760224279016256, 'c': 0.0005860135424882174, 'd': 0.001094817416742444}",0.9953432083129883,a,,a
+C1_40_UA_I,C1_40,144,1,unambiguous,ironic,d,Making the payment was complicated and painful.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He made a payment through a website which was impossible to use.
+Target utterance: He says:  """"Technology at its finest.""""
+What meaning is He most likely conveying?
+a. Making the payment was a smooth and effortless experience.
+b. He decided to cancel the payment altogether.
+c. He always thought the finest restaurants required a reservation.
+d. Making the payment was complicated and painful.
+Answer:
+",d,"['a', 'd', 'c', 'b']",4,UA_I,"{'a': 14.625, 'b': 13.125, 'c': 15.25, 'd': 21.5}","{'a': 0.0010300074936822057, 'b': 0.0002298257313668728, 'c': 0.001924307318404317, 'd': 0.9968158602714539}",0.9968158602714539,d,,b
+C1_41_UA_NI,C1_41,147,1,unambiguous,non-ironic,c,Her kitchen was tidy.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She finished cooking and the kitchen was pristine.
+Target utterance: She says: """"I'm the sort of person who likes to keep things tidy.""""
+What meaning is She most likely conveying?
+a. Children should regularly tidy up their rooms.
+b. Her kitchen was a mess.
+c. Her kitchen was tidy.
+d. The apartment came with a fully equipped kitchen.
+Answer:
+",c,"['c', 'b', 'a', 'd']",4,UA_NI,"{'a': 15.5625, 'b': 12.75, 'c': 21.625, 'd': 15.4375}","{'a': 0.0023180865682661533, 'b': 0.0001392119302181527, 'c': 0.9954969882965088, 'd': 0.00204570428468287}",0.9954969882965088,c,,a
+C1_42_A_I,C1_42,55,1,ambiguous,ironic,a,The room was left in a terrible state for far too long.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They walked into the room and found it clean.
+Target utterance: They said: ""“Looks like you didn’t wait too long to clean it.”""
+What meaning is They most likely conveying?
+a. The room was left in a terrible state for far too long.
+b. They never had to wait long for a table.
+c. The room was tidied up well before it got too messy.
+d. They decided to book a different room altogether.
+Answer:
+",c,"['b', 'c', 'a', 'd']",4,A_I,"{'a': 14.875, 'b': 13.6875, 'c': 21.75, 'd': 15.4375}","{'a': 0.0010300406720489264, 'b': 0.0003141446504741907, 'c': 0.9968480467796326, 'd': 0.0018077779095619917}",0.9968480467796326,c,,a
+C1_43_A_NI,C1_43,67,1,ambiguous,non-ironic,b,The street was genuinely pleasant.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: The street was clean.
+Target utterance: They say:  """"Such a beautiful walk.""""
+What meaning is They most likely conveying?
+a. A dog was barking on the street.
+b. The street was genuinely pleasant.
+c. They went for a walk in the park.
+d. The street was far from pretty.
+Answer:
+",b,"['d', 'a', 'c', 'b']",4,A_NI,"{'a': 14.875, 'b': 21.625, 'c': 14.6875, 'd': 15.4375}","{'a': 0.0011659865267574787, 'b': 0.9958209991455078, 'c': 0.0009666367550380528, 'd': 0.0020463699474930763}",0.9958209991455078,b,,a
+C1_44_UA_I,C1_44,83,1,unambiguous,ironic,c,The floor was very dirty.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: The floor was pristine.
+Target utterance: She says: """"You could practically eat off the floor here.""""
+What meaning is She most likely conveying?
+a. The floor was very clean.
+b. The dance floor was very empty.
+c. The floor was very dirty.
+d. She could eat a whole cake.
+Answer:
+",a,"['a', 'd', 'b', 'c']",4,UA_I,"{'a': 22.0, 'b': 13.5, 'c': 13.9375, 'd': 14.3125}","{'a': 0.9990237951278687, 'b': 0.00020326973753981292, 'c': 0.00031483033671975136, 'd': 0.00045807543210685253}",0.9990237951278687,a,,a
+C1_45_UA_NI,C1_45,40,1,unambiguous,non-ironic,c,The movie was funny and great.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They watched a grim movie.
+Target utterance: They say: """"That was the perfect movie for a laugh.""""
+What meaning is They most likely conveying?
+a. They had such a perfect night.
+b. They saw three movies that week.
+c. The movie was funny and great.
+d. The movie wasn't amusing.
+Answer:
+",d,"['c', 'd', 'a', 'b']",4,UA_NI,"{'a': 14.25, 'b': 13.0625, 'c': 14.125, 'd': 21.25}","{'a': 0.000910066650249064, 'b': 0.0002775546454358846, 'c': 0.0008031310280784965, 'd': 0.9980092644691467}",0.9980092644691467,d,,b
+C1_46_A_I,C1_46,159,1,ambiguous,ironic,a,The musical was purely for laughs.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: The musical she watched was really serious.
+Target utterance: She says: """"That cracked me up.""""
+What meaning is She most likely conveying?
+a. The musical was purely for laughs.
+b. The musical left her deeply moved.
+c. She answered some questions about the musical.
+d. The joke cracked everyone up.
+Answer:
+",b,"['b', 'a', 'd', 'c']",4,A_I,"{'a': 15.3125, 'b': 21.125, 'c': 15.75, 'd': 15.625}","{'a': 0.0029553461354225874, 'b': 0.9884279370307922, 'c': 0.004577329382300377, 'd': 0.004039478953927755}",0.9884279370307922,b,,a
+C1_47_A_NI,C1_47,3,1,ambiguous,non-ironic,a,The situation was genuinely amusing.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: The situation was serious.
+Target utterance: She says: """"Truly something to laugh about.""""
+What meaning is She most likely conveying?
+a. The situation was genuinely amusing.
+b. She always found it hard to laugh about things.
+c. The situation was far too serious.
+d. She tried to make the best of the situation.
+Answer:
+",c,"['a', 'c', 'b', 'd']",4,A_NI,"{'a': 14.5, 'b': 12.5, 'c': 21.5, 'd': 16.75}","{'a': 0.0009031332447193563, 'b': 0.00012222578516229987, 'c': 0.9904058575630188, 'd': 0.008568689227104187}",0.9904058575630188,c,,b
+C1_48_UA_I,C1_48,208,1,unambiguous,ironic,c,The talk contained no humour.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: His talk was grim. 
+Target utterance: Hey says: """"Wow, so many jokes in one talk.""""
+What meaning is He most likely conveying?
+a. He decided to cancel the talk.
+b. He was a fan of old jokes.
+c. The talk contained no humour.
+d. The talk contained humour.
+Answer:
+",c,"['d', 'c', 'b', 'a']",4,UA_I,"{'a': 15.125, 'b': 12.8125, 'c': 21.5, 'd': 16.125}","{'a': 0.0016926124226301908, 'b': 0.00016759132267907262, 'c': 0.9935387969017029, 'd': 0.00460099708288908}",0.9935387969017029,c,,b
+C1_49_UA_NI,C1_49,229,1,unambiguous,non-ironic,a,The airport experience was enjoyable.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He had a terrible experience at the airport.
+Target utterance: He says: """"A complete nightmare, really.""""
+What meaning is He most likely conveying?
+a. The airport experience was enjoyable.
+b. He came back from his trip exhausted.
+c. He decided to book a different airport transfer.
+d. The airport experience was thoroughly unpleasant.
+Answer:
+",d,"['a', 'c', 'd', 'b']",4,UA_NI,"{'a': 14.875, 'b': 13.25, 'c': 14.875, 'd': 21.625}","{'a': 0.0011678754817694426, 'b': 0.00022996831103228033, 'c': 0.0011678754817694426, 'd': 0.9974343180656433}",0.9974343180656433,d,,b
+C1_50_A_I,C1_50,254,1,ambiguous,ironic,d,The exam results were deeply disappointing.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He studied hard for the exam, and the results were bad.
+Target utterance: He says: """"Well, this is amazing.""""
+What meaning is He most likely conveying?
+a. He always found art museums amazing.
+b. He had one more exam this week.
+c. The exam results were impressive
+d. The exam results were deeply disappointing.
+Answer:
+",d,"['c', 'd', 'a', 'b']",4,A_I,"{'a': 14.6875, 'b': 13.0625, 'c': 16.125, 'd': 21.625}","{'a': 0.0009656251640990376, 'b': 0.0001901428768178448, 'c': 0.004065433982759714, 'd': 0.9947788715362549}",0.9947788715362549,d,,b
+C1_51_A_NI,C1_51,129,1,ambiguous,non-ironic,b,They found the play dull.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They left the play feeling bad.
+Target utterance: They said:  """"That wasn't fun at all.""""
+What meaning is They most likely conveying?
+a. They found the play entertaining.
+b. They found the play dull.
+c. They liked to watch a play in their favorite theatre.
+d. They had fun eating together.
+Answer:
+",b,"['b', 'a', 'd', 'c']",4,A_NI,"{'a': 14.5, 'b': 21.5, 'c': 14.875, 'd': 16.0}","{'a': 0.0009061502641998231, 'b': 0.9937143921852112, 'c': 0.0013184407725930214, 'd': 0.004061083775013685}",0.9937143921852112,b,,a
+C1_52_UA_I,C1_52,114,1,unambiguous,ironic,b,She found the whole meal disappointing.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She had a terrible meal at a restaurant.
+Target utterance: She says: """"That was a great restaurant visit.""""
+What meaning is She most likely conveying?
+a. She wanted to try the meal for months.
+b. She found the whole meal disappointing.
+c. The rmeal was a genuinely enjoyable experience.
+d. She always enjoyed a restaurant visit before a big day out.
+Answer:
+",b,"['d', 'b', 'a', 'c']",4,UA_I,"{'a': 14.0625, 'b': 21.5, 'c': 14.1875, 'd': 15.25}","{'a': 0.0005868852022103965, 'b': 0.996823787689209, 'c': 0.0006650281138718128, 'd': 0.001924322685226798}",0.996823787689209,b,,b
+C1_53_UA_NI,C1_53,140,1,unambiguous,non-ironic,a,The ground was moist and muddy after the rain.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: After the weather changed, the ground became parched.
+Target utterance: She says: """"Perfect conditions for a picnic..""""
+What meaning is She most likely conveying?
+a. The ground was moist and muddy after the rain.
+b. She knelt in the mud to look closely at the earth.
+c. The ground was uneven where she stood.
+d. The ground was dried out.
+Answer:
+",d,"['a', 'c', 'd', 'b']",4,UA_NI,"{'a': 14.6875, 'b': 13.125, 'c': 14.875, 'd': 21.5}","{'a': 0.001097024418413639, 'b': 0.00022994881146587431, 'c': 0.001323264092206955, 'd': 0.997349739074707}",0.997349739074707,d,,b
+C1_54_A_I,C1_54,123,1,ambiguous,ironic,a,The garden was just watered and needed to dry out.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: The garden was dry in the morning.
+Target utterance: They said: """"That’s enough water for the day.""""
+What meaning is They most likely conveying?
+a. The garden was just watered and needed to dry out.
+b. They wanted a new water feature.
+c. The garden was struggling without any water.
+d. They played some boardgames in the garden.
+Answer:
+",a,"['b', 'c', 'a', 'd']",4,A_I,"{'a': 21.875, 'b': 14.4375, 'c': 16.25, 'd': 15.0}","{'a': 0.9947985410690308, 'b': 0.0005856928764842451, 'c': 0.003587803803384304, 'd': 0.0010279229609295726}",0.9947985410690308,a,,b
+C1_55_A_NI,C1_55,100,1,ambiguous,non-ironic,a,The plants had been getting plenty of moisture to grow.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: The field was dry.
+Target utterance: He says: """"Terrible news for anything trying to grow..""""
+What meaning is He most likely conveying?
+a. The plants had been getting plenty of moisture to grow.
+b. He had been reading about different farming techniques.
+c. The plants had been wilting due to lack of water.
+d. He was considering buying a new tractor.
+Answer:
+",c,"['a', 'c', 'b', 'd']",4,A_NI,"{'a': 14.875, 'b': 13.1875, 'c': 21.625, 'd': 15.9375}","{'a': 0.0011653145775198936, 'b': 0.0002155615366064012, 'c': 0.9952471852302551, 'd': 0.0033719497732818127}",0.9952471852302551,c,,b
+C1_56_UA_I,C1_56,158,1,unambiguous,ironic,a,Her hair was completely dry.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She saw her parched hair.
+Target utterance: She said: """"The rain really caught me by surprise.""""
+What meaning is She most likely conveying?
+a. Her hair was completely dry.
+b. She had her hair cut short last week.
+c. They organised a surprise party for him.
+d. Her hair was soaking wet.
+Answer:
+",d,"['b', 'd', 'c', 'a']",4,UA_I,"{'a': 14.8125, 'b': 13.0625, 'c': 14.3125, 'd': 21.375}","{'a': 0.0014088081661611795, 'b': 0.00024481414584442973, 'c': 0.0008544853189960122, 'd': 0.9974919557571411}",0.9974919557571411,d,,a
+C1_57_UA_NI,C1_57,89,1,unambiguous,non-ironic,c,I admired the outfit.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: I wore a hideous outfit to attend the award ceremony.
+Target utterance: I say: """"I really didn't try at all today.""""
+What meaning is I most likely conveying?
+a. I thought the outfit was ugly.
+b. I received an amazing award.
+c. I admired the outfit.
+d. The comedians on the stage enjoyed themselves.
+Answer:
+",a,"['b', 'c', 'a', 'd']",4,UA_NI,"{'a': 21.75, 'b': 14.0, 'c': 14.25, 'd': 14.9375}","{'a': 0.997920572757721, 'b': 0.0004298468411434442, 'c': 0.0005519342375919223, 'd': 0.0010976523626595736}",0.997920572757721,a,,b
+C1_58_A_I,C1_58,105,1,ambiguous,ironic,c,She thought the car was ugly.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She saw an ugly car on the street.
+Target utterance: She says: """"That’s a real beauty.""""
+What meaning is she most likely conveying?
+a. She admired the car.
+b. She thought the painting was beautiful.
+c. She thought the car was ugly.
+d. She had booked a car.
+Answer:
+",c,"['a', 'c', 'b', 'd']",4,A_I,"{'a': 15.1875, 'b': 13.1875, 'c': 21.625, 'd': 16.5}","{'a': 0.0015880741411820054, 'b': 0.00021492247469723225, 'c': 0.9922966361045837, 'd': 0.005900411866605282}",0.9922966361045837,c,,b
+C1_59_A_NI,C1_59,76,1,ambiguous,non-ironic,b,The painting was genuinely ugly.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He looked at an ugly painting.
+Target utterance: He said: """"That's hard to look at.""""
+What meaning is He most likely conveying?
+a. The painting was genuinely beautiful.
+b. The painting was genuinely ugly.
+c. They spent the weekend for this painting.
+d. He gave her a stern look.
+Answer:
+",b,"['b', 'a', 'd', 'c']",4,A_NI,"{'a': 14.375, 'b': 21.75, 'c': 14.6875, 'd': 15.5625}","{'a': 0.0006245169788599014, 'b': 0.9964742064476013, 'c': 0.0008536134846508503, 'd': 0.002047712216153741}",0.9964742064476013,b,,a
+C1_60_UA_I,C1_60,212,1,unambiguous,ironic,a,They thought the bird was not beautiful.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They saw a hideous bird.
+Target utterance: They said: """"A real eye-catcher.""""
+What meaning is They most likely conveying?
+a. They thought the bird was not beautiful.
+b. They thought the bird was beautiful.
+c. The bird looked at them really closely.
+d. They had a great time on a trip.
+Answer:
+",a,"['b', 'a', 'c', 'd']",4,UA_I,"{'a': 22.0, 'b': 13.75, 'c': 13.25, 'd': 14.625}","{'a': 0.9989546537399292, 'b': 0.00026098545640707016, 'c': 0.0001582956756465137, 'd': 0.0006260715890675783}",0.9989546537399292,a,,b
+C1_61_UA_NI,C1_61,86,1,unambiguous,non-ironic,c,The kettle was a real bargain.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: I found a nice kettle which was free.
+Target utterance: I said: """"What a steal.""""
+What meaning is I most likely conveying?
+a. The kettle boiled over..
+b. The kettle was expensive.
+c. The kettle was a real bargain.
+d. A thief tried to steal my bag.
+Answer:
+",c,"['d', 'b', 'a', 'c']",4,UA_NI,"{'a': 15.375, 'b': 13.125, 'c': 21.625, 'd': 15.5}","{'a': 0.0019221476977691054, 'b': 0.00020259286975488067, 'c': 0.9956971406936646, 'd': 0.0021780787501484156}",0.9956971406936646,c,,a
+C1_62_A_I,C1_62,165,1,ambiguous,ironic,a,The vase was not pricy.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He broke a cheap vase.
+Target utterance: He said: """"Well, there goes a priceless treasure""""
+What meaning is He most likely conveying?
+a. The vase was not pricy.
+b. The experience of breaking the vase was worth it.
+c. The vase was worth a lot of money.
+d. He went on a hike and picked up flowers.
+Answer:
+",a,"['b', 'c', 'a', 'd']",4,A_I,"{'a': 21.875, 'b': 13.875, 'c': 13.8125, 'd': 15.125}","{'a': 0.9981818199157715, 'b': 0.00033485269523225725, 'c': 0.0003145649970974773, 'd': 0.0011687506921589375}",0.9981818199157715,a,,b
+C1_63_A_NI,C1_63,195,1,ambiguous,non-ironic,b,The perfume was pricy.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She was wearing cheap perfume.
+Target utterance: She said: """"Smells like it's from a gas station.""""
+What meaning is She most likely conveying?
+a. The perfume was not pricy.
+b. The perfume was pricy.
+c. The fragrance label was worth reading.
+d. The ocean was calm and quiet.
+Answer:
+",a,"['b', 'a', 'c', 'd']",4,A_NI,"{'a': 22.0, 'b': 14.1875, 'c': 13.5625, 'd': 14.75}","{'a': 0.9986704587936401, 'b': 0.00040410718065686524, 'c': 0.00021630298579111695, 'd': 0.0007092301966622472}",0.9986704587936401,a,,b
+C1_64_UA_I,C1_64,276,1,unambiguous,ironic,b,The bag was worth very little.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She got a free bag.
+Target utterance: She said: """"Looks like a real designer piece.""""
+What meaning is She most likely conveying?
+a. She liked to wear that designer piece.
+b. The bag was worth very little.
+c. The bag was worth a lot.
+d. She had dark bags under her eyes.
+Answer:
+",b,"['c', 'b', 'a', 'd']",4,UA_I,"{'a': 15.5, 'b': 21.125, 'c': 15.1875, 'd': 15.0}","{'a': 0.0035764046479016542, 'b': 0.9916378855705261, 'c': 0.0026165535673499107, 'd': 0.0021691990550607443}",0.9916378855705261,b,,b
+C1_65_UA_NI,C1_65,174,1,unambiguous,non-ironic,c,The house felt cramped and tiny.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They moved into a tiny house.
+Target utterance: They said: """"You can barely turn around in here.""""
+What meaning is They most likely conveying?
+a. They made a sharp turn at the end of the road.
+b. The house felt spacious and huge.
+c. The house felt cramped and tiny.
+d. The house was red and blue.
+Answer:
+",c,"['c', 'b', 'a', 'd']",4,UA_NI,"{'a': 15.6875, 'b': 13.0625, 'c': 21.375, 'd': 15.6875}","{'a': 0.003364429110661149, 'b': 0.00024371840117964894, 'c': 0.99302738904953, 'd': 0.003364429110661149}",0.99302738904953,c,,a
+C1_66_A_I,C1_66,245,1,ambiguous,ironic,b,They thought the concert was small.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: They attended a concert at a small venue.
+
+
+Target utterance: They said: """"What a massive event.""""
+What meaning is they most likely conveying?
+a. They liked go to concerts.
+b. They thought the concert was small.
+c. They thought the concert was huge.
+d. They organized a massive event for dating.
+Answer:
+",b,"['d', 'b', 'a', 'c']",4,A_I,"{'a': 14.4375, 'b': 21.125, 'c': 15.0, 'd': 14.4375}","{'a': 0.0012405883753672242, 'b': 0.995341420173645, 'c': 0.0021773006301373243, 'd': 0.0012405883753672242}",0.995341420173645,b,,b
+C1_67_A_NI,C1_67,231,1,ambiguous,non-ironic,d,She thought the spider was tiny.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She spotted a small spider.
+Target utterance: She said: """"Almost didn't see it.""""
+What meaning is She most likely conveying?
+a. She thought the spider was huge.
+b. She went to see her doctor on Monday.
+c. She drew a spider diagram to plan her essay.
+d. She thought the spider was tiny.
+Answer:
+",d,"['b', 'c', 'd', 'a']",4,A_NI,"{'a': 14.5, 'b': 12.6875, 'c': 14.0, 'd': 21.5}","{'a': 0.0009104126947931945, 'b': 0.00014862079115118831, 'c': 0.0005521932034753263, 'd': 0.9983887672424316}",0.9983887672424316,d,,a
+C1_68_UA_I,C1_68,236,1,unambiguous,ironic,b,I thought the dog was small.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: I met a tiny dog.
+Target utterance: I said: """"He could swallow me whole.""""
+What meaning is I most likely conveying?
+a. I swallowed a pill.
+b. I thought the dog was small.
+c. The dog wore a collar.
+d. I thought the dog was huge.
+Answer:
+",d,"['c', 'b', 'd', 'a']",4,UA_I,"{'a': 14.75, 'b': 14.875, 'c': 14.8125, 'd': 21.25}","{'a': 0.0014962459681555629, 'b': 0.0016954689053818583, 'c': 0.0015927455388009548, 'd': 0.9952155351638794}",0.9952155351638794,d,,a
+C1_69_UA_NI,C1_69,200,1,unambiguous,non-ironic,a,The pool was super cold.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She jumped into a cold pool.
+Target utterance: She said:  """"One could catch a cold in here.""""
+What meaning is She most likely conveying?
+a. The pool was super cold.
+b. She played a game of pool in the bar.
+c. The pool was super warm.
+d. She liked to chill on that sofa after work.
+Answer:
+",a,"['a', 'd', 'b', 'c']",4,UA_NI,"{'a': 22.25, 'b': 14.25, 'c': 13.75, 'd': 14.5}","{'a': 0.9990313053131104, 'b': 0.0003351376508362591, 'c': 0.0002032712654909119, 'd': 0.0004303252790123224}",0.9990313053131104,a,,a
+C1_70_A_I,C1_70,277,1,ambiguous,ironic,a,The weather conditions were awful.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: He went to the beach, and the weather was cool.
+Target utterance: He said: """"Couldn't have asked for better weather.""""
+What meaning is he most likely conveying?
+a. The weather conditions were awful.
+b. The weather conditions were perfect.
+c. He meant to harvest the houseplants, but forgot about it.
+d. The delivery driver arrived in heavy rain.
+Answer:
+",b,"['b', 'a', 'd', 'c']",4,A_I,"{'a': 16.375, 'b': 21.125, 'c': 15.625, 'd': 16.5}","{'a': 0.008460966870188713, 'b': 0.9779548048973083, 'c': 0.0039966776967048645, 'd': 0.009587530978024006}",0.9779548048973083,b,,a
+C1_71_A_NI,C1_71,57,1,ambiguous,non-ironic,a,The room was freezing cold.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: I walked into a cool room. 
+Target utterance: I said:  """"Feels like the North Pole in here.""""
+What meaning is I most likely conveying?
+a. The room was freezing cold.
+b. There wasn't enough room in the car for everyone.
+c. I leaned the fishing pole against the wall.
+d. The room was really warm.
+Answer:
+",a,"['a', 'd', 'c', 'b']",4,A_NI,"{'a': 22.0, 'b': 14.0625, 'c': 13.9375, 'd': 15.25}","{'a': 0.998160183429718, 'b': 0.00035644113086164, 'c': 0.00031455815769732, 'd': 0.001168725430034101}",0.998160183429718,a,,a
+C1_72_UA_I,C1_72,179,1,unambiguous,ironic,a,Her coffee did not taste good.,Qwen3.8-27B-FP8,Condition1B_context_richness_stimuli,general,"You will read short stories that describe everyday situations and which finish with a person saying something. Your task is to decide, given the situation, what meaning the person is most likely conveying. Each story will be followed by 4 possible meaning interpretations listed from a to d. Read each story and choose the number corresponding to the most likely meaning. You can only answer with a, b, c, or d.
+Context: She took a sip of the cold coffee.
+Target utterance: She said: """"This is what freshly made coffee tastes like.""""
+What meaning is she most likely conveying?
+a. Her coffee did not taste good.
+b. Her coffee was delicious.
+c. She did an experiment in health science.
+d. Her coffee tasted like fresh mint.
+Answer:
+",a,"['b', 'a', 'd', 'c']",4,UA_I,"{'a': 21.375, 'b': 14.625, 'c': 13.125, 'd': 14.75}","{'a': 0.9972485899925232, 'b': 0.0011676580179482698, 'c': 0.0002605397312436253, 'd': 0.0013231298653408885}",0.9972485899925232,a,,b
