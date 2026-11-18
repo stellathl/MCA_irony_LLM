@@ -198,17 +198,18 @@ def generate_predictions(
                         messages,
                         tokenize=False,
                         add_generation_prompt=True,
-                        
+                        enable_thinking=False
                     )
                 else:
                     # GPT doesn't accept chat_template format, we need to manually just inser this
                     formatted_prompt = f"{SYSTEM_PROMPT}\n\n{prompt}"
 
+
                 result = pipe(
                     formatted_prompt,
                     max_new_tokens=MAX_NEW_TOKENS,
                     temperature=TEMPERATURE,
-                    do_sample=True
+                    do_sample=True,
                 )
                 generated_text = result[0]["generated_text"][len(formatted_prompt):]
 

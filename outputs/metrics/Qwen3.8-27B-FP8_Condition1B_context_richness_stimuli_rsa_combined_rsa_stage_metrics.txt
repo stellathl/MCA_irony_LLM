@@ -1,0 +1,47 @@
+Model      : Qwen3.8-27B-FP8
+Dataset    : Condition1B_context_richness_stimuli
+Prompt Type: rsa
+==================================================
+
+############################################################
+### STAGE: L0 (Literal Listener)
+############################################################
+
+No valid predictions for this stage.
+
+############################################################
+### STAGE: S1 (Informative Speaker)
+############################################################
+
+--- Irony ---
+irony_label  n  accuracy  precision  recall    f1
+     ironic 84     0.262      0.065    0.25 0.104
+ non-ironic 91     0.319      0.080    0.25 0.121
+
+--- Context × Irony ---
+context_level irony_label  n  accuracy  precision  recall    f1
+    ambiguous      ironic 43     0.233      0.058    0.25 0.094
+    ambiguous  non-ironic 42     0.310      0.077    0.25 0.118
+  unambiguous      ironic 41     0.293      0.073    0.25 0.113
+  unambiguous  non-ironic 49     0.327      0.082    0.25 0.123
+
+--- Option Distribution ---
+Option  Selection Count  Correct  Incorrect Accuracy % Selection %
+     a              175       51        124      29.1%      100.0%
+
+Selection Distribution:
+  Option a: 175 selections (100.0%)
+
+
+############################################################
+### STAGE: L1 (Pragmatic Listener)
+############################################################
+
+No valid predictions for this stage.
+
+############################################################
+### STAGE: Final Answer
+############################################################
+
+No valid predictions for this stage.
+
